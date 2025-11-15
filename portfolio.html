@@ -13,20 +13,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
+            /* Transition added for smooth theme change on background and text color */
             transition: background-color 0.3s, color 0.3s;
         }
-
-        /* Base colors (Light Mode) */
-        .light body {
-            background-color: #f7f9fd;
-            color: #1e293b;
-        }
         
-        /* Dark Mode Colors */
-        .dark body {
-            background-color: #111827; /* Darker background */
-            color: #f1f5f9;
-        }
+        /* NOTE: Base body colors have been moved to Tailwind utility classes (bg-*, text-*) 
+           applied directly to the <body> tag for better theme switching robustness. */
 
         /* General Card Styling */
         .tile-card {
@@ -53,6 +45,7 @@
         }
 
         /* Light Mode Card Defaults */
+        /* These classes provide the light mode styling that dark mode classes override */
         .tile-card {
             background-color: #ffffff;
             border: 1px solid #e2e8f0;
@@ -63,7 +56,9 @@
         }
     </style>
 </head>
-<body class="min-h-screen">
+<!-- UPDATED BODY CLASS: Sets explicit light mode defaults (bg-gray-50, text-gray-900) 
+     and dark mode overrides (dark:bg-gray-900, dark:text-gray-100) -->
+<body class="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
 
     <!-- Firebase SDK Imports and Setup -->
     <script type="module">
@@ -137,7 +132,8 @@
                     // Use the safe rendering function
                     iconElement.innerHTML = renderLucideIcon('sun'); 
                 } else {
-                    document.documentElement.classList.remove('dark');
+                    // Explicitly removing 'dark' class enables the light theme
+                    document.documentElement.classList.remove('dark'); 
                     // Use the safe rendering function
                     iconElement.innerHTML = renderLucideIcon('moon');
                 }
