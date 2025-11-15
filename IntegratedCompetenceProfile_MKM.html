@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IntegratedCompetenceProfile_MKM.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p><strong>Michael Karl Mueller (Investment Advisor / Project Consultant)</strong> Randpark Ridge / +27 (78) 255-4927 / michael-karl-mueller@outlook.com</p>
+<hr>
+<h1 id="integrated-competence-profile"><strong>Integrated Competence Profile</strong></h1>
+<h2 id="1-core-expertises-knowledge-proof"><strong>1. Core Expertises: Knowledge Proof</strong></h2>
+<p>Validation of knowledge domains with specific evidence from education and roles.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Core Expertise</th>
+<th style="text-align:left">Broad-Eyes Analysis (The Principle)</th>
+<th style="text-align:left">Detailed Substantiation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Investments</strong></td>
+<td style="text-align:left"><em>Knowledge of Risk/Return Analysis, qualitative analysis (Manager, Team etc.), asset classes, and regulatory frameworks.</em></td>
+<td style="text-align:left">Served as <strong>Analyst Fund Selection &amp; Asset Management</strong> and <strong>member of the Investment Committee</strong> for Swiss clients (family offices, cantonal banks, pension funds). Currently works as an <strong>Investment Advisor</strong> for private clients and an Israeli-based fund rating platform. Responsibilities included portfolio management of fund-based mandates and performance calculation/attribution.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Management</strong></td>
+<td style="text-align:left"><em>Knowledge of Team Composition, Leadership styles, and incentivation / motivation strategies.</em></td>
+<td style="text-align:left"><strong>Set up and managed a team of 4 people</strong> as Head Document Management, where responsibilities included operations, process optimization, and relationship management. Held multiple <strong>Project Manager</strong> roles in operations, training, and eDocument Management.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Economy</strong></td>
+<td style="text-align:left"><em>Understanding of macroeconomic indicators, financial markets, money creation, central bank policy impacts.</em></td>
+<td style="text-align:left"><strong>Lecturer in Economics</strong> for University of Mainz students, covering economics and taxation. Completed a <strong>Diploma/Master in Economics</strong> with a focus on macroeconomics, national and international finance, and taxation.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>German Grammar</strong></td>
+<td style="text-align:left"><em>Mastery of complex syntax, case system, and Konjunktiv forms.</em></td>
+<td style="text-align:left"><strong>German (native)</strong> proficiency. Authored a <strong>Diploma Thesis</strong> (Master level) in German on complex economic and taxation topics.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>English Grammar</strong></td>
+<td style="text-align:left"><em>Mastery of verb tenses, clause structures, and academic conventions.</em></td>
+<td style="text-align:left"><strong>English (fluent)</strong> proficiency. Completed an <strong>International MBA programme</strong> and authored the MBA thesis in English: <em>The Market of Television Broadcasting in India</em>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-competences-applied-skill-proof"><strong>2. Competences: Applied Skill Proof</strong></h2>
+<p>Evidence of practical and interpersonal skills.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Competence</th>
+<th style="text-align:left">Broad-Eyes Analysis (The Skill)</th>
+<th style="text-align:left">Detailed Substantiation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Tutoring</strong></td>
+<td style="text-align:left"><em>Ability to diagnose gaps, adapt teaching methods, and provide constructive feedback.</em></td>
+<td style="text-align:left">Delivered <strong>preparatory courses in economics and taxation</strong> for university students over a five-year period. Acted as a <strong>facilitator</strong> in executive business trainings with financial business simulations for clients like UBS and Hewlett Packard.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Formulate Text/Content</strong></td>
+<td style="text-align:left"><em>Proven ability to craft text that is sound, coherent, and audience-tailored.</em></td>
+<td style="text-align:left">Responsible for <strong>reporting &amp; fact sheets</strong> and performance attribution. Created <strong>documentation / test exams</strong> for course participants. Experience spans academic (theses), advisory (reporting), and educational content.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Visualise Curricula/ Investment Reports</strong></td>
+<td style="text-align:left"><em>Capacity to translate abstract material into clear diagrams/maps to enhance retention.</em></td>
+<td style="text-align:left">Worked as a <strong>Project Manager (developer)</strong> for business trainings utilizing <strong>financial business simulations</strong>. Responsibilities included <strong>reporting &amp; fact sheets</strong> (performance calculation/attribution) for professional investment clients.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Hosting / Serving / Cooking</strong></td>
+<td style="text-align:left"><em>Demonstrated ability in event coordination, service standards, atmospheric harmony and time management.</em></td>
+<td style="text-align:left">Listed <strong>Cooking</strong> as a personal activity. Experience in <strong>relationship management</strong> and <strong>client-facing roles</strong> (advisory/consulting) requires high standards of service and client satisfaction.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-persona-type-behavioral-proof"><strong>3. Persona Type: Behavioral Proof</strong></h2>
+<p>Substantiation of character attributes by professional roles.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Attribute</th>
+<th style="text-align:left">Broad-Eyes Analysis (The Behavior)</th>
+<th style="text-align:left">Detailed Substantiation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Structured / Diligent / Action-Oriented / Reliable</strong></td>
+<td style="text-align:left"><em>Preference for clear objectives, organized documentation, and attention to detail. Identifying risks, initiating tasks, and moving quickly from plan to implementation.</em></td>
+<td style="text-align:left">Managed operations and <strong>process optimization</strong> as Head Document Management. Held the role of <strong>Project Manager eDocument Management</strong>. Skills include <strong>Workflow Automation</strong> and <strong>Prompt Engineering</strong>. Experience includes <strong>Accounting Clerk</strong> (Deutsche Bank), requiring high precision.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Creative / Artistic</strong></td>
+<td style="text-align:left"><em>Focus on novel solutions and aesthetic presentation.</em></td>
+<td style="text-align:left">Implied through the ability to <strong>develop and facilitate</strong> dynamic executive business trainings (simulations) and the <strong>Visualise Curricula</strong> competence. Skills include using <strong>Airtable</strong> and <strong>Notion</strong> for structuring content.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Empathetic / Nuanced</strong></td>
+<td style="text-align:left"><em>Practicing active listening, tailoring communication, and synthesizing conflicting data. Ability to really listen to candidates, clients, etc.</em></td>
+<td style="text-align:left">Served as a <strong>Facilitator</strong> for executive business trainings. Held responsibility for <strong>relationship management</strong> with international fund providers. Experience spans <strong>Investment Advisory</strong> and <strong>Consulting</strong>, requiring strong interpersonal and listening skills to translate needs into strategy.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-contextdomain-scope--scale-proof"><strong>4. Context/Domain: Scope &amp; Scale Proof</strong></h2>
+<p>Environments and scale of applied skills.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Context/Domain</th>
+<th style="text-align:left">Broad-Eyes Analysis (The Environment)</th>
+<th style="text-align:left">Detailed Substantiation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Investment Advisory (Private and Institutional)</strong></td>
+<td style="text-align:left"><em>Experience with both private and institutional mandates.</em></td>
+<td style="text-align:left">Clients included <strong>Swiss family offices, private clients</strong> (Private), and <strong>Swiss cantonal banks, private banks, pension funds</strong> (Institutional).</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Consulting</strong></td>
+<td style="text-align:left"><em>Skill in structured problem diagnosis and developing strategic recommendations.</em></td>
+<td style="text-align:left">Held roles as <strong>Project Consultant</strong> and <strong>consultant</strong> for clients including an Israeli-based fund rating platform and independent investment advisory associations.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Highly Data and Tech-Driven Environments</strong></td>
+<td style="text-align:left"><em>Leveraging data tools, comfort with platforms, appreciating data integrity, identifying mistakes in complex number tables.</em></td>
+<td style="text-align:left">Expertise in <strong>Performance Data Management</strong>, <strong>performance calculation/attribution</strong>, and <strong>peer group analysis</strong>. Skills include <strong>Setup interfaces with Data Providers, LLMs, Prompt Engineering, and Workflow Automation</strong>. Managed eDocument Management.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Education (Grown Ups, Kids)</strong></td>
+<td style="text-align:left"><em>Designing modules, facilitating transfer, understanding pedagogy. Show how to progress inherently and be successful in tests and assessments.</em></td>
+<td style="text-align:left">Experience as a <strong>Lecturer</strong> (preparatory courses for university students) and <strong>Facilitator</strong> (executive business training). This spans both academic and corporate settings (grown-ups and potentially influencing younger learners).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="5-my-value-proposition-impact-proof"><strong>5. My Value Proposition: Impact Proof</strong></h2>
+<p>Evidence of specific high-level impact and goals.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Value Proposition Element</th>
+<th style="text-align:left">Broad-Eyes Analysis (The Impact)</th>
+<th style="text-align:left">Detailed Substantiation (Your Proof/Result)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Process Optimisation</strong></td>
+<td style="text-align:left"><em>Identifying bottlenecks, designing streamlined procedures, in digital production.</em></td>
+<td style="text-align:left">Direct responsibility for <strong>process optimization</strong> as Head Document Management. Managed the <strong>eDocument Management</strong> project. Possesses <strong>Workflow Automation</strong> skills, indicating a focus on digital efficiency.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Educational Transformation</strong></td>
+<td style="text-align:left"><em>Modernizing methods, integrating tech, shifting mindsets.</em></td>
+<td style="text-align:left">Worked as a <strong>developer and facilitator</strong> for <strong>executive business trainings utilizing financial business simulations</strong>, representing a modernization of traditional teaching methods.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Sparking Inherent Interest...</strong></td>
+<td style="text-align:left"><em>Fostering genuine curiosity and creating inspirational environments.</em></td>
+<td style="text-align:left">Achieved success as a <strong>Lecturer</strong> for economics students by facilitating preparatory courses and documentation. Achieved success as a <strong>Facilitator</strong> for executive clients (UBS, HP, etc.) in engaging business simulations.</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
