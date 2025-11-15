@@ -17,47 +17,38 @@
             transition: background-color 0.3s, color 0.3s;
         }
         
-        /* NOTE: Base body colors have been moved to Tailwind utility classes (bg-*, text-*) 
-           applied directly to the <body> tag for better theme switching robustness. */
-
-        /* General Card Styling */
+        /* General Card Styling: Keep transition and shadow here */
         .tile-card {
             transition: all 0.3s ease-in-out;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
         }
 
-        /* RED NUANCE IN DARK MODE */
+        /* RED NUANCE IN DARK MODE - This block ensures the custom dark background only applies when 'dark' class is present on HTML */
         .dark .tile-red-nuance {
             background-color: #3b0718; /* Deep red shade */
-            border: 1px solid #7f1d1d; /* Subtle red border */
+            border-color: #7f1d1d; /* Subtle red border */
         }
         .dark .tile-red-nuance:hover {
             border-color: #dc2626; /* Brighter red on hover */
         }
 
-        /* BLUE NUANCE IN DARK MODE */
+        /* BLUE NUANCE IN DARK MODE - This block ensures the custom dark background only applies when 'dark' class is present on HTML */
         .dark .tile-blue-nuance {
             background-color: #0c1a3b; /* Deep blue shade */
-            border: 1px solid #1e3a8a; /* Subtle blue border */
+            border-color: #1e3a8a; /* Subtle blue border */
         }
         .dark .tile-blue-nuance:hover {
             border-color: #2563eb; /* Brighter blue on hover */
         }
 
-        /* Light Mode Card Defaults */
-        /* These classes provide the light mode styling that dark mode classes override */
-        .tile-card {
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-        }
+        /* Light Mode Card Hover Defaults (Moved generic background/border to HTML for better theming) */
         .tile-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<!-- UPDATED BODY CLASS: Sets explicit light mode defaults (bg-gray-50, text-gray-900) 
-     and dark mode overrides (dark:bg-gray-900, dark:text-gray-100) -->
+<!-- Body theme fix is already applied here -->
 <body class="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
 
     <!-- Firebase SDK Imports and Setup -->
@@ -208,7 +199,8 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         
         <!-- Profile Section -->
-        <div class="mb-8 sm:mb-12 p-6 sm:p-8 rounded-xl bg-white dark:bg-gray-800 tile-card">
+        <!-- This card is correctly using standard Tailwind classes -->
+        <div class="mb-8 sm:mb-12 p-6 sm:p-8 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 tile-card">
             <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8">
                 <!-- Simple Profile Placeholder -->
                 <div class="w-20 h-20 md:w-32 md:h-32 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-300 text-2xl md:text-3xl font-bold border-4 border-gray-300 dark:border-gray-700 flex-shrink-0">
@@ -229,48 +221,48 @@
         <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">My Key Projects / Deliverables</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
-            <!-- Tile 1: RED NUANCE -->
-            <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2">
+            <!-- Tile 1: RED NUANCE - REMOVED conflicting dark:bg and dark:border classes -->
+            <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2 bg-white border-gray-200">
                 <div class="text-red-600 dark:text-red-400 mb-3" data-lucide="code-square"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder One</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm">Describe your first project here. This might be a coding challenge, a major client deliverable, or a successful piece of research.</p>
                 <span class="inline-block mt-4 text-xs font-medium text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-1 rounded-full">Category A</span>
             </div>
 
-            <!-- Tile 2: BLUE NUANCE -->
-            <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2">
+            <!-- Tile 2: BLUE NUANCE - REMOVED conflicting dark:bg and dark:border classes -->
+            <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2 bg-white border-gray-200">
                 <div class="text-blue-600 dark:text-blue-400 mb-3" data-lucide="bar-chart-3"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Two</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm">Describe your second project, focusing on the technologies used, the problem solved, and the key outcome achieved.</p>
                 <span class="inline-block mt-4 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full">Category B</span>
             </div>
 
-            <!-- Tile 3: RED NUANCE -->
-            <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2">
+            <!-- Tile 3: RED NUANCE - REMOVED conflicting dark:bg and dark:border classes -->
+            <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2 bg-white border-gray-200">
                 <div class="text-red-600 dark:text-red-400 mb-3" data-lucide="camera"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Three</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm">Your third entry should be about something unique, like an open-source contribution, a graphic design work, or a successful marketing campaign.</p>
                 <span class="inline-block mt-4 text-xs font-medium text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-1 rounded-full">Category C</span>
             </div>
 
-            <!-- Tile 4: BLUE NUANCE -->
-            <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2">
+            <!-- Tile 4: BLUE NUANCE - REMOVED conflicting dark:bg and dark:border classes -->
+            <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2 bg-white border-gray-200">
                 <div class="text-blue-600 dark:text-blue-400 mb-3" data-lucide="send"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Four</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm">Use this space for a fourth project. Remember to keep the descriptions concise and impactful for quick reading.</p>
                 <span class="inline-block mt-4 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full">Category D</span>
             </div>
             
-            <!-- Tile 5: RED NUANCE -->
-            <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2">
+            <!-- Tile 5: RED NUANCE - REMOVED conflicting dark:bg and dark:border classes -->
+            <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2 bg-white border-gray-200">
                 <div class="text-red-600 dark:text-red-400 mb-3" data-lucide="rocket"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Five</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm">Placeholder content is great for visualizing the layout. Try toggling the dark mode button in the top right corner!</p>
                 <span class="inline-block mt-4 text-xs font-medium text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-1 rounded-full">Category E</span>
             </div>
 
-            <!-- Tile 6: BLUE NUANCE -->
-            <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2">
+            <!-- Tile 6: BLUE NUANCE - REMOVED conflicting dark:bg and dark:border classes -->
+            <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2 bg-white border-gray-200">
                 <div class="text-blue-600 dark:text-blue-400 mb-3" data-lucide="git-branch"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Six</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm">Final project spot! Once you replace these details, this page will be 100% yours.</p>
