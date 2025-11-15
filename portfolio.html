@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Dashboard</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        /* Custom font import for better look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Base colors (Light Mode) */
+        .light body {
+            background-color: #f7f9fd;
+            color: #1e293b;
+        }
+        
+        /* Dark Mode Colors */
+        .dark body {
+            background-color: #111827; /* Darker background */
+            color: #f1f5f9;
+        }
+
+        /* General Card Styling */
+        .tile-card {
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* RED NUANCE IN DARK MODE */
+        .dark .tile-red-nuance {
+            background-color: #3b0718; /* Deep red shade */
+            border: 1px solid #7f1d1d; /* Subtle red border */
+        }
+        .dark .tile-red-nuance:hover {
+            border-color: #dc2626; /* Brighter red on hover */
+        }
+
+        /* BLUE NUANCE IN DARK MODE */
+        .dark .tile-blue-nuance {
+            background-color: #0c1a3b; /* Deep blue shade */
+            border: 1px solid #1e3a8a; /* Subtle blue border */
+        }
+        .dark .tile-blue-nuance:hover {
+            border-color: #2563eb; /* Brighter blue on hover */
+        }
+
+        /* Light Mode Card Defaults */
+        .tile-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+        }
+        .tile-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Firebase SDK Imports and Setup -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, collection, query, onSnapshot, orderBy, serverTimestamp, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // IMPORTANT: Use the global variables provided by the Canvas environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        // The initialAuthToken variable was defined incorrectly, ensuring it's defined correctly now
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
+
+        let db, auth, userId = null;
+
+        // Function to safely render Lucide icon SVG
+        function renderLucideIcon(iconName) {
+            // Check if the global 'lucide' object exists and contains the icon
+            if (typeof lucide !== 'undefined' && lucide.icons && lucide.icons[iconName]) {
+                try {
+                    return lucide.icons[iconName].toSvg();
+                } catch (e) {
+                    console.error(`Error calling toSvg on ${iconName}:`, e);
+                    return ''; // Return empty string on error
+                }
+            }
+            return ''; // Return empty string if not found
+        }
+
+        if (firebaseConfig) {
+            setLogLevel('Debug');
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+
+            // 1. Handle Authentication
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    userId = user.uid;
+                } else {
+                    // Sign in anonymously if no custom token is provided
+                    try {
+                        if (initialAuthToken) {
+                            await signInWithCustomToken(auth, initialAuthToken);
+                        } else {
+                            await signInAnonymously(auth);
+                        }
+                    } catch (error) {
+                        console.error("Firebase Auth Error:", error);
+                    }
+                }
+                
+                // Once auth state is determined, initialize UI or data listeners
+                if (userId) {
+                    document.getElementById('user-id-display').textContent = `User ID: ${userId}`;
+                    initializePersistence(userId);
+                }
+            });
+        }
+
+        // 2. Simple Persistence Example (Placeholder for real data)
+        function initializePersistence(currentUserId) {
+             const userDocRef = doc(db, `artifacts/${appId}/users/${currentUserId}/config/settings`);
+             
+             // Setup listener for dark mode preference
+             onSnapshot(userDocRef, (docSnap) => {
+                const iconElement = document.getElementById('theme-toggle-icon');
+                if (docSnap.exists() && docSnap.data().theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    // Use the safe rendering function
+                    iconElement.innerHTML = renderLucideIcon('sun'); 
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    // Use the safe rendering function
+                    iconElement.innerHTML = renderLucideIcon('moon');
+                }
+             }, (error) => {
+                 console.error("Error listening to theme settings:", error);
+             });
+        }
+
+        window.toggleTheme = async function() {
+            if (!userId) {
+                console.warn("Authentication not ready. Cannot toggle theme.");
+                return;
+            }
+
+            const isDark = document.documentElement.classList.contains('dark');
+            const newTheme = isDark ? 'light' : 'dark';
+            
+            const userDocRef = doc(db, `artifacts/${appId}/users/${userId}/config/settings`);
+
+            try {
+                // Check if document exists before setting
+                const docSnap = await getDoc(userDocRef);
+                if (docSnap.exists()) {
+                    await setDoc(userDocRef, { theme: newTheme, updated: serverTimestamp() }, { merge: true });
+                } else {
+                    await setDoc(userDocRef, { theme: newTheme, created: serverTimestamp() });
+                }
+            } catch (e) {
+                console.error("Error setting theme preference: ", e);
+            }
+        };
+
+        window.onload = () => {
+             // Initial icon rendering
+            const iconElement = document.getElementById('theme-toggle-icon');
+            if (document.documentElement.classList.contains('dark')) {
+                // Use the safe rendering function
+                iconElement.innerHTML = renderLucideIcon('sun');
+            } else {
+                // Use the safe rendering function
+                iconElement.innerHTML = renderLucideIcon('moon');
+            }
+             // This converts all data-lucide attributes in the DOM
+             // This runs last to ensure all static icons are rendered.
+             if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                 lucide.createIcons();
+             }
+        };
+
+    </script>
+
+    <!-- Header and Navigation -->
+    <header class="shadow-md dark:shadow-xl dark:shadow-gray-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center bg-white dark:bg-gray-800 rounded-b-xl">
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                My Personal Dashboard
+            </h1>
+            <div class="flex items-center space-x-4">
+                <div id="user-id-display" class="text-xs text-gray-500 dark:text-gray-400 truncate max-w-24 sm:max-w-xs">
+                    Authenticating...
+                </div>
+                <!-- Dark Mode Toggle Button -->
+                <button id="theme-toggle" onclick="toggleTheme()" class="p-2 rounded-full text-gray-700 dark:text-yellow-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <span id="theme-toggle-icon" class="w-6 h-6"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Profile Section -->
+        <div class="mb-12 p-8 rounded-xl bg-white dark:bg-gray-800 tile-card">
+            <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8">
+                <!-- Simple Profile Placeholder -->
+                <div class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-300 text-3xl font-bold border-4 border-gray-300 dark:border-gray-700">
+                    UN
+                </div>
+                
+                <div class="text-center md:text-left">
+                    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">Your Name Here</h2>
+                    <p class="text-xl text-blue-600 dark:text-blue-400">Your Title or Role</p>
+                    <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-3xl">
+                        This is your personal portfolio site. Replace this text with a brief description of your skills, background, and what you focus on professionally. This template uses the requested red/blue dark mode nuances.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">My Key Projects / Deliverables</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Tile 1: RED NUANCE -->
+            <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2">
+                <div class="text-red-600 dark:text-red-400 mb-3" data-lucide="code-square"></div>
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder One</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Describe your first project here. This might be a coding challenge, a major client deliverable, or a successful piece of research.</p>
+                <span class="inline-block mt-4 text-xs font-medium text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-1 rounded-full">Category A</span>
+            </div>
+
+            <!-- Tile 2: BLUE NUANCE -->
+            <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2">
+                <div class="text-blue-600 dark:text-blue-400 mb-3" data-lucide="bar-chart-3"></div>
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Two</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Describe your second project, focusing on the technologies used, the problem solved, and the key outcome achieved.</p>
+                <span class="inline-block mt-4 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full">Category B</span>
+            </div>
+
+            <!-- Tile 3: RED NUANCE -->
+            <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2">
+                <div class="text-red-600 dark:text-red-400 mb-3" data-lucide="camera"></div>
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Three</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Your third entry should be about something unique, like an open-source contribution, a graphic design work, or a successful marketing campaign.</p>
+                <span class="inline-block mt-4 text-xs font-medium text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-1 rounded-full">Category C</span>
+            </div>
+
+            <!-- Tile 4: BLUE NUANCE -->
+            <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2">
+                <div class="text-blue-600 dark:text-blue-400 mb-3" data-lucide="send"></div>
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Four</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Use this space for a fourth project. Remember to keep the descriptions concise and impactful for quick reading.</p>
+                <span class="inline-block mt-4 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full">Category D</span>
+            </div>
+            
+            <!-- Tile 5: RED NUANCE -->
+            <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2">
+                <div class="text-red-600 dark:text-red-400 mb-3" data-lucide="rocket"></div>
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Five</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Placeholder content is great for visualizing the layout. Try toggling the dark mode button in the top right corner!</p>
+                <span class="inline-block mt-4 text-xs font-medium text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-1 rounded-full">Category E</span>
+            </div>
+
+            <!-- Tile 6: BLUE NUANCE -->
+            <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2">
+                <div class="text-blue-600 dark:text-blue-400 mb-3" data-lucide="git-branch"></div>
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Six</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Final project spot! Once you replace these details, this page will be 100% yours.</p>
+                <span class="inline-block mt-4 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full">Category F</span>
+            </div>
+
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="mt-12 py-6 border-t dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 dark:text-gray-400 text-sm">
+            <p>&copy; 2025 Your Name Here. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
