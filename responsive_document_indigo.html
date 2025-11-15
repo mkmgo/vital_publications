@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <!-- CRITICAL: Viewport for Mobile Responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Document - Indigo Theme</title>
+    
+    <!-- Using Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. Color Palettes & Dark Mode */
+        :root {
+            /* Light Mode Defaults */
+            --bg-page: #ffffff;
+            --bg-card: #f9fafb;
+            --text-main: #1f2937;
+            --text-secondary: #4b5563;
+            --accent-main: #4F46E5;
+            --accent-bg: #4F46E520; /* Light transparent accent background */
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                /* Dark Mode Overrides */
+                --bg-page: #1f2937;
+                --bg-card: #374151;
+                --text-main: #f9fafb;
+                --text-secondary: #d1d5db;
+                --accent-main: #818CF8;
+                --accent-bg: #818CF820; /* Dark transparent accent background */
+            }
+        }
+
+        /* 2. Global Resets and Aesthetics */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            padding: 20px 5px; /* Less padding on edges for mobile */
+        }
+
+        /* 3. Main Content Wrapper (Desktop constraint, shadow, and color accents) */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            /* Aesthetic Color Lines */
+            border-left: 4px solid var(--accent-main); 
+            border-right: 4px solid var(--accent-main);
+            /* Reset for markdown elements */
+            overflow: hidden; 
+        }
+        
+        /* 4. Markdown Element Styling & Responsiveness */
+        .content-wrapper > * {
+             /* Add padding/margin to top-level elements inside the wrapper */
+             padding: 0 10px; 
+        }
+
+        /* Headers */
+        h1, h2, h3, h4 {
+            color: var(--text-main);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        h1 { font-size: 2.2em; border-bottom: 2px solid var(--accent-bg); padding-bottom: 5px; }
+        h2 { font-size: 1.8em; }
+        h3 { font-size: 1.4em; }
+
+        /* Images (CRITICAL FOR MOBILE) */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block; 
+            border-radius: 8px;
+            margin: 1.5em auto;
+            object-fit: contain;
+            /* Ensures images don't stretch beyond the wrapper's inner padding */
+            max-width: calc(100% - 20px); 
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            min-width: 600px; /* Ensure content doesn't shrink too much */
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--text-secondary);
+        }
+        th {
+            background-color: var(--accent-bg);
+            color: var(--text-main);
+            font-weight: 600;
+        }
+        
+        /* Responsive Table Wrapper (Must be outside the table for overflow to work) */
+        .table-responsive {
+            overflow-x: auto; /* Scroll horizontally on small screens */
+            -webkit-overflow-scrolling: touch;
+            margin: 1.5em 0;
+            /* Important: Remove padding from the wrapper itself to allow scroll to touch edge */
+            padding: 0; 
+        }
+        .table-responsive table {
+            /* Ensures table takes up 100% of the scrollable area */
+            width: 100%; 
+        }
+
+        /* Code blocks */
+        pre {
+            background-color: var(--bg-card);
+            border: 1px solid var(--text-secondary);
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5em 10px;
+            font-size: 0.9em;
+        }
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+        
+        /* 5. Mobile Adjustments (Media Query for smaller screens) */
+        @media (max-width: 600px) {
+            body {
+                padding: 5px; 
+            }
+            .content-wrapper {
+                padding: 10px 0; /* Minimal vertical padding, let inner elements handle horizontal */
+                border-left-width: 2px;
+                border-right-width: 2px;
+                box-shadow: none; /* Reduce heavy shadow on small screens */
+                border-radius: 0; /* Use full screen width */
+            }
+            .content-wrapper > * {
+                 padding: 0 15px; /* Apply necessary horizontal padding here */
+            }
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.4em; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <!-- INJECTED USER CONTENT -->
+        ### Michael Karl Mueller
+## Investment Advisor / Project Consultant
+
+| Location | Phone | Email |
+| :--- | :--- | :--- |
+| Randpark Ridge (ZA) | +27 (78) 255-4927 | michael-karl-mueller@outlook.com |
+
+
+---
+# **Integrated Competence Profile**
+
+## **1. Core Expertises: Knowledge Proof**
+
+Validation of knowledge domains with specific evidence from education and roles.
+
+| Core Expertise | Broad-Eyes Analysis (The Principle) | Detailed Substantiation
+| :--- | :--- | :--- |
+| **Investments** | *Knowledge of Risk/Return Analysis, qualitative analysis (Manager, Team etc.), asset classes, and regulatory frameworks.* | Served as **Analyst Fund Selection & Asset Management** and **member of the Investment Committee** for Swiss clients (family offices, cantonal banks, pension funds). Currently works as an **Investment Advisor** for private clients and an Israeli-based fund rating platform. Responsibilities included portfolio management of fund-based mandates and performance calculation/attribution. |
+| **Management** | *Knowledge of Team Composition, Leadership styles, and incentivation / motivation strategies.* | **Set up and managed a team of 4 people** as Head Document Management, where responsibilities included operations, process optimization, and relationship management. Held multiple **Project Manager** roles in operations, training, and eDocument Management. |
+| **Economy** | *Understanding of macroeconomic indicators, financial markets, money creation, central bank policy impacts.* | **Lecturer in Economics** for University of Mainz students, covering economics and taxation. Completed a **Diploma/Master in Economics** with a focus on macroeconomics, national and international finance, and taxation. |
+| **German Grammar** | *Mastery of complex syntax, case system, and Konjunktiv forms.* | **German (native)** proficiency. Authored a **Diploma Thesis** (Master level) in German on complex economic and taxation topics. |
+| **English Grammar** | *Mastery of verb tenses, clause structures, and academic conventions.* | **English (fluent)** proficiency. Completed an **International MBA programme** and authored the MBA thesis in English: *The Market of Television Broadcasting in India*. |
+
+---
+
+## **2. Competences: Applied Skill Proof**
+
+Evidence of practical and interpersonal skills.
+
+| Competence | Broad-Eyes Analysis (The Skill) | Detailed Substantiation
+| :--- | :--- | :--- |
+| **Tutoring** | *Ability to diagnose gaps, adapt teaching methods, and provide constructive feedback.* | Delivered **preparatory courses in economics and taxation** for university students over a five-year period. Acted as a **facilitator** in executive business trainings with financial business simulations for clients like UBS and Hewlett Packard. |
+| **Formulate Text/Content** | *Proven ability to craft text that is sound, coherent, and audience-tailored.* | Responsible for **reporting & fact sheets** and performance attribution. Created **documentation / test exams** for course participants. Experience spans academic (theses), advisory (reporting), and educational content. |
+| **Visualise Curricula/ Investment Reports** | *Capacity to translate abstract material into clear diagrams/maps to enhance retention.* | Worked as a **Project Manager (developer)** for business trainings utilizing **financial business simulations**. Responsibilities included **reporting & fact sheets** (performance calculation/attribution) for professional investment clients. |
+| **Hosting / Serving / Cooking** | *Demonstrated ability in event coordination, service standards, atmospheric harmony and time management.* | Listed **Cooking** as a personal activity. Experience in **relationship management** and **client-facing roles** (advisory/consulting) requires high standards of service and client satisfaction. |
+
+---
+
+## **3. Persona Type: Behavioral Proof**
+
+Substantiation of character attributes by professional roles.
+
+| Attribute | Broad-Eyes Analysis (The Behavior) | Detailed Substantiation
+| :--- | :--- | :--- |
+| **Structured / Diligent / Action-Oriented / Reliable** | *Preference for clear objectives, organized documentation, and attention to detail. Identifying risks, initiating tasks, and moving quickly from plan to implementation.* | Managed operations and **process optimization** as Head Document Management. Held the role of **Project Manager eDocument Management**. Skills include **Workflow Automation** and **Prompt Engineering**. Experience includes **Accounting Clerk** (Deutsche Bank), requiring high precision. |
+| **Creative / Artistic** | *Focus on novel solutions and aesthetic presentation.* | Implied through the ability to **develop and facilitate** dynamic executive business trainings (simulations) and the **Visualise Curricula** competence. Skills include using **Airtable** and **Notion** for structuring content. |
+| **Empathetic / Nuanced** | *Practicing active listening, tailoring communication, and synthesizing conflicting data. Ability to really listen to candidates, clients, etc.* | Served as a **Facilitator** for executive business trainings. Held responsibility for **relationship management** with international fund providers. Experience spans **Investment Advisory** and **Consulting**, requiring strong interpersonal and listening skills to translate needs into strategy. |
+
+---
+
+## **4. Context/Domain: Scope & Scale Proof**
+
+Environments and scale of applied skills.
+
+| Context/Domain | Broad-Eyes Analysis (The Environment) | Detailed Substantiation
+| :--- | :--- | :--- |
+| **Investment Advisory (Private and Institutional)** | *Experience with both private and institutional mandates.* | Clients included **Swiss family offices, private clients** (Private), and **Swiss cantonal banks, private banks, pension funds** (Institutional). |
+| **Consulting** | *Skill in structured problem diagnosis and developing strategic recommendations.* | Held roles as **Project Consultant** and **consultant** for clients including an Israeli-based fund rating platform and independent investment advisory associations. |
+| **Highly Data and Tech-Driven Environments** | *Leveraging data tools, comfort with platforms, appreciating data integrity, identifying mistakes in complex number tables.* | Expertise in **Performance Data Management**, **performance calculation/attribution**, and **peer group analysis**. Skills include **Setup interfaces with Data Providers, LLMs, Prompt Engineering, and Workflow Automation**. Managed eDocument Management. |
+| **Education (Grown Ups, Kids)** | *Designing modules, facilitating transfer, understanding pedagogy. Show how to progress inherently and be successful in tests and assessments.* | Experience as a **Lecturer** (preparatory courses for university students) and **Facilitator** (executive business training). This spans both academic and corporate settings (grown-ups and potentially influencing younger learners). |
+
+---
+
+## **5. My Value Proposition: Impact Proof**
+
+Evidence of specific high-level impact and goals.
+
+| Value Proposition Element | Broad-Eyes Analysis (The Impact) | Detailed Substantiation (Your Proof/Result) |
+| :--- | :--- | :--- |
+| **Process Optimisation** | *Identifying bottlenecks, designing streamlined procedures, in digital production.* | Direct responsibility for **process optimization** as Head Document Management. Managed the **eDocument Management** project. Possesses **Workflow Automation** skills, indicating a focus on digital efficiency. |
+| **Educational Transformation** | *Modernizing methods, integrating tech, shifting mindsets.* | Worked as a **developer and facilitator** for **executive business trainings utilizing financial business simulations**, representing a modernization of traditional teaching methods. |
+| **Sparking Inherent Interest...** | *Fostering genuine curiosity and creating inspirational environments.* | Achieved success as a **Lecturer** for economics students by facilitating preparatory courses and documentation. Achieved success as a **Facilitator** for executive clients (UBS, HP, etc.) in engaging business simulations. |
+    </div>
+</body>
+</html>
