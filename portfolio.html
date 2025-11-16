@@ -23,22 +23,30 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
         }
 
+        /* --- CRITICAL FIX FOR LIGHT MODE --- */
+        /* When NOT in dark mode, force the background to white. This overrides any residual conflicts. */
+        .tile-red-nuance, .tile-blue-nuance {
+            background-color: white !important;
+            /* Ensure the light mode border is applied */
+            border-color: #e5e7eb !important; /* gray-200 */
+        }
+        
         /* RED NUANCE IN DARK MODE - This block ensures the custom dark background only applies when 'dark' class is present on HTML */
         .dark .tile-red-nuance {
-            background-color: #3b0718; /* Deep red shade */
-            border-color: #7f1d1d; /* Subtle red border */
+            background-color: #3b0718 !important; /* Deep red shade */
+            border-color: #7f1d1d !important; /* Subtle red border */
         }
         .dark .tile-red-nuance:hover {
-            border-color: #dc2626; /* Brighter red on hover */
+            border-color: #dc2626 !important; /* Brighter red on hover */
         }
 
         /* BLUE NUANCE IN DARK MODE - This block ensures the custom dark background only applies when 'dark' class is present on HTML */
         .dark .tile-blue-nuance {
-            background-color: #0c1a3b; /* Deep blue shade */
-            border-color: #1e3a8a; /* Subtle blue border */
+            background-color: #0c1a3b !important; /* Deep blue shade */
+            border-color: #1e3a8a !important; /* Subtle blue border */
         }
         .dark .tile-blue-nuance:hover {
-            border-color: #2563eb; /* Brighter blue on hover */
+            border-color: #2563eb !important; /* Brighter blue on hover */
         }
 
         /* Light Mode Card Hover Defaults (Moved generic background/border to HTML for better theming) */
@@ -221,7 +229,7 @@
         <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">My Key Projects / Deliverables</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
-            <!-- Tile 1: RED NUANCE - REMOVED conflicting dark:bg and dark:border classes -->
+            <!-- Tile 1: RED NUANCE - Now relying on the !important CSS override for light mode -->
             <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2 bg-white border-gray-200">
                 <div class="text-red-600 dark:text-red-400 mb-3" data-lucide="code-square"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder One</h3>
@@ -229,7 +237,7 @@
                 <span class="inline-block mt-4 text-xs font-medium text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-1 rounded-full">Category A</span>
             </div>
 
-            <!-- Tile 2: BLUE NUANCE - REMOVED conflicting dark:bg and dark:border classes -->
+            <!-- Tile 2: BLUE NUANCE - Now relying on the !important CSS override for light mode -->
             <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2 bg-white border-gray-200">
                 <div class="text-blue-600 dark:text-blue-400 mb-3" data-lucide="bar-chart-3"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Two</h3>
@@ -237,7 +245,7 @@
                 <span class="inline-block mt-4 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full">Category B</span>
             </div>
 
-            <!-- Tile 3: RED NUANCE - REMOVED conflicting dark:bg and dark:border classes -->
+            <!-- Tile 3: RED NUANCE - Now relying on the !important CSS override for light mode -->
             <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2 bg-white border-gray-200">
                 <div class="text-red-600 dark:text-red-400 mb-3" data-lucide="camera"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Three</h3>
@@ -245,7 +253,7 @@
                 <span class="inline-block mt-4 text-xs font-medium text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-1 rounded-full">Category C</span>
             </div>
 
-            <!-- Tile 4: BLUE NUANCE - REMOVED conflicting dark:bg and dark:border classes -->
+            <!-- Tile 4: BLUE NUANCE - Now relying on the !important CSS override for light mode -->
             <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2 bg-white border-gray-200">
                 <div class="text-blue-600 dark:text-blue-400 mb-3" data-lucide="send"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Four</h3>
@@ -253,7 +261,7 @@
                 <span class="inline-block mt-4 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full">Category D</span>
             </div>
             
-            <!-- Tile 5: RED NUANCE - REMOVED conflicting dark:bg and dark:border classes -->
+            <!-- Tile 5: RED NUANCE - Now relying on the !important CSS override for light mode -->
             <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2 bg-white border-gray-200">
                 <div class="text-red-600 dark:text-red-400 mb-3" data-lucide="rocket"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Five</h3>
@@ -261,7 +269,7 @@
                 <span class="inline-block mt-4 text-xs font-medium text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-1 rounded-full">Category E</span>
             </div>
 
-            <!-- Tile 6: BLUE NUANCE - REMOVED conflicting dark:bg and dark:border classes -->
+            <!-- Tile 6: BLUE NUANCE - Now relying on the !important CSS override for light mode -->
             <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2 bg-white border-gray-200">
                 <div class="text-blue-600 dark:text-blue-400 mb-3" data-lucide="git-branch"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Six</h3>
