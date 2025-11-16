@@ -23,11 +23,12 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
         }
 
-        /* --- CRITICAL FIX: LIGHT MODE BASE STYLES --- */
-        /* These styles define the light mode background (white) and border (gray-200) */
-        /* They act as the default and will be overridden by .dark rules. */
+        /* * --- CRITICAL FIX: LIGHT MODE BASE STYLES --- 
+         * The !important rule here is necessary to override browser/OS-level 
+         * "Force Dark Mode" settings that might be inverting the white background.
+         */
         .tile-red-nuance, .tile-blue-nuance {
-            background-color: white; 
+            background-color: white !important; /* FORCED WHITE BACKGROUND */
             border-color: #e5e7eb; /* Tailwind gray-200 */
         }
         
@@ -229,7 +230,7 @@
         <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">My Key Projects / Deliverables</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
-            <!-- Tile 1: RED NUANCE - Now relies entirely on CSS for background/border color -->
+            <!-- Tile 1: RED NUANCE -->
             <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2">
                 <div class="text-red-600 dark:text-red-400 mb-3" data-lucide="code-square"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder One</h3>
@@ -237,7 +238,7 @@
                 <span class="inline-block mt-4 text-xs font-medium text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-1 rounded-full">Category A</span>
             </div>
 
-            <!-- Tile 2: BLUE NUANCE - Now relies entirely on CSS for background/border color -->
+            <!-- Tile 2: BLUE NUANCE -->
             <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2">
                 <div class="text-blue-600 dark:text-blue-400 mb-3" data-lucide="bar-chart-3"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Two</h3>
@@ -245,7 +246,7 @@
                 <span class="inline-block mt-4 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full">Category B</span>
             </div>
 
-            <!-- Tile 3: RED NUANCE - Now relies entirely on CSS for background/border color -->
+            <!-- Tile 3: RED NUANCE -->
             <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2">
                 <div class="text-red-600 dark:text-red-400 mb-3" data-lucide="camera"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Three</h3>
@@ -253,7 +254,7 @@
                 <span class="inline-block mt-4 text-xs font-medium text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-1 rounded-full">Category C</span>
             </div>
 
-            <!-- Tile 4: BLUE NUANCE - Now relies entirely on CSS for background/border color -->
+            <!-- Tile 4: BLUE NUANCE -->
             <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2">
                 <div class="text-blue-600 dark:text-blue-400 mb-3" data-lucide="send"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Four</h3>
@@ -261,7 +262,7 @@
                 <span class="inline-block mt-4 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full">Category D</span>
             </div>
             
-            <!-- Tile 5: RED NUANCE - Now relies entirely on CSS for background/border color -->
+            <!-- Tile 5: RED NUANCE -->
             <div class="tile-card tile-red-nuance p-6 rounded-xl hover:border-red-500 dark:hover:border-red-400 border-2">
                 <div class="text-red-600 dark:text-red-400 mb-3" data-lucide="rocket"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Five</h3>
@@ -269,7 +270,7 @@
                 <span class="inline-block mt-4 text-xs font-medium text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-1 rounded-full">Category E</span>
             </div>
 
-            <!-- Tile 6: BLUE NUANCE - Now relies entirely on CSS for background/border color -->
+            <!-- Tile 6: BLUE NUANCE -->
             <div class="tile-card tile-blue-nuance p-6 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 border-2">
                 <div class="text-blue-600 dark:text-blue-400 mb-3" data-lucide="git-branch"></div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Project Placeholder Six</h3>
