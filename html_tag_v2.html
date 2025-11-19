@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Meta Tag Generator</title>
+    <style>
+        /* --- Default Light Mode Styles --- */
+        :root {
+            --bg-color: #f4f4f9;
+            --container-bg: #ffffff;
+            --text-color: #333;
+            --heading-color: #007bff;
+            --border-color: #ccc;
+            --hint-color: #777;
+            --input-bg: #fff;
+            --output-bg: #e9e9e9;
+        }
+
+        /* --- Dark Mode Override (Based on System Preference) --- */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --container-bg: #1e1e1e;
+                --text-color: #e0e0e0;
+                --heading-color: #4da6ff;
+                --border-color: #555;
+                --hint-color: #aaa;
+                --input-bg: #2d2d2d;
+                --output-bg: #333333;
+            }
+        }
+
+        /* --- General Styling --- */
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s; }
+        h1 { color: var(--heading-color); text-align: center; }
+        label { display: block; margin-top: 15px; font-weight: bold; color: var(--text-color); }
+        input[type="text"], textarea { 
+            width: 100%; padding: 10px; margin-top: 5px; 
+            border: 1px solid var(--border-color); border-radius: 4px; 
+            box-sizing: border-box; background-color: var(--input-bg); 
+            color: var(--text-color); 
+        }
+        button { background-color: var(--heading-color); color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; margin-top: 20px; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        #inputContainer, #outputContainer { 
+            background-color: var(--container-bg); padding: 20px; 
+            border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            margin-top: 30px; 
+        }
+        #outputCode { white-space: pre-wrap; word-break: break-all; background-color: var(--output-bg); padding: 15px; border: 1px solid var(--border-color); border-radius: 4px; max-height: 400px; overflow: auto; color: var(--text-color); }
+        .hint { font-size: 0.9em; color: var(--hint-color); margin-top: 5px; }
+        
+        /* --- File Drop/Upload Area --- */
+        #dropArea {
+            border: 2px dashed var(--border-color); border-radius: 4px;
+            padding: 20px; text-align: center; cursor: pointer;
+            margin-top: 15px; background-color: var(--input-bg);
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        #dropArea.dragover {
+            border-color: var(--heading-color);
+            background-color: #1e3a5f20; /* Slightly darker on hover */
+        }
+        #fileInputHidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <h1>🏷️ HTML Link Sharing Tag Generator</h1>
+
+    <div id="inputContainer">
+        
+        <label>1. Upload or Drop Your HTML File:</label>
+        <div id="dropArea">
+            Drag & Drop HTML File Here or Click to Select
+            <input type="file" id="fileInputHidden" accept=".html,.htm,.txt" onchange="handleFile(this.files)">
+            <p id="fileNameDisplay" class="hint"></p>
+        </div>
+        
+        <label for="htmlInput">...or Paste HTML Code Below:</label>
+        <textarea id="htmlInput" rows="10" placeholder="Paste your file's existing HTML, starting with <!DOCTYPE html>..."></textarea>
+        
+        <hr>
+
+        <h2>Tag Information:</h2>
+
+        <label for="nameInput">2. File/Link Name (**og:title**):</label>
+        <input type="text" id="nameInput" placeholder="e.g., Joint Evening Prayer Service">
+
+        <label for="descriptionInput">3. Tagline (**og:description**):</label>
+        <input type="text" id="descriptionInput" placeholder="e.g., A spiritual evening of community and reflection.">
+        <div class="hint">If same as name, leave blank.</div>
+
+        <label for="imageLinkInput">4. Full Link to Sharing Picture/Icon (**og:image**):</label>
+        <input type="text" id="imageLinkInput" placeholder="e.g., https://www.yourwebsite.com/images/prayer-icon.jpg">
+        <div class="hint">Use a full URL. Image should be at least **600x315px**.</div>
+
+        <label for="urlInput">5. Canonical URL (**og:url**):</label>
+        <input type="text" id="urlInput" placeholder="e.g., https://www.yourwebsite.com/prayer-page.html">
+        <div class="hint">The page's exact, final link.</div>
+
+        <button onclick="generateTags()">Generate & Insert Tags</button>
+    </div>
+
+    <div id="outputContainer" style="display:none;">
+        <h2>✅ HTML Output with New Tags:</h2>
+        <div class="hint">**Copy and replace** your entire original HTML file with the code below.</div>
+        <pre id="outputCode"></pre>
+    </div>
+
+    <script>
+        // --- Dark Mode Hint ---
+        console.log("Dark Mode is determined by your system's color scheme preference.");
+
+        // --- File Handling Functions ---
+        const dropArea = document.getElementById('dropArea');
+        const fileInputHidden = document.getElementById('fileInputHidden');
+        const htmlInput = document.getElementById('htmlInput');
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+
+        // Allow click to open file dialog
+        dropArea.addEventListener('click', () => fileInputHidden.click());
+
+        // Drag events
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false); // Prevent browser default file open
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => dropArea.classList.add('dragover'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => dropArea.classList.remove('dragover'), false);
+        });
+
+        dropArea.addEventListener('drop', handleDrop, false);
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFile(files);
+        }
+
+        function handleFile(files) {
+            if (files.length === 0) return;
+
+            const file = files[0];
+            fileNameDisplay.textContent = `File loaded: ${file.name}`;
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                // Insert file content into the textarea
+                htmlInput.value = e.target.result;
+            };
+            // Read the file content as plain text
+            reader.readAsText(file);
+        }
+
+        // --- Tag Generation Function ---
+        function generateTags() {
+            const currentHtml = document.getElementById('htmlInput').value;
+            const title = document.getElementById('nameInput').value.trim();
+            let description = document.getElementById('descriptionInput').value.trim();
+            const image = document.getElementById('imageLinkInput').value.trim();
+            const url = document.getElementById('urlInput').value.trim();
+
+            if (!title) {
+                alert("Please enter a value for 'File/Link Name'.");
+                return;
+            }
+
+            // If description is empty, use the title (as requested in the prompt)
+            if (!description) {
+                description = title;
+            }
+
+            // The core meta tags to insert
+            const newTags = `
+    <meta property="og:title" content="${title}" />
+    <meta property="og:description" content="${description}" />
+    <meta property="og:image" content="${image}" />
+    <meta property="og:url" content="${url}" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${description}" />
+    <meta name="twitter:image" content="${image}" />
+`;
+
+            let modifiedHtml = currentHtml;
+
+            // 1. Clean out old OG/Twitter tags before inserting new ones
+            modifiedHtml = modifiedHtml.replace(//g, '') // Remove existing comments first
+                                         .replace(/<meta\s+(?:property|name)=["']og:(?:title|description|image|url|type)["']\s+[^>]*?>/gi, '')
+                                         .replace(/<meta\s+name=["']twitter:(?:card|title|description|image)["']\s+[^>]*?>/gi, '');
+
+
+            // 2. Find the closing </head> tag and insert the new tags above it
+            const headCloseIndex = modifiedHtml.toLowerCase().indexOf('</head>');
+            
+            if (headCloseIndex !== -1) {
+                // Insert the new tags right before </head>
+                modifiedHtml = modifiedHtml.substring(0, headCloseIndex) + newTags + modifiedHtml.substring(headCloseIndex);
+                
+                // Show the output
+                document.getElementById('outputCode').textContent = modifiedHtml.trim();
+                document.getElementById('outputContainer').style.display = 'block';
+            } else {
+                alert("Error: Could not find the closing </head> tag in the HTML you pasted/uploaded. Please ensure your HTML is complete.");
+            }
+        }
+    </script>
+</body>
+</html>
