@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <!-- CRITICAL: Viewport for Mobile Responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOphthalmologists@Wilgeheuwel</title>
+    
+    <!-- Using Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. Color Palettes & Dark Mode */
+        :root {
+            /* Light Mode Defaults */
+            --bg-page: #ffffff;
+            --bg-card: #f9fafb;
+            --text-main: #1f2937;
+            --text-secondary: #4b5563;
+            --accent-main: #4338CA;
+            --accent-bg: #4338CA20; /* Light transparent accent background */
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                /* Dark Mode Overrides */
+                --bg-page: #1f2937;
+                --bg-card: #374151;
+                --text-main: #f9fafb;
+                --text-secondary: #d1d5db;
+                --accent-main: #6366F1;
+                --accent-bg: #6366F120; /* Dark transparent accent background */
+            }
+        }
+
+        /* 2. Global Resets and Aesthetics */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            padding: 20px 5px; /* Less padding on edges for mobile */
+        }
+
+        /* 3. Main Content Wrapper (Desktop constraint, shadow, and color accents) */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            /* Aesthetic Color Lines */
+            border-left: 4px solid var(--accent-main); 
+            border-right: 4px solid var(--accent-main);
+            /* Reset for markdown elements */
+            overflow: hidden; 
+        }
+        
+        /* 4. Markdown Element Styling & Responsiveness */
+        .content-wrapper > * {
+             /* Add padding/margin to top-level elements inside the wrapper */
+             padding: 0 10px; 
+        }
+
+        /* Headers */
+        h1, h2, h3, h4 {
+            color: var(--text-main);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        h1 { font-size: 2.2em; border-bottom: 2px solid var(--accent-bg); padding-bottom: 5px; }
+        h2 { font-size: 1.8em; }
+        h3 { font-size: 1.4em; }
+
+        /* Blockquotes - ACCENT COLOR STYLING (Mode-aware via CSS variables) */
+        blockquote {
+            border-left: 5px solid var(--accent-main); /* Uses active accent color */
+            padding: 10px 20px;
+            margin: 1.5em 10px;
+            /* font-style: italic removed to preserve inner formatting */
+            background-color: var(--accent-bg); /* Uses light accent background (mode-aware) */
+            color: var(--text-main);
+            border-radius: 4px;
+        }
+        /* Ensure specific formatting like italic/bold works inside blockquotes */
+        blockquote em, blockquote i { font-style: italic; }
+        blockquote strong, blockquote b { font-weight: 700; }
+
+
+        /* Images (CRITICAL FOR MOBILE) */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block; 
+            border-radius: 8px;
+            margin: 1.5em auto;
+            object-fit: contain;
+            /* Ensures images don't stretch beyond the wrapper's inner padding */
+            max-width: calc(100% - 20px); 
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            min-width: 600px; /* Ensure content doesn't shrink too much */
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--text-secondary);
+        }
+        th {
+            background-color: var(--accent-bg);
+            color: var(--text-main);
+            font-weight: 600;
+        }
+        
+        /* Responsive Table Wrapper (Must be outside the table for overflow to work) */
+        .table-responsive {
+            overflow-x: auto; /* Scroll horizontally on small screens */
+            -webkit-overflow-scrolling: touch;
+            margin: 1.5em 0;
+            /* Important: Remove padding from the wrapper itself to allow scroll to touch edge */
+            padding: 0; 
+        }
+        .table-responsive table {
+            /* Ensures table takes up 100% of the scrollable area */
+            width: 100%; 
+        }
+
+        /* Code blocks */
+        pre {
+            background-color: var(--bg-card);
+            border: 1px solid var(--text-secondary);
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5em 10px;
+            font-size: 0.9em;
+        }
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+        
+        /* 5. Mobile Adjustments (Media Query for smaller screens) */
+        @media (max-width: 600px) {
+            body {
+                padding: 5px; 
+            }
+            .content-wrapper {
+                padding: 10px 0; /* Minimal vertical padding, let inner elements handle horizontal */
+                border-left-width: 2px;
+                border-right-width: 2px;
+                box-shadow: none; /* Reduce heavy shadow on small screens */
+                border-radius: 0; /* Use full screen width */
+            }
+            .content-wrapper > * {
+                 padding: 0 15px; /* Apply necessary horizontal padding here */
+            }
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.4em; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <!-- INJECTED USER CONTENT -->
+        <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h3 id="ophthalmologistswilgeheuwel">Ophthalmologists@Wilgeheuwel</h3>
+<blockquote>
+<p>To make an appointment with an eye doctor at Life Wilgeheuwel Hospital, you will need to contact the ophthalmology practices that consult there. The hospital itself does not handle specialist bookings directly.<br>
+<strong>VisuSense Ophthalmologists</strong>
+VisuSense Ophthalmologists is a group practice with rooms inside Life Wilgeheuwel Hospital.<br>
+<strong>Phone: 011 201 4625<br>
+Email:</strong>
+appointments@visusense.com<br>
+<strong>Dr. Monique Camacho</strong>
+Dr. Monique Camacho is an ophthalmologist who practices at Life Wilgeheuwel Hospital.
+Online booking: You can request an appointment through the online booking form on her website.<br>
+<strong>Phone: 060 486 4681</strong><br>
+Before booking
+It's a good practice to contact the doctor's rooms directly to confirm their consultation schedule and discuss the referral process, your medical aid details, and any pre-appointment instructions.
+Some specialists may require a <strong>referral from your general practitioner (GP) before scheduling an appointment.</strong></p>
+</blockquote>
+    </div>
+</body>
+</html>
