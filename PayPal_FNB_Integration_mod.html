@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html><head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PayPal_FNB_Integration.MD</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<style>/* --- BASE STYLES & READABILITY (FONT UPDATED TO SANS-SERIF) --- */
+body {
+    color: #111; /* Near Black */
+    background-color: #fff; /* Pure White */
+    /* UPDATED FONT STACK: Prioritizes Arial-like, clean sans-serif fonts */
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; 
+    font-size: 17px;
+    line-height: 1.65;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #111;
+    line-height: 1.2;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+/* --- BLOCKQUOTE STYLES --- */
+blockquote {
+    background-color: #f7f7f7;
+    border-left: 5px solid #ccc;
+    color: #444; 
+    padding: 10px 15px;
+    margin: 15px 0;
+    font-style: italic;
+}
+
+/* --- RESPONSIVENESS (MOBILE READABILITY) --- */
+body > *, main, .container {
+    max-width: 900px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 20px !important; 
+    padding-right: 20px !important;
+    box-sizing: border-box !important;
+}
+
+/* Ensure images don't overflow on small screens */
+img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* --- TABLE RESPONSIVENESS (NO SCROLLBARS) --- */
+table {
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Hide scrollbars for webkit (Chrome, Safari) */
+table::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbars for IE/Edge/Firefox */
+table {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+
+/* --- DARK MODE SETTINGS --- */
+@media (prefers-color-scheme: dark) {
+    /* Dark Mode Body */
+    body {
+        color: #e0e0e0; 
+        background-color: #121212; 
+    }
+    h1, h2, h3, h4, h5, h6 {
+        color: #e0e0e0;
+    }
+    a {
+        color: #bb86fc; 
+    }
+    
+    /* Dark Mode Blockquotes */
+    blockquote {
+        background-color: #2c2c2c; 
+        border-left: 5px solid #555; 
+        color: #ccc; 
+    }
+}</style></head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<hr>
+<h2 id="%F0%9F%87%BF%F0%9F%87%A6-paypal-fnb-integration-summary">🇿🇦 PayPal-FNB Integration Summary</h2>
+<p>The integration process allows South African PayPal users (both FNB and non-FNB clients) to withdraw funds to any local bank account in compliance with SARB (South African Reserve Bank) regulations.</p>
+<h3 id="1-paypal-account-requirements">1. PayPal Account Requirements</h3>
+<ul>
+<li><strong>Verified PayPal Account:</strong> Your PayPal account must be fully verified.</li>
+<li><strong>Verification Method:</strong> This is typically done by linking a <strong>Debit or Credit Card</strong> to PayPal. PayPal makes a small charge containing a 4-digit code in the transaction reference on your bank statement. You must log back into PayPal to enter this code to complete verification.</li>
+<li><strong>Linked Bank Account:</strong> You do not need a bank account linked to PayPal directly; the withdrawal service handles the link through FNB.</li>
+</ul>
+<h3 id="2-fnb-account-requirements">2. FNB Account Requirements</h3>
+<ul>
+<li><strong>FNB Online Banking Profile:</strong> You must register for a <strong>free FNB Online Banking Profile</strong> on the FNB website or FNB App. This is required even if you bank with another institution (e.g., Standard Bank, Capitec, etc.).</li>
+<li><strong>Local Bank Account:</strong> You need a valid, ZAR-denominated South African bank account (FNB or non-FNB) to receive the withdrawal funds.</li>
+</ul>
+<h3 id="3-integration-process-linking">3. Integration Process (Linking)</h3>
+<ol>
+<li><strong>Log in to FNB:</strong> Log into your FNB Online Banking profile or the FNB App.</li>
+<li><strong>Navigate to Forex:</strong> Go to the <strong>Forex</strong> or <strong>PayPal Services</strong> section.</li>
+<li><strong>Link Profile:</strong> Select the option to <strong>Link PayPal Profile</strong>.</li>
+<li><strong>PayPal Authentication:</strong> You will be redirected to the PayPal website to securely log in and grant FNB permission to access your profile for withdrawal purposes.</li>
+<li><strong>Confirm Details:</strong> You will confirm the local bank account (FNB or non-FNB) you want to use for withdrawals.</li>
+</ol>
+<h3 id="4-important-tips">4. Important Tips</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tip</th>
+<th style="text-align:left">Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>SARB Mandate</strong></td>
+<td style="text-align:left">All transactions are automatically reported to the SARB, and funds must generally be withdrawn to a South African account within 30 days of receipt.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Troubleshooting</strong></td>
+<td style="text-align:left">If you encounter a linking loop or error, contact the FNB Forex Advisory team directly, as branch staff may not have the specific authority to resolve system errors. <strong>FNB Forex Contact:</strong> <strong>0860 1 FOREX (36739)</strong> or email <strong>forex@fnb.co.za</strong>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Linking Channel</strong></td>
+<td style="text-align:left">While the FNB App is popular, some users find the initial linking process on the <strong>desktop FNB Online Banking website</strong> more stable.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-estimated-timeframe">5. Estimated Timeframe</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Step</th>
+<th style="text-align:left">Estimated Time</th>
+<th style="text-align:left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>PayPal Card Verification</strong></td>
+<td style="text-align:left">1 – 3 Business Days</td>
+<td style="text-align:left">Waiting for the 4-digit code to reflect on your statement.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>FNB Profile Registration</strong></td>
+<td style="text-align:left">Instant – 1 Hour</td>
+<td style="text-align:left">Instant if you are already an FNB client; slightly longer for new non-FNB profiles.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>FNB-PayPal Linking</strong></td>
+<td style="text-align:left"><strong>5 – 10 Minutes</strong></td>
+<td style="text-align:left">Once all requirements are met, the final linking steps are very quick.</td>
+</tr>
+</tbody>
+</table>
+<p>The entire process, from setting up a new verified PayPal account to linking it on FNB, can realistically take <strong>3 to 5 business days</strong> due to the card verification waiting period.</p>
+
+
+</body></html>
