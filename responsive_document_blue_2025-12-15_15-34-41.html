@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Document - Blue Theme</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. Color Palettes & Dark Mode (Standard Blue Accent) */
+        :root {
+            /* Light Mode Defaults */
+            --bg-page: #ffffff;
+            --bg-card: #f9fafb;
+            --text-main: #1f2937;
+            --text-secondary: #4b5563;
+            --accent-main: #3b82f6;
+            --accent-bg: #EBF8FF; /* Very light blue background */
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                /* Dark Mode Overrides */
+                --bg-page: #1f2937;
+                --bg-card: #374151;
+                --text-main: #f9fafb;
+                --text-secondary: #d1d5db;
+                --accent-main: #60a5fa;
+                --accent-bg: #1A365D; /* Darker blue background */
+            }
+        }
+
+        /* 2. Global Resets and Aesthetics */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            padding: 20px 5px;
+        }
+
+        /* 3. Main Content Wrapper */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            border-left: 4px solid var(--accent-main); 
+            border-right: 4px solid var(--accent-main);
+            overflow: hidden; 
+        }
+        
+        /* 4. Markdown Element Styling & Responsiveness */
+        .content-wrapper > * {
+             padding: 0 10px; 
+        }
+
+        /* Headers */
+        h1, h2, h3, h4 {
+            color: var(--text-main);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        h1 { font-size: 2.2em; border-bottom: 2px solid var(--accent-bg); padding-bottom: 5px; }
+        h2 { font-size: 1.8em; }
+        h3 { font-size: 1.4em; }
+        
+        /* Links */
+        a {
+            color: var(--accent-main);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-main);
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+        a:hover {
+            color: var(--accent-main);
+            text-decoration-color: transparent; 
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 5px solid var(--accent-main); 
+            padding: 10px 20px;
+            margin: 1.5em 10px;
+            background-color: var(--accent-bg); 
+            color: var(--text-main);
+            border-radius: 4px;
+        }
+        blockquote em, blockquote i { font-style: italic; }
+        blockquote strong, blockquote b { font-weight: 700; }
+
+
+        /* Images (CRITICAL FOR MOBILE) */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block; 
+            border-radius: 8px;
+            margin: 1.5em auto;
+            object-fit: contain;
+            max-width: calc(100% - 20px); 
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            min-width: 600px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--text-secondary);
+        }
+        th {
+            background-color: var(--accent-bg);
+            color: var(--text-main);
+            font-weight: 600;
+        }
+        
+        /* Responsive Table Wrapper */
+        .table-responsive {
+            overflow-x: auto; 
+            -webkit-overflow-scrolling: touch;
+            margin: 1.5em 0;
+            padding: 0; 
+        }
+        .table-responsive table {
+            width: 100%; 
+        }
+
+        /* Code blocks */
+        pre {
+            background-color: var(--bg-card);
+            border: 1px solid var(--text-secondary);
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5em 10px;
+            font-size: 0.9em;
+        }
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+        
+        /* 5. Mobile Adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 5px; 
+            }
+            .content-wrapper {
+                padding: 10px 0;
+                border-left-width: 2px;
+                border-right-width: 2px;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .content-wrapper > * {
+                 padding: 0 15px; 
+            }
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.4em; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="complete-five-layer-character-and-competence-profile"><strong>Complete Five-Layer Character and Competence Profile</strong></h1>
+<h2 id="1-my-core-expertises-knowledge-proof">1. My Core Expertises: Knowledge Proof</h2>
+<p>This section validates your knowledge domains with specific evidence from your education and roles.</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th style="text-align:left">Core Expertise</th>
+<th style="text-align:left">Broad-Eyes Analysis (The Principle)</th>
+<th style="text-align:left">Detailed Substantiation (Your Proof/Result)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Investments</strong></td>
+<td style="text-align:left"><em>Knowledge of Risk/Return Analysis, asset classes, and regulatory frameworks.</em></td>
+<td style="text-align:left">[cite_start]Served as <strong>Fund and Fund Manager Selection Analyst</strong> and <strong>member of the Investment Committee</strong> for Swiss clients (family offices, cantonal banks, pension funds)[cite: 47, 49]. [cite_start]Currently work as an <strong>Investment Advisor</strong> for private clients and an Israeli-based fund rating platform[cite: 38, 39].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Management</strong></td>
+<td style="text-align:left"><em>Knowledge of organizational structures, leadership styles, and strategic planning.</em></td>
+<td style="text-align:left">[cite_start]<strong>Set up and managed a team of 4 people</strong> as Head Document Management[cite: 51, 52]. [cite_start]Held multiple <strong>Project Manager</strong> roles in operations, training, and eDocument Management[cite: 36, 42, 55].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Economy</strong></td>
+<td style="text-align:left"><em>Understanding of macroeconomic indicators, financial markets, money creation, central bank policy impacts.</em></td>
+<td style="text-align:left">[cite_start]<strong>Lecturer in Economics</strong> for University of Mainz students[cite: 65, 67]. [cite_start]Completed a <strong>Diploma/Master in Economics</strong> with a focus on macroeconomics, national and international finance[cite: 78, 80].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>German Grammar</strong></td>
+<td style="text-align:left"><em>Mastery of complex syntax, case system, and Konjunktiv forms.</em></td>
+<td style="text-align:left">[cite_start]<strong>German (native)</strong> proficiency[cite: 84]. [cite_start]Authored a <strong>Diploma Thesis</strong> (Master level) in German on complex economic and taxation topics[cite: 78, 81].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>English Grammar</strong></td>
+<td style="text-align:left"><em>Mastery of verb tenses, clause structures, and academic conventions.</em></td>
+<td style="text-align:left">[cite_start]<strong>English (fluent)</strong> proficiency[cite: 84]. [cite_start]Completed an <strong>International MBA programme</strong> [cite: 74, 75] [cite_start]and authored the MBA thesis in English: <em>The Market of Television Broadcasting in India</em>[cite: 76].</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="2-my-competences-applied-skill-proof">2. My Competences: Applied Skill Proof</h2>
+<p>This section provides evidence of <em>how</em> you apply your practical and interpersonal skills.</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th style="text-align:left">Competence</th>
+<th style="text-align:left">Broad-Eyes Analysis (The Skill)</th>
+<th style="text-align:left">Detailed Substantiation (Your Proof/Result)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Tutoring</strong></td>
+<td style="text-align:left"><em>Ability to diagnose learning gaps, adapt teaching methods, and provide constructive feedback.</em></td>
+<td style="text-align:left">[cite_start]Delivered <strong>preparatory courses in economics and taxation</strong> for university students over a five-year period[cite: 65, 67]. [cite_start]Acted as a <strong>facilitator</strong> in executive business trainings with financial business simulations[cite: 57, 58].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Formulate Text/Content</strong></td>
+<td style="text-align:left"><em>Proven ability to craft text that is sound, coherent, and audience-tailored.</em></td>
+<td style="text-align:left">[cite_start]Responsible for <strong>reporting &amp; fact sheets</strong> for fund-based mandates[cite: 49]. [cite_start]Created <strong>documentation / test exams</strong> for course participants[cite: 67]. [cite_start]Wrote two high-level theses in economics and business[cite: 76, 81].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Visualise Curricula/ Investment Reports</strong></td>
+<td style="text-align:left"><em>Capacity to translate abstract material into clear diagrams/maps to enhance retention.</em></td>
+<td style="text-align:left">[cite_start]Worked as a <strong>Project Manager (developer)</strong> for business trainings utilizing <strong>financial business simulations</strong>[cite: 56, 57]. [cite_start]Responsibilities included <strong>reporting &amp; fact sheets</strong> for professional investment clients[cite: 49].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Hosting / Serving / Cooking</strong></td>
+<td style="text-align:left"><em>Demonstrated ability in event coordination, service standards, and time management.</em></td>
+<td style="text-align:left">[cite_start]Listed <strong>Cooking</strong> as a personal activity[cite: 88]. [cite_start]Experience in <strong>relationship management</strong> [cite: 52] [cite_start]and <strong>client-facing roles</strong> (advisory/consulting) that require high standards of hospitality[cite: 38, 49].</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="3-my-persona-type-behavioral-proof">3. My Persona Type: Behavioral Proof</h2>
+<p>This section substantiates your character attributes with examples of professional actions.</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th style="text-align:left">Attribute</th>
+<th style="text-align:left">Broad-Eyes Analysis (The Behavior)</th>
+<th style="text-align:left">Detailed Substantiation (Your Proof/Result)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Structured / Diligent / Action-Oriented / Reliable</strong></td>
+<td style="text-align:left"><em>Preference for clear objectives, organized documentation, attention to detail, and quick implementation.</em></td>
+<td style="text-align:left">[cite_start]Managed operations and <strong>process optimization</strong> as Head Document Management[cite: 52]. [cite_start]Skill set includes <strong>Workflow Automation</strong> and <strong>Prompt Engineering</strong>[cite: 86]. [cite_start]Experience in <strong>Accounting Clerk</strong> role (Deutsche Bank)[cite: 61], requiring rigorous attention to detail.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Proactive</strong></td>
+<td style="text-align:left"><em>Identifying risks, initiating tasks, and moving quickly from plan to implementation.</em></td>
+<td style="text-align:left">[cite_start]Took the initiative to <strong>set up and manage a new team</strong> of 4 people as Head Document Management[cite: 52]. [cite_start]Experience in <strong>Project Management</strong> requires initiating and driving project schedules[cite: 36, 42, 55].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Empathetic / Nuanced</strong></td>
+<td style="text-align:left"><em>Practicing active listening, tailoring communication, and synthesizing conflicting data.</em></td>
+<td style="text-align:left">[cite_start]Served as a <strong>Facilitator</strong> for executive business trainings (UBS, HP, Etisalat)[cite: 57, 59]. [cite_start]Held responsibility for <strong>relationship management</strong> with Swiss and international fund providers[cite: 52].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Creative / Artistic</strong></td>
+<td style="text-align:left"><em>Focus on novel solutions and aesthetic presentation.</em></td>
+<td style="text-align:left">[cite_start]Implied through <strong>Visualise Curricula</strong> competence [cite: 12] [cite_start]and the <strong>Developer/Facilitator</strong> role in business simulations[cite: 57]. [cite_start]Skills include using <strong>Airtable</strong> and <strong>Notion</strong>[cite: 86], which are often used for creative content structuring.</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="4-my-contextdomain-scope--scale-proof">4. My Context/Domain: Scope &amp; Scale Proof</h2>
+<p>This section defines the environments and scale in which you have applied your skills.</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th style="text-align:left">Context/Domain</th>
+<th style="text-align:left">Broad-Eyes Analysis (The Environment)</th>
+<th style="text-align:left">Detailed Substantiation (Your Proof/Result)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Investment Advisory (Private and Institutional)</strong></td>
+<td style="text-align:left"><em>Experience with both private and institutional mandates.</em></td>
+<td style="text-align:left">[cite_start]Clients included <strong>Swiss family offices, private clients</strong> (Private) [cite: 39, 49][cite_start], and <strong>Swiss cantonal banks, pension funds</strong> (Institutional)[cite: 49].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Consulting</strong></td>
+<td style="text-align:left"><em>Skill in structured problem diagnosis and developing strategic recommendations.</em></td>
+<td style="text-align:left">[cite_start]Held roles as <strong>Project Consultant</strong> and <strong>consultant</strong>[cite: 33, 38]. [cite_start]Clients included <strong>independent investment advisory associations</strong>[cite: 40].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Highly Data and Tech-Driven Environments</strong></td>
+<td style="text-align:left"><em>Leveraging data tools, comfort with platforms, appreciating data integrity, identifying mistakes in complex number tables.</em></td>
+<td style="text-align:left">[cite_start]Expertise in <strong>Performance Data Management</strong>, <strong>performance calculation/attribution</strong>, and <strong>peer group analysis</strong>[cite: 49]. [cite_start]Skills include <strong>Setup interfaces with Data Providers, LLMs, Prompt Engineering, and Workflow Automation</strong>[cite: 86].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Education (All Kinds)</strong></td>
+<td style="text-align:left"><em>Designing modules, facilitating transfer, understanding pedagogy.</em></td>
+<td style="text-align:left">[cite_start]Experience as a <strong>Lecturer</strong> (preparatory courses) [cite: 65] [cite_start]and <strong>Facilitator</strong> (executive business training)[cite: 57]. [cite_start]Clients for training included major international corporations[cite: 59].</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="5-my-value-proposition-impact-proof">5. My Value Proposition: Impact Proof</h2>
+<p>This final section shows evidence of your specific high-level impact and goals.</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th style="text-align:left">Value Proposition Element</th>
+<th style="text-align:left">Broad-Eyes Analysis (The Impact)</th>
+<th style="text-align:left">Detailed Substantiation (Your Proof/Result)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Process Optimisation</strong></td>
+<td style="text-align:left"><em>Identifying bottlenecks, designing streamlined procedures, in digital production.</em></td>
+<td style="text-align:left">[cite_start]Direct responsibility for <strong>process optimization</strong> as Head Document Management[cite: 52]. [cite_start]Managed projects focused on <strong>eDocument Management</strong>[cite: 42]. [cite_start]Possesses <strong>Workflow Automation</strong> skills[cite: 86].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Educational Transformation</strong></td>
+<td style="text-align:left"><em>Modernizing methods, integrating tech, shifting mindsets.</em></td>
+<td style="text-align:left">[cite_start]Worked as a developer and facilitator for <strong>executive business trainings utilizing financial business simulations</strong> [cite: 57, 58][cite_start], a modern, high-impact teaching method[cite: 58].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Sparking Inherent Interest...</strong></td>
+<td style="text-align:left"><em>Fostering genuine curiosity and creating inspirational environments.</em></td>
+<td style="text-align:left">[cite_start]Demonstrated commitment to the goal of <strong>successful test and assessment results</strong> for students through preparatory courses[cite: 67]. [cite_start]Achieved by combining deep <strong>Expertise</strong> (Economics) with the <strong>Competence</strong> of <strong>Tutoring</strong> and <strong>Visualisation</strong>[cite: 67, 12].</td>
+</tr>
+</tbody>
+</table></div>
+    </div>
+</body>
+</html>
