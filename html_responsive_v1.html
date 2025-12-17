@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive HTML Transformer</title>
+    <title>Streamlined Responsive HTML Injector</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Define base color variables for the tool's UI */
+        /* Base UI Variables (Standard Blue Accent) */
         :root {
             --ui-bg: #f3f4f6;
             --ui-card: #ffffff;
             --ui-text: #1f2937;
-            --ui-primary: #4f46e5;
+            --ui-primary: #3b82f6; /* Standard Blue */
             --ui-shadow: rgba(0, 0, 0, 0.1);
-            --ui-accent-light: #d1d5db; /* Gray 300 */
+            --ui-accent-light: #d1d5db;
         }
         @media (prefers-color-scheme: dark) {
             :root {
                 --ui-bg: #1f2937;
                 --ui-card: #374151;
                 --ui-text: #f9fafb;
-                --ui-primary: #818CF8;
+                --ui-primary: #60a5fa; /* Lighter Blue for Dark Mode */
                 --ui-shadow: rgba(255, 255, 255, 0.1);
-                --ui-accent-light: #4b5563; /* Gray 600 */
+                --ui-accent-light: #4b5563;
             }
         }
         body {
@@ -42,20 +42,12 @@
             transition: background-color 0.2s;
         }
         .btn-primary:hover {
-            background-color: #6366f1;
+            background-color: #2563eb;
         }
         textarea {
             background-color: var(--ui-bg);
             border-color: var(--ui-accent-light) !important;
             color: var(--ui-text);
-        }
-        /* Style for the color option previews */
-        .color-preview {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 8px;
         }
         /* Drag and Drop Styles */
         #dropZone {
@@ -67,14 +59,24 @@
         }
         .drag-over {
             border-color: var(--ui-primary) !important;
-            background-color: rgba(129, 140, 248, 0.1); /* Light blue tint on drag over */
+            background-color: rgba(96, 165, 250, 0.1);
+        }
+
+        /* Custom Radio Button Styling */
+        .accent-radio input:checked + label {
+            border-color: var(--ui-primary);
+            background-color: rgba(59, 130, 246, 0.1); /* Light blue tint */
+        }
+        .accent-radio label {
+            transition: border-color 0.2s, background-color 0.2s;
         }
     </style>
 </head>
 <body class="p-4 md:p-8">
 
     <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-gray-100">
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-gray-100 flex items-center justify-center">
+             <img src="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765806644/doc_bvi9zu.png" alt="Document Icon" class="w-8 h-8 mr-3">
             Responsive HTML Injector
         </h1>
         
@@ -86,43 +88,43 @@
                 Upload your HTML file below, or paste the content directly into the text area.
             </p>
 
-            <!-- File Upload and Drop Zone -->
-            <div class="mb-4 p-6 border-2 border-dashed rounded-lg text-center cursor-pointer"
-                 id="dropZone">
+            <div class="mb-4 p-6 border-2 border-dashed rounded-lg text-center cursor-pointer" id="dropZone">
                 <p class="text-lg font-semibold mb-2 text-gray-700 dark:text-gray-300">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v8" />
                     </svg>
                     Drag & Drop HTML File Here
                 </p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">
-                    or click to select file (.html only)
-                </p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">or click to select file (.html only)</p>
                 <input type="file" id="fileInput" accept="text/html" class="hidden" onchange="handleFileSelect(event)">
             </div>
             
             <textarea id="inputHtml" rows="15" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Paste your non-responsive HTML content here..."></textarea>
             
             <div class="flex flex-col sm:flex-row justify-between items-center mt-4 space-y-4 sm:space-y-0">
-                <div class="flex items-center space-x-3">
-                    <label for="colorSelector" class="font-medium text-gray-700 dark:text-gray-300">
-                        Choose Accent Color:
-                    </label>
-                    <select id="colorSelector" class="p-2 border rounded-lg focus:ring-2 focus:ring-blue-500" onchange="updateColorPreview()">
-                        <option value="indigo">
-                            <span class="color-preview bg-indigo-600"></span>Indigo (Default)
-                        </option>
-                        <option value="emerald">
-                            <span class="color-preview bg-emerald-600"></span>Emerald
-                        </option>
-                        <option value="rose">
-                            <span class="color-preview bg-rose-600"></span>Rose
-                        </option>
-                    </select>
+                
+                <div class="flex items-center space-x-4">
+                    <label class="font-medium text-gray-700 dark:text-gray-300">Accent Style:</label>
+                    
+                    <div class="accent-radio">
+                        <input type="radio" id="accent-blue" name="accent" value="blue" checked class="hidden">
+                        <label for="accent-blue" class="flex items-center p-2 border rounded-lg cursor-pointer text-sm font-medium border-gray-300 dark:border-gray-600 hover:border-blue-500">
+                            <span class="w-3 h-3 rounded-full bg-blue-500 mr-2 border border-gray-700"></span>
+                            Blue Accent
+                        </label>
+                    </div>
+                    
+                    <div class="accent-radio">
+                        <input type="radio" id="accent-none" name="accent" value="none" class="hidden">
+                        <label for="accent-none" class="flex items-center p-2 border rounded-lg cursor-pointer text-sm font-medium border-gray-300 dark:border-gray-600 hover:border-gray-500">
+                            <span class="w-3 h-3 rounded-full bg-gray-500 mr-2 border border-gray-700"></span>
+                            No Accent
+                        </label>
+                    </div>
                 </div>
                 
                 <button onclick="downloadHtml()" class="btn-primary text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:shadow-lg transition duration-150 w-full sm:w-auto">
-                    Generate & Download Responsive HTML
+                    Generate & Download HTML
                 </button>
             </div>
 
@@ -135,14 +137,21 @@
     </div>
 
     <script>
-        // UPDATED PALETTES FOR MORE VIBRANT ACCENT COLORS
-        const PALETTES = {
-            // Indigo -> Richer Blue-Violet
-            indigo: { light: '#4338CA', dark: '#6366F1' }, // Indigo 700 / Indigo 500
-            // Emerald -> Modern Teal
-            emerald: { light: '#0D9488', dark: '#2DD4BF' }, // Teal 600 / Teal 400
-            // Rose -> Vibrant Fuchsia Pink
-            rose: { light: '#C026D3', dark: '#E879F9' } // Fuchsia 600 / Fuchsia 300
+        // PALETTES for accent elements (includes a 'none' option which uses text/secondary colors)
+        const PALETTES = { 
+            blue: { 
+                light: '#3b82f6', // Blue 500
+                dark: '#60a5fa',  // Blue 400
+                bgLight: '#EBF8FF', // Very light blue background
+                bgDark: '#1A365D' // Darker blue background
+            },
+            none: {
+                // Monotone/Grayscale. Uses Text-Secondary for accents
+                light: '#4b5563', // Gray 600
+                dark: '#d1d5db',  // Gray 300
+                bgLight: '#f3f4f6', // Light gray background
+                bgDark: '#374151' // Dark gray background
+            }
         };
 
         const dropZone = document.getElementById('dropZone');
@@ -150,111 +159,20 @@
         const inputHtml = document.getElementById('inputHtml');
         const statusDiv = document.getElementById('statusMessage');
 
-        // --- File Handling Functions ---
-
-        /**
-         * Reads the file content and populates the textarea.
-         * @param {File} file - The file object to read.
-         */
-        function readAndPopulate(file) {
-            if (file && file.type === 'text/html') {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    // Extract content between <body> tags if possible
-                    let content = e.target.result;
-                    const bodyMatch = content.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-                    if (bodyMatch && bodyMatch[1]) {
-                        content = bodyMatch[1].trim();
-                    }
-                    inputHtml.value = content;
-                    statusDiv.textContent = `File loaded successfully: ${file.name}`;
-                    statusDiv.classList.remove('hidden', 'bg-red-100', 'text-red-800');
-                    statusDiv.classList.add('bg-green-100', 'text-green-800');
-                };
-                reader.onerror = () => {
-                    statusDiv.textContent = 'Error reading file.';
-                    statusDiv.classList.remove('hidden', 'bg-green-100', 'text-red-800');
-                    statusDiv.classList.add('bg-red-100', 'text-red-800');
-                };
-                reader.readAsText(file);
-            } else {
-                statusDiv.textContent = 'Invalid file type. Please upload an HTML file.';
-                statusDiv.classList.remove('hidden', 'bg-green-100', 'text-red-800');
-                statusDiv.classList.add('bg-red-100', 'text-red-800');
-            }
-        }
-
-        /**
-         * Handles file selection via the hidden input field.
-         */
-        function handleFileSelect(event) {
-            const files = event.target.files;
-            if (files.length > 0) {
-                readAndPopulate(files[0]);
-            }
-        }
-
-        /**
-         * Sets up the drag and drop listeners.
-         */
-        function setupDragDrop() {
-            // Prevent default drag behavior
-            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                dropZone.addEventListener(eventName, preventDefaults, false);
-                document.body.addEventListener(eventName, preventDefaults, false);
-            });
-
-            // Highlight drop zone when item is dragged over
-            ['dragenter', 'dragover'].forEach(eventName => {
-                dropZone.addEventListener(eventName, () => dropZone.classList.add('drag-over'), false);
-            });
-
-            // Remove highlight when drag leaves
-            ['dragleave', 'drop'].forEach(eventName => {
-                dropZone.addEventListener(eventName, () => dropZone.classList.remove('drag-over'), false);
-            });
-
-            // Handle file drop
-            dropZone.addEventListener('drop', handleDrop, false);
-
-            // Handle click to open file dialog
-            dropZone.addEventListener('click', () => fileInput.click(), false);
-        }
-
-        /**
-         * Handles the file drop event.
-         */
-        function handleDrop(e) {
-            const dt = e.dataTransfer;
-            const files = dt.files;
-            if (files.length > 0) {
-                readAndPopulate(files[0]);
-            }
-        }
-
-        /**
-         * Helper to prevent default browser behavior (like opening file).
-         */
-        function preventDefaults(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-
-        // --- Transformation and Download Functions ---
+        // --- Core Functions ---
 
         function getPalette(name) {
-            return PALETTES[name] || PALETTES.indigo;
+            return PALETTES[name] || PALETTES.blue;
         }
 
         /**
          * Constructs the final responsive HTML document around the user's content.
          */
-        function transformHtml(rawContent, colorKey) {
-            const palette = getPalette(colorKey);
+        function transformHtml(rawContent, accentKey) {
+            const palette = getPalette(accentKey);
 
             // Wrap the content to ensure tables are correctly handled for scrolling
             const contentWithResponsiveTableWrapper = rawContent
-                // Use a negative lookahead to prevent wrapping tables that might already be wrapped
                 .replace(/<table/g, '<div class="table-responsive"><table')
                 .replace(/<\/table>/g, '</table></div>');
             
@@ -265,11 +183,9 @@
 <head>
     <meta charset="UTF-8">
     
-    <!-- CRITICAL: Viewport for Mobile Responsiveness -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Document - ${colorKey.charAt(0).toUpperCase() + colorKey.slice(1)} Theme</title>
+    <title>Responsive Document - ${accentKey.charAt(0).toUpperCase() + accentKey.slice(1)} Theme</title>
     
-    <!-- Using Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -280,8 +196,8 @@
             --bg-card: #f9fafb;
             --text-main: #1f2937;
             --text-secondary: #4b5563;
-            --accent-main: ${palette.light};
-            --accent-bg: ${palette.light}20; /* Light transparent accent background */
+            --accent-main: ${palette.light}; /* Uses selected accent color */
+            --accent-bg: ${palette.bgLight}; /* Uses selected accent background */
         }
 
         @media (prefers-color-scheme: dark) {
@@ -291,8 +207,8 @@
                 --bg-card: #374151;
                 --text-main: #f9fafb;
                 --text-secondary: #d1d5db;
-                --accent-main: ${palette.dark};
-                --accent-bg: ${palette.dark}20; /* Dark transparent accent background */
+                --accent-main: ${palette.dark}; /* Uses selected dark accent color */
+                --accent-bg: ${palette.bgDark}; /* Uses selected dark accent background */
             }
         }
 
@@ -309,10 +225,10 @@
             color: var(--text-main);
             line-height: 1.6;
             transition: background-color 0.3s, color 0.3s;
-            padding: 20px 5px; /* Less padding on edges for mobile */
+            padding: 20px 5px;
         }
 
-        /* 3. Main Content Wrapper (Desktop constraint, shadow, and color accents) */
+        /* 3. Main Content Wrapper */
         .content-wrapper {
             max-width: 900px;
             margin: 0 auto;
@@ -321,16 +237,14 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             position: relative;
-            /* Aesthetic Color Lines */
+            /* Accent Borders */
             border-left: 4px solid var(--accent-main); 
             border-right: 4px solid var(--accent-main);
-            /* Reset for markdown elements */
             overflow: hidden; 
         }
         
         /* 4. Markdown Element Styling & Responsiveness */
         .content-wrapper > * {
-             /* Add padding/margin to top-level elements inside the wrapper */
              padding: 0 10px; 
         }
 
@@ -345,18 +259,28 @@
         h1 { font-size: 2.2em; border-bottom: 2px solid var(--accent-bg); padding-bottom: 5px; }
         h2 { font-size: 1.8em; }
         h3 { font-size: 1.4em; }
+        
+        /* Links */
+        a {
+            color: var(--accent-main);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-main);
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+        a:hover {
+            color: var(--accent-main);
+            text-decoration-color: transparent; 
+        }
 
-        /* Blockquotes - ACCENT COLOR STYLING (Mode-aware via CSS variables) */
+        /* Blockquotes */
         blockquote {
-            border-left: 5px solid var(--accent-main); /* Uses active accent color */
+            border-left: 5px solid var(--accent-main); 
             padding: 10px 20px;
             margin: 1.5em 10px;
-            /* font-style: italic removed to preserve inner formatting */
-            background-color: var(--accent-bg); /* Uses light accent background (mode-aware) */
+            background-color: var(--accent-bg); 
             color: var(--text-main);
             border-radius: 4px;
         }
-        /* Ensure specific formatting like italic/bold works inside blockquotes */
         blockquote em, blockquote i { font-style: italic; }
         blockquote strong, blockquote b { font-weight: 700; }
 
@@ -369,7 +293,6 @@
             border-radius: 8px;
             margin: 1.5em auto;
             object-fit: contain;
-            /* Ensures images don't stretch beyond the wrapper's inner padding */
             max-width: calc(100% - 20px); 
         }
         
@@ -378,7 +301,7 @@
             width: 100%;
             border-collapse: collapse;
             margin: 0;
-            min-width: 600px; /* Ensure content doesn't shrink too much */
+            min-width: 600px;
         }
         th, td {
             padding: 12px;
@@ -391,16 +314,14 @@
             font-weight: 600;
         }
         
-        /* Responsive Table Wrapper (Must be outside the table for overflow to work) */
+        /* Responsive Table Wrapper */
         .table-responsive {
-            overflow-x: auto; /* Scroll horizontally on small screens */
+            overflow-x: auto; 
             -webkit-overflow-scrolling: touch;
             margin: 1.5em 0;
-            /* Important: Remove padding from the wrapper itself to allow scroll to touch edge */
             padding: 0; 
         }
         .table-responsive table {
-            /* Ensures table takes up 100% of the scrollable area */
             width: 100%; 
         }
 
@@ -418,20 +339,20 @@
             font-family: Consolas, Monaco, monospace;
         }
         
-        /* 5. Mobile Adjustments (Media Query for smaller screens) */
+        /* 5. Mobile Adjustments */
         @media (max-width: 600px) {
             body {
                 padding: 5px; 
             }
             .content-wrapper {
-                padding: 10px 0; /* Minimal vertical padding, let inner elements handle horizontal */
+                padding: 10px 0;
                 border-left-width: 2px;
                 border-right-width: 2px;
-                box-shadow: none; /* Reduce heavy shadow on small screens */
-                border-radius: 0; /* Use full screen width */
+                box-shadow: none;
+                border-radius: 0;
             }
             .content-wrapper > * {
-                 padding: 0 15px; /* Apply necessary horizontal padding here */
+                 padding: 0 15px; 
             }
             h1 { font-size: 1.6em; }
             h2 { font-size: 1.4em; }
@@ -441,7 +362,6 @@
 </head>
 <body>
     <div class="content-wrapper">
-        <!-- INJECTED USER CONTENT -->
         ${contentWithResponsiveTableWrapper}
     </div>
 </body>
@@ -455,34 +375,26 @@
          */
         function downloadHtml() {
             const rawContent = inputHtml.value.trim();
-            const colorKey = document.getElementById('colorSelector').value;
+            // Get selected radio button value
+            const accentKey = document.querySelector('input[name="accent"]:checked').value;
+
 
             if (!rawContent) {
                 statusDiv.textContent = 'Error: Please paste or upload your HTML content before generating.';
-                statusDiv.classList.remove('hidden', 'bg-green-100', 'text-red-800');
+                statusDiv.classList.remove('hidden', 'bg-green-100', 'text-green-800');
                 statusDiv.classList.add('bg-red-100', 'text-red-800');
                 return;
             }
 
             try {
-                const finalHtml = transformHtml(rawContent, colorKey);
+                const finalHtml = transformHtml(rawContent, accentKey);
                 
-                // Generate a timestamp (YYYY-MM-DD_HH-MM-SS) for the filename
-                const now = new Date();
-                const datePart = now.getFullYear() + '-' + 
-                                 String(now.getMonth() + 1).padStart(2, '0') + '-' + 
-                                 String(now.getDate()).padStart(2, '0');
-                const timePart = String(now.getHours()).padStart(2, '0') + '-' + 
-                                 String(now.getMinutes()).padStart(2, '0') + '-' + 
-                                 String(now.getSeconds()).padStart(2, '0');
-                const timestamp = `${datePart}_${timePart}`;
-
                 const blob = new Blob([finalHtml], { type: 'text/html' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                // Updated filename to include timestamp
-                a.download = `responsive_document_${colorKey}_${timestamp}.html`;
+                // Use the desired filename
+                a.download = `document.html`; 
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -499,16 +411,15 @@
                 statusDiv.classList.add('bg-red-100', 'text-red-800');
             }
         }
+        
+        // **********************************************
+        // RE-USED/SIMPLIFIED FILE HANDLERS
+        // **********************************************
 
-        /**
-         * Reads the file content and populates the textarea.
-         * @param {File} file - The file object to read.
-         */
         function readAndPopulate(file) {
             if (file && file.type === 'text/html') {
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    // Extract content between <body> tags if possible
                     let content = e.target.result;
                     const bodyMatch = content.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
                     if (bodyMatch && bodyMatch[1]) {
@@ -532,9 +443,6 @@
             }
         }
 
-        /**
-         * Handles file selection via the hidden input field.
-         */
         function handleFileSelect(event) {
             const files = event.target.files;
             if (files.length > 0) {
@@ -542,36 +450,24 @@
             }
         }
 
-        /**
-         * Sets up the drag and drop listeners.
-         */
         function setupDragDrop() {
-            // Prevent default drag behavior
             ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
                 dropZone.addEventListener(eventName, preventDefaults, false);
                 document.body.addEventListener(eventName, preventDefaults, false);
             });
 
-            // Highlight drop zone when item is dragged over
             ['dragenter', 'dragover'].forEach(eventName => {
                 dropZone.addEventListener(eventName, () => dropZone.classList.add('drag-over'), false);
             });
 
-            // Remove highlight when drag leaves
             ['dragleave', 'drop'].forEach(eventName => {
                 dropZone.addEventListener(eventName, () => dropZone.classList.remove('drag-over'), false);
             });
 
-            // Handle file drop
             dropZone.addEventListener('drop', handleDrop, false);
-
-            // Handle click to open file dialog
             dropZone.addEventListener('click', () => fileInput.click(), false);
         }
 
-        /**
-         * Handles the file drop event.
-         */
         function handleDrop(e) {
             const dt = e.dataTransfer;
             const files = dt.files;
@@ -580,42 +476,14 @@
             }
         }
 
-        /**
-         * Helper to prevent default browser behavior (like opening file).
-         */
         function preventDefaults(e) {
             e.preventDefault();
             e.stopPropagation();
         }
 
-
-        /**
-         * Updates the visual circle next to the selector
-         */
-        function updateColorPreview() {
-            const selector = document.getElementById('colorSelector');
-            const colorKey = selector.value;
-            const palette = getPalette(colorKey);
-            
-            // FIX: Convert the HTMLOptionsCollection to an Array before using forEach
-            Array.from(selector.options).forEach(option => {
-                let preview = option.querySelector('.color-preview');
-                if (preview) preview.remove();
-            });
-
-            // Add new span to the selected option
-            const newSpan = document.createElement('span');
-            newSpan.className = `color-preview`;
-            newSpan.style.backgroundColor = palette.light;
-            
-            const selectedOption = selector.options[selector.selectedIndex];
-            selectedOption.prepend(newSpan);
-        }
-
         // --- Initialization ---
         document.addEventListener('DOMContentLoaded', () => {
             setupDragDrop();
-            updateColorPreview();
         });
     </script>
 </body>
