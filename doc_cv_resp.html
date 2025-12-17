@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8">
     
-    <!-- CRITICAL: Viewport for Mobile Responsiveness -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Document - Emerald Theme</title>
+    <title>Responsive Document - None Theme</title>
     
-    <!-- Using Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -19,8 +17,8 @@
             --bg-card: #f9fafb;
             --text-main: #1f2937;
             --text-secondary: #4b5563;
-            --accent-main: #0D9488;
-            --accent-bg: #0D948820; /* Light transparent accent background */
+            --accent-main: #4b5563; /* Uses selected accent color */
+            --accent-bg: #f3f4f6; /* Uses selected accent background */
         }
 
         @media (prefers-color-scheme: dark) {
@@ -30,8 +28,8 @@
                 --bg-card: #374151;
                 --text-main: #f9fafb;
                 --text-secondary: #d1d5db;
-                --accent-main: #2DD4BF;
-                --accent-bg: #2DD4BF20; /* Dark transparent accent background */
+                --accent-main: #d1d5db; /* Uses selected dark accent color */
+                --accent-bg: #374151; /* Uses selected dark accent background */
             }
         }
 
@@ -48,10 +46,10 @@
             color: var(--text-main);
             line-height: 1.6;
             transition: background-color 0.3s, color 0.3s;
-            padding: 20px 5px; /* Less padding on edges for mobile */
+            padding: 20px 5px;
         }
 
-        /* 3. Main Content Wrapper (Desktop constraint, shadow, and color accents) */
+        /* 3. Main Content Wrapper */
         .content-wrapper {
             max-width: 900px;
             margin: 0 auto;
@@ -60,16 +58,14 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             position: relative;
-            /* Aesthetic Color Lines */
+            /* Accent Borders */
             border-left: 4px solid var(--accent-main); 
             border-right: 4px solid var(--accent-main);
-            /* Reset for markdown elements */
             overflow: hidden; 
         }
         
         /* 4. Markdown Element Styling & Responsiveness */
         .content-wrapper > * {
-             /* Add padding/margin to top-level elements inside the wrapper */
              padding: 0 10px; 
         }
 
@@ -84,18 +80,28 @@
         h1 { font-size: 2.2em; border-bottom: 2px solid var(--accent-bg); padding-bottom: 5px; }
         h2 { font-size: 1.8em; }
         h3 { font-size: 1.4em; }
+        
+        /* Links */
+        a {
+            color: var(--accent-main);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-main);
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+        a:hover {
+            color: var(--accent-main);
+            text-decoration-color: transparent; 
+        }
 
-        /* Blockquotes - ACCENT COLOR STYLING (Mode-aware via CSS variables) */
+        /* Blockquotes */
         blockquote {
-            border-left: 5px solid var(--accent-main); /* Uses active accent color */
+            border-left: 5px solid var(--accent-main); 
             padding: 10px 20px;
             margin: 1.5em 10px;
-            /* font-style: italic removed to preserve inner formatting */
-            background-color: var(--accent-bg); /* Uses light accent background (mode-aware) */
+            background-color: var(--accent-bg); 
             color: var(--text-main);
             border-radius: 4px;
         }
-        /* Ensure specific formatting like italic/bold works inside blockquotes */
         blockquote em, blockquote i { font-style: italic; }
         blockquote strong, blockquote b { font-weight: 700; }
 
@@ -108,7 +114,6 @@
             border-radius: 8px;
             margin: 1.5em auto;
             object-fit: contain;
-            /* Ensures images don't stretch beyond the wrapper's inner padding */
             max-width: calc(100% - 20px); 
         }
         
@@ -117,7 +122,7 @@
             width: 100%;
             border-collapse: collapse;
             margin: 0;
-            min-width: 600px; /* Ensure content doesn't shrink too much */
+            min-width: 600px;
         }
         th, td {
             padding: 12px;
@@ -130,16 +135,14 @@
             font-weight: 600;
         }
         
-        /* Responsive Table Wrapper (Must be outside the table for overflow to work) */
+        /* Responsive Table Wrapper */
         .table-responsive {
-            overflow-x: auto; /* Scroll horizontally on small screens */
+            overflow-x: auto; 
             -webkit-overflow-scrolling: touch;
             margin: 1.5em 0;
-            /* Important: Remove padding from the wrapper itself to allow scroll to touch edge */
             padding: 0; 
         }
         .table-responsive table {
-            /* Ensures table takes up 100% of the scrollable area */
             width: 100%; 
         }
 
@@ -157,20 +160,20 @@
             font-family: Consolas, Monaco, monospace;
         }
         
-        /* 5. Mobile Adjustments (Media Query for smaller screens) */
+        /* 5. Mobile Adjustments */
         @media (max-width: 600px) {
             body {
                 padding: 5px; 
             }
             .content-wrapper {
-                padding: 10px 0; /* Minimal vertical padding, let inner elements handle horizontal */
+                padding: 10px 0;
                 border-left-width: 2px;
                 border-right-width: 2px;
-                box-shadow: none; /* Reduce heavy shadow on small screens */
-                border-radius: 0; /* Use full screen width */
+                box-shadow: none;
+                border-radius: 0;
             }
             .content-wrapper > * {
-                 padding: 0 15px; /* Apply necessary horizontal padding here */
+                 padding: 0 15px; 
             }
             h1 { font-size: 1.6em; }
             h2 { font-size: 1.4em; }
@@ -180,7 +183,6 @@
 </head>
 <body>
     <div class="content-wrapper">
-        <!-- INJECTED USER CONTENT -->
         <script>
     mermaid.initialize({
       startOnLoad: true,
@@ -189,34 +191,34 @@
           : 'default'
     });
   </script>
-<h1 id="michael-karl-mueller"><strong>Michael Karl Mueller</strong></h1>
-<h1 id="investment-advisor--project-consultant">Investment Advisor / Project Consultant</h1>
+<h3 id="curriculum-vitae"><strong>Curriculum Vitae</strong></h3>
+<h1 id="michael-karl-mueller">Michael Karl Mueller</h1>
+<h2 id="senior-finance--management-consultant-mba--msc-econ"><strong>Senior Finance &amp; Management Consultant (MBA / MSc Econ)</strong></h2>
 <div class="table-responsive"><table>
 <thead>
 <tr>
 <th style="text-align:center">Photo</th>
 <th style="text-align:left">Location</th>
-<th style="text-align:left">Phone</th>
-<th style="text-align:left">Email</th>
+<th style="text-align:left">Cell</th>
+<th style="text-align:left">Contact</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center"><img src="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1763401663/Business_1_Ink_gp8daq.jpg" alt="Profile Photo" width="40"></td>
-<td style="text-align:left">Randpark Ridge (ZA)</td>
+<td style="text-align:left">Johannesburg <br> Randpark Ridge (ZA)</td>
 <td style="text-align:left">+27 (78) 255-4927</td>
-<td style="text-align:left">michael-karl-mueller@outlook.com</td>
+<td style="text-align:left">michael-karl-mueller@outlook.com <br> http://www.linkedin.com/in/mkmsa</td>
 </tr>
 </tbody>
 </table></div>
 <hr>
-<h2 id="employment">Employment</h2>
+<h2 id="professional-experience">Professional Experience</h2>
 <blockquote>
 <p>01.2014 – current<br>
-<strong>Investment Advisor &amp; Project Manager</strong><br>
+<strong>Independent Strategic &amp; Investment Consultant</strong><br>
 <em>Johannesburg, South Africa / Zurich, Switzerland / Frankfurt, Germany</em><br>
-Investment advisor, consultant, project manager, Israeli based fund rating platform, private clients in Germany and Switzerland<br>
-Clients (contract): Magnifi International, private clients, independent investment advisory associations</p>
+Providing Strategic Consulting, Investment Advisory, and Project Management for private clients (Germany/Switzerland) and institutional platforms (Israeli-based fund rating). Focus on portfolio optimization and fund due diligence.</p>
 </blockquote>
 <hr>
 <blockquote>
@@ -247,7 +249,7 @@ Clients: Swiss and international fund providers (Pictet, Lombard Odier, etc.)</p
 <p>07.2005-03.2006<br>
 <strong>Project Manager “Training &amp; Solutions”</strong><br>
 <em>Targetsim AG, Zurich, Switzerland</em><br>
-Project manager (developer) and facilitator at an international operating provider of executive business trainings with financial business simulations<br>
+Project manager (developer) and facilitator at an international operating provider of executive business trainings with financial business simulations
 Clients: Hewlett Packard, Etisalat, UBS, etc.</p>
 </blockquote>
 <hr>
@@ -283,12 +285,12 @@ Thesis: The Market of Television Broadcasting in India</p>
 <blockquote>
 <p>10.1991 – 08.2000<br>
 <strong>Diploma/Master in Economics</strong><br>
-<em>Johannes Gutenberg-University, Mainz, Germany</em>
+<em>Johannes Gutenberg-University, Mainz, Germany</em><br>
 Studying International Economics with a focus on macroeconomics, national and international finance, budgeting of the EU, taxation in Germany<br>
-Thesis: Consideration of Municipal Taxes within the German Income Taxation</p>
+Thesis: Consideration of Municipal Taxes within the German Income Taxation
+<em>I had to temporarily stagger my studies, as I was self-employed</em></p>
 </blockquote>
-<p><em>I had to temporarily stagger my studies, as I was self-employed</em></p>
-<hr>
+<div style="page-break-after: always; visibility: hidden;"></div>
 <h2 id="languages">Languages</h2>
 <blockquote>
 <p>German (native), English (fluent), French (basic)</p>
