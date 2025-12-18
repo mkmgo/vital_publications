@@ -15,19 +15,22 @@
     />
 
     <style>
+      /* 1. GLOBAL SETTINGS */
       body {
         font-family: "Inter", sans-serif;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        /* Smooth transition ensures no "flash" when OS changes theme */
         transition: background-color 0.3s, color 0.3s;
       }
 
+      /* 2. CARD STYLING */
       .bg-white-card {
-        background-color: white;
+        background-color: #ffffff;
         border: 1px solid #e2e8f0;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s, box-shadow 0.2s;
+        transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
         height: 100%;
       }
 
@@ -36,7 +39,12 @@
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
       }
 
-      /* Group Headers */
+      .file-link {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* 3. GROUP HEADERS */
       .category-header {
         border-left: 4px solid #4f46e5;
         padding-left: 1rem;
@@ -44,40 +52,44 @@
         margin-top: 2rem;
       }
 
-      /* LIGHT MODE SETTINGS */
+      /* 4. LIGHT MODE OVERRIDES */
       [data-bs-theme="light"] body {
-        background-color: #f7f9fc; /* Change this for overall BG */
+        background-color: #f7f9fc;
         color: #1e293b;
       }
+
       [data-bs-theme="light"] .custom-footer {
-        background-color: #e2e8f0; /* Softer grey for Light Mode */
-        color: #475569;
+        background-color: #e2e8f0;
+        color: #64748b; /* Slightly darker for better contrast */
         border-top: 1px solid #cbd5e1;
       }
 
-      /* DARK MODE SETTINGS */
+      /* 5. DARK MODE OVERRIDES */
       [data-bs-theme="dark"] body {
-        background-color: #0f172a; /* Deeper dark blue/black */
+        background-color: #0f172a;
         color: #f8f8f8;
       }
-      [data-bs-theme="dark"] .custom-footer {
-        background-color: #1e293b; /* Dark slate for Dark Mode */
-        color: #94a3b8;
-      }
+
       [data-bs-theme="dark"] .bg-white-card {
-        background-color: #2d3748;
-        border-color: #4a5568 !important;
-      }
-      [data-bs-theme="dark"] .text-gray-900 {
-        color: #f8f8f8 !important;
-      }
-      [data-bs-theme="dark"] .text-gray-600 {
-        color: #a0aec0 !important;
+        background-color: #1e293b; /* Adjusted to match your dark footer for harmony */
+        border-color: #334155 !important;
       }
 
-      .file-link {
-        text-decoration: none;
-        color: inherit;
+      [data-bs-theme="dark"] .custom-footer {
+        background-color: #1e293b;
+        color: #94a3b8;
+        border-top: 1px solid #334155;
+      }
+
+      /* Utility class overrides for Dark Mode text */
+      [data-bs-theme="dark"] .text-gray-900,
+      [data-bs-theme="dark"] .text-dark {
+        color: #f8f8f8 !important;
+      }
+
+      [data-bs-theme="dark"] .text-gray-600,
+      [data-bs-theme="dark"] .text-muted {
+        color: #94a3b8 !important;
       }
     </style>
   </head>
@@ -449,10 +461,13 @@
       </section>
     </main>
 
-    <footer class="bg-dark text-white py-4 mt-auto">
+    <footer class="custom-footer py-4 mt-auto">
       <div class="container text-center small">
         <p class="mb-0">
           &copy; <span id="year"></span> Michael K. Mueller. Internal Directory.
+        </p>
+        <p class="mb-0 text-muted">
+          Last Session: <span id="date-stamp"></span>
         </p>
       </div>
     </footer>
