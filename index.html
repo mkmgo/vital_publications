@@ -24,131 +24,181 @@
         transition: background-color 0.3s, color 0.3s;
       }
 
-      .bg-white-card {
-        background-color: white;
-        border: 1px solid #e2e8f0;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s, box-shadow 0.2s;
-        height: 100%;
-      }
-
-      .bg-white-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      }
-
       .file-link {
         text-decoration: none;
         color: inherit;
       }
 
+      .bg-white-card {
+        background-color: white;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        position: relative; /* Essential for overlay alignment */
+      }
+
+      /* Universal Hover Effect for all cards (Normal and Image) */
+      .bg-white-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.2);
+      }
+
       .category-header {
-        border-left: 4px solid #94a3b8; /* Default Neutral Grey */
+        border-left: 4px solid #94a3b8;
         padding-left: 1rem;
         margin-bottom: 1.5rem;
         margin-top: 2rem;
       }
 
-      /* --- 2. THEME SETTINGS (Light/Dark Defaults) --- */
+      /* --- 2. THEME SETTINGS --- */
       [data-bs-theme="light"] body {
         background-color: #f7f9fc;
         color: #1e293b;
-      }
-      [data-bs-theme="light"] .custom-footer {
-        background-color: #e2e8f0;
-        color: #64748b;
-        border-top: 1px solid #cbd5e1;
       }
 
       [data-bs-theme="dark"] body {
         background-color: #0f172a;
         color: #f8f8f8;
       }
+
       [data-bs-theme="dark"] .bg-white-card {
         background-color: #1e293b;
         border-color: #334155 !important;
       }
-      [data-bs-theme="dark"] .custom-footer {
-        background-color: #1e293b;
-        color: #94a3b8;
-        border-top: 1px solid #334155;
-      }
 
       /* --- 3. ATOMIC COLOR PACKAGES --- */
-      /* Grouping by color makes it easier to update everything at once */
-
-      /* BLUE */
       .border-blue {
         border-color: #0d6efd !important;
       }
       .header-blue {
         border-left-color: #0d6efd !important;
       }
-      [data-bs-theme="light"] .bg-tint-blue {
-        background-color: #eff6ff !important;
-      }
-      [data-bs-theme="dark"] .bg-tint-blue {
-        background-color: #1e3a8a !important;
-      }
-      [data-bs-theme="dark"] .border-blue,
-      [data-bs-theme="dark"] .header-blue {
-        border-color: #3b82f6 !important;
-      }
 
-      /* GREEN */
       .border-green {
         border-color: #198754 !important;
       }
       .header-green {
         border-left-color: #198754 !important;
       }
-      [data-bs-theme="light"] .bg-tint-green {
-        background-color: #f0fff4 !important;
-      }
-      [data-bs-theme="dark"] .bg-tint-green {
-        background-color: #064e3b !important;
-      }
-      [data-bs-theme="dark"] .border-green,
-      [data-bs-theme="dark"] .header-green {
-        border-color: #4ade80 !important;
-      }
 
-      /* INDIGO */
       .border-indigo {
         border-color: #6610f2 !important;
       }
       .header-indigo {
         border-left-color: #6610f2 !important;
       }
-      [data-bs-theme="light"] .bg-tint-indigo {
-        background-color: #f5f3ff !important;
-      }
-      [data-bs-theme="dark"] .bg-tint-indigo {
-        background-color: #312e81 !important;
-      }
-      [data-bs-theme="dark"] .border-indigo,
-      [data-bs-theme="dark"] .header-indigo {
-        border-color: #a78bfa !important;
-      }
 
-      /* AMBER */
       .border-amber {
         border-color: #f59e0b !important;
+        border-width: 2px !important;
       }
       .header-amber {
         border-left-color: #f59e0b !important;
       }
-      [data-bs-theme="dark"] .border-amber,
-      [data-bs-theme="dark"] .header-amber {
+
+      /* Dark Mode Overrides for Colors */
+      [data-bs-theme="dark"] .border-blue {
+        border-color: #3b82f6 !important;
+      }
+      [data-bs-theme="dark"] .border-green {
+        border-color: #4ade80 !important;
+      }
+      [data-bs-theme="dark"] .border-indigo {
+        border-color: #a78bfa !important;
+      }
+      [data-bs-theme="dark"] .border-amber {
         border-color: #fbbf24 !important;
       }
 
-      /* GREY / NEUTRAL */
-      .border-grey {
-        border-color: #adb5bd !important;
+      /* --- 4. TOP TITLE & BADGE ALIGNMENT --- */
+      .d-inline-flex.align-items-center {
+        line-height: 1.1;
+        gap: 12px;
       }
-      .header-grey {
-        border-left-color: #adb5bd !important;
+
+      .date-stamp-badge {
+        font-weight: 500 !important;
+        padding: 0.4em 0.8em !important;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      /* --- 5. IMAGE TILE READABILITY & OVERLAYS --- */
+
+      /* The "Glass" Layer */
+      .bg-dark.opacity-75 {
+        opacity: 0.75 !important;
+        background-color: #000000 !important;
+      }
+
+      /* Text Layering */
+      .z-index-1 {
+        z-index: 1;
+        position: relative;
+      }
+
+      .text-white {
+        color: #ffffff !important;
+      }
+
+      .text-white-50 {
+        color: rgba(255, 255, 255, 0.8) !important;
+      }
+
+      .text-shadow-sm {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+      }
+
+      /* Adjustments for Image Tiles specifically */
+      [style*="background"] .text-white-50 {
+        font-weight: 400;
+      }
+      /* --- THEME-AWARE IMAGE TILES --- */
+
+      /* 1. The Overlay Layer */
+      .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: background-color 0.3s ease;
+      }
+
+      /* 2. Light Mode Settings: White Glass + Dark Text */
+      [data-bs-theme="light"] .card-overlay {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.85
+        ) !important; /* Light frost effect */
+      }
+      [data-bs-theme="light"] .tile-title {
+        color: #1e293b !important;
+      }
+      [data-bs-theme="light"] .tile-text {
+        color: #475569 !important;
+      }
+
+      /* 3. Dark Mode Settings: Dark Glass + White Text */
+      [data-bs-theme="dark"] .card-overlay {
+        background-color: rgba(0, 0, 0, 0.75) !important; /* Dark tint */
+      }
+      [data-bs-theme="dark"] .tile-title {
+        color: #ffffff !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      [data-bs-theme="dark"] .tile-text {
+        color: rgba(255, 255, 255, 0.8) !important;
+      }
+
+      /* Ensure content stays on top */
+      .z-index-1 {
+        z-index: 1;
+        position: relative;
       }
     </style>
   </head>
@@ -174,20 +224,69 @@
       >
         <a
           href="index.html"
-          class="fs-3 fw-bolder text-decoration-none text-gray-900"
+          class="fs-3 fw-bolder text-decoration-none text-gray-900 d-inline-flex align-items-center"
         >
-          Michael K. Mueller
-          <span class="badge bg-secondary ms-2 fs-6">Internal Hub</span>
+          <span class="badge bg-secondary fs-6 date-stamp-badge"> Home </span>
+
+          Dashboard
         </a>
       </header>
 
       <section id="directory">
-        <h1 class="fw-bolder mb-4">Internal File Directory</h1>
+        <h1 class="fw-bolder mb-4">Activities & Projects</h1>
         <p class="text-gray-600 mb-5">
-          Quick access to all localized project pages and documentation.
+          Quick access to all activties, project pages and documentation.
         </p>
+        <div class="category-header header-amber">
+          <h2 class="fs-4 fw-bold">Tsholo</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <a
+              href="https://forms.gle/gwHhZnjjPrN5r8Yw6"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="file-link text-decoration-none"
+            >
+              <div
+                class="p-4 rounded-3 bg-white-card border-amber position-relative overflow-hidden h-100"
+                style="
+                  background: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766073589/Profile_Cover_cgzt6s.jpg') center/cover no-repeat;
+                  min-height: 200px;
+                "
+              >
+                <div class="card-overlay"></div>
+
+                <div class="position-relative z-index-1 tile-content">
+                  <h3 class="fs-5 fw-bold mb-2 tile-title">
+                    Integrated Competence Discovery
+                  </h3>
+                  <p class="small mb-0 tile-text">
+                    This deep-dive analysis moves beyond a CV to capture the
+                    complete comprehensive profile.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a
+              href="doc_integrated_competence_profile_resp.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="file-link"
+            >
+              <div class="p-4 rounded-3 bg-white-card border-amber">
+                <h3 class="fs-5 fw-bold mb-2">Generate Competence Profile</h3>
+                <p class="text-gray-600 small mb-0">
+                  Integrated competence profile for Tsholo.
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
         <div class="category-header">
-          <h2 class="fs-4 fw-bold">Professional Documents</h2>
+          <h2 class="fs-4 fw-bold">Application Documents</h2>
         </div>
         <div class="row g-4">
           <div class="col-md-6">
@@ -219,7 +318,6 @@
             </a>
           </div>
         </div>
-
         <div class="category-header">
           <h2 class="fs-4 fw-bold">Financial & Integration</h2>
         </div>
@@ -256,7 +354,7 @@
           </div>
         </div>
 
-        <div class="category-header header-green">
+        <div class="category-header">
           <h2 class="fs-4 fw-bold">Topics & Essays</h2>
         </div>
         <div class="row g-4 mb-5">
@@ -267,7 +365,7 @@
               rel="noopener noreferrer"
               class="file-link"
             >
-              <div class="p-4 rounded-3 bg-white-card border-green border-4">
+              <div class="p-4 rounded-3 bg-white-card">
                 <h3 class="fs-5 fw-bold mb-2">Stoicism</h3>
                 <p class="text-gray-600 small mb-0">
                   Reflections and articles on Stoic philosophy.
