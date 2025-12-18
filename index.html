@@ -15,22 +15,20 @@
     />
 
     <style>
-      /* 1. GLOBAL SETTINGS */
+      /* --- 1. GLOBAL STRUCTURE & BASE CARD --- */
       body {
         font-family: "Inter", sans-serif;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        /* Smooth transition ensures no "flash" when OS changes theme */
         transition: background-color 0.3s, color 0.3s;
       }
 
-      /* 2. CARD STYLING */
       .bg-white-card {
-        background-color: #ffffff;
+        background-color: white;
         border: 1px solid #e2e8f0;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+        transition: transform 0.2s, box-shadow 0.2s;
         height: 100%;
       }
 
@@ -44,52 +42,113 @@
         color: inherit;
       }
 
-      /* 3. GROUP HEADERS */
       .category-header {
-        border-left: 4px solid #4f46e5;
+        border-left: 4px solid #94a3b8; /* Default Neutral Grey */
         padding-left: 1rem;
         margin-bottom: 1.5rem;
         margin-top: 2rem;
       }
 
-      /* 4. LIGHT MODE OVERRIDES */
+      /* --- 2. THEME SETTINGS (Light/Dark Defaults) --- */
       [data-bs-theme="light"] body {
         background-color: #f7f9fc;
         color: #1e293b;
       }
-
       [data-bs-theme="light"] .custom-footer {
         background-color: #e2e8f0;
-        color: #64748b; /* Slightly darker for better contrast */
+        color: #64748b;
         border-top: 1px solid #cbd5e1;
       }
 
-      /* 5. DARK MODE OVERRIDES */
       [data-bs-theme="dark"] body {
         background-color: #0f172a;
         color: #f8f8f8;
       }
-
       [data-bs-theme="dark"] .bg-white-card {
-        background-color: #1e293b; /* Adjusted to match your dark footer for harmony */
+        background-color: #1e293b;
         border-color: #334155 !important;
       }
-
       [data-bs-theme="dark"] .custom-footer {
         background-color: #1e293b;
         color: #94a3b8;
         border-top: 1px solid #334155;
       }
 
-      /* Utility class overrides for Dark Mode text */
-      [data-bs-theme="dark"] .text-gray-900,
-      [data-bs-theme="dark"] .text-dark {
-        color: #f8f8f8 !important;
+      /* --- 3. ATOMIC COLOR PACKAGES --- */
+      /* Grouping by color makes it easier to update everything at once */
+
+      /* BLUE */
+      .border-blue {
+        border-color: #0d6efd !important;
+      }
+      .header-blue {
+        border-left-color: #0d6efd !important;
+      }
+      [data-bs-theme="light"] .bg-tint-blue {
+        background-color: #eff6ff !important;
+      }
+      [data-bs-theme="dark"] .bg-tint-blue {
+        background-color: #1e3a8a !important;
+      }
+      [data-bs-theme="dark"] .border-blue,
+      [data-bs-theme="dark"] .header-blue {
+        border-color: #3b82f6 !important;
       }
 
-      [data-bs-theme="dark"] .text-gray-600,
-      [data-bs-theme="dark"] .text-muted {
-        color: #94a3b8 !important;
+      /* GREEN */
+      .border-green {
+        border-color: #198754 !important;
+      }
+      .header-green {
+        border-left-color: #198754 !important;
+      }
+      [data-bs-theme="light"] .bg-tint-green {
+        background-color: #f0fff4 !important;
+      }
+      [data-bs-theme="dark"] .bg-tint-green {
+        background-color: #064e3b !important;
+      }
+      [data-bs-theme="dark"] .border-green,
+      [data-bs-theme="dark"] .header-green {
+        border-color: #4ade80 !important;
+      }
+
+      /* INDIGO */
+      .border-indigo {
+        border-color: #6610f2 !important;
+      }
+      .header-indigo {
+        border-left-color: #6610f2 !important;
+      }
+      [data-bs-theme="light"] .bg-tint-indigo {
+        background-color: #f5f3ff !important;
+      }
+      [data-bs-theme="dark"] .bg-tint-indigo {
+        background-color: #312e81 !important;
+      }
+      [data-bs-theme="dark"] .border-indigo,
+      [data-bs-theme="dark"] .header-indigo {
+        border-color: #a78bfa !important;
+      }
+
+      /* AMBER */
+      .border-amber {
+        border-color: #f59e0b !important;
+      }
+      .header-amber {
+        border-left-color: #f59e0b !important;
+      }
+      [data-bs-theme="dark"] .border-amber,
+      [data-bs-theme="dark"] .header-amber {
+        border-color: #fbbf24 !important;
+      }
+
+      /* GREY / NEUTRAL */
+      .border-grey {
+        border-color: #adb5bd !important;
+      }
+      .header-grey {
+        border-left-color: #adb5bd !important;
       }
     </style>
   </head>
@@ -111,11 +170,11 @@
   <body class="d-flex flex-column">
     <main class="flex-grow-1 container px-4 px-sm-5 py-5">
       <header
-        class="d-flex justify-content-between align-items-center py-4 border-bottom mb-5"
+        class="d-flex justify-content-between align-items-center py-4 border-bottom mb-5 border-secondary-subtle border-2"
       >
         <a
           href="index.html"
-          class="fs-4 fw-bolder text-decoration-none text-gray-900"
+          class="fs-3 fw-bolder text-decoration-none text-gray-900"
         >
           Michael K. Mueller
           <span class="badge bg-secondary ms-2 fs-6">Internal Hub</span>
@@ -197,7 +256,7 @@
           </div>
         </div>
 
-        <div class="category-header">
+        <div class="category-header header-green">
           <h2 class="fs-4 fw-bold">Topics & Essays</h2>
         </div>
         <div class="row g-4 mb-5">
@@ -208,9 +267,7 @@
               rel="noopener noreferrer"
               class="file-link"
             >
-              <div
-                class="p-4 rounded-3 bg-white-card border-top border-primary border-4"
-              >
+              <div class="p-4 rounded-3 bg-white-card border-green border-4">
                 <h3 class="fs-5 fw-bold mb-2">Stoicism</h3>
                 <p class="text-gray-600 small mb-0">
                   Reflections and articles on Stoic philosophy.
@@ -465,9 +522,6 @@
       <div class="container text-center small">
         <p class="mb-0">
           &copy; <span id="year"></span> Michael K. Mueller. Internal Directory.
-        </p>
-        <p class="mb-0 text-muted">
-          Last Session: <span id="date-stamp"></span>
         </p>
       </div>
     </footer>
