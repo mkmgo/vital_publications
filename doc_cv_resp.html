@@ -1,321 +1,442 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Document - Blue Theme</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        /* 1. Color Palettes & Dark Mode */
+      /* 1. Color Palettes & Dark Mode */
+      :root {
+        /* Light Mode Defaults */
+        --bg-page: #ffffff;
+        --bg-card: #f9fafb;
+        --text-main: #1f2937;
+        --text-secondary: #4b5563;
+        --accent-main: #3b82f6; /* Uses selected accent color */
+        --accent-bg: #ebf8ff; /* Uses selected accent background */
+      }
+
+      @media (prefers-color-scheme: dark) {
         :root {
-            /* Light Mode Defaults */
-            --bg-page: #ffffff;
-            --bg-card: #f9fafb;
-            --text-main: #1f2937;
-            --text-secondary: #4b5563;
-            --accent-main: #3b82f6; /* Uses selected accent color */
-            --accent-bg: #EBF8FF; /* Uses selected accent background */
+          /* Dark Mode Overrides */
+          --bg-page: #1a1c1e;
+          --bg-card: #282e38;
+          --text-main: #e2e2e6;
+          --text-secondary: #d1d5db;
+          --accent-main: #404247; /* Uses selected dark accent color */
+          --accent-bg: #23262e  ; /* Uses selected dark accent background */
         }
+      }
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                /* Dark Mode Overrides */
-                --bg-page: #bd5308;
-                --bg-card: #282e38;
-                --text-main: #d8e0e8;
-                --text-secondary: #d1d5db;
-                --accent-main: #3e4553; /* Uses selected dark accent color */
-                --accent-bg: #333a42; /* Uses selected dark accent background */
-            }
-        }
+      /* 2. Global Resets and Aesthetics */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-        /* 2. Global Resets and Aesthetics */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-page);
+        color: var(--text-main);
+        line-height: 1.6;
+        transition: background-color 0.3s, color 0.3s;
+        padding: 20px 5px;
+      }
 
+      /* 3. Main Content Wrapper */
+      .content-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: var(--bg-card);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        position: relative;
+        /* Accent Borders */
+        border-left: 4px solid var(--accent-main);
+        border-right: 4px solid var(--accent-main);
+        overflow: hidden;
+      }
+
+      /* 4. Markdown Element Styling & Responsiveness */
+      .content-wrapper > * {
+        padding: 0 10px;
+      }
+
+      /* Headers */
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--text-main);
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+      h1 {
+        font-size: 2.2em;
+        border-bottom: 2px solid var(--accent-bg);
+        padding-bottom: 5px;
+      }
+      h2 {
+        font-size: 1.8em;
+      }
+      h3 {
+        font-size: 1.4em;
+      }
+
+      /* Links */
+      a {
+        color: var(--accent-main);
+        text-decoration: underline;
+        text-decoration-color: var(--accent-main);
+        transition: color 0.2s, text-decoration-color 0.2s;
+      }
+      a:hover {
+        color: var(--accent-main);
+        text-decoration-color: transparent;
+      }
+
+      /* Blockquotes */
+      blockquote {
+        border-left: 5px solid var(--accent-main);
+        padding: 10px 20px;
+        margin: 1.5em 10px;
+        background-color: var(--accent-bg);
+        color: var(--text-main);
+        border-radius: 4px;
+      }
+      blockquote em,
+      blockquote i {
+        font-style: italic;
+      }
+      blockquote strong,
+      blockquote b {
+        font-weight: 700;
+      }
+
+      /* Images (CRITICAL FOR MOBILE) */
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+        margin: 1.5em auto;
+        object-fit: contain;
+        max-width: calc(100% - 20px);
+      }
+
+      /* Tables */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+        min-width: 600px;
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--text-secondary);
+      }
+      th {
+        background-color: var(--accent-bg);
+        color: var(--text-main);
+        font-weight: 600;
+      }
+
+      /* Responsive Table Wrapper */
+      .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 1.5em 0;
+        padding: 0;
+      }
+      .table-responsive table {
+        width: 100%;
+      }
+
+      /* Code blocks */
+      pre {
+        background-color: var(--bg-card);
+        border: 1px solid var(--text-secondary);
+        padding: 10px;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin: 1.5em 10px;
+        font-size: 0.9em;
+      }
+      code {
+        font-family: Consolas, Monaco, monospace;
+      }
+
+      /* 5. Mobile Adjustments */
+      @media (max-width: 600px) {
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-page);
-            color: var(--text-main);
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-            padding: 20px 5px;
+          padding: 5px;
         }
-
-        /* 3. Main Content Wrapper */
         .content-wrapper {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: var(--bg-card);
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            position: relative;
-            /* Accent Borders */
-            border-left: 4px solid var(--accent-main); 
-            border-right: 4px solid var(--accent-main);
-            overflow: hidden; 
+          padding: 10px 0;
+          border-left-width: 2px;
+          border-right-width: 2px;
+          box-shadow: none;
+          border-radius: 0;
         }
-        
-        /* 4. Markdown Element Styling & Responsiveness */
         .content-wrapper > * {
-             padding: 0 10px; 
+          padding: 0 15px;
         }
-
-        /* Headers */
-        h1, h2, h3, h4 {
-            color: var(--text-main);
-            margin-top: 1.5em;
-            margin-bottom: 0.5em;
-            font-weight: 700;
-            line-height: 1.2;
+        h1 {
+          font-size: 1.6em;
         }
-        h1 { font-size: 2.2em; border-bottom: 2px solid var(--accent-bg); padding-bottom: 5px; }
-        h2 { font-size: 1.8em; }
-        h3 { font-size: 1.4em; }
-        
-        /* Links */
-        a {
-            color: var(--accent-main);
-            text-decoration: underline;
-            text-decoration-color: var(--accent-main);
-            transition: color 0.2s, text-decoration-color 0.2s;
+        h2 {
+          font-size: 1.4em;
         }
-        a:hover {
-            color: var(--accent-main);
-            text-decoration-color: transparent; 
-        }
-
-        /* Blockquotes */
-        blockquote {
-            border-left: 5px solid var(--accent-main); 
-            padding: 10px 20px;
-            margin: 1.5em 10px;
-            background-color: var(--accent-bg); 
-            color: var(--text-main);
-            border-radius: 4px;
-        }
-        blockquote em, blockquote i { font-style: italic; }
-        blockquote strong, blockquote b { font-weight: 700; }
-
-
-        /* Images (CRITICAL FOR MOBILE) */
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block; 
-            border-radius: 8px;
-            margin: 1.5em auto;
-            object-fit: contain;
-            max-width: calc(100% - 20px); 
-        }
-        
-        /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 0;
-            min-width: 600px;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid var(--text-secondary);
-        }
-        th {
-            background-color: var(--accent-bg);
-            color: var(--text-main);
-            font-weight: 600;
-        }
-        
-        /* Responsive Table Wrapper */
-        .table-responsive {
-            overflow-x: auto; 
-            -webkit-overflow-scrolling: touch;
-            margin: 1.5em 0;
-            padding: 0; 
-        }
-        .table-responsive table {
-            width: 100%; 
-        }
-
-        /* Code blocks */
-        pre {
-            background-color: var(--bg-card);
-            border: 1px solid var(--text-secondary);
-            padding: 10px;
-            border-radius: 6px;
-            overflow-x: auto;
-            margin: 1.5em 10px;
-            font-size: 0.9em;
-        }
-        code {
-            font-family: Consolas, Monaco, monospace;
-        }
-        
-        /* 5. Mobile Adjustments */
-        @media (max-width: 600px) {
-            body {
-                padding: 5px; 
-            }
-            .content-wrapper {
-                padding: 10px 0;
-                border-left-width: 2px;
-                border-right-width: 2px;
-                box-shadow: none;
-                border-radius: 0;
-            }
-            .content-wrapper > * {
-                 padding: 0 15px; 
-            }
-            h1 { font-size: 1.6em; }
-            h2 { font-size: 1.4em; }
-        }
-
+      }
     </style>
 
     <meta property="og:title" content="CV M.K.Mueller" />
-    <meta property="og:description" content="CV including academic background and professional experience" />
-    <meta property="og:image" content="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765806644/doc_bvi9zu.png" />
+    <meta
+      property="og:description"
+      content="CV including academic background and professional experience"
+    />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765806644/doc_bvi9zu.png"
+    />
     <meta property="og:url" content="" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="CV M.K.Mueller" />
-    <meta name="twitter:description" content="CV including academic background and professional experience" />
-    <meta name="twitter:image" content="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765806644/doc_bvi9zu.png" />
-</head>
-<body>
-    <div class="content-wrapper">
-        <div class="content-wrapper">
+    <meta
+      name="twitter:description"
+      content="CV including academic background and professional experience"
+    />
+    <meta
+      name="twitter:image"
+      content="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765806644/doc_bvi9zu.png"
+    />
+  </head>
+  <body>
+
+      <div class="content-wrapper">
         <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
-    });
-  </script>
-<h3 id="curriculum-vitae"><strong>Curriculum Vitae</strong></h3>
-<h1 id="michael-karl-mueller">Michael Karl Mueller</h1>
-<h2 id="senior-finance--management-consultant-mba--msc-econ"><strong>Senior Finance &amp; Management Consultant (MBA / MSc Econ)</strong></h2>
-<div class="table-responsive"><div class="table-responsive"><table>
-<thead>
-<tr>
-<th style="text-align:center">Photo</th>
-<th style="text-align:left">Location</th>
-<th style="text-align:left">Cell</th>
-<th style="text-align:left">Contact</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1763401663/Business_1_Ink_gp8daq.jpg" alt="Profile Photo" width="40"></td>
-<td style="text-align:left">Johannesburg <br> Randpark Ridge (ZA)</td>
-<td style="text-align:left">+27 (78) 255-4927</td>
-<td style="text-align:left">michael-karl-mueller@outlook.com <br> http://www.linkedin.com/in/mkmsa</td>
-</tr>
-</tbody>
-</table></div></div>
-<hr>
-<h2 id="professional-experience">Professional Experience</h2>
-<blockquote>
-<p>01.2014 – current<br>
-<strong>Independent Strategic &amp; Investment Consultant</strong><br>
-<em>Johannesburg, South Africa / Zurich, Switzerland / Frankfurt, Germany</em><br>
-Providing Strategic Consulting, Investment Advisory, and Project Management for private clients (Germany/Switzerland) and institutional platforms (Israeli-based fund rating). Focus on portfolio optimization and fund due diligence.</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>01.2013 - 11.2013<br>
-<strong>Project Manager eDocument Management</strong><br>
-<em>fundinfo AG, Zurich, Switzerland (now FE fundinfo)</em><br>
-Project manager in operations for an internationally leading platform for mutual funds, fund data and fund documentation<br>
-Clients: Swiss and international fund providers</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>1.2009 - 12.2012<br>
-<strong>Analyst Fund Selection &amp; Asset Management</strong><br>
-<em>ifund services AG, Zurich, Switzerland (Independent Fund Research Provider)</em><br>
-Fund and fund manager selection, operations, fund monitoring, portfolio management of fund-based mandates, performance calculation/attribution, peer group analysis, performance data management, reporting &amp; fact sheets, member investment committee<br>
-Clients: Swiss family offices, Swiss cantonal banks, private banks, pension funds</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>04.2006 - 12.2008<br>
-<strong>Head Document Management</strong><br>
-<em>fundinfo AG, Zurich, Switzerland (now FE fundinfo)</em><br>
-Set up and managed a team of 4 people, operations, process optimization and relationship management. Proxy of CEO.<br>
-Clients: Swiss and international fund providers (Pictet, Lombard Odier, etc.)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>07.2005-03.2006<br>
-<strong>Project Manager “Training &amp; Solutions”</strong><br>
-<em>Targetsim AG, Zurich, Switzerland</em><br>
-Project manager (developer) and facilitator at an international operating provider of executive business trainings with financial business simulations
-Clients: Hewlett Packard, Etisalat, UBS, etc.</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>03.2001-10.2003<br>
-<strong>Accounting Clerk Commodities and Foreign Currencies</strong><br>
-<em>Deutsche Bank AG, Frankfurt, Germany</em></p>
-</blockquote>
-<hr>
-<blockquote>
-<p>01.1999-09.2004<br>
-<strong>Lecturer in Economics</strong><br>
-<em>Repetitorium, Mainz, Germany</em><br>
-Performing preparatory courses for students of the University of Mainz in economics and taxation, documentation / test exams for course participants.</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>07.1990-06.1991<br>
-<strong>Procurement Manager international Payment Transactions</strong><br>
-<em>Deutsche Bank AG, Frankfurt, Germany</em><br>
-I was a member of the “Swiss Banking” Team and managed DEM accounts for Swiss Banks.</p>
-</blockquote>
-<hr>
-<h2 id="education">Education</h2>
-<blockquote>
-<p>10.2003 – 09.2004<br>
-<strong>European Management MBA (Full Time)</strong><br>
-<em>European Institute for Advanced Behavioural Management, Saarbrucken, Germany</em><br>
-International MBA programme with modules in business, economics and law<br>
-Thesis: The Market of Television Broadcasting in India</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>10.1991 – 08.2000<br>
-<strong>Diploma/Master in Economics</strong><br>
-<em>Johannes Gutenberg-University, Mainz, Germany</em><br>
-Studying International Economics with a focus on macroeconomics, national and international finance, budgeting of the EU, taxation in Germany<br>
-Thesis: Consideration of Municipal Taxes within the German Income Taxation
-<em>I had to temporarily stagger my studies, as I was self-employed</em></p>
-</blockquote>
-<div style="page-break-after: always; visibility: hidden;"></div>
-<h2 id="languages">Languages</h2>
-<blockquote>
-<p>German (native), English (fluent), French (basic)</p>
-</blockquote>
-<hr>
-<h2 id="computer-literacy-and-tools">Computer literacy and tools</h2>
-<blockquote>
-<p>MS Excel, Word, PowerPoint, Access, Airtable, Notion, Setup interfaces with Data Providers, LLMs, Prompt Engineering, Workflow Automation</p>
-</blockquote>
-<hr>
-<h2 id="activities">Activities</h2>
-<blockquote>
-<p>Travelling, reading, cooking, running (half-marathon level), horse riding</p>
-</blockquote>
+          mermaid.initialize({
+            startOnLoad: true,
+            theme:
+              document.body.classList.contains("vscode-dark") ||
+              document.body.classList.contains("vscode-high-contrast")
+                ? "dark"
+                : "default",
+          });
+        </script>
+        <h3 id="curriculum-vitae"><strong>Curriculum Vitae</strong></h3>
+        <h1 id="michael-karl-mueller">Michael Karl Mueller</h1>
+        <h2 id="senior-finance--management-consultant-mba--msc-econ">
+          <strong
+            >Senior Finance &amp; Management Consultant (MBA / MSc Econ)</strong
+          >
+        </h2>
+        <div class="table-responsive">
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th style="text-align: center">Photo</th>
+                  <th style="text-align: left">Location</th>
+                  <th style="text-align: left">Cell</th>
+                  <th style="text-align: left">Contact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align: center">
+                    <img
+                      src="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1763401663/Business_1_Ink_gp8daq.jpg"
+                      alt="Profile Photo"
+                      width="40"
+                    />
+                  </td>
+                  <td style="text-align: left">
+                    Johannesburg <br />
+                    Randpark Ridge (ZA)
+                  </td>
+                  <td style="text-align: left">+27 (78) 255-4927</td>
+                  <td style="text-align: left">
+                    michael-karl-mueller@outlook.com <br />
+                    http://www.linkedin.com/in/mkmsa
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <hr />
+        <h2 id="professional-experience">Professional Experience</h2>
+        <blockquote>
+          <p>
+            01.2014 – current<br />
+            <strong>Independent Strategic &amp; Investment Consultant</strong
+            ><br />
+            <em
+              >Johannesburg, South Africa / Zurich, Switzerland / Frankfurt,
+              Germany</em
+            ><br />
+            Providing Strategic Consulting, Investment Advisory, and Project
+            Management for private clients (Germany/Switzerland) and
+            institutional platforms (Israeli-based fund rating). Focus on
+            portfolio optimization and fund due diligence.
+          </p>
+        </blockquote>
+        <hr />
+        <blockquote>
+          <p>
+            01.2013 - 11.2013<br />
+            <strong>Project Manager eDocument Management</strong><br />
+            <em>fundinfo AG, Zurich, Switzerland (now FE fundinfo)</em><br />
+            Project manager in operations for an internationally leading
+            platform for mutual funds, fund data and fund documentation<br />
+            Clients: Swiss and international fund providers
+          </p>
+        </blockquote>
+        <hr />
+        <blockquote>
+          <p>
+            1.2009 - 12.2012<br />
+            <strong>Analyst Fund Selection &amp; Asset Management</strong><br />
+            <em
+              >ifund services AG, Zurich, Switzerland (Independent Fund Research
+              Provider)</em
+            ><br />
+            Fund and fund manager selection, operations, fund monitoring,
+            portfolio management of fund-based mandates, performance
+            calculation/attribution, peer group analysis, performance data
+            management, reporting &amp; fact sheets, member investment
+            committee<br />
+            Clients: Swiss family offices, Swiss cantonal banks, private banks,
+            pension funds
+          </p>
+        </blockquote>
+        <hr />
+        <blockquote>
+          <p>
+            04.2006 - 12.2008<br />
+            <strong>Head Document Management</strong><br />
+            <em>fundinfo AG, Zurich, Switzerland (now FE fundinfo)</em><br />
+            Set up and managed a team of 4 people, operations, process
+            optimization and relationship management. Proxy of CEO.<br />
+            Clients: Swiss and international fund providers (Pictet, Lombard
+            Odier, etc.)
+          </p>
+        </blockquote>
+        <hr />
+        <blockquote>
+          <p>
+            07.2005-03.2006<br />
+            <strong>Project Manager “Training &amp; Solutions”</strong><br />
+            <em>Targetsim AG, Zurich, Switzerland</em><br />
+            Project manager (developer) and facilitator at an international
+            operating provider of executive business trainings with financial
+            business simulations Clients: Hewlett Packard, Etisalat, UBS, etc.
+          </p>
+        </blockquote>
+        <hr />
+        <blockquote>
+          <p>
+            03.2001-10.2003<br />
+            <strong>Accounting Clerk Commodities and Foreign Currencies</strong
+            ><br />
+            <em>Deutsche Bank AG, Frankfurt, Germany</em>
+          </p>
+        </blockquote>
+        <hr />
+        <blockquote>
+          <p>
+            01.1999-09.2004<br />
+            <strong>Lecturer in Economics</strong><br />
+            <em>Repetitorium, Mainz, Germany</em><br />
+            Performing preparatory courses for students of the University of
+            Mainz in economics and taxation, documentation / test exams for
+            course participants.
+          </p>
+        </blockquote>
+        <hr />
+        <blockquote>
+          <p>
+            07.1990-06.1991<br />
+            <strong
+              >Procurement Manager international Payment Transactions</strong
+            ><br />
+            <em>Deutsche Bank AG, Frankfurt, Germany</em><br />
+            I was a member of the “Swiss Banking” Team and managed DEM accounts
+            for Swiss Banks.
+          </p>
+        </blockquote>
+        <hr />
+        <h2 id="education">Education</h2>
+        <blockquote>
+          <p>
+            10.2003 – 09.2004<br />
+            <strong>European Management MBA (Full Time)</strong><br />
+            <em
+              >European Institute for Advanced Behavioural Management,
+              Saarbrucken, Germany</em
+            ><br />
+            International MBA programme with modules in business, economics and
+            law<br />
+            Thesis: The Market of Television Broadcasting in India
+          </p>
+        </blockquote>
+        <hr />
+        <blockquote>
+          <p>
+            10.1991 – 08.2000<br />
+            <strong>Diploma/Master in Economics</strong><br />
+            <em>Johannes Gutenberg-University, Mainz, Germany</em><br />
+            Studying International Economics with a focus on macroeconomics,
+            national and international finance, budgeting of the EU, taxation in
+            Germany<br />
+            Thesis: Consideration of Municipal Taxes within the German Income
+            Taxation
+            <em
+              >I had to temporarily stagger my studies, as I was
+              self-employed</em
+            >
+          </p>
+        </blockquote>
+        <div style="page-break-after: always; visibility: hidden"></div>
+        <h2 id="languages">Languages</h2>
+        <blockquote>
+          <p>German (native), English (fluent), French (basic)</p>
+        </blockquote>
+        <hr />
+        <h2 id="computer-literacy-and-tools">Computer literacy and tools</h2>
+        <blockquote>
+          <p>
+            MS Excel, Word, PowerPoint, Access, Airtable, Notion, Setup
+            interfaces with Data Providers, LLMs, Prompt Engineering, Workflow
+            Automation
+          </p>
+        </blockquote>
+        <hr />
+        <h2 id="activities">Activities</h2>
+        <blockquote>
+          <p>
+            Travelling, reading, cooking, running (half-marathon level), horse
+            riding
+          </p>
+        </blockquote>
+      
     </div>
-    </div>
-</body>
+  </body>
 </html>
