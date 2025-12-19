@@ -45,7 +45,100 @@
         color: inherit;
       }
 
-      /* --- HEADLINES --- */
+      /* --- 1. BORDERS (Color & Thickness) --- */
+      .bw-0 {
+        border-width: 0px !important;
+      }
+      .bw-1 {
+        border-width: 1px !important;
+      }
+      .bw-2 {
+        border-width: 2px !important;
+      }
+      .bw-3 {
+        border-width: 3px !important;
+      }
+
+      .border-blue {
+        border-color: var(--clr-blue) !important;
+      }
+      .border-green {
+        border-color: var(--clr-green) !important;
+      }
+      .border-indigo {
+        border-color: var(--clr-indigo) !important;
+      }
+      .border-amber {
+        border-color: var(--clr-amber) !important;
+      }
+      .border-grey {
+        border-color: var(--clr-grey) !important;
+      }
+
+      /* --- 2. SOFT TINTS (Mapped for all colors) --- */
+      /* Light Mode (4% Opacity) */
+      .soft-tint-blue {
+        background-color: rgba(13, 110, 253, 0.04) !important;
+      }
+      .soft-tint-green {
+        background-color: rgba(25, 135, 84, 0.04) !important;
+      }
+      .soft-tint-indigo {
+        background-color: rgba(102, 16, 242, 0.04) !important;
+      }
+      .soft-tint-amber {
+        background-color: rgba(245, 158, 11, 0.04) !important;
+      }
+      .soft-tint-grey {
+        background-color: rgba(100, 116, 139, 0.04) !important;
+      }
+
+      /* Dark Mode (8% Opacity) */
+      [data-bs-theme="dark"] .soft-tint-blue {
+        background-color: rgba(13, 110, 253, 0.08) !important;
+      }
+      [data-bs-theme="dark"] .soft-tint-green {
+        background-color: rgba(25, 135, 84, 0.08) !important;
+      }
+      [data-bs-theme="dark"] .soft-tint-indigo {
+        background-color: rgba(102, 16, 242, 0.08) !important;
+      }
+      [data-bs-theme="dark"] .soft-tint-amber {
+        background-color: rgba(245, 158, 11, 0.08) !important;
+      }
+      [data-bs-theme="dark"] .soft-tint-grey {
+        background-color: rgba(100, 116, 139, 0.08) !important;
+      }
+
+      /* --- 3. UI TAG PILLS (Mapped for all colors) --- */
+      .ui-tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.25rem 0.75rem;
+        border-radius: 50px;
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        border: 1px solid currentColor;
+        background: rgba(0, 0, 0, 0.03);
+      }
+      .tag-blue {
+        color: var(--clr-blue);
+      }
+      .tag-green {
+        color: var(--clr-green);
+      }
+      .tag-indigo {
+        color: var(--clr-indigo);
+      }
+      .tag-amber {
+        color: var(--clr-amber);
+      }
+      .tag-grey {
+        color: var(--clr-grey);
+      }
+
+      /* --- 4. CATEGORY HEADERS (Mapped for all colors) --- */
       .category-header {
         border-left: 3px solid var(--clr-grey);
         padding-left: 1.25rem;
@@ -61,60 +154,37 @@
       }
 
       .header-blue {
-        border-color: var(--clr-blue);
+        border-color: var(--clr-blue) !important;
       }
       .header-blue h2 {
         color: var(--clr-blue);
       }
       .header-green {
-        border-color: var(--clr-green);
+        border-color: var(--clr-green) !important;
       }
       .header-green h2 {
         color: var(--clr-green);
       }
-      .header-amber {
-        border-color: var(--clr-amber);
-      }
-      .header-amber h2 {
-        color: var(--clr-amber);
-      }
       .header-indigo {
-        border-color: var(--clr-indigo);
+        border-color: var(--clr-indigo) !important;
       }
       .header-indigo h2 {
         color: var(--clr-indigo);
       }
-
-      /* --- PILL TAGS --- */
-      .ui-tag {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.25rem 0.75rem;
-        border-radius: 50px;
-        font-size: 0.65rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        border: 1px solid currentColor;
-        background: rgba(0, 0, 0, 0.03);
+      .header-amber {
+        border-color: var(--clr-amber) !important;
       }
-      .tag-blue {
-        color: var(--clr-blue);
-      }
-      .tag-green {
-        color: var(--clr-green);
-      }
-      .tag-amber {
+      .header-amber h2 {
         color: var(--clr-amber);
       }
-      .tag-indigo {
-        color: var(--clr-indigo);
+      .header-grey {
+        border-color: var(--clr-grey) !important;
       }
-      .tag-grey {
+      .header-grey h2 {
         color: var(--clr-grey);
       }
 
-      /* --- TILE CORE --- */
+      /* --- 5. TILE CORE & OVERLAYS (Integrated Fixes) --- */
       .bg-white-card {
         background-color: white;
         border: 1px solid #e2e8f0;
@@ -130,24 +200,7 @@
         transform: translateY(-6px);
         box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.15);
       }
-      .tile-left {
-        text-align: left;
-        align-items: flex-start;
-      }
-      .tile-center {
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-      }
 
-      .soft-tint-amber {
-        background-color: rgba(245, 158, 11, 0.035);
-      }
-      .soft-tint-blue {
-        background-color: rgba(13, 110, 253, 0.035);
-      }
-
-      /* --- IMAGE & OVERLAYS --- */
       .card-overlay {
         position: absolute;
         top: 0;
@@ -162,9 +215,36 @@
       [data-bs-theme="dark"] .card-overlay {
         background: rgba(15, 23, 42, 0.82);
       }
+
+      /* Special Icon Tile Logic */
+      [data-bs-theme="light"] .overlay-dark .card-overlay {
+        background: rgba(0, 0, 0, 0.15) !important;
+      }
+      [data-bs-theme="light"] .overlay-dark .tile-content {
+        color: #000 !important;
+        font-weight: 700;
+      }
+      [data-bs-theme="dark"] .overlay-dark .card-overlay {
+        background: rgba(0, 0, 0, 0.7) !important;
+      }
+      [data-bs-theme="dark"] .overlay-dark .tile-content {
+        color: white !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
       .tile-content {
         z-index: 1;
         width: 100%;
+        position: relative;
+      }
+      .tile-left {
+        text-align: left;
+        align-items: flex-start;
+      }
+      .tile-center {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
       }
 
       /* --- THEMES --- */
@@ -180,9 +260,7 @@
         background-color: #1e293b;
         border-color: #334155 !important;
       }
-      [data-bs-theme="dark"] .ui-tag {
-        background: rgba(255, 255, 255, 0.05);
-      }
+
       .custom-footer {
         background-color: transparent;
         color: var(--clr-grey);
@@ -195,26 +273,29 @@
   <body>
     <main class="main-container container">
       <header
-        class="d-flex justify-content-between align-items-center py-4 border-bottom mb-5 border-secondary-subtle border-2"
+        class="d-flex justify-content-between align-items-center py-4 border-bottom mb-5 border-secondary-subtle bw-2"
       >
         <a
-
-        href="index.html"
-          class="text-decoration-none text-reset d-inline-flex align-items-center gap-3"
+          href="index.html"
+          class="text-decoration-none d-inline-flex align-items-center gap-3"
         >
-          <span class="ui-tag tag-blue">IDX</span>
+          <span class="ui-tag tag-blue">Idx</span>
           <span class="fs-4 fw-bold" style="color: var(--clr-blue)"
-            >Dashboard</span
+            >DASHBOARD</span
           >
         </a>
       </header>
+
       <section id="directory">
         <h2 class="fw-semibold fs-3 mb-1">activities & projects</h2>
         <p
           class="text-uppercase small fw-bold text-secondary mb-5"
           style="letter-spacing: 0.1em"
         >
-          DASHBOARD UPDATED: <span id="current-date-stamp"></span>
+          UPDATED: <span id="current-date-stamp"></span><br>
+          Backup 14:17 <br>
+          Backup 16:20 <br>
+          Backup 16:33 <br>
         </p>
 
         <div class="category-header header-amber"><h2>Jobsearch</h2></div>
@@ -226,10 +307,10 @@
               class="file-link"
             >
               <div
-                class="p-4 bg-white-card border-amber tile-left"
+                class="p-4 bg-white-card border-amber bw-1 tile-left"
                 style="
                   background: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766073589/Profile_Cover_cgzt6s.jpg')
-                    center/cover no-repeat;
+                    center/cover;
                   min-height: 200px;
                 "
               >
@@ -239,8 +320,8 @@
                   <h3 class="fs-5 fw-bold mb-2">
                     Integrated Competence Discovery
                   </h3>
-                  <p class="small mb-0 opacity-75">
-                    Analysis to capture the complete comprehensive profile.
+                  <p class="small text-secondary mb-0">
+                    Complete profile capture.
                   </p>
                 </div>
               </div>
@@ -253,23 +334,41 @@
               class="file-link"
             >
               <div
-                class="p-4 bg-white-card border-amber soft-tint-amber tile-left"
+                class="p-4 bg-white-card border-amber bw-1 soft-tint-amber tile-left"
               >
                 <span class="ui-tag tag-amber mb-2">Tsholo</span>
                 <h3 class="fs-5 fw-bold mb-2">Generate Competence Profile</h3>
                 <p class="small text-secondary mb-0">
-                  Integrated competence profile for Tsholo.
+                  Responsive response page.
                 </p>
               </div>
             </a>
           </div>
 
           <div class="col-md-6">
-            <a href="doc_cv_resp.html" target="_blank" class="file-link">
-              <div class="p-4 bg-white-card border-blue tile-left">
-                <span class="ui-tag tag-blue mb-2">MKM</span>
-                <h3 class="fs-5 fw-bold mb-2">Curriculum Vitae</h3>
-                <p class="small text-secondary mb-0">Responsive CV document.</p>
+            <a
+              href="doc_cv_resp.html"
+              target="_blank"
+              class="file-link"
+            >
+              <div
+                class="p-4 bg-white-card bw-3 tile-left"
+                style="
+                  background: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766157692/Business_1_Newspaper_y988h0.jpg')
+                    center/cover;
+                  min-height: 200px;
+                "
+              >
+                <div class="card-overlay"></div>
+                <div class="tile-content">
+                  <span class="ui-tag tag-grey mb-2">Curriculum Vitae</span>
+                  <h3 class="fs-5 fw-bold mb-2">
+                    Senior Finance Management Consultant (MBA / MSc Econ)
+                  </h3>
+                  <p class="small text-secondary mb-0">
+                    Michael K. Mueller
+                  </p>
+                </div>
               </div>
             </a>
           </div>
@@ -279,18 +378,18 @@
               target="_blank"
               class="file-link"
             >
-              <div class="p-4 bg-white-card border-blue tile-left">
-                <span class="ui-tag tag-blue mb-2">MKM</span>
+              <div
+                class="p-4 bg-white-card border-blue bw-1 soft-tint-blue tile-left"
+              >
+                <span class="ui-tag tag-blue mb-2">Response</span>
                 <h3 class="fs-5 fw-bold mb-2">Competence Profile</h3>
-                <p class="small text-secondary mb-0">
-                  Integrated competence profile response page.
-                </p>
+                <p class="small text-secondary mb-0">Full profile view.</p>
               </div>
             </a>
           </div>
         </div>
 
-        <div class="category-header header-indigo"><h2>Next</h2></div>
+        <div class="category-header header-indigo"><h2>TRX</h2></div>
         <div class="row g-4">
           <div class="col-md-6">
             <a
@@ -298,12 +397,10 @@
               target="_blank"
               class="file-link"
             >
-              <div class="p-4 bg-white-card border-indigo tile-left">
-                <span class="ui-tag tag-indigo mb-2">Modified Integration</span>
+              <div class="p-4 bg-white-card border-indigo bw-3 tile-left">
+                <span class="ui-tag tag-indigo mb-2">Integration</span>
                 <h3 class="fs-5 fw-bold mb-2">PayPal & FNB Integration</h3>
-                <p class="small text-secondary mb-0">
-                  Modified integration guide for PayPal/FNB.
-                </p>
+                <p class="small text-secondary mb-0">Modified guide.</p>
               </div>
             </a>
           </div>
@@ -313,11 +410,13 @@
               target="_blank"
               class="file-link"
             >
-              <div class="p-4 bg-white-card border-indigo tile-left">
+              <div
+                class="p-4 bg-white-card border-indigo bw-3 soft-tint-indigo tile-left"
+              >
                 <span class="ui-tag tag-indigo mb-2">Overview</span>
                 <h3 class="fs-5 fw-bold mb-2">Withdrawal Options</h3>
                 <p class="small text-secondary mb-0">
-                  Overview of PayPal withdrawal modifications.
+                  Overview of modifications.
                 </p>
               </div>
             </a>
@@ -332,7 +431,7 @@
                 <span class="ui-tag tag-grey mb-2">Philosophy</span>
                 <h3 class="fs-5 fw-bold mb-2">Stoicism</h3>
                 <p class="small text-secondary mb-0">
-                  Reflections and articles on Stoic philosophy.
+                  Reflections and articles.
                 </p>
               </div>
             </a>
@@ -346,9 +445,7 @@
               <div class="p-4 bg-white-card tile-left">
                 <span class="ui-tag tag-grey mb-2">Insights</span>
                 <h3 class="fs-5 fw-bold mb-2">Media Production</h3>
-                <p class="small text-secondary mb-0">
-                  Defining your Media Production Identity.
-                </p>
+                <p class="small text-secondary mb-0">Defining Identity.</p>
               </div>
             </a>
           </div>
@@ -357,9 +454,7 @@
               <div class="p-4 bg-white-card tile-left">
                 <span class="ui-tag tag-grey mb-2">Technical</span>
                 <h3 class="fs-5 fw-bold mb-2">Essay 3</h3>
-                <p class="small text-secondary mb-0">
-                  Technical documentation for tag structure.
-                </p>
+                <p class="small text-secondary mb-0">Documentation.</p>
               </div>
             </a>
           </div>
@@ -372,9 +467,7 @@
               <div class="p-4 bg-white-card tile-left">
                 <span class="ui-tag tag-grey mb-2">Builder</span>
                 <h3 class="fs-5 fw-bold mb-2">HTML Responsiveness</h3>
-                <p class="small text-secondary mb-0">
-                  This HTML tool adds responsiveness to your page.
-                </p>
+                <p class="small text-secondary mb-0">Responsiveness tool.</p>
               </div>
             </a>
           </div>
@@ -383,9 +476,7 @@
               <div class="p-4 bg-white-card tile-left">
                 <span class="ui-tag tag-grey mb-2">Builder</span>
                 <h3 class="fs-5 fw-bold mb-2">HTML Tags</h3>
-                <p class="small text-secondary mb-0">
-                  This HTML tool adds tags to your page.
-                </p>
+                <p class="small text-secondary mb-0">Tagging tool.</p>
               </div>
             </a>
           </div>
@@ -400,7 +491,7 @@
               class="file-link"
             >
               <div
-                class="bg-white-card tile-center"
+                class="bg-white-card tile-center overlay-dark"
                 style="
                   aspect-ratio: 1/1;
                   background: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png')
@@ -408,11 +499,8 @@
                   min-height: 120px;
                 "
               >
-                <div
-                  class="card-overlay"
-                  style="background: rgba(0, 0, 0, 0.4)"
-                ></div>
-                <span class="tile-content text-white fw-bold">Web</span>
+                <div class="card-overlay"></div>
+                <span class="tile-content">Web</span>
               </div>
             </a>
           </div>
@@ -423,7 +511,7 @@
               class="file-link"
             >
               <div
-                class="bg-white-card tile-center"
+                class="bg-white-card tile-center overlay-dark"
                 style="
                   aspect-ratio: 1/1;
                   background: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765371804/email_hrmhki.png')
@@ -431,11 +519,8 @@
                   min-height: 120px;
                 "
               >
-                <div
-                  class="card-overlay"
-                  style="background: rgba(0, 0, 0, 0.4)"
-                ></div>
-                <span class="tile-content text-white fw-bold">Email</span>
+                <div class="card-overlay"></div>
+                <span class="tile-content">Email</span>
               </div>
             </a>
           </div>
@@ -446,7 +531,7 @@
               class="file-link"
             >
               <div
-                class="bg-white-card tile-center"
+                class="bg-white-card tile-center overlay-dark"
                 style="
                   aspect-ratio: 1/1;
                   background: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765806645/profile_djz3js.png')
@@ -454,11 +539,8 @@
                   min-height: 120px;
                 "
               >
-                <div
-                  class="card-overlay"
-                  style="background: rgba(0, 0, 0, 0.4)"
-                ></div>
-                <span class="tile-content text-white fw-bold">Profile</span>
+                <div class="card-overlay"></div>
+                <span class="tile-content">Profile</span>
               </div>
             </a>
           </div>
@@ -469,7 +551,7 @@
               class="file-link"
             >
               <div
-                class="bg-white-card tile-center"
+                class="bg-white-card tile-center overlay-dark"
                 style="
                   aspect-ratio: 1/1;
                   background: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765806644/doc_bvi9zu.png')
@@ -477,11 +559,8 @@
                   min-height: 120px;
                 "
               >
-                <div
-                  class="card-overlay"
-                  style="background: rgba(0, 0, 0, 0.4)"
-                ></div>
-                <span class="tile-content text-white fw-bold">Doc</span>
+                <div class="card-overlay"></div>
+                <span class="tile-content">Doc</span>
               </div>
             </a>
           </div>
@@ -490,32 +569,32 @@
         <div class="category-header"><h2>WEBDEV</h2></div>
         <div class="row g-3">
           <div class="col-6 col-md-3">
-            <a href="portfolio1.html" target="_blank" class="file-link">
-              <div class="p-3 bg-white-card tile-center border-2">
+            <a href="portfolio1.html" target="_blank" class="file-link"
+              ><div class="p-3 bg-white-card tile-center bw-2">
                 <span class="fw-bold">Portfolio 1</span>
-              </div>
-            </a>
+              </div></a
+            >
           </div>
           <div class="col-6 col-md-3">
-            <a href="portfolio2.html" target="_blank" class="file-link">
-              <div class="p-3 bg-white-card tile-center border-2">
+            <a href="portfolio2.html" target="_blank" class="file-link"
+              ><div class="p-3 bg-white-card tile-center bw-2">
                 <span class="fw-bold">Portfolio 2</span>
-              </div>
-            </a>
+              </div></a
+            >
           </div>
           <div class="col-6 col-md-3">
-            <a href="portfolio3.html" target="_blank" class="file-link">
-              <div class="p-3 bg-white-card tile-center border-2">
+            <a href="portfolio3.html" target="_blank" class="file-link"
+              ><div class="p-3 bg-white-card tile-center bw-2">
                 <span class="fw-bold">Portfolio 3</span>
-              </div>
-            </a>
+              </div></a
+            >
           </div>
           <div class="col-6 col-md-3">
-            <a href="portfolio4.html" target="_blank" class="file-link">
-              <div class="p-3 bg-white-card tile-center border-2">
+            <a href="portfolio4.html" target="_blank" class="file-link"
+              ><div class="p-3 bg-white-card tile-center bw-2">
                 <span class="fw-bold">Portfolio 4</span>
-              </div>
-            </a>
+              </div></a
+            >
           </div>
         </div>
       </section>
