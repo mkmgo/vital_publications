@@ -210,14 +210,30 @@
       .bg-tag-grey {
         background-color: var(--clr-grey);
       }
-
-      /* If you specifically want the "cut-out" transparent text look: */
+      /* This replaces the previous cutout logic */
       .tag-cutout {
-        background-color: currentColor;
-        color: var(
-          --bs-body-bg
-        ) !important; /* Sets text to the body background color */
-        border: none;
+        border: none !important;
+        font-weight: 800; /* Thicker font makes the cutout effect more visible */
+      }
+
+      /* Specific color states for the cutout effect */
+      .tag-blue.tag-cutout {
+        background-color: var(--clr-blue) !important;
+        color: #f8fafc !important; /* Forces text to match your Light Mode background */
+      }
+
+      .tag-amber.tag-cutout {
+        background-color: var(--clr-amber) !important;
+        color: #f8fafc !important;
+      }
+
+      /* Dark Mode adjustment: Ensure the text color matches the dark background */
+      [data-bs-theme="dark"] .tag-blue.tag-cutout {
+        color: #020617 !important;
+      }
+
+      [data-bs-theme="dark"] .tag-amber.tag-cutout {
+        color: #020617 !important;
       }
       .category-header {
         border-left: 3px solid var(--clr-grey);
@@ -321,9 +337,11 @@
       >
         <a
           href="index.html"
-          class="text-decoration-none d-inline-flex align-items-center gap-3"
+          class="text-decoration-none d-inline-flex align-items-center gap-2"
         >
-          <span class="ui-tag tag-blue mb-0">Dash</span>
+          <span class="ui-tag tag-blue tag-cutout" style="margin-top: 5px"
+            >Dash</span
+          >
           <span
             class="fs-4 fw-bold"
             style="color: var(--clr-amber); line-height: 1"
@@ -333,14 +351,14 @@
       </header>
 
       <section id="directory">
-        <h2 class="fw-semibold fs-3 mb-1">Activities & Projects</h2>
+        <h2 class="fw-semibold fs-3 mb-1">activities & projects</h2>
         <p
           class="text-uppercase small fw-bold text-secondary mb-5"
           style="letter-spacing: 0.1em"
         >
           UPDATED: <span id="current-date-stamp"></span><br />
-          Status: Operational / Logic Integrated
-          <span class="ui-tag tag-amber tag-cutout">Priority</span>
+          Status: Operational / Logic Integrated<br>
+          Session Ended / All Changes Saved
         </p>
         <div class="category-header header-blue"><h2>Featured</h2></div>
 
