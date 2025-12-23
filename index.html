@@ -53,8 +53,8 @@
       /* --- 1. MOBILE & DESKTOP CONSISTENCY --- */
       [data-bs-theme="dark"],
       [data-bs-theme="dark"] body {
-        background-color: #020617 !important; /* Midnight Blue */
-        color-scheme: dark; /* Prevents mobile browser from forcing pure black */
+        background-color: #020617 !important;
+        color-scheme: dark;
       }
 
       .main-container {
@@ -66,7 +66,10 @@
         color: inherit;
       }
 
-      /* --- Borders & Colors (Adjusted for Dark Mode Visibility) --- */
+      /* --- Borders & Colors --- */
+      .bw-1 {
+        border-width: 1px !important;
+      }
       .bw-2 {
         border-width: 2px !important;
       }
@@ -89,14 +92,13 @@
       .border-grey {
         border-color: var(--clr-grey) !important;
       }
+
       /* --- 3. DARK MODE BORDER VISIBILITY --- */
-      /* Default card background for dark mode */
       [data-bs-theme="dark"] .bg-white-card {
         background-color: #1e293b;
-        border-color: #334155; /* Default grey border */
+        border-color: #334155;
       }
 
-      /* This forces the specific colors to appear on the cards in Dark Mode */
       [data-bs-theme="dark"] .bg-white-card.border-blue {
         border-color: #3b82f6 !important;
       }
@@ -112,18 +114,35 @@
       [data-bs-theme="dark"] .bg-white-card.border-grey {
         border-color: #64748b !important;
       }
-      /* Brighter borders for Dark Mode */
-      [data-bs-theme="dark"] .border-blue {
-        border-color: #3b82f6 !important;
+
+      /* --- Category Headers Refined --- */
+      .category-header {
+        margin: 3.5rem 0 1.5rem 0;
+        border-left: none; /* Removed awkward border */
+        padding-left: 0;
       }
-      [data-bs-theme="dark"] .border-green {
-        border-color: #22c55e !important;
+      .category-header h2 {
+        font-size: 1.1rem; /* Slightly bigger */
+        font-weight: 500; /* Not bold */
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        margin: 0;
       }
-      [data-bs-theme="dark"] .border-indigo {
-        border-color: #818cf8 !important;
+
+      .header-blue h2 {
+        color: var(--clr-blue);
       }
-      [data-bs-theme="dark"] .border-amber {
-        border-color: #fbbf24 !important;
+      .header-amber h2 {
+        color: var(--clr-amber);
+      }
+      .header-indigo h2 {
+        color: var(--clr-indigo);
+      }
+      .header-green h2 {
+        color: var(--clr-green);
+      }
+      .header-grey h2 {
+        color: var(--clr-grey);
       }
 
       /* --- Tags --- */
@@ -152,7 +171,6 @@
         color: var(--clr-green);
       }
 
-      /* Inverted/Filled Tag */
       .ui-tag-filled {
         display: inline-flex;
         align-items: center;
@@ -168,7 +186,6 @@
         background-color: var(--clr-blue);
       }
 
-      /* Cutout logic: Matches Background strictly */
       .tag-cutout {
         border: none !important;
         font-weight: 800;
@@ -190,7 +207,7 @@
         color: #020617 !important;
       }
 
-      /* --- Rest of Styles (Tiles, Headers, etc) --- */
+      /* --- Tiles --- */
       .tile-img-bg {
         min-height: 200px;
         background-size: cover;
@@ -209,20 +226,6 @@
       }
       [data-bs-theme="dark"] .tile-img-bg::before {
         background: rgba(15, 23, 42, 0.82);
-      }
-
-      .category-header {
-        border-left: 3px solid var(--clr-grey);
-        padding-left: 1.25rem;
-        margin: 3.5rem 0 1.5rem 0;
-      }
-      .category-header h2 {
-        font-size: 0.85rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        color: var(--clr-grey);
-        margin: 0;
       }
 
       .bg-white-card {
@@ -247,6 +250,11 @@
       .tile-left {
         text-align: left;
         align-items: flex-start;
+      }
+      .tile-center {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
       }
       .custom-footer {
         background-color: transparent;
@@ -286,7 +294,10 @@
           UPDATED: <span id="current-date-stamp"></span><br />
           Status: Operational / Active<br />
           Session Start at 04:27 PM GMT+2
+          <br />
+          Session End at 07:00 PM GMT+2
         </p>
+
         <div class="category-header header-blue"><h2>Featured</h2></div>
 
         <div class="row g-4 mb-4">
@@ -334,6 +345,7 @@
             </a>
           </div>
         </div>
+
         <div class="category-header header-amber"><h2>Jobsearch</h2></div>
         <div class="row g-4">
           <div class="col-md-6">
@@ -430,8 +442,8 @@
             </a>
           </div>
         </div>
-        <div class="category-header header-grey"><h2>Technical Docs</h2></div>
 
+        <div class="category-header header-grey"><h2>Technical Docs</h2></div>
         <div class="row g-2">
           <div class="col-6 col-md-4 col-lg-2">
             <a href="doc1.html" class="file-link">
@@ -465,11 +477,12 @@
             </a>
           </div>
         </div>
-        <div class="category-header"><h2>ICONS</h2></div>
+
+        <div class="category-header header-grey"><h2>ICONS</h2></div>
         <div class="row g-3">
           <div class="col-md-3 col-6">
             <div
-              class="bg-white-card tile-center tile-img-bg overlay-dark"
+              class="bg-white-card tile-left tile-img-bg p-4"
               style="
                 aspect-ratio: 1/1;
                 background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png');
