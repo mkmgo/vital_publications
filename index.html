@@ -50,11 +50,11 @@
         transition: all 0.3s;
       }
 
-      /* Desktop & Mobile Dark Mode Consistency */
+      /* --- 1. MOBILE & DESKTOP CONSISTENCY --- */
       [data-bs-theme="dark"],
       [data-bs-theme="dark"] body {
-        background-color: #020617 !important;
-        color-scheme: dark;
+        background-color: #020617 !important; /* Midnight Blue */
+        color-scheme: dark; /* Prevents mobile browser from forcing pure black */
       }
 
       .main-container {
@@ -89,7 +89,29 @@
       .border-grey {
         border-color: var(--clr-grey) !important;
       }
+      /* --- 3. DARK MODE BORDER VISIBILITY --- */
+      /* Default card background for dark mode */
+      [data-bs-theme="dark"] .bg-white-card {
+        background-color: #1e293b;
+        border-color: #334155; /* Default grey border */
+      }
 
+      /* This forces the specific colors to appear on the cards in Dark Mode */
+      [data-bs-theme="dark"] .bg-white-card.border-blue {
+        border-color: #3b82f6 !important;
+      }
+      [data-bs-theme="dark"] .bg-white-card.border-amber {
+        border-color: #fbbf24 !important;
+      }
+      [data-bs-theme="dark"] .bg-white-card.border-green {
+        border-color: #22c55e !important;
+      }
+      [data-bs-theme="dark"] .bg-white-card.border-indigo {
+        border-color: #818cf8 !important;
+      }
+      [data-bs-theme="dark"] .bg-white-card.border-grey {
+        border-color: #64748b !important;
+      }
       /* Brighter borders for Dark Mode */
       [data-bs-theme="dark"] .border-blue {
         border-color: #3b82f6 !important;
