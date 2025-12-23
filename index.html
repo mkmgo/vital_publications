@@ -10,9 +10,11 @@
       href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png"
     />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
+      name="theme-color"
+      content="#020617"
+      media="(prefers-color-scheme: dark)"
     />
     <meta name="apple-mobile-web-app-title" content="Dashboard" />
 
@@ -47,6 +49,14 @@
         flex-direction: column;
         transition: all 0.3s;
       }
+
+      /* Desktop & Mobile Dark Mode Consistency */
+      [data-bs-theme="dark"],
+      [data-bs-theme="dark"] body {
+        background-color: #020617 !important;
+        color-scheme: dark;
+      }
+
       .main-container {
         flex-grow: 1;
         padding: 3rem 1.5rem;
@@ -56,50 +66,7 @@
         color: inherit;
       }
 
-      /* --- SIMPLIFICATION LOGIC --- */
-      .tile-img-bg {
-        min-height: 200px;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .tile-img-bg::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-      }
-      [data-bs-theme="light"] .tile-img-bg::before {
-        background: rgba(255, 255, 255, 0.88);
-      }
-      [data-bs-theme="dark"] .tile-img-bg::before {
-        background: rgba(15, 23, 42, 0.82);
-      }
-
-      .overlay-dark::before {
-        background: rgba(0, 0, 0, 0.15) !important;
-      }
-      [data-bs-theme="dark"] .overlay-dark::before {
-        background: rgba(0, 0, 0, 0.7) !important;
-      }
-
-      .overlay-dark .tile-content {
-        color: #000 !important;
-        font-weight: 700;
-      }
-      [data-bs-theme="dark"] .overlay-dark .tile-content {
-        color: white !important;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      }
-
-      .bw-0 {
-        border-width: 0px !important;
-      }
-      .bw-1 {
-        border-width: 1px !important;
-      }
+      /* --- Borders & Colors (Adjusted for Dark Mode Visibility) --- */
       .bw-2 {
         border-width: 2px !important;
       }
@@ -123,38 +90,21 @@
         border-color: var(--clr-grey) !important;
       }
 
-      .soft-tint-blue {
-        background-color: rgba(13, 110, 253, 0.04) !important;
+      /* Brighter borders for Dark Mode */
+      [data-bs-theme="dark"] .border-blue {
+        border-color: #3b82f6 !important;
       }
-      .soft-tint-green {
-        background-color: rgba(25, 135, 84, 0.04) !important;
+      [data-bs-theme="dark"] .border-green {
+        border-color: #22c55e !important;
       }
-      .soft-tint-indigo {
-        background-color: rgba(102, 16, 242, 0.04) !important;
+      [data-bs-theme="dark"] .border-indigo {
+        border-color: #818cf8 !important;
       }
-      .soft-tint-amber {
-        background-color: rgba(245, 158, 11, 0.04) !important;
-      }
-      .soft-tint-grey {
-        background-color: rgba(100, 116, 139, 0.04) !important;
+      [data-bs-theme="dark"] .border-amber {
+        border-color: #fbbf24 !important;
       }
 
-      [data-bs-theme="dark"] .soft-tint-blue {
-        background-color: rgba(13, 110, 253, 0.08) !important;
-      }
-      [data-bs-theme="dark"] .soft-tint-green {
-        background-color: rgba(25, 135, 84, 0.08) !important;
-      }
-      [data-bs-theme="dark"] .soft-tint-indigo {
-        background-color: rgba(102, 16, 242, 0.08) !important;
-      }
-      [data-bs-theme="dark"] .soft-tint-amber {
-        background-color: rgba(245, 158, 11, 0.08) !important;
-      }
-      [data-bs-theme="dark"] .soft-tint-grey {
-        background-color: rgba(100, 116, 139, 0.08) !important;
-      }
-
+      /* --- Tags --- */
       .ui-tag {
         display: inline-flex;
         align-items: center;
@@ -166,22 +116,21 @@
         border: 1px solid currentColor;
         background: rgba(0, 0, 0, 0.03);
       }
+
       .tag-blue {
         color: var(--clr-blue);
-      }
-      .tag-green {
-        color: var(--clr-green);
-      }
-      .tag-indigo {
-        color: var(--clr-indigo);
       }
       .tag-amber {
         color: var(--clr-amber);
       }
-      .tag-grey {
-        color: var(--clr-grey);
+      .tag-indigo {
+        color: var(--clr-indigo);
       }
-      /* Inverted Tag Style */
+      .tag-green {
+        color: var(--clr-green);
+      }
+
+      /* Inverted/Filled Tag */
       .ui-tag-filled {
         display: inline-flex;
         align-items: center;
@@ -190,51 +139,56 @@
         font-size: 0.65rem;
         font-weight: 700;
         text-transform: uppercase;
-        border: 1px solid transparent;
-        color: #fff !important; /* Keep text white for contrast */
+        border: none;
+        color: #fff !important;
       }
-
-      /* Color variants for filled tags */
       .bg-tag-blue {
         background-color: var(--clr-blue);
       }
-      .bg-tag-green {
-        background-color: var(--clr-green);
-      }
-      .bg-tag-indigo {
-        background-color: var(--clr-indigo);
-      }
-      .bg-tag-amber {
-        background-color: var(--clr-amber);
-      }
-      .bg-tag-grey {
-        background-color: var(--clr-grey);
-      }
-      /* This replaces the previous cutout logic */
+
+      /* Cutout logic: Matches Background strictly */
       .tag-cutout {
         border: none !important;
-        font-weight: 800; /* Thicker font makes the cutout effect more visible */
+        font-weight: 800;
       }
 
-      /* Specific color states for the cutout effect */
       .tag-blue.tag-cutout {
         background-color: var(--clr-blue) !important;
-        color: #f8fafc !important; /* Forces text to match your Light Mode background */
+        color: #f8fafc !important;
       }
-
       .tag-amber.tag-cutout {
         background-color: var(--clr-amber) !important;
         color: #f8fafc !important;
       }
 
-      /* Dark Mode adjustment: Ensure the text color matches the dark background */
       [data-bs-theme="dark"] .tag-blue.tag-cutout {
         color: #020617 !important;
       }
-
       [data-bs-theme="dark"] .tag-amber.tag-cutout {
         color: #020617 !important;
       }
+
+      /* --- Rest of Styles (Tiles, Headers, etc) --- */
+      .tile-img-bg {
+        min-height: 200px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .tile-img-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+      [data-bs-theme="light"] .tile-img-bg::before {
+        background: rgba(255, 255, 255, 0.88);
+      }
+      [data-bs-theme="dark"] .tile-img-bg::before {
+        background: rgba(15, 23, 42, 0.82);
+      }
+
       .category-header {
         border-left: 3px solid var(--clr-grey);
         padding-left: 1.25rem;
@@ -248,36 +202,6 @@
         color: var(--clr-grey);
         margin: 0;
       }
-      .header-blue {
-        border-color: var(--clr-blue) !important;
-      }
-      .header-blue h2 {
-        color: var(--clr-blue);
-      }
-      .header-green {
-        border-color: var(--clr-green) !important;
-      }
-      .header-green h2 {
-        color: var(--clr-green);
-      }
-      .header-indigo {
-        border-color: var(--clr-indigo) !important;
-      }
-      .header-indigo h2 {
-        color: var(--clr-indigo);
-      }
-      .header-amber {
-        border-color: var(--clr-amber) !important;
-      }
-      .header-amber h2 {
-        color: var(--clr-amber);
-      }
-      .header-grey {
-        border-color: var(--clr-grey) !important;
-      }
-      .header-grey h2 {
-        color: var(--clr-grey);
-      }
 
       .bg-white-card {
         background-color: white;
@@ -289,9 +213,9 @@
         display: flex;
         flex-direction: column;
       }
-      .bg-white-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.15);
+      [data-bs-theme="dark"] .bg-white-card {
+        background-color: #1e293b;
+        border-color: #334155 !important;
       }
       .tile-content {
         z-index: 1;
@@ -302,25 +226,6 @@
         text-align: left;
         align-items: flex-start;
       }
-      .tile-center {
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-      }
-
-      [data-bs-theme="light"] body {
-        background-color: #f8fafc;
-        color: #0f172a;
-      }
-      [data-bs-theme="dark"] body {
-        background-color: #020617;
-        color: #f1f5f9;
-      }
-      [data-bs-theme="dark"] .bg-white-card {
-        background-color: #1e293b;
-        border-color: #334155 !important;
-      }
-
       .custom-footer {
         background-color: transparent;
         color: var(--clr-grey);
@@ -339,7 +244,7 @@
           href="index.html"
           class="text-decoration-none d-inline-flex align-items-center gap-2"
         >
-          <span class="ui-tag tag-blue tag-cutout" style="margin-top: 3px"
+          <span class="ui-tag tag-blue tag-cutout mb-0" style="margin-top: 5px"
             >Hub</span
           >
           <span
