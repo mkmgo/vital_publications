@@ -5,32 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Projects</title>
 
-    <link
-      rel="apple-touch-icon"
-      href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png"
-    />
+    <link rel="apple-touch-icon" href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta
-      name="theme-color"
-      content="#020617"
-      media="(prefers-color-scheme: dark)"
-    />
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
     <meta name="apple-mobile-web-app-title" content="Dashboard" />
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png" />
 
     <style>
       :root {
@@ -50,184 +33,16 @@
         transition: all 0.3s;
       }
 
-      /* --- 1. MOBILE & DESKTOP CONSISTENCY --- */
-      [data-bs-theme="dark"],
-      [data-bs-theme="dark"] body {
+      /* --- THEME & BACKGROUNDS --- */
+      [data-bs-theme="dark"], [data-bs-theme="dark"] body {
         background-color: #020617 !important;
         color-scheme: dark;
       }
 
-      .main-container {
-        flex-grow: 1;
-        padding: 3rem 1.5rem;
-      }
-      .file-link {
-        text-decoration: none;
-        color: inherit;
-      }
+      .main-container { flex-grow: 1; padding: 3rem 1.5rem; }
+      .file-link { text-decoration: none; color: inherit; }
 
-      /* --- Borders & Colors --- */
-      .bw-1 {
-        border-width: 1px !important;
-      }
-      .bw-2 {
-        border-width: 2px !important;
-      }
-      .bw-3 {
-        border-width: 3px !important;
-      }
-
-      .border-blue {
-        border-color: var(--clr-blue) !important;
-      }
-      .border-green {
-        border-color: var(--clr-green) !important;
-      }
-      .border-indigo {
-        border-color: var(--clr-indigo) !important;
-      }
-      .border-amber {
-        border-color: var(--clr-amber) !important;
-      }
-      .border-grey {
-        border-color: var(--clr-grey) !important;
-      }
-
-      /* --- 3. DARK MODE BORDER VISIBILITY --- */
-      [data-bs-theme="dark"] .bg-white-card {
-        background-color: #1e293b;
-        border-color: #334155;
-      }
-
-      [data-bs-theme="dark"] .bg-white-card.border-blue {
-        border-color: #3b82f6 !important;
-      }
-      [data-bs-theme="dark"] .bg-white-card.border-amber {
-        border-color: #fbbf24 !important;
-      }
-      [data-bs-theme="dark"] .bg-white-card.border-green {
-        border-color: #22c55e !important;
-      }
-      [data-bs-theme="dark"] .bg-white-card.border-indigo {
-        border-color: #818cf8 !important;
-      }
-      [data-bs-theme="dark"] .bg-white-card.border-grey {
-        border-color: #64748b !important;
-      }
-
-      /* --- Category Headers Refined --- */
-      .category-header {
-        margin: 3.5rem 0 1.5rem 0;
-        border-left: none; /* Removed awkward border */
-        padding-left: 0;
-      }
-      .category-header h2 {
-        font-size: 1.1rem; /* Slightly bigger */
-        font-weight: 500; /* Not bold */
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        margin: 0;
-      }
-
-      .header-blue h2 {
-        color: var(--clr-blue);
-      }
-      .header-amber h2 {
-        color: var(--clr-amber);
-      }
-      .header-indigo h2 {
-        color: var(--clr-indigo);
-      }
-      .header-green h2 {
-        color: var(--clr-green);
-      }
-      .header-grey h2 {
-        color: var(--clr-grey);
-      }
-
-      /* --- Tags --- */
-      .ui-tag {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.25rem 0.75rem;
-        border-radius: 50px;
-        font-size: 0.65rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        border: 1px solid currentColor;
-        background: rgba(0, 0, 0, 0.03);
-      }
-
-      .tag-blue {
-        color: var(--clr-blue);
-      }
-      .tag-amber {
-        color: var(--clr-amber);
-      }
-      .tag-indigo {
-        color: var(--clr-indigo);
-      }
-      .tag-green {
-        color: var(--clr-green);
-      }
-
-      .ui-tag-filled {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.25rem 0.75rem;
-        border-radius: 50px;
-        font-size: 0.65rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        border: none;
-        color: #fff !important;
-      }
-      .bg-tag-blue {
-        background-color: var(--clr-blue);
-      }
-
-      .tag-cutout {
-        border: none !important;
-        font-weight: 800;
-      }
-
-      .tag-blue.tag-cutout {
-        background-color: var(--clr-blue) !important;
-        color: #f8fafc !important;
-      }
-      .tag-amber.tag-cutout {
-        background-color: var(--clr-amber) !important;
-        color: #f8fafc !important;
-      }
-
-      [data-bs-theme="dark"] .tag-blue.tag-cutout {
-        color: #020617 !important;
-      }
-      [data-bs-theme="dark"] .tag-amber.tag-cutout {
-        color: #020617 !important;
-      }
-
-      /* --- Tiles --- */
-      .tile-img-bg {
-        min-height: 200px;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        overflow: hidden;
-      }
-      .tile-img-bg::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-      }
-      [data-bs-theme="light"] .tile-img-bg::before {
-        background: rgba(255, 255, 255, 0.88);
-      }
-      [data-bs-theme="dark"] .tile-img-bg::before {
-        background: rgba(15, 23, 42, 0.82);
-      }
-
+      /* --- TILE SYSTEM & HOVER --- */
       .bg-white-card {
         background-color: white;
         border: 1px solid #e2e8f0;
@@ -238,107 +53,98 @@
         display: flex;
         flex-direction: column;
       }
+
       [data-bs-theme="dark"] .bg-white-card {
         background-color: #1e293b;
-        border-color: #334155 !important;
+        border-color: #334155;
       }
-      .tile-content {
-        z-index: 1;
-        width: 100%;
-        position: relative;
+
+      /* Hover Interaction */
+      .file-link:hover .bg-white-card {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px -8px rgba(0,0,0,0.15);
       }
-      .tile-left {
-        text-align: left;
-        align-items: flex-start;
-      }
-      .tile-center {
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-      }
-      .custom-footer {
-        background-color: transparent;
-        color: var(--clr-grey);
-        border-top: 1px solid rgba(0, 0, 0, 0.05);
-        padding: 2rem 0;
-      }
+
+      /* Border Persistence (Forced Specificity) */
+      .bw-1 { border-width: 1px !important; }
+      .bw-2 { border-width: 2px !important; }
+      .bw-3 { border-width: 3px !important; }
+
+      .bg-white-card.border-blue { border-color: var(--clr-blue) !important; }
+      .bg-white-card.border-amber { border-color: var(--clr-amber) !important; }
+      .bg-white-card.border-indigo { border-color: var(--clr-indigo) !important; }
+      .bg-white-card.border-green { border-color: var(--clr-green) !important; }
+      .bg-white-card.border-grey { border-color: var(--clr-grey) !important; }
+
+      /* Dark Mode Border Luminosity */
+      [data-bs-theme="dark"] .bg-white-card.border-blue { border-color: #3b82f6 !important; }
+      [data-bs-theme="dark"] .bg-white-card.border-amber { border-color: #fbbf24 !important; }
+      [data-bs-theme="dark"] .bg-white-card.border-indigo { border-color: #818cf8 !important; }
+      [data-bs-theme="dark"] .bg-white-card.border-green { border-color: #22c55e !important; }
+
+      /* Soft Tints Persistence */
+      .soft-tint-blue { background-color: rgba(13, 110, 253, 0.05) !important; }
+      .soft-tint-amber { background-color: rgba(245, 158, 11, 0.05) !important; }
+
+      /* --- HEADERS --- */
+      .category-header { margin: 3.5rem 0 1.5rem 0; }
+      .category-header h2 { font-size: 1.1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em; margin: 0; }
+      .header-blue h2 { color: var(--clr-blue); }
+      .header-amber h2 { color: var(--clr-amber); }
+      .header-indigo h2 { color: var(--clr-indigo); }
+      .header-green h2 { color: var(--clr-green); }
+      .header-grey h2 { color: var(--clr-grey); }
+
+      /* --- TAGS & COMPONENTS --- */
+      .ui-tag { display: inline-flex; align-items: center; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; border: 1px solid currentColor; background: rgba(0, 0, 0, 0.03); }
+      .tag-blue { color: var(--clr-blue); }
+      .tag-amber { color: var(--clr-amber); }
+      .tag-indigo { color: var(--clr-indigo); }
+
+      .tag-cutout { border: none !important; font-weight: 800; }
+      .tag-blue.tag-cutout { background-color: var(--clr-blue) !important; color: #f8fafc !important; }
+      .tag-amber.tag-cutout { background-color: var(--clr-amber) !important; color: #f8fafc !important; }
+      [data-bs-theme="dark"] .tag-blue.tag-cutout { color: #020617 !important; }
+      [data-bs-theme="dark"] .tag-amber.tag-cutout { color: #020617 !important; }
+
+      /* --- LAYOUT UTILITIES --- */
+      .tile-img-bg { min-height: 200px; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+      .tile-img-bg::before { content: ""; position: absolute; inset: 0; z-index: 0; }
+      [data-bs-theme="light"] .tile-img-bg::before { background: rgba(255, 255, 255, 0.88); }
+      [data-bs-theme="dark"] .tile-img-bg::before { background: rgba(15, 23, 42, 0.82); }
+      .tile-content { z-index: 1; width: 100%; position: relative; }
+      .tile-left { text-align: left; align-items: flex-start; }
+      .tile-center { text-align: center; align-items: center; justify-content: center; }
+      .custom-footer { background-color: transparent; color: var(--clr-grey); border-top: 1px solid rgba(0, 0, 0, 0.05); padding: 2rem 0; }
     </style>
   </head>
 
   <body>
     <main class="main-container container">
-      <header
-        class="d-flex justify-content-between align-items-center py-4 border-bottom mb-5 border-secondary-subtle bw-2"
-      >
-        <a
-          href="index.html"
-          class="text-decoration-none d-inline-flex align-items-center gap-2"
-        >
-          <span class="ui-tag tag-blue tag-cutout mb-0" style="margin-top: 5px"
-            >Hub</span
-          >
-          <span
-            class="fs-4 fw-bold"
-            style="color: var(--clr-amber); line-height: 1"
-            >project.docs</span
-          >
+      <header class="d-flex justify-content-between align-items-center py-4 border-bottom mb-5 border-secondary-subtle bw-2">
+        <a href="index.html" class="text-decoration-none d-inline-flex align-items-center gap-2">
+          <span class="ui-tag tag-blue tag-cutout mb-0" style="margin-top: 5px">Hub</span>
+          <span class="fs-4 fw-bold" style="color: var(--clr-amber); line-height: 1">project.docs</span>
         </a>
       </header>
 
       <section id="directory">
         <h2 class="fw-semibold fs-3 mb-1">activities & projects</h2>
-        <p
-          class="text-uppercase small fw-bold text-secondary mb-5"
-          style="letter-spacing: 0.1em"
-        >
+        <p class="text-uppercase small fw-bold text-secondary mb-5" style="letter-spacing: 0.1em">
           UPDATED: <span id="current-date-stamp"></span><br />
-          Status: Operational / Active<br />
-          Session Start at 04:27 PM GMT+2
-          <br />
-          Session End at 07:00 PM GMT+2
+          Status: Operational / Active
         </p>
-
+        
         <div class="category-header header-blue"><h2>Featured</h2></div>
-
         <div class="row g-4 mb-4">
           <div class="col-12">
-            <a href="YOUR_LINK_HERE.html" target="_blank" class="file-link">
-              <div
-                class="p-4 bg-white-card soft-tint-blue bw-3 tile-left tile-img-bg"
-                style="
-                  background-image: url('YOUR_IMAGE_URL.jpg');
-                  min-height: 250px;
-                "
-              >
+            <a href="#" class="file-link">
+              <div class="p-4 bg-white-card soft-tint-blue border-blue bw-3 tile-left tile-img-bg" style="background-image: url('YOUR_IMAGE_URL.jpg'); min-height: 250px;">
                 <div class="tile-content">
-                  <span class="ui-tag-filled bg-tag-blue mb-3">Setup</span>
+                  <span class="ui-tag tag-blue tag-cutout mb-3">Setup</span>
                   <h3 class="fs-4 fw-bold mb-2">ProjectBrief Comrade</h3>
                   <p class="small text-secondary mb-0" style="max-width: 800px">
-                    <b
-                      >Provide a detailed description here. This full-width
-                      layout is best suited for long-form descriptions that
-                      require more horizontal space.
-                      <table class="table table-sm table-hover small mt-3">
-                        <thead>
-                          <tr>
-                            <th>Task</th>
-                            <th>Status</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Wording</td>
-                            <td><span class="badge bg-success">Done</span></td>
-                          </tr>
-                          <tr>
-                            <td>Initiation</td>
-                            <td>
-                              <span class="badge bg-warning">Pending</span>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table></b
-                    >
+                    <b>High-level documentation and layout standards for long-form content.</b>
                   </p>
                 </div>
               </div>
@@ -349,65 +155,59 @@
         <div class="category-header header-amber"><h2>Jobsearch</h2></div>
         <div class="row g-4">
           <div class="col-md-6">
-            <a
-              href="https://forms.gle/gwHhZnjjPrN5r8Yw6"
-              target="_blank"
-              class="file-link"
-            >
-              <div
-                class="p-4 bg-white-card border-amber bw-1 tile-left tile-img-bg"
-                style="
-                  background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766073589/Profile_Cover_cgzt6s.jpg');
-                "
-              >
+            <a href="https://forms.gle/gwHhZnjjPrN5r8Yw6" target="_blank" class="file-link">
+              <div class="p-4 bg-white-card border-amber bw-1 tile-left tile-img-bg" style="background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766073589/Profile_Cover_cgzt6s.jpg');">
                 <div class="tile-content">
                   <span class="ui-tag tag-amber mb-2">Questionnaire</span>
-                  <h3 class="fs-5 fw-bold mb-2">
-                    Integrated Competence Discovery
-                  </h3>
-                  <p class="small text-secondary mb-0">
-                    Deep-dive analysis captures your overall profile across 5
-                    layers.
-                  </p>
+                  <h3 class="fs-5 fw-bold mb-2">Integrated Competence Discovery</h3>
+                  <p class="small text-secondary mb-0">Deep-dive analysis across profile layers.</p>
                 </div>
               </div>
             </a>
           </div>
           <div class="col-md-6">
-            <a href="doc_cv_resp.html" target="_blank" class="file-link">
-              <div
-                class="p-4 bg-white-card border-indigo bw-1 tile-left tile-img-bg"
-                style="
-                  background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766157692/Business_1_Newspaper_y988h0.jpg');
-                "
-              >
+            <a href="doc_cv_resp.html" class="file-link">
+              <div class="p-4 bg-white-card border-indigo bw-1 tile-left tile-img-bg" style="background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766157692/Business_1_Newspaper_y988h0.jpg');">
                 <div class="tile-content">
                   <span class="ui-tag tag-blue mb-2">CV</span>
                   <h3 class="fs-5 fw-bold mb-2">Michael K. Mueller</h3>
-                  <p class="small text-secondary mb-0">
-                    Senior Finance Management Consultant (MBA / MSc Econ)
-                  </p>
+                  <p class="small text-secondary mb-0">Senior Finance Management Consultant.</p>
                 </div>
               </div>
             </a>
           </div>
         </div>
+<div class="category-header header-blue"><h2>Links</h2></div>
+<div class="row g-2">
+  <div class="col-6 col-md-4 col-lg-2">
+    <a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" class="file-link">
+      <div class="p-3 bg-white-card tile-left soft-tint-indigo border-indigo bw-2" style="min-height: 80px">
+        <div class="tile-content">
+          <span class="d-block small fw-bold">ASCII</span>
+        </div>
+      </div>
+    </a>
+  </div>
 
+  <div class="col-6 col-md-4 col-lg-2">
+    <a href="https://lucide.dev/" target="_blank" class="file-link">
+      <div class="p-3 bg-white-card tile-left soft-tint-blue border-blue bw-2" style="min-height: 80px">
+        <div class="tile-content">
+          <span class="d-block small fw-bold">Lucide</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
         <div class="category-header header-indigo"><h2>TRX</h2></div>
         <div class="row g-4">
           <div class="col-md-6">
-            <a
-              href="PayPal_FNB_Integration_mod.html"
-              target="_blank"
-              class="file-link"
-            >
+            <a href="PayPal_FNB_Integration_mod.html" class="file-link">
               <div class="p-4 bg-white-card border-indigo bw-3 tile-left">
                 <div class="tile-content">
                   <span class="ui-tag tag-indigo mb-2">Integration</span>
                   <h3 class="fs-5 fw-bold mb-2">PayPal & FNB Integration</h3>
-                  <p class="small text-secondary mb-0">
-                    Modified implementation guide.
-                  </p>
+                  <p class="small text-secondary mb-0">Modified implementation guide.</p>
                 </div>
               </div>
             </a>
@@ -417,26 +217,15 @@
         <div class="category-header header-green"><h2>WEBDEV</h2></div>
         <div class="row g-3">
           <div class="col-6 col-md-3">
-            <a
-              href="https://mkmgo.github.io/mobile-motivation/"
-              target="_blank"
-              class="file-link"
-            >
-              <div
-                class="p-3 bg-white-card tile-img-bg tile-left"
-                style="
-                  background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765477890/6_rpzyu1.png');
-                "
-              >
-                <div class="tile-content">
-                  <h3 class="fs-6 fw-bold mb-0">Mobile Motivation</h3>
-                </div>
+            <a href="https://mkmgo.github.io/mobile-motivation/" target="_blank" class="file-link">
+              <div class="p-3 bg-white-card tile-img-bg tile-left" style="background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765477890/6_rpzyu1.png');">
+                <div class="tile-content"><h3 class="fs-6 fw-bold mb-0">Mobile Motivation</h3></div>
               </div>
             </a>
           </div>
           <div class="col-6 col-md-3">
-            <a href="portfolio2.html" target="_blank" class="file-link">
-              <div class="p-3 bg-white-card tile-center bw-2">
+            <a href="portfolio2.html" class="file-link">
+              <div class="p-3 bg-white-card tile-center bw-2 border-green">
                 <span class="fw-bold">Portfolio 2</span>
               </div>
             </a>
@@ -447,32 +236,8 @@
         <div class="row g-2">
           <div class="col-6 col-md-4 col-lg-2">
             <a href="doc1.html" class="file-link">
-              <div
-                class="p-2 bg-white-card tile-center border-grey bw-1"
-                style="min-height: 80px"
-              >
-                <div class="tile-content">
-                  <span class="d-block small fw-bold">API LOG</span>
-                  <span class="text-secondary" style="font-size: 0.7rem"
-                    >v1.0.4</span
-                  >
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-6 col-md-4 col-lg-2">
-            <a href="doc2.html" class="file-link">
-              <div
-                class="p-2 bg-white-card tile-center border-grey bw-1"
-                style="min-height: 80px"
-              >
-                <div class="tile-content">
-                  <span class="d-block small fw-bold">CSS VARS</span>
-                  <span class="text-secondary" style="font-size: 0.7rem"
-                    >Reference</span
-                  >
-                </div>
+              <div class="p-2 bg-white-card tile-center border-grey bw-1" style="min-height: 80px">
+                <div class="tile-content"><span class="d-block small fw-bold">API LOG</span><span class="text-secondary" style="font-size: 0.7rem">v1.0.4</span></div>
               </div>
             </a>
           </div>
@@ -481,14 +246,7 @@
         <div class="category-header header-grey"><h2>ICONS</h2></div>
         <div class="row g-3">
           <div class="col-md-3 col-6">
-            <div
-              class="bg-white-card tile-left tile-img-bg p-4"
-              style="
-                aspect-ratio: 1/1;
-                background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png');
-                min-height: 120px;
-              "
-            >
+            <div class="bg-white-card border-grey tile-left tile-img-bg p-4" style="aspect-ratio: 1/1; background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png'); min-height: 120px;">
               <span class="tile-content">Web</span>
             </div>
           </div>
@@ -497,9 +255,7 @@
     </main>
 
     <footer class="custom-footer mt-auto text-center small">
-      <p class="mb-0">
-        &copy; <span id="year"></span> Michael K. Mueller. Internal Directory.
-      </p>
+      <p class="mb-0">&copy; <span id="year"></span> Michael K. Mueller. Internal Directory.</p>
     </footer>
 
     <script>
@@ -507,38 +263,16 @@
       function updateDate() {
         const now = new Date();
         const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-        const months = [
-          "JAN",
-          "FEB",
-          "MAR",
-          "APR",
-          "MAY",
-          "JUN",
-          "JUL",
-          "AUG",
-          "SEP",
-          "OCT",
-          "NOV",
-          "DEC",
-        ];
-        document.getElementById("current-date-stamp").textContent = `${
-          days[now.getDay()]
-        } ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+        const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+        document.getElementById("current-date-stamp").textContent = `${days[now.getDay()]} ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
       }
       updateDate();
       const setTheme = () => {
-        const isDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches;
-        document.documentElement.setAttribute(
-          "data-bs-theme",
-          isDark ? "dark" : "light"
-        );
+        const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-bs-theme", isDark ? "dark" : "light");
       };
       setTheme();
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", setTheme);
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setTheme);
     </script>
   </body>
 </html>
