@@ -36,8 +36,8 @@
       :root {
         --clr-blue: #0d6efd;
         --clr-green: #198754;
-        --clr-indigo: #4B0082;
-        --clr-indigo: #4B0082;
+        --clr-indigo: #6610f2;
+        --clr-red: #902a34;
         --clr-amber: #f59e0b;
         --clr-grey: #64748b;
         --tile-radius: 1.25rem;
@@ -111,10 +111,13 @@
         border-color: var(--clr-indigo) !important;
       }
       .bg-white-card.border-green {
-        border-color: var(--clr-green) !important;
+        border-color: var(--clr-green) ! important;
       }
       .bg-white-card.border-grey {
         border-color: var(--clr-grey) !important;
+      }
+      .bg-white-card.border-red {
+        border-color: var(--clr-red) !important;
       }
 
       /* Dark Mode Border Luminosity */
@@ -130,7 +133,12 @@
       [data-bs-theme="dark"] .bg-white-card.border-green {
         border-color: #22c55e !important;
       }
-
+      [data-bs-theme="dark"] .bg-white-card.border-grey {
+        border-color: #94a3b8 !important;
+      }
+      [data-bs-theme="dark"] .bg-white-card.border-red {
+        border-color: #f87171 !important;
+      }
       /* Soft Tints Persistence */
       .soft-tint-blue {
         background-color: rgba(13, 110, 253, 0.05) !important;
@@ -140,6 +148,15 @@
       }
       .soft-tint-green {
         background-color: rgba(11, 245, 42, 0.198) !important;
+      }
+      .soft-tint-indigo {
+        background-color: rgba(102, 16, 242, 0.05) !important;
+      }
+      .soft-tint-red {
+        background-color: rgba(115, 12, 22, 0.05) !important;
+      }
+      .soft-tint-grey {
+        background-color: rgba(100, 116, 139, 0.05) !important;
       }
 
       /* --- HEADERS --- */
@@ -168,6 +185,9 @@
       .header-grey h2 {
         color: var(--clr-grey);
       }
+      .header-red h2 {
+        color: var(--clr-red);
+      }
 
       /* --- TAGS & COMPONENTS --- */
       .ui-tag {
@@ -193,6 +213,12 @@
       .tag-green {
         color: var(--clr-green);
       }
+      .tag-red {
+        color: var(--clr-red);
+      }
+      .tag-grey {
+        color: var(--clr-grey);
+      }
 
       .tag-cutout {
         border: none !important;
@@ -214,10 +240,30 @@
         background-color: var(--clr-indigo) !important;
         color: #f8fafc !important;
       }
+      .tag-red.tag-cutout {
+        background-color: var(--clr-red) !important;
+        color: #f8fafc !important;
+      }
+      .tag-grey.tag-cutout {
+        background-color: var(--clr-grey) !important;
+        color: #f8fafc !important;
+      }
+      [data-bs-theme="dark"] .tag-indigo.tag-cutout {
+        color: #020617 !important;
+      }
       [data-bs-theme="dark"] .tag-blue.tag-cutout {
         color: #020617 !important;
       }
       [data-bs-theme="dark"] .tag-amber.tag-cutout {
+        color: #020617 !important;
+      }
+      [data-bs-theme="dark"] .tag-green.tag-cutout {
+        color: #020617 !important;
+      }
+      [data-bs-theme="dark"] .tag-red.tag-cutout {
+        color: #020617 !important;
+      }
+      [data-bs-theme="dark"] .tag-grey.tag-cutout {
         color: #020617 !important;
       }
 
@@ -274,7 +320,7 @@
           class="text-decoration-none d-inline-flex align-items-center gap-2"
         >
           <span
-            class="ui-tag tag-indigo tag-cutout mb-0"
+            class="ui-tag tag-red tag-cutout mb-0"
             style="margin-top: 4px"
             >LAB</span
           >
@@ -311,7 +357,7 @@
                 "
               >
                 <div class="tile-content">
-                  <span class="ui-tag tag-green mb-2">Featured</span>
+                  <span class="ui-tag tag-green tag-cutout mb-2">Featured</span>
                   <h3 class="fs-4 fw-bold mb-2">A Generational Exposé</h3>
                   <p class="small text-secondary mb-3" style="max-width: 800px">
                     <b
