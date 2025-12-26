@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | Projects</title>
+    <title>dashboard|projects.docs</title>
 
     <link
       rel="apple-touch-icon"
@@ -36,7 +36,8 @@
       :root {
         --clr-blue: #0d6efd;
         --clr-green: #198754;
-        --clr-indigo: #6610f2;
+        --clr-indigo: #4B0082;
+        --clr-indigo: #4B0082;
         --clr-amber: #f59e0b;
         --clr-grey: #64748b;
         --tile-radius: 1.25rem;
@@ -209,6 +210,10 @@
         background-color: var(--clr-green) !important;
         color: #f8fafc !important;
       }
+      .tag-indigo.tag-cutout {
+        background-color: var(--clr-indigo) !important;
+        color: #f8fafc !important;
+      }
       [data-bs-theme="dark"] .tag-blue.tag-cutout {
         color: #020617 !important;
       }
@@ -268,12 +273,14 @@
           href="index.html"
           class="text-decoration-none d-inline-flex align-items-center gap-2"
         >
-          <span class="ui-tag tag-blue tag-cutout mb-0" style="margin-top: 5px"
-            >Stack</span
+          <span
+            class="ui-tag tag-indigo tag-cutout mb-0"
+            style="margin-top: 4px"
+            >LAB</span
           >
           <span
             class="fs-4 fw-bold"
-            style="color: var(--clr-amber); line-height: 1"
+            style="color: var(--clr-green); line-height: 1"
             >project.docs</span
           >
         </a>
@@ -387,7 +394,7 @@
           </div>
         </div>
 
-        <div class="category-header header-amber"><h2>Jobsearch</h2></div>
+        <div class="category-header header-blue"><h2>Jobsearch</h2></div>
         <div class="row g-4">
           <div class="col-md-6">
             <a
@@ -432,7 +439,7 @@
             </a>
           </div>
         </div>
-        <div class="category-header header-blue"><h2>Links</h2></div>
+        <div class="category-header header-indigo"><h2>Links</h2></div>
         <div class="row g-2">
           <div class="col-6 col-md-4 col-lg-2">
             <a
@@ -552,8 +559,10 @@
 
     <footer class="custom-footer mt-auto text-center small">
       <p class="mb-0">
-        &copy; <span id="year"></span> Michael K. Mueller
-        <strong> project.docs </strong> The Keystone
+        dashboard|
+        <strong
+          >project.docs &copy; <span id="year"></span> Michael K. Mueller
+        </strong>
       </p>
     </footer>
 
