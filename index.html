@@ -34,11 +34,11 @@
 
     <style>
       :root {
-        --clr-blue: #0d6efd;
+        --clr-blue: #49b5eb;
         --clr-green: #198754;
         --clr-indigo: #6610f2;
-        --clr-red: #902a34;
-        --clr-amber: #f59e0b;
+        --clr-red: #eb4959;
+        --clr-amber: #ebe549;
         --clr-grey: #64748b;
         --tile-radius: 1.25rem;
       }
@@ -111,7 +111,7 @@
         border-color: var(--clr-indigo) !important;
       }
       .bg-white-card.border-green {
-        border-color: var(--clr-green) ! important;
+        border-color: var(--clr-green) !important;
       }
       .bg-white-card.border-grey {
         border-color: var(--clr-grey) !important;
@@ -153,7 +153,7 @@
         background-color: rgba(102, 16, 242, 0.05) !important;
       }
       .soft-tint-red {
-        background-color: rgba(115, 12, 22, 0.05) !important;
+        background-color: rgba(115, 12, 22, 0.8) !important;
       }
       .soft-tint-grey {
         background-color: rgba(100, 116, 139, 0.05) !important;
@@ -194,6 +194,7 @@
         display: inline-flex;
         align-items: center;
         padding: 0.25rem 0.75rem;
+        padding-top: 0.35rem !important;
         border-radius: 50px;
         font-size: 0.65rem;
         font-weight: 700;
@@ -319,9 +320,7 @@
           href="index.html"
           class="text-decoration-none d-inline-flex align-items-center gap-2"
         >
-          <span
-            class="ui-tag tag-red tag-cutout mb-0"
-            style="margin-top: 4px"
+          <span class="ui-tag tag-red tag-cutout mb-0" style="margin-top: 4px"
             >LAB</span
           >
           <span
@@ -342,10 +341,61 @@
           Status: Operational / Active <br />
           Night Session running...
         </p>
+        <div class="category-header header-red"><h2>Featured</h2></div>
 
-        <div class="category-header header-green">
-          <h2>Conceptualising</h2>
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <a href="YOUR_LINK_HERE.html" target="_blank" class="file-link">
+              <div
+                class="p-4 bg-white-card soft-tint-red border-red bw-1 tile-left tile-img-bg"
+                style="
+                  background-image: url('YOUR_IMAGE_URL.jpg');
+                  min-height: 250px;
+                "
+              >
+                <div class="tile-content">
+                  <h3 class="fs-4 fw-bold mb-2">
+                    Build your Competence-Pyramid
+                  </h3>
+                  <p class="small text-secondary mb-0" style="max-width: 800px">
+                    <b
+                      >Provide a detailed description here. This full-width
+                      layout is best suited for long-form descriptions that
+                      require more horizontal space.</b
+                    >
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <a href="YOUR_LINK_HERE.html" target="_blank" class="file-link">
+              <div
+                class="p-4 bg-white-card soft-tint-red border-red bw-1 tile-left tile-img-bg"
+                style="
+                  background-image: url('YOUR_IMAGE_URL.jpg');
+                  min-height: 250px;
+                "
+              >
+                <div class="tile-content">
+                  <h3 class="fs-4 fw-bold mb-2">
+                    Build your Competence-Pyramid
+                  </h3>
+                  <p class="small text-secondary mb-0" style="max-width: 800px">
+                    <b
+                      >Provide a detailed description here. This full-width
+                      layout is best suited for long-form descriptions that
+                      require more horizontal space.</b
+                    >
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
         <div class="row g-4 mb-4">
           <div class="col-12">
             <a href="#" class="file-link">
@@ -357,7 +407,9 @@
                 "
               >
                 <div class="tile-content">
-                  <span class="ui-tag tag-green tag-cutout mb-2">Featured</span>
+                  <span class="ui-tag tag-green tag-cutout mb-3"
+                    >Conceptualising</span
+                  >
                   <h3 class="fs-4 fw-bold mb-2">A Generational Exposé</h3>
                   <p class="small text-secondary mb-3" style="max-width: 800px">
                     <b
@@ -365,11 +417,10 @@
                       long-form content.</b
                     >
                   </p>
-
                   <div class="table-responsive mb-3" style="max-width: 600px">
                     <table
                       class="table table-sm table-borderless align-middle mb-0"
-                      style="font-size: 0.75rem; --bs-table-bg: transparent"
+                      style="font-size: 0.72rem; --bs-table-bg: transparent"
                     >
                       <thead
                         class="text-secondary border-bottom border-secondary-subtle"
@@ -377,51 +428,119 @@
                         <tr>
                           <th
                             scope="col"
-                            class="fw-medium px-0"
+                            class="fw-bold px-0 pb-2"
                             style="letter-spacing: 0.05em"
                           >
-                            milestone
+                            Milestone
                           </th>
                           <th
                             scope="col"
-                            class="fw-medium px-0"
-                            style="letter-spacing: 0.05em"
+                            class="fw-bold px-0 pb-2 text-center"
+                            style="letter-spacing: 0.05em; width: 120px"
                           >
-                            status
+                            Status
                           </th>
                           <th
                             scope="col"
-                            class="fw-medium px-0 text-end"
+                            class="fw-bold px-0 pb-2 text-end"
                             style="letter-spacing: 0.05em"
                           >
-                            timeline
+                            Timeline
                           </th>
                         </tr>
                       </thead>
                       <tbody class="text-secondary">
                         <tr>
                           <td class="px-0 py-2 text-dark-emphasis fw-semibold">
-                            reasearch for project definition
+                            Research project definition
                           </td>
                           <td class="px-0 py-2">
-                            <span
-                              class="badge rounded-pill bg-primary-subtle text-primary border border-primary-subtle"
-                              >in progress</span
-                            >
+                            <div class="d-flex justify-content-center gap-1">
+                              <div
+                                style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.8;
+                                "
+                              ></div>
+                              <div
+                                style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.8;
+                                "
+                              ></div>
+                              <div
+                                style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.8;
+                                "
+                              ></div>
+                              <div
+                                style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.2;
+                                "
+                              ></div>
+                            </div>
                           </td>
-                          <td class="px-0 py-2 text-end">12/25</td>
+                          <td class="px-0 py-2 text-end">Jan 26</td>
                         </tr>
                         <tr>
                           <td class="px-0 py-2 text-dark-emphasis fw-semibold">
-                            setup project onboarding
+                            Project onboarding
                           </td>
                           <td class="px-0 py-2">
-                            <span
-                              class="badge rounded-pill bg-primary-subtle text-primary border border-primary-subtle"
-                              >in progress</span
-                            >
+                            <div class="d-flex justify-content-center gap-1">
+                              <div
+                                style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.8;
+                                "
+                              ></div>
+                              <div
+                                style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.2;
+                                "
+                              ></div>
+                              <div
+                                style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.2;
+                                "
+                              ></div>
+                              <div
+                                style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.2;
+                                "
+                              ></div>
+                            </div>
                           </td>
-                          <td class="px-0 py-2 text-end">12/25</td>
+                          <td class="px-0 py-2 text-end">Jan 26</td>
                         </tr>
                       </tbody>
                     </table>
