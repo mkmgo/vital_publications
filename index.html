@@ -34,7 +34,7 @@
 
     <style>
       :root {
-        --clr-blue: #49b5eb;
+        --clr-blue: #2565fa;
         --clr-green: #198754;
         --clr-indigo: #6610f2;
         --clr-red: #eb4959;
@@ -122,10 +122,10 @@
 
       /* Dark Mode Border Luminosity */
       [data-bs-theme="dark"] .bg-white-card.border-blue {
-        border-color: #3b82f6 !important;
+        border-color: #2565fabf !important;
       }
       [data-bs-theme="dark"] .bg-white-card.border-amber {
-        border-color: #fbbf24 !important;
+        border-color: #fbbe24 !important;
       }
       [data-bs-theme="dark"] .bg-white-card.border-indigo {
         border-color: #6610f2 !important;
@@ -141,16 +141,16 @@
       }
       /* Soft Tints Persistence */
       .soft-tint-blue {
-        background-color: rgba(13, 110, 253, 0.05) !important;
+        background-color: rgba(13, 109, 253, 0.188) !important;
       }
       .soft-tint-amber {
-        background-color: rgba(245, 159, 11, 0.616) !important;
+        background-color: rgba(245, 159, 11, 0.44) !important;
       }
       .soft-tint-green {
         background-color: rgba(11, 245, 42, 0.198) !important;
       }
       .soft-tint-indigo {
-        background-color: rgba(103, 16, 242, 0.083) !important;
+        background-color: rgba(103, 16, 242, 0.273) !important;
       }
       .soft-tint-red {
         background-color: rgba(115, 12, 22, 0.8) !important;
@@ -320,13 +320,13 @@
           href="index.html"
           class="text-decoration-none d-inline-flex align-items-center gap-2"
         >
-          <span class="ui-tag tag-blue tag-cutout mb-0" style="margin-top: 0px"
+          <span class="ui-tag tag-amber tag-cutout mb-0" style="margin-top: 5px"
             >LAB</span
           >
           <span
             class="fs-4 fw-bold"
-            style="color: var(--clr-red); line-height: 1"
-            >dashboard | project.docs</span
+            style="color: var(--clr-grey); line-height: 1"
+            >project.docs</span
           >
         </a>
       </header>
@@ -341,7 +341,7 @@
           Status: Operational / Active <br />
           Night Session running...
         </p>
-        <div class="category-header header-grey"><h2>documentation</h2></div>
+        <div class="category-header header-blue"><h2>Guidelines</h2></div>
         <div class="row g-2">
           <div class="col-6 col-md-4 col-lg-2">
             <a
@@ -350,13 +350,11 @@
               class="file-link"
             >
               <div
-                class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-1"
+                class="p-3 bg-white-card tile-left soft-tint-amber border-amber bw-1"
                 style="min-height: 80px"
               >
                 <div class="tile-content">
-                  <span class="ui-tag tag-grey tag-cutout mb-2">Status</span>
-
-                  <span class="d-block small fw-bold"
+                  <span class="d-block small fw-light"
                     >projects under management & development</span
                   >
                 </div>
@@ -370,15 +368,11 @@
               class="file-link"
             >
               <div
-                class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-1"
+                class="p-3 bg-white-card tile-left soft-tint-amber border-amber bw-1"
                 style="min-height: 80px"
               >
                 <div class="tile-content">
-                  <span class="ui-tag tag-grey tag-cutout mb-2"
-                    >Compendium</span
-                  >
-
-                  <span class="d-block small fw-bold"
+                  <span class="d-block small fw-light"
                     >terminology & nomenclature</span
                   >
                 </div>
@@ -396,8 +390,10 @@
                 style="min-height: 80px"
               >
                 <div class="tile-content">
-                  <span class="ui-tag tag-grey tag-cutout mb-2">Dev</span>
-                  <span class="d-block small fw-bold" style="color: var(--clr-red)""
+                  <span class="d-block small fw-light">devbrief</span>
+                  <span
+                    class="d-block small fw-light"
+                    style="color: var(--clr-grey)"
                     >dashboard | project.docs</span
                   >
                 </div>
@@ -405,6 +401,75 @@
             </a>
           </div>
         </div>
+        <div class="category-header header-amber"><h2>Assistants</h2></div>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <a
+              href="https://gemini.google.com/u/1/app?pageId=none"
+              class="file-link"
+            >
+              <div
+                class="p-4 bg-white-card soft-tint-blue border-blue bw-1 tile-left"
+              >
+                <div class="tile-content">
+                  <h3 class="fs-5 fw-light mb-1">GEM dog0815</h3>
+                  <p class="small text-secondary mb-0">
+                    Modified implementation guide.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a
+              href="https://gemini.google.com/u/2/app?pageId=none"
+              class="file-link"
+            >
+              <div
+                class="p-4 bg-white-card soft-tint-blue border-blue bw-1 tile-left"
+              >
+                <div class="tile-content">
+                  <h3 class="fs-5 fw-light mb-1">GEM scalable.launch</h3>
+                  <p class="small text-secondary mb-0">
+                    Modified implementation guide.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a
+              href="https://gemini.google.com/u/0/app?pageId=none"
+              class="file-link"
+            >
+              <div
+                class="p-4 bg-white-card soft-tint-blue border-blue bw-1 tile-left"
+              >
+                <div class="tile-content">
+                  <h3 class="fs-5 fw-light mb-1">GEM mkmueller.mission</h3>
+                  <p class="small text-secondary mb-0">
+                    Modified implementation guide.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a href="https://chatgpt.com/" class="file-link">
+              <div
+                class="p-4 bg-white-card soft-tint-grey border-grey bw-1 tile-left"
+              >
+                <div class="tile-content">
+                  <h3 class="fs-5 fw-light mb-1">GPT dog0815</h3>
+                  <p class="small text-secondary mb-0">
+                    Modified implementation guide.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
         <div class="category-header header-indigo"><h2>Symbols</h2></div>
         <div class="row g-2">
           <div class="col-6 col-md-4 col-lg-2">
@@ -434,9 +499,7 @@
                 style="min-height: 80px"
               >
                 <div class="tile-content">
-                  <span class="d-block small fw-bold"
-                    >Alphanumerics</span
-                  >
+                  <span class="d-block small fw-bold">Alphanumerics</span>
                 </div>
               </div>
             </a>
@@ -751,22 +814,6 @@
               >
                 <div class="tile-content">
                   <span class="d-block small fw-bold">Lucide</span>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="category-header header-indigo"><h2>TRX</h2></div>
-        <div class="row g-4">
-          <div class="col-md-6">
-            <a href="PayPal_FNB_Integration_mod.html" class="file-link">
-              <div class="p-4 bg-white-card border-indigo bw-3 tile-left">
-                <div class="tile-content">
-                  <span class="ui-tag tag-indigo mb-2">Integration</span>
-                  <h3 class="fs-5 fw-bold mb-2">PayPal & FNB Integration</h3>
-                  <p class="small text-secondary mb-0">
-                    Modified implementation guide.
-                  </p>
                 </div>
               </div>
             </a>
