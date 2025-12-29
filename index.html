@@ -11,26 +11,20 @@
     />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta
-      name="theme-color"
-      content="#020617"
-      media="(prefers-color-scheme: dark)"
-    />
-    <meta name="apple-mobile-web-app-title" content="Dashboard" />
+    <meta name="theme-color" content="#020617" />
     <meta
       name="msapplication-TileImage"
       content="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png"
     />
     <meta name="msapplication-TileColor" content="#020617" />
-
-    <link
-      rel="mask-icon"
-      href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png"
-      color="#0d6efd"
-    />
-
+    <link rel="manifest" href="manifest.json" />
     <link
       rel="shortcut icon"
+      href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
       href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png"
     />
 
@@ -41,11 +35,6 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
       rel="stylesheet"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png"
     />
 
     <style>
@@ -100,13 +89,12 @@
         border-color: #334155;
       }
 
-      /* Hover Interaction */
       .file-link:hover .bg-white-card {
         transform: translateY(-4px);
         box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
       }
 
-      /* Border Persistence (Forced Specificity) */
+      /* Border Persistence */
       .bw-1 {
         border-width: 1px !important;
       }
@@ -155,7 +143,8 @@
       [data-bs-theme="dark"] .bg-white-card.border-red {
         border-color: #f87171 !important;
       }
-      /* Soft Tints Persistence */
+
+      /* Soft Tints */
       .soft-tint-blue {
         background-color: #0d6dfd30 !important;
       }
@@ -175,13 +164,45 @@
         background-color: #64748b0d !important;
       }
 
-      /* --- HEADERS --- */
+      /* --- BACKGROUND IMAGE LAYER --- */
+      .tile-img-bg {
+        min-height: 200px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .tile-img-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+      [data-bs-theme="light"] .tile-img-bg::before {
+        background: rgba(255, 255, 255, 0.88);
+      }
+      [data-bs-theme="dark"] .tile-img-bg::before {
+        background: rgba(15, 23, 42, 0.82);
+      }
+
+      /* FIXED TILE CONTENT: Added align-items to prevent tag stretching */
+      .tile-content {
+        z-index: 1;
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: flex-start;
+      }
+
+      /* --- CATEGORY HEADERS --- */
       .category-header {
         margin: 3.5rem 0 1.5rem 0;
       }
       .category-header h2 {
         display: flex;
-        align-items: center; /* Mathematical center */
+        align-items: center;
         gap: 0.5rem;
         font-size: 1.1rem;
         font-weight: 500;
@@ -189,16 +210,12 @@
         letter-spacing: 0.2em;
         margin: 0;
       }
-
-      /* THE OPTICAL UPWARD NUDGE */
       .category-header h2 i,
       .category-header h2 svg {
-        display: inline-block;
+        transform: translateY(-1.5px) !important;
         flex-shrink: 0;
-        transform: translateY(
-          -1.5px
-        ) !important; /* Negative value pulls it UP */
       }
+
       .header-blue h2 {
         color: var(--clr-blue);
       }
@@ -230,7 +247,9 @@
         text-transform: uppercase;
         border: 1px solid currentColor;
         background: rgba(0, 0, 0, 0.03);
+        line-height: 1;
       }
+
       .tag-blue {
         color: var(--clr-blue);
       }
@@ -253,83 +272,42 @@
       .tag-cutout {
         border: none !important;
         font-weight: 800;
+        color: #f8fafc !important;
       }
       .tag-blue.tag-cutout {
         background-color: var(--clr-blue) !important;
-        color: #f8fafc !important;
       }
       .tag-amber.tag-cutout {
         background-color: var(--clr-amber) !important;
-        color: #f8fafc !important;
       }
       .tag-green.tag-cutout {
         background-color: var(--clr-green) !important;
-        color: #f8fafc !important;
       }
       .tag-indigo.tag-cutout {
         background-color: var(--clr-indigo) !important;
-        color: #f8fafc !important;
       }
       .tag-red.tag-cutout {
         background-color: var(--clr-red) !important;
-        color: #f8fafc !important;
       }
       .tag-grey.tag-cutout {
         background-color: var(--clr-grey) !important;
-        color: #f8fafc !important;
       }
-      [data-bs-theme="dark"] .tag-indigo.tag-cutout {
-        color: #020617 !important;
-      }
-      [data-bs-theme="dark"] .tag-blue.tag-cutout {
-        color: #020617 !important;
-      }
-      [data-bs-theme="dark"] .tag-amber.tag-cutout {
-        color: #020617 !important;
-      }
-      [data-bs-theme="dark"] .tag-green.tag-cutout {
-        color: #020617 !important;
-      }
-      [data-bs-theme="dark"] .tag-red.tag-cutout {
-        color: #020617 !important;
-      }
-      [data-bs-theme="dark"] .tag-grey.tag-cutout {
+
+      [data-bs-theme="dark"] .tag-cutout {
         color: #020617 !important;
       }
 
-      /* --- LAYOUT UTILITIES --- */
-      .tile-img-bg {
-        min-height: 200px;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        overflow: hidden;
-      }
-      .tile-img-bg::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-      }
-      [data-bs-theme="light"] .tile-img-bg::before {
-        background: rgba(255, 255, 255, 0.88);
-      }
-      [data-bs-theme="dark"] .tile-img-bg::before {
-        background: rgba(15, 23, 42, 0.82);
-      }
-      .tile-content {
-        z-index: 1;
-        width: 100%;
-        position: relative;
-      }
+      /* --- ALIGNMENT & UTILS --- */
       .tile-left {
         text-align: left;
-        align-items: flex-start;
-      }
+      } /* Removed flex-start here as parent handles it */
       .tile-center {
         text-align: center;
         align-items: center;
         justify-content: center;
+      }
+      .mt-auto-tag {
+        margin-top: auto !important;
       }
       .custom-footer {
         background-color: transparent;
@@ -339,7 +317,6 @@
       }
     </style>
   </head>
-
   <body>
     <main class="main-container container">
       <header
@@ -1051,7 +1028,8 @@
                       class="small text-secondary mb-0"
                       style="max-width: 400px; line-height: 1.4"
                     >
-                      Mental Relief Stoic Support Unique Motivation Assistant Resilience Builder
+                      Mental Relief Stoic Support Unique Motivation Assistant
+                      Resilience Builder
                     </p>
                   </div>
                 </div>
