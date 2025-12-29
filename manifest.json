@@ -2,8 +2,9 @@
   "name": "Project Docs Dashboard",
   "short_name": "Hub",
   "description": "Internal Project Directory",
-  "start_url": "index.html",
+  "start_url": "./index.html",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "minimal-ui"],
   "background_color": "#020617",
   "theme_color": "#020617",
   "icons": [
@@ -11,7 +12,13 @@
       "src": "https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
