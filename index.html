@@ -971,8 +971,107 @@
             </a>
           </div>
         </div>
+        <div class="category-header header-blue">
+          <h2>Under Development</h2>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="file-link">
+            <div
+              class="p-4 bg-white-card border-blue bw-1 soft-tint-blue tile-left"
+            >
+              <div class="tile-content">
+                <h3 class="fs-5 fw-bold mb-2">Halith</h3>
+                <style>
+                  /* Hover effect logic for the image clip */
+                  .file-link:hover .zoom-img {
+                    transform: scale(1.15);
+                    filter: grayscale(0);
+                  }
+                  .file-link:hover .image-clip-wrapper {
+                    border-color: var(--clr-blue) !important;
+                  }
+                </style>
 
-        <div class="category-header header-amber"><h2>Evolving</h2></div>
+                <div
+                  class="d-flex flex-column flex-md-row gap-4 align-items-start mt-4"
+                >
+                  <div
+                    class="image-clip-wrapper position-relative"
+                    style="flex-shrink: 0; transition: border-color 0.3s ease"
+                  >
+                    <div
+                      style="
+                        width: 140px;
+                        height: 140px;
+                        border: 1px solid var(--clr-grey);
+                        border-radius: 8px;
+                        overflow: hidden;
+                        padding: 6px;
+                        background: rgba(255, 255, 255, 0.05);
+                        backdrop-filter: blur(4px);
+                      "
+                    >
+                      <div
+                        class="zoom-img"
+                        style="
+                          width: 100%;
+                          height: 100%;
+                          background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765477890/6_rpzyu1.png');
+                          background-size: cover;
+                          background-position: center;
+                          border-radius: 4px;
+                          filter: grayscale(0.8);
+                          transition: transform 0.5s
+                              cubic-bezier(0.4, 0, 0.2, 1),
+                            filter 0.5s ease;
+                        "
+                      ></div>
+                    </div>
+                    <span
+                      class="position-absolute bottom-0 end-0 bg-dark text-white px-2 py-1 fw-bold"
+                      style="
+                        font-size: 0.5rem;
+                        border-radius: 4px 0 0 0;
+                        letter-spacing: 1px;
+                        z-index: 2;
+                      "
+                    >
+                      Halith
+                    </span>
+                  </div>
+
+                  <div class="clip-context">
+                    <h4
+                      class="fs-6 fw-bold mb-1"
+                      style="color: var(--clr-grey)"
+                    >
+                      Infinite Strength
+                    </h4>
+                    <p
+                      class="small text-secondary mb-0"
+                      style="max-width: 400px; line-height: 1.4"
+                    >
+                      Mental Relief Stoic Support Unique Motivation Assistant Resilience Builder
+                    </p>
+                  </div>
+                </div>
+                <p class="small text-secondary">Description text here.</p>
+
+                <div class="ui-tag tag-blue tag-cutout mt-auto-tag">
+                  <i
+                    data-lucide="check"
+                    style="width: 12px; margin-right: 4px"
+                  ></i>
+                  Active
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="category-header header-blue">
+          <h2>Under Development</h2>
+        </div>
         <div class="row g-3">
           <div class="col-6 col-md-3">
             <a
