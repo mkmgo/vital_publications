@@ -62,14 +62,46 @@
         background-color: #020617 !important;
         color-scheme: dark;
       }
-      [data-bs-theme="light"] .header-link-icon {
-        background: rgba(245, 159, 11, 0.1) !important;
-        border: none;
-        padding: 8px;
+      /* --- HEADER SYSTEM --- */
+
+      /* 1. The Logo Frame */
+      .header-link-icon {
+        width: 42px;
+        height: 42px;
         border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(245, 159, 11, 0.2);
+        background: rgba(245, 159, 11, 0.08) !important;
+      }
+
+      .header-link-icon i {
+        display: block;
+        line-height: 0;
+      }
+
+      [data-bs-theme="dark"] .header-link-icon {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-color: rgba(245, 159, 11, 0.4);
+      }
+
+      /* 2. The Brand Title */
+      .brand-text {
+        font-weight: 400 !important;
+        color: var(--clr-amber);
+        line-height: 1.2; /* Adjusted for descenders (p, j) */
+        letter-spacing: -0.01em;
+        font-size: 1.5rem;
+      }
+
+      /* 3. The Layout Spacing */
+      main > header {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.2rem !important;
+        margin-bottom: 3.5rem !important;
+        width: 100%;
       }
       .main-container {
         flex-grow: 1;
@@ -205,24 +237,20 @@
       }
 
       /* --- CATEGORY HEADERS --- */
-      header {
-        padding-top: 1.5rem !important;
-        padding-bottom: 1rem !important;
+
+      .category-header {
+        margin: 3.5rem 0 1.5rem 0;
+        width: 100%; /* Ensures they take up the full row */
+        display: block; /* Prevents them from behaving like the top header */
       }
+
       .category-header h2 {
+        font-size: 1.1rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        font-size: 1.1rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        margin: 0;
-      }
-      .category-header h2 i,
-      .category-header h2 svg {
-        transform: translateY(-1.5px) !important;
-        flex-shrink: 0;
       }
 
       .header-blue h2 {
@@ -329,42 +357,43 @@
   <body>
     <main class="main-container container">
       <header
-        class="d-flex justify-content-between align-items-end py-4 border-bottom mb-5 border-secondary-subtle bw-2"
+        class="d-flex justify-content-between align-items-end border-bottom border-secondary-subtle bw-2"
       >
-        <div class="d-flex flex-column">
+        <div class="d-flex align-items-center gap-3">
+          <div class="header-link-icon">
+            <i
+              data-lucide="loader-pinwheel"
+              style="color: var(--clr-amber); width: 24px; height: 24px"
+            ></i>
+          </div>
+
           <a
             href="index.html"
-            class="text-decoration-none d-inline-flex align-items-center gap-2"
+            class="text-decoration-none d-flex flex-column justify-content-center"
           >
-            <span class="header-link-icon">
-              <i
-                data-lucide="loader-pinwheel"
-                style="color: var(--clr-amber)"
-              ></i>
+            <span class="brand-text">project.docs</span>
+            <span
+              class="text-secondary"
+              style="
+                font-size: 0.65rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-top: 4px;
+              "
+            >
+              Centralized Knowledge Architecture
             </span>
-            <div class="d-flex flex-column">
-              <span
-                class="fs-4 fw-bold"
-                style="color: var(--clr-amber); line-height: 1"
-              >
-                project.docs
-              </span>
-              <span
-                class="text-secondary"
-                style="
-                  font-size: 0.7rem;
-                  letter-spacing: 0.1em;
-                  text-transform: uppercase;
-                  margin-top: 4px;
-                "
-              >
-                Centralized Knowledge Architecture
-              </span>
-            </div>
           </a>
         </div>
-      </header>
 
+        <div class="d-none d-md-block pb-1">
+          <span
+            class="text-secondary fw-bold"
+            style="font-size: 0.55rem; letter-spacing: 0.1em; opacity: 0.6"
+            >V2025.12</span
+          >
+        </div>
+      </header>
       <section id="directory">
         <h2 class="fw-semibold fs-3 mb-1">Activities & Projects</h2>
         <p
