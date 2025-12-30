@@ -62,7 +62,15 @@
         background-color: #020617 !important;
         color-scheme: dark;
       }
-
+      [data-bs-theme="light"] .header-link-icon {
+        background: rgba(245, 159, 11, 0.1) !important;
+        border: none;
+        padding: 8px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
       .main-container {
         flex-grow: 1;
         padding: 3rem 1.5rem;
@@ -197,8 +205,9 @@
       }
 
       /* --- CATEGORY HEADERS --- */
-      .category-header {
-        margin: 3.5rem 0 1.5rem 0;
+      header {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1rem !important;
       }
       .category-header h2 {
         display: flex;
@@ -325,29 +334,34 @@
         <div class="d-flex flex-column">
           <a
             href="index.html"
-            class="text-decoration-none d-inline-flex align-items-center gap-2 mb-1"
+            class="text-decoration-none d-inline-flex align-items-center gap-2"
           >
-            <i
-              data-lucide="loader-pinwheel"
-              style="color: var(--clr-amber); width: 28px; height: 28px"
-            ></i>
-            <span
-              class="fs-4 fw-800"
-              style="
-                color: var(--clr-amber);
-                line-height: 1;
-                letter-spacing: -0.02em;
-              "
-            >
-              project.docs Dashboard
+            <span class="header-link-icon">
+              <i
+                data-lucide="loader-pinwheel"
+                style="color: var(--clr-amber)"
+              ></i>
             </span>
+            <div class="d-flex flex-column">
+              <span
+                class="fs-4 fw-bold"
+                style="color: var(--clr-amber); line-height: 1"
+              >
+                project.docs
+              </span>
+              <span
+                class="text-secondary"
+                style="
+                  font-size: 0.7rem;
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  margin-top: 4px;
+                "
+              >
+                Centralized Knowledge Architecture
+              </span>
+            </div>
           </a>
-          <span
-            class="text-secondary fw-medium"
-            style="font-size: 0.75rem; letter-spacing: 0.05em; margin-left: 2px"
-          >
-            CENTRALIZED KNOWLEDGE ARCHITECTURE
-          </span>
         </div>
       </header>
 
