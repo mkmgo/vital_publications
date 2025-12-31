@@ -346,17 +346,20 @@
       .mt-auto-tag {
         margin-top: auto !important;
       }
-      /* --- FOOTER REFINEMENT --- */
+      /* --- COMPACT BEAUTIFIED FOOTER --- */
       .custom-footer {
         background-color: transparent;
         color: var(--clr-grey);
-        border-top: 2px solid rgba(0, 0, 0, 0.05); /* Matching the header's weight */
-        padding: 3rem 0;
-        margin-top: 6rem !important; /* Significant breathing room at the bottom */
+        /* Matching the header's bw-2 thickness */
+        border-top: 2px solid rgba(0, 0, 0, 0.05);
+        /* Reduced padding to bring line closer to text */
+        padding-top: 1rem !important;
+        padding-bottom: 2rem !important;
+        margin-top: 5rem !important;
       }
 
       [data-bs-theme="dark"] .custom-footer {
-        border-top-color: rgba(255, 255, 255, 0.05);
+        border-top-color: rgba(255, 255, 255, 0.1);
       }
 
       .footer-brand {
@@ -364,21 +367,56 @@
         color: var(--clr-amber);
         letter-spacing: -0.01em;
         font-size: 1.1rem;
+        line-height: 1.2;
       }
 
       .footer-metadata {
         font-size: 0.65rem;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        opacity: 0.6;
+        opacity: 0.7;
+      }
+      /* Unified line style to match footer */
+      /* Edge-to-edge line logic */
+      /* Unified Edge-to-Edge Line for Header */
+      .brand-line {
+        position: relative;
+        border-bottom: none !important;
+      }
+
+      .brand-line::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 100vw;
+        transform: translateX(-50%);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+        pointer-events: none;
+      }
+
+      [data-bs-theme="dark"] .brand-line::after {
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 2px 10px;
+        border-radius: 50px;
+        border: 1px solid rgba(100, 116, 139, 0.2);
+        background: rgba(100, 116, 139, 0.05);
+        font-size: 0.6rem;
+        font-weight: 700;
+        color: var(--clr-grey); /* This keeps all text grey by default */
+        text-transform: uppercase;
       }
     </style>
   </head>
   <body>
     <main class="main-container container">
-      <header
-        class="d-flex justify-content-between align-items-end border-bottom border-secondary-subtle bw-2"
-      >
+      <header class="d-flex justify-content-between align-items-end brand-line">
         <div class="d-flex align-items-center gap-3">
           <div class="header-link-icon">
             <i
@@ -386,11 +424,7 @@
               style="color: var(--clr-amber); width: 24px; height: 24px"
             ></i>
           </div>
-
-          <a
-            href="index.html"
-            class="text-decoration-none d-flex flex-column justify-content-center"
-          >
+          <a href="index.html" class="text-decoration-none d-flex flex-column">
             <span class="brand-text">project.docs</span>
             <span
               class="text-secondary"
@@ -398,7 +432,7 @@
                 font-size: 0.65rem;
                 letter-spacing: 0.08em;
                 text-transform: uppercase;
-                margin-top: 4px;
+                margin-top: 2px;
               "
             >
               Centralized Knowledge Architecture
@@ -407,11 +441,7 @@
         </div>
 
         <div class="d-none d-md-block pb-1">
-          <span
-            class="text-secondary fw-bold"
-            style="font-size: 0.55rem; letter-spacing: 0.1em; opacity: 0.6"
-            >V2025.12</span
-          >
+          <div class="status-pill">V2025.12</div>
         </div>
       </header>
       <section id="directory">
@@ -424,7 +454,7 @@
           Status: Operational / Active <br />
           Milestone: Phase 2 - Development & Integration<br />
           In progress: Prototype optimisation ongoing<br />
-          Evening session kicked off
+          Lunch break ongoing ✨
         </p>
         <div class="col-md-6">
           <div
@@ -1255,16 +1285,13 @@
           </div>
 
           <div class="text-center text-md-end">
-            <div
-              class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill border border-secondary-subtle"
-            >
+            <div class="status-pill">
               <span
                 class="bg-success rounded-circle"
                 style="width: 6px; height: 6px; display: inline-block"
               ></span>
-              <span class="footer-metadata" style="opacity: 1"
-                >System Nominal</span
-              >
+
+              <span>System Nominal</span>
             </div>
           </div>
         </div>
