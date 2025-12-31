@@ -416,17 +416,18 @@
         color: var(--clr-grey); /* This keeps all text grey by default */
         text-transform: uppercase;
       }
-      /* --- CLEAN BANNER SYSTEM --- */
+      /* --- FINAL SPACING & BANNER FIX --- */
+      /* --- OPTIMIZED BANNER SYSTEM --- */
       .banner-box {
-        margin-top: 1.5rem !important;
-        margin-bottom: 2.5rem !important;
-        background-color: #2563eb;
+        background-color: #2565fa;
         padding: 0.8rem 1.5rem;
         border-radius: 14px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
+        margin-top: 1.5rem !important;
+        margin-bottom: 2.5rem !important; /* Distance to the tiles */
       }
 
       .banner-box h2 {
@@ -434,12 +435,12 @@
         font-weight: 800 !important;
         text-transform: uppercase;
         letter-spacing: 0.12em;
-        font-size: 1.2rem;
+        font-size: 1.25rem;
         margin: 0 !important;
-        padding-top: 5px; /* Nudges text down slightly */
+        padding-top: 6px; /* Specifically nudges text down */
         display: flex;
         align-items: center;
-        gap: 0.7rem;
+        gap: 0.8rem;
         border: none !important;
       }
 
@@ -454,6 +455,11 @@
         justify-content: center;
         color: #000;
         flex-shrink: 0;
+      }
+
+      /* Fixes the "decent distance" under any row */
+      .spacer-bottom {
+        margin-bottom: 6rem !important;
       }
     </style>
   </head>
@@ -487,6 +493,7 @@
           <div class="status-pill">V2025.12</div>
         </div>
       </header>
+
       <div class="banner-box">
         <h2>
           <i
