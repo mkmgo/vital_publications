@@ -346,11 +346,31 @@
       .mt-auto-tag {
         margin-top: auto !important;
       }
+      /* --- FOOTER REFINEMENT --- */
       .custom-footer {
         background-color: transparent;
         color: var(--clr-grey);
-        border-top: 1px solid rgba(0, 0, 0, 0.05);
-        padding: 2rem 0;
+        border-top: 2px solid rgba(0, 0, 0, 0.05); /* Matching the header's weight */
+        padding: 3rem 0;
+        margin-top: 6rem !important; /* Significant breathing room at the bottom */
+      }
+
+      [data-bs-theme="dark"] .custom-footer {
+        border-top-color: rgba(255, 255, 255, 0.05);
+      }
+
+      .footer-brand {
+        font-weight: 400;
+        color: var(--clr-amber);
+        letter-spacing: -0.01em;
+        font-size: 1.1rem;
+      }
+
+      .footer-metadata {
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0.6;
       }
     </style>
   </head>
@@ -404,9 +424,7 @@
           Status: Operational / Active <br />
           Milestone: Phase 2 - Development & Integration<br />
           In progress: Prototype optimisation ongoing<br />
-          Subpages under construction<br />
-          Backend systems deployment ongoing <br />
-          Brand image Integrated Estimated session end time: 19:25 hrs
+          Evening session kicked off
         </p>
         <div class="col-md-6">
           <div
@@ -1212,13 +1230,45 @@
       </section>
     </main>
 
-    <footer class="custom-footer mt-auto text-center small">
-      <p class="mb-0">
-        project.docs
-        <strong>
-          Dashboard &copy; <span id="year"></span> Michael K. Mueller
-        </strong>
-      </p>
+    <footer class="custom-footer mt-auto">
+      <div class="container">
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4"
+        >
+          <div class="text-center text-md-start">
+            <div class="footer-brand mb-1">project.docs</div>
+            <div class="footer-metadata">
+              Centralized Knowledge Architecture
+            </div>
+          </div>
+
+          <div class="text-center">
+            <div class="footer-metadata mb-1">
+              Standard Reference &copy; <span id="year"></span>
+            </div>
+            <div
+              class="fw-bold small text-uppercase"
+              style="letter-spacing: 0.05em; font-size: 0.75rem"
+            >
+              Michael K. Mueller
+            </div>
+          </div>
+
+          <div class="text-center text-md-end">
+            <div
+              class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill border border-secondary-subtle"
+            >
+              <span
+                class="bg-success rounded-circle"
+                style="width: 6px; height: 6px; display: inline-block"
+              ></span>
+              <span class="footer-metadata" style="opacity: 1"
+                >System Nominal</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <script>
