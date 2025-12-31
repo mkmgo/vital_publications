@@ -355,9 +355,7 @@
       .custom-footer {
         background-color: transparent;
         color: var(--clr-grey);
-        /* Matching the header's bw-2 thickness */
-        border-top: 2px solid rgba(0, 0, 0, 0.05);
-        /* Reduced padding to bring line closer to text */
+        /* border-top: 2px solid rgba(0, 0, 0, 0.05);  <-- DELETE THIS LINE */
         padding-top: 1rem !important;
         padding-bottom: 2rem !important;
         margin-top: 5rem !important;
@@ -381,27 +379,20 @@
         text-transform: uppercase;
         opacity: 0.7;
       }
-      /* Unified line style to match footer */
-      /* Edge-to-edge line logic */
-      /* Unified Edge-to-Edge Line for Header */
+
+      /* Unified Line for Header and Dividers - Now contained to content width */
       .brand-line {
         position: relative;
-        border-bottom: none !important;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05) !important;
       }
 
+      /* We remove the ::after logic so it doesn't stretch to the screen edges */
       .brand-line::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 100vw;
-        transform: translateX(-50%);
-        border-bottom: 2px solid rgba(0, 0, 0, 0.05);
-        pointer-events: none;
+        display: none !important;
       }
 
-      [data-bs-theme="dark"] .brand-line::after {
-        border-bottom-color: rgba(255, 255, 255, 0.1);
+      [data-bs-theme="dark"] .brand-line {
+        border-bottom-color: rgba(255, 255, 255, 0.1) !important;
       }
 
       .status-pill {
@@ -636,7 +627,7 @@
           </div>
         </div>
 
-        <div class="brand-line mb-5"></div>
+        <div class="brand-line mb-2"></div>
 
         <div class="banner-box">
           <h2>
@@ -665,9 +656,12 @@
                 style="min-height: 80px"
               >
                 <div class="tile-content">
-                  <span class="d-block small fw-light"
-                    >projects under management & development</span
+                  <span class="d-block small fw-bold"
+                    >Projects under Management & Development</span
                   >
+                  <p class="small text-secondary mb-1">
+                    Modified implementation guide.
+                  </p>
                 </div>
               </div>
             </a>
@@ -683,8 +677,8 @@
                 style="min-height: 80px"
               >
                 <div class="tile-content">
-                  <span class="d-block small fw-light"
-                    >terminology & nomenclature</span
+                  <span class="d-block small fw-bold"
+                    >Terminology & Nomenclature</span
                   >
                 </div>
               </div>
@@ -701,11 +695,11 @@
                 style="min-height: 80px"
               >
                 <div class="tile-content">
-                  <span class="d-block small fw-light">devbrief</span>
+                  <span class="d-block small fw-bold md-1">Documentation</span>
                   <span
-                    class="d-block small fw-light"
+                    class="d-block small fw-bold"
                     style="color: var(--clr-grey)"
-                    >🅟🄳🄾🅧 ⠇dash</span
+                    >🅟🄳🄾🅧</span
                   >
                 </div>
               </div>
@@ -717,7 +711,7 @@
 
         <div class="category-header header-amber"><h2>Assistants</h2></div>
         <div class="row g-4">
-          <div class="col-md-6">
+          <div class="col-6 col-md-4 col-lg-2">
             <a
               href="https://gemini.google.com/u/1/app?pageId=none"
               class="file-link"
@@ -1327,6 +1321,8 @@
 
     <footer class="custom-footer mt-auto">
       <div class="container">
+        <div class="brand-line mb-4"></div>
+
         <div
           class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4"
         >
