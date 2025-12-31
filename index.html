@@ -57,50 +57,12 @@
       }
 
       /* --- THEME & BACKGROUNDS --- */
-      [data-bs-theme="dark"] {
-        color-scheme: dark;
-        --bs-body-bg: #020617;
-        --bs-body-color: #f8fafc;
-      }
-
+      [data-bs-theme="dark"],
       [data-bs-theme="dark"] body {
         background-color: #020617 !important;
-        color: #f8fafc !important;
+        color-scheme: dark;
       }
-
-      /* Force all headers and standard text to be visible in Dark Mode */
-      [data-bs-theme="dark"] h2,
-      [data-bs-theme="dark"] h3,
-      [data-bs-theme="dark"] h4,
-      [data-bs-theme="dark"] p,
-      [data-bs-theme="dark"] .text-dark-emphasis {
-        color: #f8fafc !important;
-      }
-
-      [data-bs-theme="dark"] .text-secondary {
-        color: #94a3b8 !important;
-      }
-
-      /* Fix for the Table inside the green featured tile */
-      [data-bs-theme="dark"] .table {
-        --bs-table-color: #f8fafc;
-        --bs-table-striped-color: #f8fafc;
-      }
-
-      /* Specific Fix for the Category Headers (Pulse, Notes, etc) */
-      [data-bs-theme="dark"] .category-header h2 {
-        filter: brightness(1.2); /* Makes the category colors pop on dark */
-      }
-
-      /* Custom background logic for prototype tiles */
-      .custom-bg-variant {
-        background-color: #f8fafc !important;
-      }
-
-      [data-bs-theme="dark"] .custom-bg-variant {
-        background-color: #0f172a !important;
-        border-color: #1e293b !important;
-      } /* --- HEADER SYSTEM --- */
+      /* --- HEADER SYSTEM --- */
 
       /* 1. The Logo Frame */
       .header-link-icon {
@@ -450,23 +412,6 @@
         color: var(--clr-grey); /* This keeps all text grey by default */
         text-transform: uppercase;
       }
-      /* Custom background logic for prototype tiles */
-      .custom-bg-variant {
-        background-color: #f8fafc !important; /* Slightly more grey in Light Mode */
-      }
-
-      [data-bs-theme="dark"] .custom-bg-variant {
-        background-color: #0f172a !important; /* Slightly less dark than #020617 */
-        border-color: #1e293b !important;
-      }
-
-      /* Color utility for the activity log */
-      .text-amber {
-        color: var(--clr-amber);
-      }
-      .text-blue {
-        color: var(--clr-blue);
-      }
     </style>
   </head>
   <body>
@@ -500,30 +445,41 @@
         </div>
       </header>
       <section id="directory">
-        <div class="row g-4 mb-4">
+        <h2 class="fw-semibold fs-3 mb-1">Activities & Projects</h2>
+        <p
+          class="text-uppercase small fw-bold text-secondary mb-5"
+          style="letter-spacing: 0.1em"
+        >
+          UPDATED: <span id="current-date-stamp"></span><br />
+          Status: Operational / Active <br />
+          Milestone: Phase 2 - Development & Integration
+        </p>
+
+        <div class="row g-3 mb-5">
           <div class="col-md-6">
             <div
-              class="p-4 bg-white-card border-grey bw-1 tile-left custom-bg-variant"
+              class="p-4 bg-white-card border-grey bw-1"
+              style="min-height: 200px"
             >
               <div class="tile-content">
-                <div class="ui-tag tag-grey mb-3">Status</div>
-                <h3 class="fs-5 fw-bold mb-3">Activity Log</h3>
-                <div class="w-100">
+                <span class="ui-tag tag-blue mb-3">System Log</span>
+                <h3 class="fs-5 fw-bold mb-2">Activity Stream</h3>
+                <div class="small text-secondary w-100">
                   <div
-                    class="d-flex justify-content-between border-bottom border-secondary-subtle py-2"
+                    class="d-flex justify-content-between border-bottom border-secondary-subtle py-1 opacity-75"
                   >
-                    <span class="small text-secondary">System Initialized</span>
-                    <span class="small fw-bold text-success">OK</span>
+                    <span>Prototype Optimization</span>
+                    <span class="fw-bold">Ongoing</span>
                   </div>
                   <div
-                    class="d-flex justify-content-between border-bottom border-secondary-subtle py-2"
+                    class="d-flex justify-content-between border-bottom border-secondary-subtle py-1 opacity-75"
                   >
-                    <span class="small text-secondary">Database Sync</span>
-                    <span class="small fw-bold text-amber">PENDING</span>
+                    <span>Directory Architecture</span>
+                    <span class="fw-bold">Depl.</span>
                   </div>
-                  <div class="d-flex justify-content-between py-2">
-                    <span class="small text-secondary">Security Gateway</span>
-                    <span class="small fw-bold text-blue">ACTIVE</span>
+                  <div class="d-flex justify-content-between py-1 opacity-75">
+                    <span>UI/UX Audit</span>
+                    <span class="fw-bold">Sync</span>
                   </div>
                 </div>
               </div>
@@ -533,7 +489,7 @@
           <div class="col-md-3">
             <div
               class="bg-white-card border-grey bw-1 overflow-hidden"
-              style="min-height: 200px"
+              style="height: 100%; min-height: 200px"
             >
               <div
                 style="
@@ -548,43 +504,51 @@
           </div>
 
           <div class="col-md-3">
-            <div
-              class="p-4 bg-white-card border-grey bw-1 custom-bg-variant h-100"
-            >
+            <div class="p-4 bg-white-card border-amber bw-1 soft-tint-amber">
               <div class="tile-content">
-                <div class="ui-tag tag-amber mb-3">Compass</div>
-                <div class="mb-1">
-                  <span
-                    class="d-block small text-secondary text-uppercase fw-bold"
-                    style="font-size: 0.55rem"
-                    >Date</span
-                  >
-                  <span class="fw-bold" id="compass-date">...</span>
-                </div>
-                <div class="mb-1">
-                  <span
-                    class="d-block small text-secondary text-uppercase fw-bold"
-                    style="font-size: 0.55rem"
-                    >Time</span
-                  >
-                  <span class="fw-bold" id="compass-time">00:00</span>
-                </div>
-                <div class="d-flex gap-3 mt-2">
-                  <div>
+                <span class="ui-tag tag-amber mb-3">Compass</span>
+                <div class="w-100">
+                  <div class="mb-1">
                     <span
-                      class="d-block small text-secondary text-uppercase fw-bold"
-                      style="font-size: 0.55rem"
-                      >Week/Y</span
+                      class="small text-secondary text-uppercase fw-bold"
+                      style="font-size: 0.6rem"
+                      >Date:</span
                     >
-                    <span class="fw-bold" id="compass-week-year">00</span>
+                    <span class="small fw-bold d-block" id="compass-date"
+                      >---</span
+                    >
                   </div>
-                  <div>
+                  <div class="mb-1">
                     <span
-                      class="d-block small text-secondary text-uppercase fw-bold"
-                      style="font-size: 0.55rem"
-                      >Week/M</span
+                      class="small text-secondary text-uppercase fw-bold"
+                      style="font-size: 0.6rem"
+                      >Time:</span
                     >
-                    <span class="fw-bold" id="compass-week-month">0</span>
+                    <span class="small fw-bold d-block" id="compass-time"
+                      >--:--</span
+                    >
+                  </div>
+                  <div class="d-flex gap-3">
+                    <div>
+                      <span
+                        class="small text-secondary text-uppercase fw-bold"
+                        style="font-size: 0.6rem"
+                        >Week/Y:</span
+                      >
+                      <span class="small fw-bold d-block" id="compass-wy"
+                        >--</span
+                      >
+                    </div>
+                    <div>
+                      <span
+                        class="small text-secondary text-uppercase fw-bold"
+                        style="font-size: 0.6rem"
+                        >Week/M:</span
+                      >
+                      <span class="small fw-bold d-block" id="compass-wm"
+                        >--</span
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
@@ -593,112 +557,6 @@
         </div>
 
         <div class="brand-line mb-5"></div>
-
-        <div class="category-header header-indigo">
-          <h2>
-            <i
-              data-lucide="activity"
-              style="color: var(--clr-red); width: 27px; height: 27px"
-            ></i>
-            Pulse
-          </h2>
-        </div>
-        <div class="col-md-6">
-          <a href="#" class="file-link">
-            <div
-              class="p-4 bg-white-card border-blue bw-3 soft-tint-blue tile-left"
-            >
-              <div class="tile-content">
-                <h3 class="fs-5 fw-bold mb-2">New Project</h3>
-                <style>
-                  /* Hover effect logic for the image clip */
-                  .file-link:hover .zoom-img {
-                    transform: scale(1.15);
-                    filter: grayscale(0);
-                  }
-                  .file-link:hover .image-clip-wrapper {
-                    border-color: var(--clr-blue) !important;
-                  }
-                </style>
-
-                <div
-                  class="d-flex flex-column flex-md-row gap-4 align-items-start mt-4"
-                >
-                  <div
-                    class="image-clip-wrapper position-relative"
-                    style="flex-shrink: 0; transition: border-color 0.3s ease"
-                  >
-                    <div
-                      style="
-                        width: 140px;
-                        height: 140px;
-                        border: 1px solid var(--clr-grey);
-                        border-radius: 8px;
-                        overflow: hidden;
-                        padding: 6px;
-                        background: rgba(255, 255, 255, 0.05);
-                        backdrop-filter: blur(4px);
-                      "
-                    >
-                      <div
-                        class="zoom-img"
-                        style="
-                          width: 100%;
-                          height: 100%;
-                          background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766073589/Profile_Cover_cgzt6s.jpg');
-                          background-size: cover;
-                          background-position: center;
-                          border-radius: 4px;
-                          filter: grayscale(0.8);
-                          transition: transform 0.5s
-                              cubic-bezier(0.4, 0, 0.2, 1),
-                            filter 0.5s ease;
-                        "
-                      ></div>
-                    </div>
-                    <span
-                      class="position-absolute bottom-0 end-0 bg-dark text-white px-2 py-1 fw-bold"
-                      style="
-                        font-size: 0.5rem;
-                        border-radius: 4px 0 0 0;
-                        letter-spacing: 1px;
-                        z-index: 2;
-                      "
-                    >
-                      IMG_REF_01
-                    </span>
-                  </div>
-
-                  <div class="clip-context">
-                    <h4
-                      class="fs-6 fw-bold mb-1"
-                      style="color: var(--clr-grey)"
-                    >
-                      Visual Reference
-                    </h4>
-                    <p
-                      class="small text-secondary mb-0"
-                      style="max-width: 400px; line-height: 1.4"
-                    >
-                      System architecture preview. The captured frame
-                      illustrates the modular logic gate layout for the primary
-                      documentation hub.
-                    </p>
-                  </div>
-                </div>
-                <p class="small text-secondary">Description text here.</p>
-
-                <div class="ui-tag tag-blue tag-cutout mt-auto-tag">
-                  <i
-                    data-lucide="check"
-                    style="width: 12px; margin-right: 4px"
-                  ></i>
-                  Active
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
         <div class="category-header header-blue">
           <h2>
             <i
@@ -1416,7 +1274,9 @@
     </footer>
 
     <script>
+      // Set footer year
       document.getElementById("year").textContent = new Date().getFullYear();
+
       function updateDate() {
         const now = new Date();
         const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -1434,11 +1294,46 @@
           "NOV",
           "DEC",
         ];
-        document.getElementById("current-date-stamp").textContent = `${
-          days[now.getDay()]
-        } ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+
+        // Header & Directory Stamp
+        const dateString = `${days[now.getDay()]} ${now.getDate()} ${
+          months[now.getMonth()]
+        } ${now.getFullYear()}`;
+        document.getElementById("current-date-stamp").textContent = dateString;
+
+        // --- COMPASS DYNAMICS ---
+        if (document.getElementById("compass-date")) {
+          // 1. Date & Time
+          document.getElementById("compass-date").textContent =
+            dateString.toUpperCase();
+          document.getElementById("compass-time").textContent =
+            now.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: false,
+            });
+
+          // 2. Week of Year
+          const startOfYear = new Date(now.getFullYear(), 0, 1);
+          const pastDaysOfYear = (now - startOfYear) / 86400000;
+          const weekOfYear = Math.ceil(
+            (pastDaysOfYear + startOfYear.getDay() + 1) / 7
+          );
+          document.getElementById("compass-wy").textContent = weekOfYear;
+
+          // 3. Week of Month
+          const firstDayOfMonth = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            1
+          );
+          const used = firstDayOfMonth.getDay() + now.getDate();
+          const weekOfMonth = Math.ceil(used / 7);
+          document.getElementById("compass-wm").textContent = weekOfMonth;
+        }
       }
-      updateDate();
+
+      // Theme Logic
       const setTheme = () => {
         const isDark = window.matchMedia(
           "(prefers-color-scheme: dark)"
@@ -1448,59 +1343,24 @@
           isDark ? "dark" : "light"
         );
       };
+
+      // Initialization
       setTheme();
+      updateDate();
+
+      // Update every minute for the clock
+      setInterval(updateDate, 60000);
+
+      // Listener for system theme changes
       window
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", setTheme);
     </script>
+
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
+      // This MUST be called after the library is loaded to render icons
       lucide.createIcons();
-      function updateCompass() {
-        const now = new Date();
-
-        // 1. Date & Time
-        const options = {
-          weekday: "short",
-          day: "2-digit",
-          month: "short",
-          year: "numeric",
-        };
-        document.getElementById("compass-date").textContent = now
-          .toLocaleDateString("en-GB", options)
-          .replace(/,/g, "");
-        document.getElementById("compass-time").textContent =
-          now.toLocaleTimeString("en-GB", {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-          });
-
-        // 2. Week of Year (ISO-8601)
-        const d = new Date(
-          Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())
-        );
-        const dayNum = d.getUTCDay() || 7;
-        d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-        const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-        const weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
-        document.getElementById("compass-week-year").textContent = weekNo;
-
-        // 3. Week of Month
-        const firstDayOfMonth = new Date(
-          now.getFullYear(),
-          now.getMonth(),
-          1
-        ).getDay();
-        const weekOfMonth = Math.ceil(
-          (now.getDate() + (firstDayOfMonth || 7) - 1) / 7
-        );
-        document.getElementById("compass-week-month").textContent = weekOfMonth;
-      }
-
-      // Initial call and refresh every minute
-      updateCompass();
-      setInterval(updateCompass, 60000);
     </script>
   </body>
 </html>
