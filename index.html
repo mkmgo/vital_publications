@@ -408,9 +408,8 @@
         color: var(--clr-grey); /* This keeps all text grey by default */
         text-transform: uppercase;
       }
-      /* --- OPTIMIZED BANNER SYSTEM --- */
+      /* --- REFINED DUAL BANNER SYSTEM --- */
       .banner-box {
-        background-color: #2565fa;
         padding: 0.8rem 1.5rem;
         border-radius: 14px;
         display: flex;
@@ -418,36 +417,64 @@
         align-items: center;
         width: 100%;
         margin-top: 1.5rem !important;
-        margin-bottom: 1.5rem !important; /* Reduced from 2.5rem to shorten distance to tiles */
+        margin-bottom: 1.5rem !important;
+        /* Default background is now the 'Robust Grey' */
+        background-color: #f1f5f9;
+        border: 1px solid #e2e8f0;
+      }
+
+      /* Discrete style for the Cockpit */
+      .banner-cockpit {
+        background-color: rgba(100, 116, 139, 0.05) !important;
+        border: 1px solid rgba(100, 116, 139, 0.1) !important;
+      }
+
+      [data-bs-theme="dark"] .banner-box {
+        background-color: #1e293b;
+        border-color: #334155;
+      }
+
+      [data-bs-theme="dark"] .banner-cockpit {
+        background-color: rgba(255, 255, 255, 0.03) !important;
       }
 
       .banner-box h2 {
-        color: #fbbf24 !important; /* Brighter Amber */
+        /* Removed Blue background and Yellow text */
+        color: var(--clr-grey) !important;
         font-weight: 800 !important;
         text-transform: uppercase;
         letter-spacing: 0.12em;
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         margin: 0 !important;
-        padding-top: 6px; /* Specifically nudges text down */
         display: flex;
         align-items: center;
         gap: 0.8rem;
         border: none !important;
       }
 
+      [data-bs-theme="dark"] .banner-box h2 {
+        color: #94a3b8 !important;
+      }
+      /* --- BANNER VALIDATION TICK --- */
       .header-status-tick {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
         background-color: #a3e635; /* Lime green */
-        border: 2px solid #000;
+        border: 2px solid rgba(0, 0, 0, 0.1);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #000;
-        flex-shrink: 0;
+        color: #020617; /* Dark icon color for contrast */
+        flex-shrink: 0; /* Prevents the circle from squishing */
+        transition: all 0.3s ease;
       }
 
+      [data-bs-theme="dark"] .header-status-tick {
+        background-color: #65a30d; /* Slightly deeper green for dark mode */
+        border-color: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+      }
       /* Fixes the "decent distance" under any row */
       .spacer-bottom {
         margin-bottom: 6rem !important;
@@ -485,11 +512,16 @@
         </div>
       </header>
       <section id="cockpit">
-        <div class="banner-box">
+        <div class="banner-box banner-cockpit">
           <h2>
             <i
               data-lucide="circle-gauge"
-              style="color: #fbbf24; width: 26px; height: 26px; stroke-width: 3"
+              style="
+                color: var(--clr-grey);
+                width: 26px;
+                height: 26px;
+                stroke-width: 3;
+              "
             ></i>
             DASHBOARD
           </h2>
@@ -630,8 +662,26 @@
 
       <div class="brand-line mb-2"></div>
       <section id="services">
-        <div class="category-header header-red"><h2>Services</h2></div>
-
+        <div class="banner-box banner-section">
+          <h2>
+            <i
+              data-lucide="hammer"
+              style="
+                color: var(--clr-red);
+                width: 26px;
+                height: 26px;
+                stroke-width: 3;
+              "
+            ></i>
+            SERVICES
+          </h2>
+          <div class="header-status-tick">
+            <i
+              data-lucide="check"
+              style="width: 18px; height: 18px; stroke-width: 4"
+            ></i>
+          </div>
+        </div>
         <div class="row g-4 mb-4">
           <div class="col-12">
             <a href="YOUR_LINK_HERE.html" target="_blank" class="file-link">
@@ -690,7 +740,7 @@
         </div>
 
         <div class="row g-4 mb-4">
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <a href="#" class="file-link">
               <div
                 class="p-4 bg-white-card soft-tint-green border-green bw-1 tile-left tile-img-bg"
@@ -708,7 +758,7 @@
                       long-form content.</b
                     >
                   </p>
-                  <div class="table-responsive mb-3" style="max-width: 600px">
+                  <div class="table-responsive mb-3">
                     <table
                       class="table table-sm table-borderless align-middle mb-0"
                       style="font-size: 0.72rem; --bs-table-bg: transparent"
@@ -947,7 +997,26 @@
       </section>
       <div class="brand-line mb-2"></div>
       <section id="documents">
-        <div class="category-header header-blue"><h2>Documents</h2></div>
+        <div class="banner-box banner-section">
+          <h2>
+            <i
+              data-lucide="file-stack"
+              style="
+                color: var(--clr-blue);
+                width: 26px;
+                height: 26px;
+                stroke-width: 3;
+              "
+            ></i>
+            Documents
+          </h2>
+          <div class="header-status-tick">
+            <i
+              data-lucide="check"
+              style="width: 18px; height: 18px; stroke-width: 4"
+            ></i>
+          </div>
+        </div>
         <div class="row g-4 mb-4">
           <div class="col-md-6">
             <a
@@ -995,11 +1064,16 @@
       </section>
       <div class="brand-line mb-2"></div>
       <section id="documentation">
-        <div class="banner-box">
+        <div class="banner-box banner-section">
           <h2>
             <i
               data-lucide="book"
-              style="color: #fbbf24; width: 26px; height: 26px; stroke-width: 3"
+              style="
+                color: var(--clr-amber);
+                width: 26px;
+                height: 26px;
+                stroke-width: 3;
+              "
             ></i>
             DOCUMENTATION
           </h2>
@@ -1136,7 +1210,26 @@
       </section>
       <div class="brand-line mb-2"></div>
       <section id="Bookmarks">
-        <div class="category-header header-indigo"><h2>Booksmarks</h2></div>
+        <div class="banner-box banner-section">
+          <h2>
+            <i
+              data-lucide="bookmark"
+              style="
+                color: var(--clr-indigo);
+                width: 26px;
+                height: 26px;
+                stroke-width: 3;
+              "
+            ></i>
+            BOOKMARKS
+          </h2>
+          <div class="header-status-tick">
+            <i
+              data-lucide="check"
+              style="width: 18px; height: 18px; stroke-width: 4"
+            ></i>
+          </div>
+        </div>
         <div class="row g-3 mb-4">
           <div class="col-6 col-md-4 col-lg-2">
             <div
