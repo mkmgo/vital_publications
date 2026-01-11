@@ -17,7 +17,7 @@
       content="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png"
     />
     <meta name="msapplication-TileColor" content="#020617" />
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="site.webmanifest" />
     <link
       rel="shortcut icon"
       href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png"
@@ -47,7 +47,7 @@
         --clr-grey: #64748b;
         --tile-bg-light: #f8fafc; /* Change this one value to update all tiles */
         --tile-bg-dark: #1e293b;
-        --tile-radius: 1.25rem;
+        --app-corner-radius: 0.4rem; /* Adjust this value to your liking */
       }
 
       body {
@@ -119,7 +119,7 @@
           --tile-bg-light
         ); /* No longer hardcoded to white */
         border: 1px solid #e2e8f0;
-        border-radius: var(--tile-radius);
+        border-radius: var(--app-corner-radius);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         height: 100%;
         position: relative;
@@ -409,7 +409,7 @@
       /* --- REFINED DUAL BANNER SYSTEM --- */
       .banner-box {
         padding: 0.8rem 1.5rem;
-        border-radius: 5px;
+        border-radius: var(--app-corner-radius);
         display: flex;
         justify-content: space-between;
         align-items: center;
