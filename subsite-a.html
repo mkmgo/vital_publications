@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services Directory | project.docs</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Inherited Framework Styles */
+      :root {
+        --clr-blue: #2565fa;
+        --clr-green: #198754;
+        --clr-indigo: #6610f2;
+        --clr-red: #eb4959;
+        --clr-amber: #f59f0be7;
+        --clr-grey: #64748b;
+        --tile-bg-light: #f8fafc;
+        --tile-bg-dark: #1e293b;
+        --app-corner-radius: 0.4rem;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s;
+      }
+      [data-bs-theme="dark"],
+      [data-bs-theme="dark"] body {
+        background-color: #020617 !important;
+        color-scheme: dark;
+      }
+
+      .main-container {
+        flex-grow: 1;
+        padding: 3rem 1.5rem;
+      }
+      .brand-text {
+        font-weight: 400;
+        color: var(--clr-amber);
+        font-size: 1.5rem;
+        letter-spacing: -0.01em;
+      }
+      .brand-line {
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05) !important;
+        position: relative;
+      }
+      [data-bs-theme="dark"] .brand-line {
+        border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+      }
+
+      /* Tile & Banner System */
+      .bg-white-card {
+        background-color: var(--tile-bg-light);
+        border: 1px solid #e2e8f0;
+        border-radius: var(--app-corner-radius);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      [data-bs-theme="dark"] .bg-white-card {
+        background-color: var(--tile-bg-dark) !important;
+        border-color: #334155;
+      }
+
+      .banner-box {
+        padding: 0.8rem 1.5rem;
+        border-radius: var(--app-corner-radius);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin: 1.5rem 0;
+        background-color: #8888889a;
+        border: 1px solid #8e8d8d4e;
+      }
+      .banner-box h2 {
+        color: #ffffff !important;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 1.1rem;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .ui-tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.25rem 0.75rem;
+        border-radius: 50px;
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        border: 1px solid currentColor;
+        margin-bottom: 1rem;
+      }
+      .tag-cutout {
+        border: none !important;
+        color: #f8fafc !important;
+        font-weight: 800;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 2px 10px;
+        border-radius: 50px;
+        border: 1px solid rgba(100, 116, 139, 0.2);
+        background: rgba(100, 116, 139, 0.05);
+        font-size: 0.6rem;
+        font-weight: 700;
+        color: var(--clr-grey);
+        text-transform: uppercase;
+      }
+
+      .header-status-tick {
+        width: 28px;
+        height: 28px;
+        background-color: #a3e635;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #020617;
+      }
+
+      .soft-tint-amber {
+        background-color: #edaa3615 !important;
+      }
+      .soft-tint-blue {
+        background-color: #0d6dfd08 !important;
+      }
+
+      .list-unstyled li {
+        font-size: 0.75rem;
+        padding: 0.4rem 0;
+        border-bottom: 1px solid rgba(100, 116, 139, 0.1);
+        color: var(--clr-grey);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .list-unstyled li b {
+        color: var(--clr-grey);
+        font-weight: 600;
+      }
+      .intent-quote {
+        font-size: 0.8rem;
+        font-style: italic;
+        opacity: 0.8;
+        margin-top: 1rem;
+        border-left: 2px solid var(--clr-amber);
+        padding-left: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="main-container container">
+      <header
+        class="d-flex justify-content-between align-items-end brand-line pb-2 mb-4"
+      >
+        <div class="d-flex align-items-center gap-3">
+          <a href="index.html" class="text-decoration-none d-flex flex-column">
+            <span class="brand-text">taxonomy.v1</span>
+            <span
+              class="text-secondary"
+              style="
+                font-size: 0.65rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+              "
+            >
+              Strategic & Operational Framework
+            </span>
+          </a>
+        </div>
+        <div class="status-pill d-none d-md-block">Directory / Services</div>
+      </header>
+
+      <section id="strategic-enablement">
+        <div class="banner-box" style="background-color: var(--clr-amber)">
+          <h2><i data-lucide="compass"></i> I. Strategic Enablement</h2>
+          <div class="header-status-tick">
+            <i data-lucide="check" style="width: 16px"></i>
+          </div>
+        </div>
+        <p class="small text-secondary fw-bold mb-4">
+          PRIMARY FOCUS: KNOWLEDGE & ADVICE | CORE VALUE: EMPOWERMENT (YOU DO IT
+          WITH MY HELP)
+        </p>
+
+        <div class="row g-4 mb-5">
+          <div class="col-md-4">
+            <div class="p-4 bg-white-card border-amber soft-tint-amber">
+              <span
+                class="ui-tag tag-cutout"
+                style="background-color: var(--clr-amber)"
+                >Pillar A: Education</span
+              >
+              <h3 class="fs-5 fw-bold mb-1">Skill & Topic Sessions</h3>
+              <p class="small text-secondary mb-3">
+                "What do you want to <b>learn</b>?"
+              </p>
+              <ul class="list-unstyled">
+                <li><span>Knowledge Briefs</span> <b>INFO-BASED</b></li>
+                <li><span>Skill Sprints</span> <b>1:1 CALL</b></li>
+                <li><span>Interactive Masterclasses</span> <b>GROUP</b></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 bg-white-card border-amber soft-tint-amber">
+              <span
+                class="ui-tag tag-cutout"
+                style="background-color: var(--clr-amber)"
+                >Pillar B: Consulting</span
+              >
+              <h3 class="fs-5 fw-bold mb-1">Solutions & Fix-Its</h3>
+              <p class="small text-secondary mb-3">
+                "What do you want to <b>solve</b>?"
+              </p>
+              <ul class="list-unstyled">
+                <li><span>Protocol Guides</span> <b>TEMPLATES</b></li>
+                <li><span>Troubleshooting Calls</span> <b>DIAGNOSTIC</b></li>
+                <li><span>Strategy Summits</span> <b>ROADMAPPING</b></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 bg-white-card border-amber soft-tint-amber">
+              <span
+                class="ui-tag tag-cutout"
+                style="background-color: var(--clr-amber)"
+                >Pillar C: Advisory</span
+              >
+              <h3 class="fs-5 fw-bold mb-1">Capital & Wealth</h3>
+              <p class="small text-secondary mb-3">
+                "How should you <b>allocate</b>?"
+              </p>
+              <ul class="list-unstyled">
+                <li><span>Fiscal Digests</span> <b>REPORTS</b></li>
+                <li><span>Advisory Check-ins</span> <b>TACTICAL</b></li>
+                <li><span>Portfolio Reviews</span> <b>STEERING</b></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="intent-quote mb-5">
+          "Give me the map and show me how to drive."
+        </div>
+      </section>
+
+      <div class="brand-line"></div>
+
+      <section id="operational-execution" class="mt-4">
+        <div class="banner-box" style="background-color: var(--clr-blue)">
+          <h2><i data-lucide="layers"></i> II. Operational Execution</h2>
+          <div class="header-status-tick">
+            <i data-lucide="check" style="width: 16px"></i>
+          </div>
+        </div>
+        <p class="small text-secondary fw-bold mb-4">
+          PRIMARY FOCUS: RESULTS & PROJECTS | CORE VALUE: DELIVERY (I DO IT FOR
+          YOU)
+        </p>
+
+        <div class="row g-4">
+          <div class="col-12">
+            <div
+              class="p-4 bg-white-card border-blue soft-tint-blue"
+              style="border-width: 2px"
+            >
+              <div class="row">
+                <div class="col-md-4">
+                  <span
+                    class="ui-tag tag-cutout"
+                    style="background-color: var(--clr-blue)"
+                    >Pillar D: Projects</span
+                  >
+                  <h3 class="fs-4 fw-bold mb-2">Project Implementation</h3>
+                  <p class="small text-secondary">
+                    "What do you want us to <b>build</b>?"
+                  </p>
+                </div>
+                <div class="col-md-8">
+                  <div class="table-responsive">
+                    <table
+                      class="table table-sm table-borderless align-middle mb-0"
+                      style="font-size: 0.8rem"
+                    >
+                      <tbody class="text-secondary">
+                        <tr class="border-bottom border-secondary-subtle">
+                          <td class="py-3 text-dark-emphasis fw-bold">
+                            1. Solution Blueprints
+                          </td>
+                          <td class="py-3">
+                            Detailed project plans & architecture designs
+                          </td>
+                          <td
+                            class="py-3 text-end text-uppercase fw-bold"
+                            style="font-size: 0.6rem"
+                          >
+                            Architecture
+                          </td>
+                        </tr>
+                        <tr class="border-bottom border-secondary-subtle">
+                          <td class="py-3 text-dark-emphasis fw-bold">
+                            2. Deployment Sprints
+                          </td>
+                          <td class="py-3">
+                            Direct assistance in launching specific features
+                          </td>
+                          <td
+                            class="py-3 text-end text-uppercase fw-bold"
+                            style="font-size: 0.6rem"
+                          >
+                            Deployment
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="py-3 text-dark-emphasis fw-bold">
+                            3. Managed Projects
+                          </td>
+                          <td class="py-3">
+                            End-to-end execution involving teams of experts
+                          </td>
+                          <td
+                            class="py-3 text-end text-uppercase fw-bold"
+                            style="font-size: 0.6rem"
+                          >
+                            Full-Service
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="intent-quote mt-4" style="border-color: var(--clr-blue)">
+          "Build the road and drive the truck for me."
+        </div>
+      </section>
+    </main>
+
+    <footer class="custom-footer mt-auto py-5 bg-light-subtle border-top">
+      <div class="container text-center">
+        <div class="footer-brand">project.docs</div>
+        <div class="footer-metadata">
+          Centralized Knowledge Architecture &copy; 2026
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+      // Simple Theme Sync
+      const setTheme = () => {
+        const isDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        document.documentElement.setAttribute(
+          "data-bs-theme",
+          isDark ? "dark" : "light"
+        );
+      };
+      setTheme();
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", setTheme);
+    </script>
+  </body>
+</html>
