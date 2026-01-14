@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build Expertise | project.docs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+      :root {
+        /* Core System Colors */
+        --clr-blue: #2565fa;
+        --clr-amber: #f59f0be7;
+        --clr-grey: #64748b;
+        --app-corner-radius: 0.4rem;
+
+        /* Umbrella I: Strategic Enablement */
+        --u1-head: #1A365D;
+        --u1-border: #A0AEC0;
+        --u1-bg: #F7FAFC;
+        --u1-tag: #E2E8F0;
+        --u1-action: #3182CE;
+        
+        /* Pillar Accents */
+        --accent-edu: #38A169;
+        --accent-con: #805AD5;
+        --accent-fin: #D69E2E;
+
+        /* Umbrella II: Operational Execution */
+        --u2-head: #2D3748;
+        --u2-border: #CBD5E0;
+        --u2-bg: #FFFBF0;
+        --u2-action: #DD6B20;
+      }
+
+      body { font-family: 'Inter', sans-serif; background-color: #f8fafc; transition: all 0.3s; }
+      [data-bs-theme="dark"] body { background-color: #020617; color: #f8fafc; }
+
+      /* Brand Header */
+      .brand-text { font-weight: 400; color: var(--clr-amber); font-size: 1.5rem; letter-spacing: -0.01em; }
+      .brand-line { border-bottom: 2px solid rgba(0, 0, 0, 0.05); }
+      [data-bs-theme="dark"] .brand-line { border-bottom-color: rgba(255, 255, 255, 0.1); }
+
+      /* The Tile System */
+      .bg-blueprint-card {
+        background-color: var(--u1-bg);
+        border: 1px solid var(--u1-border);
+        border-radius: var(--app-corner-radius);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+      }
+      [data-bs-theme="dark"] .bg-blueprint-card { background-color: #1e293b; border-color: #334155; }
+
+      /* Interaction: Level 2 Elevation */
+      .bg-blueprint-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+      }
+
+      /* Banner System */
+      .banner-box {
+        padding: 0.8rem 1.5rem;
+        border-radius: var(--app-corner-radius);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 2rem 0;
+        color: white;
+      }
+
+      /* Typography & Lists */
+      .pillar-list { list-style: none; padding: 0; font-size: 0.95rem; }
+      .pillar-list li { padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+      [data-bs-theme="dark"] .pillar-list li { border-bottom-color: rgba(255,255,255,0.1); }
+      
+      .ui-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 50px;
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+
+      .action-btn {
+        background-color: var(--u1-action);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--app-corner-radius);
+        font-weight: 600;
+        transition: opacity 0.2s;
+        margin-top: auto;
+      }
+      .action-btn:hover { opacity: 0.9; }
+
+      /* Dark Mode Image Filter */
+      [data-bs-theme="dark"] .tile-image { filter: grayscale(1) brightness(0.7); transition: 0.5s; }
+      .bg-blueprint-card:hover .tile-image { filter: grayscale(0) brightness(1); }
+    </style>
+</head>
+<body>
+
+<main class="container py-4">
+    <header class="d-flex justify-content-between align-items-end brand-line pb-3 mb-4">
+        <div class="d-flex align-items-center gap-3">
+            <i data-lucide="loader-pinwheel" style="color: var(--clr-amber); width: 32px; height: 32px"></i>
+            <span class="brand-text">project.docs</span>
+        </div>
+        <a href="index.html" class="btn btn-sm btn-outline-secondary">Return to Cockpit</a>
+    </header>
+
+    <h1 class="fw-800 mb-2">Build Expertise, Drive Performance.</h1>
+    <p class="text-secondary">Strategic Enablement & Operational Execution Architecture.</p>
+
+    <section>
+        <div class="banner-box" style="background-color: var(--u1-head);">
+            <h2 class="fs-5 fw-bold m-0">UMBRELLA I: STRATEGIC ENABLEMENT</h2>
+            <span class="small opacity-75">ADVISE • TEACH • GUIDE</span>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-md-8">
+                <div class="bg-blueprint-card h-100">
+                    <span class="ui-tag" style="background: var(--accent-edu); color: white;">Education</span>
+                    <h3 class="fw-bold mb-1">Pillar A: Skill & Topic Sessions</h3>
+                    <p class="small text-secondary mb-4">"What do you want to learn?"</p>
+                    <ul class="pillar-list">
+                        <li><strong>1. Knowledge Briefs:</strong> Info-based canned lectures.</li>
+                        <li><strong>2. Skill Sprints:</strong> 1:1 coaching & how-to guidance.</li>
+                        <li><strong>3. Interactive Masterclasses:</strong> Group workshops.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-blueprint-card h-100" style="background-color: var(--u1-tag);">
+                    <span class="ui-tag" style="background: var(--accent-con); color: white;">Consulting</span>
+                    <h4 class="fw-bold">Pillar B: Fix-Its</h4>
+                    <p class="small text-secondary">Rapid diagnostic and immediate bottleneck resolution.</p>
+                    <button class="action-btn">Book Troubleshooting</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-8">
+                <div class="bg-blueprint-card h-100">
+                    <span class="ui-tag" style="background: var(--accent-fin); color: white;">Financial Advisory</span>
+                    <h3 class="fw-bold mb-1">Pillar C: Capital & Wealth</h3>
+                    <p class="small text-secondary mb-4">"How should you allocate?"</p>
+                    <ul class="pillar-list">
+                        <li><strong>1. Fiscal Digests:</strong> Market reports and regulatory updates.</li>
+                        <li><strong>2. Advisory Check-ins:</strong> 1:1 tactical asset advice.</li>
+                        <li><strong>3. Portfolio Reviews:</strong> Stakeholder sessions & wealth planning.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-blueprint-card h-100 border-amber">
+                    <i data-lucide="shield-check" class="mb-3" style="color: var(--clr-amber); width: 40px; height: 40px;"></i>
+                    <h5 class="fw-bold">Strategy Summits</h5>
+                    <p class="small text-secondary">Long-term roadmapping and board consultations.</p>
+                    <a href="#" class="mt-auto fw-bold text-decoration-none" style="color: var(--u1-action)">Open Portal →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-5">
+        <div class="banner-box" style="background-color: var(--u2-head);">
+            <h2 class="fs-5 fw-bold m-0">UMBRELLA II: OPERATIONAL EXECUTION</h2>
+            <span class="small opacity-75">IMPLEMENT • BUILD • DELIVER</span>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-8">
+                <div class="bg-blueprint-card h-100" style="background-color: var(--u2-bg); border-color: var(--u2-border);">
+                    <span class="ui-tag" style="background: var(--u2-action); color: white;">Execution Hub</span>
+                    <h2 class="display-6 fw-800" style="color: var(--u2-head);">Managed Projects</h2>
+                    <p class="lead text-secondary">"Build the road and drive the truck for me."</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-4 border-end">
+                            <h6 class="fw-bold">Blueprints</h6>
+                            <p class="small opacity-75 m-0">Architecture Designs</p>
+                        </div>
+                        <div class="col-md-4 border-end">
+                            <h6 class="fw-bold">Sprints</h6>
+                            <p class="small opacity-75 m-0">Direct Launching</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="fw-bold">Scale</h6>
+                            <p class="small opacity-75 m-0">Full-Scale Execution</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-blueprint-card h-100 overflow-hidden p-0">
+                    <div class="tile-image" style="height: 100%; min-height: 250px; background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="container py-5 opacity-50 border-top mt-5">
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="small fw-bold">PROJECT.DOCS ARCHITECTURE</span>
+        <span class="small">V.2025.CORE</span>
+    </div>
+</footer>
+
+<script>
+    lucide.createIcons();
+
+    // Dark Mode persistence from main index.html logic
+    const setTheme = () => {
+        const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-bs-theme", isDark ? "dark" : "light");
+    };
+    setTheme();
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setTheme);
+</script>
+</body>
+</html>

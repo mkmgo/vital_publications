@@ -1,49 +1,119 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Build Expertise, Drive Performance. | project.docs</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+    <title>Build Expertise, Drive Performance. | project.excellence</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <style>
       :root {
         /* Global Blueprint Variables */
-        --app-corner-radius: 0.4rem;
+        --app-corner-radius: 0.2rem;
         --clr-amber: #f59f0be7;
-        
+        --clr-blue: #2565fa;
+
+        /* Light Mode Colors */
+        --banner-strat-bg: #1a365d; /* Midnight Blue */
+        --banner-strat-text: #ffffff;
+
         /* Umbrella I: Strategic (Blue Theme) */
-        --u1-head: #1A365D;
-        --u1-border: #A0AEC0;
-        --u1-bg: #F7FAFC;
-        --u1-tag: #E2E8F0;
-        --u1-action: #3182CE;
-        
+        --u1-head: #1a365d;
+        --u1-border: #a0aec0;
+        --u1-bg: #f7fafc;
+        --u1-tag: #e2e8f0;
+        --u1-action: #3182ce;
+
         /* Umbrella II: Operational (Orange/Charcoal Theme) */
-        --u2-head: #2D3748;
-        --u2-border: #CBD5E0;
-        --u2-bg: #FFFBF0;
-        --u2-tag: #FFFAF0;
-        --u2-action: #DD6B20;
+        --u2-head: #2d3748;
+        --u2-border: #cbd5e0;
+        --u2-bg: #fffbf0;
+        --u2-tag: #fffaf0;
+        --u2-action: #dd6b20;
 
         /* Accents */
-        --accent-edu: #38A169;
-        --accent-con: #805AD5;
+        --accent-edu: #38a169;
+        --accent-con: #805ad5;
+      }
+      .header-link-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(245, 159, 11, 0.2);
+        background: rgba(245, 159, 11, 0.08) !important;
       }
 
-      body { font-family: 'Inter', sans-serif; background-color: #f8fafc; transition: background 0.3s ease; }
-      
+      .header-link-icon i {
+        display: block;
+        line-height: 0;
+      }
+
+      [data-bs-theme="dark"] .header-link-icon {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-color: rgba(245, 159, 11, 0.4);
+      }
+      /* Brand Header */
+      .brand-text {
+        font-weight: 400;
+        color: var(--clr-amber);
+        font-size: 1.5rem;
+        letter-spacing: -0.01em;
+      }
+      .brand-line {
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+      }
+      [data-bs-theme="dark"] .brand-line {
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+        --banner-strat-bg: #0f172a; /* Deeper Navy/Charcoal for dark mode */
+        --banner-strat-text: #f8fafc;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        transition: background 0.3s ease;
+      }
+
       /* Dark Mode Overrides for Tiles [Fixing requested point] */
-      [data-bs-theme="dark"] body { background-color: #020617; color: #f8fafc; }
-      [data-bs-theme="dark"] .bg-blueprint-card { background-color: #1e293b !important; border-color: #334155 !important; }
-      [data-bs-theme="dark"] .u2-special-card { background-color: #1a202c !important; }
-      [data-bs-theme="dark"] .text-secondary { color: #94a3b8 !important; }
+      [data-bs-theme="dark"] body {
+        background-color: #020617;
+        color: #f8fafc;
+      }
+      [data-bs-theme="dark"] .bg-blueprint-card {
+        background-color: #1e293b !important;
+        border-color: #334155 !important;
+      }
+      [data-bs-theme="dark"] .u2-special-card {
+        background-color: #1a202c !important;
+      }
+      [data-bs-theme="dark"] .text-secondary {
+        color: #94a3b8 !important;
+      }
 
       /* Title Branding Update [Fixing requested point] */
-      .brand-title { font-weight: 800; color: var(--clr-amber); font-size: 1.5rem; letter-spacing: -0.02em; }
-      .nav-link-back { text-decoration: none; color: var(--clr-amber); font-weight: 600; font-size: 0.9rem; }
+      .brand-title {
+        font-weight: 800;
+        color: var(--clr-amber);
+        font-size: 1.5rem;
+        letter-spacing: -0.02em;
+      }
+      .nav-link-back {
+        text-decoration: none;
+        color: var(--clr-amber);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
 
       /* Hover Interaction: Level 2 Elevation */
       .bg-blueprint-card {
@@ -54,7 +124,8 @@
       }
       .bg-blueprint-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.1),
+          0 8px 10px -6px rgba(0, 0, 0, 0.1);
         border-color: var(--clr-amber) !important;
       }
 
@@ -79,9 +150,19 @@
         text-transform: uppercase;
         margin-bottom: 1rem;
       }
-      .pillar-list { list-style: none; padding: 0; margin: 0; }
-      .pillar-list li { padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 0.9rem; }
-      [data-bs-theme="dark"] .pillar-list li { border-bottom-color: rgba(255,255,255,0.05); }
+      .pillar-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .pillar-list li {
+        padding: 0.6rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        font-size: 0.9rem;
+      }
+      [data-bs-theme="dark"] .pillar-list li {
+        border-bottom-color: rgba(255, 255, 255, 0.05);
+      }
 
       .action-btn {
         width: 100%;
@@ -92,115 +173,283 @@
         margin-top: auto;
         transition: opacity 0.2s;
       }
+      .banner-strip-strat {
+        background-color: var(--banner-strat-bg);
+        color: var(--banner-strat-text);
+        padding: 0.75rem 1.25rem;
+        border-radius: var(--app-corner-radius);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
     </style>
-</head>
-<body>
-
-<main class="container py-5">
-    <header class="d-flex justify-content-between align-items-center mb-5 pb-3 border-bottom">
-        <div class="d-flex align-items-center gap-2">
-            <i data-lucide="zap" style="color: var(--clr-amber); fill: var(--clr-amber);"></i>
-            <span class="brand-title">Build Expertise, Drive Performance.</span>
+  </head>
+  <body>
+    <main class="container py-5">
+      <header
+        class="d-flex justify-content-between align-items-end brand-line pb-3 mb-4"
+      >
+        <div class="d-flex align-items-center gap-3">
+          <div class="header-link-icon">
+            <i
+              data-lucide="trending-up"
+              style="color: var(--clr-blue); width: 32px; height: 32px"
+            ></i>
+          </div>
+          <span class="brand-text">project.excellence</span>
         </div>
-        <a href="index.html" class="nav-link-back">project.docs/cockpit</a>
-    </header>
-
-    <section class="mb-5">
-        <div class="banner-strip" style="background-color: var(--u1-head);">
-            <h2 class="fs-6 fw-bold m-0 uppercase">Umbrella I: Strategic Enablement</h2>
-            <span class="badge bg-white text-dark opacity-75">ADVISE • TEACH</span>
+        <a href="index.html" class="btn btn-sm btn-outline-secondary"
+          >Return to Cockpit</a
+        >
+      </header>
+      <h1 class="fw-800 mb-2">Expertise Drives Performance</h1>
+      <p class="text-primary">
+        Strategic Enablement & Operational Execution Architecture.
+      </p>
+      <section class="mb-5">
+        <div class="banner-strip" style="background-color: var(--u1-head)">
+          <h2 class="fs-6 fw-bold m-0 uppercase">Strategic Enablement</h2>
+          <span class="badge rounded-1 bg-white text-dark opacity-75"
+            >TEACH • ADVISE</span
+          >
         </div>
 
         <div class="row g-4 mb-4">
-            <div class="col-md-8">
-                <div class="bg-blueprint-card h-100 p-4" style="background-color: var(--u1-bg); border: 1px solid var(--u1-border);">
-                    <span class="ui-tag" style="background: var(--accent-edu); color: white;">Education</span>
-                    <h3 class="fw-800">Skill & Topic Sessions</h3>
-                    <p class="text-secondary small mb-4">"Building the internal skills to lead."</p>
-                    <ul class="pillar-list">
-                        <li><strong>Knowledge Briefs:</strong> Canned information lectures</li>
-                        <li><strong>Skill Sprints:</strong> 1:1 coaching & how-to calls</li>
-                        <li><strong>Interactive Masterclasses:</strong> Group workshops</li>
-                    </ul>
-                </div>
+          <div class="col-md-8">
+            <div
+              class="bg-blueprint-card h-100 p-4"
+              style="
+                background-color: var(--u1-bg);
+                border: 1px solid var(--u1-border);
+              "
+            >
+              <span
+                class="ui-tag"
+                style="background: var(--accent-edu); color: white"
+                >Education</span
+              >
+              <h3 class="fw-800">Skill & Topic Sessions</h3>
+              <p class="text-secondary small mb-4">
+                "Building the internal skills to lead."
+              </p>
+              <ul class="pillar-list">
+                <li>
+                  <strong>Knowledge Briefs:</strong> Canned information lectures
+                </li>
+                <li>
+                  <strong>Skill Sprints:</strong> 1:1 coaching & how-to calls
+                </li>
+                <li>
+                  <strong>Interactive Masterclasses:</strong> Group workshops
+                </li>
+              </ul>
             </div>
-            
-            <div class="col-md-4">
-                <div class="bg-blueprint-card h-100 p-4" style="background-color: var(--u1-tag); border: 1px solid var(--u1-border);">
-                    <span class="ui-tag" style="background: var(--accent-con); color: white;">Consulting</span>
-                    <h4 class="fw-bold">Solutions & Fix-Its</h4>
-                    <p class="text-secondary small">Rapid diagnostic and immediate bottleneck resolution.</p>
-                    <button class="action-btn mt-4" style="background-color: var(--u1-action); color: white;">Book Troubleshooting</button>
-                </div>
-            </div>
-        </div>
-    </section>
+          </div>
 
-    <section class="pt-4">
-        <div class="banner-strip" style="background-color: var(--u2-head);">
-            <h2 class="fs-6 fw-bold m-0">Umbrella II: Operational Execution</h2>
-            <span class="badge bg-warning text-dark">BUILD • DELIVER</span>
+          <div class="col-md-4">
+            <div
+              class="bg-blueprint-card h-100 p-4"
+              style="
+                background-color: var(--u1-tag);
+                border: 1px solid var(--u1-border);
+              "
+            >
+              <span
+                class="ui-tag"
+                style="background: var(--accent-edu); color: white"
+                >Signature</span
+              >
+              <h4 class="fw-bold">Solutions & Fix-Its</h4>
+              <p class="text-secondary small">
+                Rapid diagnostic and immediate bottleneck resolution.
+              </p>
+              <button
+                class="action-btn mt-4"
+                style="background-color: var(--u1-action); color: white"
+              >
+                Book Lecture
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row g-4 mb-4">
+          <div class="col-md-4">
+            <div
+              class="bg-blueprint-card h-100 p-4"
+              style="
+                background-color: var(--u1-tag);
+                border: 1px solid var(--u1-border);
+              "
+            >
+              <span
+                class="ui-tag"
+                style="background: var(--accent-con); color: white"
+                >Consulting</span
+              >
+              <h4 class="fw-bold">Solutions & Fix-Its</h4>
+              <p class="text-secondary small">
+                Rapid diagnostic and immediate bottleneck resolution.
+              </p>
+              <button
+                class="action-btn mt-4"
+                style="background-color: var(--u1-action); color: white"
+              >
+                Book Troubleshooting
+              </button>
+            </div>
+          </div>
+
+          <div class="col-md-8">
+            <div
+              class="bg-blueprint-card h-100 p-4"
+              style="
+                background-color: var(--u1-bg);
+                border: 1px solid var(--u1-border);
+              "
+            >
+              <span
+                class="ui-tag"
+                style="background: var(--accent-edu); color: white"
+                >Education</span
+              >
+              <h3 class="fw-800">Skill & Topic Sessions</h3>
+              <p class="text-secondary small mb-4">
+                "Building the internal skills to lead."
+              </p>
+              <ul class="pillar-list">
+                <li>
+                  <strong>Knowledge Briefs:</strong> Canned information lectures
+                </li>
+                <li>
+                  <strong>Skill Sprints:</strong> 1:1 coaching & how-to calls
+                </li>
+                <li>
+                  <strong>Interactive Masterclasses:</strong> Group workshops
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pt-4">
+        <div class="banner-strip" style="background-color: var(--u2-head)">
+          <h2 class="fs-6 fw-bold m-0">Umbrella II: Operational Execution</h2>
+          <span class="badge bg-warning text-dark">BUILD • DELIVER</span>
         </div>
 
         <div class="row g-4">
-            <div class="col-md-4">
-                <div class="bg-blueprint-card h-100 p-4" style="background-color: var(--u2-tag); border: 1px solid var(--u2-border);">
-                    <h5 class="fw-bold mb-3">Live Metrics</h5>
-                    <div class="d-flex justify-content-between mb-2">
-                        <span class="small text-secondary">Operational Speed</span>
-                        <span class="small fw-bold">94%</span>
-                    </div>
-                    <div class="progress mb-4" style="height: 4px; background-color: rgba(0,0,0,0.1);">
-                        <div class="progress-bar" style="width: 94%; background-color: var(--u2-action);"></div>
-                    </div>
-                    <p class="small text-secondary">Active Sprints are currently tracking ahead of schedule for Q1 delivery.</p>
-                </div>
+          <div class="col-md-4">
+            <div
+              class="bg-blueprint-card h-100 p-4"
+              style="
+                background-color: var(--u2-tag);
+                border: 1px solid var(--u2-border);
+              "
+            >
+              <h5 class="fw-bold mb-3">Live Metrics</h5>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="small text-secondary">Operational Speed</span>
+                <span class="small fw-bold">94%</span>
+              </div>
+              <div
+                class="progress mb-4"
+                style="height: 4px; background-color: rgba(0, 0, 0, 0.1)"
+              >
+                <div
+                  class="progress-bar"
+                  style="width: 94%; background-color: var(--u2-action)"
+                ></div>
+              </div>
+              <p class="small text-secondary">
+                Active Sprints are currently tracking ahead of schedule for Q1
+                delivery.
+              </p>
             </div>
+          </div>
 
-            <div class="col-md-8">
-                <div class="bg-blueprint-card u2-special-card h-100 p-5" style="background-color: var(--u2-bg); border: 2px solid var(--u2-border);">
-                    <span class="ui-tag" style="background: var(--u2-action); color: white;">Managed Projects</span>
-                    <h2 class="display-6 fw-800" style="color: var(--u2-head);">Concrete Results</h2>
-                    <p class="lead text-secondary mb-4">"We build the road and drive the truck for you."</p>
-                    
-                    <div class="row g-3">
-                        <div class="col-sm-4">
-                            <div class="p-3 border rounded">
-                                <i data-lucide="layers" class="mb-2" style="color: var(--u2-action)"></i>
-                                <h6 class="fw-bold m-0">Blueprints</h6>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="p-3 border rounded">
-                                <i data-lucide="zap" class="mb-2" style="color: var(--u2-action)"></i>
-                                <h6 class="fw-bold m-0">Sprints</h6>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="p-3 border rounded">
-                                <i data-lucide="shield-check" class="mb-2" style="color: var(--u2-action)"></i>
-                                <h6 class="fw-bold m-0">Full Scale</h6>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button class="action-btn mt-5" style="background-color: var(--u2-head); color: white;">Start Implementation</button>
+          <div class="col-md-8">
+            <div
+              class="bg-blueprint-card u2-special-card h-100 p-5"
+              style="
+                background-color: var(--u2-bg);
+                border: 2px solid var(--u2-border);
+              "
+            >
+              <span
+                class="ui-tag"
+                style="background: var(--u2-action); color: white"
+                >Managed Projects</span
+              >
+              <h2 class="display-6 fw-800" style="color: var(--u2-head)">
+                Concrete Results
+              </h2>
+              <p class="lead text-secondary mb-4">
+                "We build the road and drive the truck for you."
+              </p>
+
+              <div class="row g-3">
+                <div class="col-sm-4">
+                  <div class="p-3 border rounded">
+                    <i
+                      data-lucide="layers"
+                      class="mb-2"
+                      style="color: var(--u2-action)"
+                    ></i>
+                    <h6 class="fw-bold m-0">Blueprints</h6>
+                  </div>
                 </div>
+                <div class="col-sm-4">
+                  <div class="p-3 border rounded">
+                    <i
+                      data-lucide="zap"
+                      class="mb-2"
+                      style="color: var(--u2-action)"
+                    ></i>
+                    <h6 class="fw-bold m-0">Sprints</h6>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="p-3 border rounded">
+                    <i
+                      data-lucide="shield-check"
+                      class="mb-2"
+                      style="color: var(--u2-action)"
+                    ></i>
+                    <h6 class="fw-bold m-0">Full Scale</h6>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                class="action-btn mt-5"
+                style="background-color: var(--u2-head); color: white"
+              >
+                Start Implementation
+              </button>
             </div>
+          </div>
         </div>
-    </section>
-</main>
+      </section>
+    </main>
 
-<script>
-    lucide.createIcons();
+    <script>
+      lucide.createIcons();
 
-    // Dark Mode Persistence from index.html
-    const setTheme = () => {
-        const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        document.documentElement.setAttribute("data-bs-theme", isDark ? "dark" : "light");
-    };
-    setTheme();
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setTheme);
-</script>
-</body>
+      // Dark Mode Persistence from index.html
+      const setTheme = () => {
+        const isDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        document.documentElement.setAttribute(
+          "data-bs-theme",
+          isDark ? "dark" : "light"
+        );
+      };
+      setTheme();
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", setTheme);
+    </script>
+  </body>
 </html>
