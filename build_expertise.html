@@ -45,6 +45,10 @@
         --accent-edu: #38a169;
         --accent-con: #805ad5;
       }
+      .main-container {
+        flex-grow: 1;
+        padding: 3rem 1.5rem;
+      }
       .header-link-icon {
         width: 42px;
         height: 42px;
@@ -103,6 +107,19 @@
         color: #94a3b8 !important;
       }
 
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 2px 10px;
+        border-radius: 50px;
+        border: 1px solid rgba(100, 116, 139, 0.2);
+        background: rgba(100, 116, 139, 0.05);
+        font-size: 0.6rem;
+        font-weight: 700;
+        color: var(--clr-grey); /* This keeps all text grey by default */
+        text-transform: uppercase;
+      }
       /* Title Branding Update [Fixing requested point] */
       .brand-title {
         font-weight: 800;
@@ -142,15 +159,40 @@
         justify-content: space-between;
         align-items: center;
       }
+      .border-amber {
+        border: 1px solid var(--clr-amber) !important;
+        border-radius: var(--app-corner-radius);
+      }
+      /* Add this to your <style> block */
+      .soft-tint-amber {
+        /* We add a solid base color first, then the tint */
+        background-color: #ffffff !important;
+        background-image: linear-gradient(
+          rgba(245, 159, 11, 0.05),
+          rgba(245, 159, 11, 0.05)
+        ) !important;
+      }
+      [data-bs-theme="dark"] .soft-tint-amber {
+        /* Use a very dark slate base so the amber glow looks 'golden' not 'brown' */
+        background-color: #0f172a !important;
+        background-image: linear-gradient(
+          rgba(245, 159, 11, 0.12),
+          rgba(245, 159, 11, 0.383)
+        ) !important;
+        border-color: rgba(245, 159, 11, 0.5) !important;
+      }
 
+      /* Dark mode overrides to keep it subtle */
+      [data-bs-theme="dark"] .soft-tint-amber {
+        background-color: rgba(255, 191, 0, 0.05) !important;
+      }
       /* Typography */
       .ui-tag {
         display: inline-block;
         padding: 0.2rem 0.6rem;
-        border-radius: 4px;
+        border-radius: 10px;
         font-size: 0.65rem;
         font-weight: 800;
-        text-transform: uppercase;
         margin-bottom: 1rem;
       }
       .pillar-list {
@@ -194,10 +236,30 @@
         font-weight: 800;
         color: var(--clr-grey);
       }
+      /* Fix Table Typography and Borders in Dark Mode */
+      [data-bs-theme="dark"] .soft-tint-amber table {
+        color: #f8fafc !important; /* Forces text to off-white */
+      }
+
+      [data-bs-theme="dark"] .soft-tint-amber thead tr.brand-line {
+        border-bottom: 1px solid rgba(245, 159, 11, 0.3) !important; /* Subtle amber divider */
+      }
+
+      [data-bs-theme="dark"] .soft-tint-amber td {
+        color: #cbd5e1 !important; /* De-emphasizes secondary row text */
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+
+      [data-bs-theme="dark"] .soft-tint-amber td strong {
+        color: var(
+          --clr-amber
+        ) !important; /* Makes the 'Feature' column labels pop */
+      }
     </style>
   </head>
   <body>
-    <main class="container py-5">
+    <main class="main-container container">
       <header
         class="d-flex justify-content-between align-items-end brand-line pb-3 mb-4"
       >
@@ -208,19 +270,34 @@
               style="color: var(--clr-blue); width: 32px; height: 32px"
             ></i>
           </div>
-          <span class="brand-text">project.excellence</span>
+          <a href="index.html" class="text-decoration-none d-flex flex-column">
+            <span class="brand-text">project.docs</span>
+            <span
+              class="text-secondary"
+              style="
+                font-size: 0.65rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-top: 2px;
+              "
+            >
+              Centralized Knowledge Architecture
+            </span>
+          </a>
+          <div class="d-none d-md-block pb-1">
+            <div class="status-pill">V2026.01</div>
+          </div>
         </div>
-        <a href="index.html" class="btn btn-sm btn-outline-secondary"
-          >Return to Cockpit</a
-        >
       </header>
       <h1 class="fw-800 mb-2">Expertise Drives Performance</h1>
-      <p class="text-primary">
-        Strategic Enablement & Operational Execution Architecture.
-      </p>
+      <p class="text-primary">Strategic Enablement & Operational Performance</p>
       <section class="mb-5">
+        <div class="banner-strip" style="background-color: var(--u2-head)">
+          <h2 class="fs-6 fw-bold m-0">Training & Advisory</h2>
+          <span class="badge bg-light text-dark">learn & grow</span>
+        </div>
         <div class="d-flex align-items-center gap-2 mb-3">
-          <i data-lucide="award" class="text-amber" style="width: 20px"></i>
+          <i data-lucide="crown" class="text-amber" style="width: 20px"></i>
           <h2
             class="fs-6 fw-bold text-uppercase mb-0"
             style="letter-spacing: 0.1em; color: var(--clr-amber)"
@@ -231,14 +308,26 @@
 
         <div class="row g-3">
           <div class="col-12 mb-3">
-            <div class="bg-white-card border-amber p-4 p-md-5">
+            <div
+              class="bg-white-card border-amber bw-1 soft-tint-amber p-4 p-md-5"
+            >
               <div class="row align-items-center">
                 <div class="col-md-8">
                   <span
                     class="ui-tag tag-media mb-3"
-                    style="background: var(--clr-grey)"
-                    >The First Time in South Africa</span
+                    style="background: var(--clr-green)"
                   >
+                    <div class="col-md-4 text-center">
+                      <img
+                        src="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1768594052/R_sxtjko.png"
+                        alt="SA Flag"
+                        class="rounded-circle"
+                        style="width: 100px; height: 100px; object-fit: cover"
+                      />
+                    </div>
+                    New in South Africa</span
+                  >
+
                   <h3 class="display-6 fw-800 mb-2">The Charisma Code</h3>
                   <p class="lead text-secondary mb-4">
                     Your Voice, a Force. Your Presence, Electric.
@@ -251,12 +340,8 @@
                     >
                       <thead>
                         <tr class="brand-line">
-                          <th class="pb-2 text-uppercase small text-secondary">
-                            Feature
-                          </th>
-                          <th class="pb-2 text-uppercase small text-secondary">
-                            Service Details
-                          </th>
+                          <th class="small text-uppercase">Feature</th>
+                          <th class="small text-uppercase">Service Details</th>
                         </tr>
                       </thead>
                       <tbody class="text-dark-emphasis">
@@ -270,17 +355,17 @@
                         </tr>
                         <tr>
                           <td><strong>Professional Tier</strong></td>
-                          <td>R14,500 - 19,500</td>
+                          <td>R14,500 - R19,500</td>
                         </tr>
                         <tr>
                           <td><strong>Executive Tier</strong></td>
-                          <td>R25,000 - 38,000</td>
+                          <td>R25,000 - R38,000</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                   <p class="small text-muted italic mt-2">
-                    * Plans with installments negotiable
+                    * Installment plans on request
                   </p>
                 </div>
                 <div class="col-md-4 text-center">
@@ -288,7 +373,7 @@
                     src="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1768594052/R_sxtjko.png"
                     alt="SA Flag"
                     class="rounded-circle"
-                    style="width: 160px; height: 160px; object-fit: cover"
+                    style="width: 100px; height: 100px; object-fit: cover"
                   />
                 </div>
               </div>
@@ -365,7 +450,7 @@
       <section class="pt-4">
         <div class="banner-strip" style="background-color: var(--u2-head)">
           <h2 class="fs-6 fw-bold m-0">Umbrella II: Operational Execution</h2>
-          <span class="badge bg-warning text-dark">BUILD • DELIVER</span>
+          <span class="badge bg-light text-dark">build & deliver</span>
         </div>
 
         <div class="row g-4">
