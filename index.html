@@ -115,9 +115,7 @@
 
       /* --- TILE SYSTEM & HOVER --- */
       .bg-white-card {
-        background-color: var(
-          --tile-bg-light
-        ); /* No longer hardcoded to white */
+        background-color: var(--tile-bg-light);
         border: 1px solid #e2e8f0;
         border-radius: var(--app-corner-radius);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -125,6 +123,12 @@
         position: relative;
         display: flex;
         flex-direction: column;
+      }
+
+      /* This must be its own separate block */
+      .bg-white-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
       }
 
       [data-bs-theme="dark"] .bg-white-card {
