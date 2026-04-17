@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-bs-theme="light">
   <head>
     <meta charset="UTF-8" />
@@ -477,11 +477,17 @@
       .spacer-bottom {
         margin-bottom: 3rem !important;
       }
-      /* Apply only when the system/site is in Dark Mode */
-      [data-bs-theme="dark"] .bg-white-card div[style*="background-image"] {
-        filter: grayscale(1) brightness(0.7); /* Turns image B&W and dims it */
-        opacity: 0.8; /* Makes it blend into the dark tile background */
-        transition: all 0.5s ease; /* Smooth transition when hovering */
+      /* 1. Initial State: Applies to both Light and Dark modes */
+      .bg-white-card div[style*="background-image"] {
+        filter: grayscale(1) brightness(0.8);
+        opacity: 0.8;
+        transition: all 0.5s ease;
+      }
+
+      /* 2. Hover State: Returns color in both Light and Dark modes */
+      .bg-white-card:hover div[style*="background-image"] {
+        filter: grayscale(0) brightness(1);
+        opacity: 1;
       }
 
       /* Reveal the image on hover */
@@ -593,26 +599,26 @@
 
           <div class="col-md-3">
             <div
-              class="bg-white-card border-grey bw-1 overflow-hidden custom-bg-variant"
+              class="bg-white-card border-amber bw-2 overflow-hidden custom-bg-variant"
               style="height: 100%; min-height: 200px"
             >
               <div
                 style="
                   width: 100%;
                   height: 100%;
-                  background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/q_auto/f_auto/v1776301461/imgc11l_a0rpud.jpg');
+                  background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/q_auto/f_auto/v1776301461/imgc11l_a0rpud.jpg&quot;);
                   background-size: cover;
                   background-position: center;
                   transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
-                                "
-                onmouseover="this.style.transform='scale(1.05)'"
-                onmouseout="this.style.transform='scale(1)'"
+                "
+                onmouseover="this.style.transform = 'scale(1.05)'"
+                onmouseout="this.style.transform = 'scale(1)'"
               ></div>
             </div>
           </div>
 
           <div class="col-md-3">
-            <div class="p-4 bg-white-card border-amber bw-1 soft-tint-amber">
+            <div class="p-4 bg-white-card border-blue bw-2 soft-tint-amber">
               <div class="tile-content">
                 <span class="ui-tag tag-amber mb-3">Compass</span>
                 <div class="w-100">
@@ -736,13 +742,13 @@
                           style="
                             width: 100%;
                             height: 100%;
-                            background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png');
+                            background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png&quot;);
                             background-size: cover;
                             background-position: center;
                             border-radius: 4px;
                             filter: grayscale(0.8);
-                            transition: transform 0.5s
-                                cubic-bezier(0.4, 0, 0.2, 1),
+                            transition:
+                              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
                               filter 0.5s ease;
                           "
                         ></div>
@@ -839,13 +845,13 @@
                           style="
                             width: 100%;
                             height: 100%;
-                            background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png');
+                            background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png&quot;);
                             background-size: cover;
                             background-position: center;
                             border-radius: 4px;
                             filter: grayscale(0.8);
-                            transition: transform 0.5s
-                                cubic-bezier(0.4, 0, 0.2, 1),
+                            transition:
+                              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
                               filter 0.5s ease;
                           "
                         ></div>
@@ -901,7 +907,7 @@
               <div
                 class="p-4 bg-white-card soft-tint-amber border-amber bw-1 tile-left tile-img-bg"
                 style="
-                  background-image: url('YOUR_IMAGE_URL.jpg');
+                  background-image: url(&quot;YOUR_IMAGE_URL.jpg&quot;);
                   min-height: 250px;
                 "
               >
@@ -929,7 +935,7 @@
               <div
                 class="p-4 bg-white-card soft-tint-indigo border-indigo bw-1 tile-left tile-img-bg"
                 style="
-                  background-image: url('YOUR_IMAGE_URL.jpg');
+                  background-image: url(&quot;YOUR_IMAGE_URL.jpg&quot;);
                   min-height: 250px;
                 "
               >
@@ -1161,13 +1167,13 @@
                           style="
                             width: 100%;
                             height: 100%;
-                            background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png');
+                            background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png&quot;);
                             background-size: cover;
                             background-position: center;
                             border-radius: 4px;
                             filter: grayscale(0.8);
-                            transition: transform 0.5s
-                                cubic-bezier(0.4, 0, 0.2, 1),
+                            transition:
+                              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
                               filter 0.5s ease;
                           "
                         ></div>
@@ -1250,7 +1256,7 @@
               <div
                 class="p-4 bg-white-card border-amber bw-1 tile-left tile-img-bg"
                 style="
-                  background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766073589/Profile_Cover_cgzt6s.jpg');
+                  background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766073589/Profile_Cover_cgzt6s.jpg&quot;);
                 "
               >
                 <div class="tile-content">
@@ -1270,7 +1276,7 @@
               <div
                 class="p-4 bg-white-card border-indigo bw-1 tile-left tile-img-bg"
                 style="
-                  background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766157692/Business_1_Newspaper_y988h0.jpg');
+                  background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766157692/Business_1_Newspaper_y988h0.jpg&quot;);
                 "
               >
                 <div class="tile-content">
@@ -1319,13 +1325,13 @@
                   width: 100%;
                   height: 100%;
                   min-height: 90px;
-                  background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1768512311/prototyoe_mwukx1.jpg');
+                  background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/v1768512311/prototyoe_mwukx1.jpg&quot;);
                   background-size: cover;
                   background-position: center;
                   transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
                 "
-                onmouseover="this.style.transform='scale(1.05)'"
-                onmouseout="this.style.transform='scale(1)'"
+                onmouseover="this.style.transform = 'scale(1.05)'"
+                onmouseout="this.style.transform = 'scale(1)'"
               ></div>
             </div>
           </div>
@@ -1340,9 +1346,7 @@
                 style="min-height: 90px"
               >
                 <div class="tile-content">
-                  <span class="d-block small fw-bold mb-1">
-                    Gallery
-                  </span>
+                  <span class="d-block small fw-bold mb-1"> Gallery </span>
 
                   <p class="small text-primary mb-0">
                     Media Gallery for Visual Inspiration
@@ -1469,8 +1473,8 @@
                   background-position: center;
                   transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
                 "
-                onmouseover="this.style.transform='scale(1.05)'"
-                onmouseout="this.style.transform='scale(1)'"
+                onmouseover="this.style.transform = 'scale(1.05)'"
+                onmouseout="this.style.transform = 'scale(1)'"
               ></div>
             </div>
           </div>
@@ -1638,7 +1642,7 @@
           const startOfYear = new Date(now.getFullYear(), 0, 1);
           const pastDaysOfYear = (now - startOfYear) / 86400000;
           const weekOfYear = Math.ceil(
-            (pastDaysOfYear + startOfYear.getDay() + 1) / 7
+            (pastDaysOfYear + startOfYear.getDay() + 1) / 7,
           );
           document.getElementById("compass-wy").textContent = weekOfYear;
 
@@ -1646,7 +1650,7 @@
           const firstDayOfMonth = new Date(
             now.getFullYear(),
             now.getMonth(),
-            1
+            1,
           );
           const used = firstDayOfMonth.getDay() + now.getDate();
           const weekOfMonth = Math.ceil(used / 7);
@@ -1657,11 +1661,11 @@
       // Theme Logic
       const setTheme = () => {
         const isDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
+          "(prefers-color-scheme: dark)",
         ).matches;
         document.documentElement.setAttribute(
           "data-bs-theme",
-          isDark ? "dark" : "light"
+          isDark ? "dark" : "light",
         );
       };
 
