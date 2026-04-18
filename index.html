@@ -196,13 +196,13 @@
 
       /* Soft Tints */
       .soft-tint-blue {
-        background-color: #0d6dfd17 !important;
+        background-color: #0d6dfd2e !important;
       }
       .soft-tint-amber {
-        background-color: #edaa3653 !important;
+        background-color: #edaa362d !important;
       }
       .soft-tint-green {
-        background-color: #0bf52a32 !important;
+        background-color: #0bf52a57 !important;
       }
       .soft-tint-indigo {
         background-color: #6710f225 !important;
@@ -213,7 +213,25 @@
       .soft-tint-grey {
         background-color: #64748b0d !important;
       }
-
+      /* Dark Mode Soft Tint Visibility Fix */
+      [data-bs-theme="dark"] .soft-tint-blue {
+        background-color: rgba(13, 109, 253, 0.15) !important;
+      }
+      [data-bs-theme="dark"] .soft-tint-amber {
+        background-color: rgba(237, 170, 54, 0.25) !important;
+      }
+      [data-bs-theme="dark"] .soft-tint-green {
+        background-color: rgba(11, 245, 42, 0.15) !important;
+      }
+      [data-bs-theme="dark"] .soft-tint-indigo {
+        background-color: rgba(103, 16, 242, 0.2) !important;
+      }
+      [data-bs-theme="dark"] .soft-tint-red {
+        background-color: rgba(201, 35, 51, 0.2) !important;
+      }
+      [data-bs-theme="dark"] .soft-tint-grey {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+      }
       /* --- BACKGROUND IMAGE LAYER --- */
       .tile-img-bg {
         min-height: 200px;
@@ -623,7 +641,6 @@
               ></div>
             </div>
           </div>
-
           <div class="col-md-3">
             <div class="p-4 bg-white-card border-amber bw-4 soft-tint-amber">
               <div class="tile-content">
@@ -912,7 +929,7 @@
           <div class="col-12">
             <a href="YOUR_LINK_HERE.html" target="_blank" class="file-link">
               <div
-                class="p-4 bg-white-card soft-tint-amber border-amber bw-1 tile-left tile-img-bg"
+                class="p-4 bg-white-card border-amber soft-tint-amber bw-1 tile-left tile-img-bg"
                 style="
                   background-image: url(&quot;YOUR_IMAGE_URL.jpg&quot;);
                   min-height: 250px;
