@@ -556,8 +556,7 @@
       </header>
       <section id="dashboard">
         <div class="banner-box banner-cockpit">
-          <h2>Cockpit</h2>
-
+          <h2>Welcome</h2>
           <div class="header-status-tick">
             <i
               data-lucide="layers"
@@ -569,52 +568,43 @@
         <div class="row g-3 mb-4">
           <div class="col-md-6">
             <div
-              class="p-4 bg-white-card border-grey soft-tint-blue bw-1 custom-bg-variant"
-              style="min-height: 200px"
+              class="p-4 bg-white-card border-grey soft-tint-blue bw-1"
+              style="min-height: 220px"
             >
               <div class="tile-content">
                 <div
                   class="d-flex justify-content-between align-items-start w-100 mb-3"
                 >
                   <div>
-                    <span class="ui-tag tag-blue tag-cutout mb-3">Welcome</span>
-                    <h2 class="fw-bold fs-5 mb-0">Activities</h2>
+                    <span class="ui-tag tag-blue tag-cutout mb-3"
+                      >System Access</span
+                    >
+                    <h2 class="fw-bold fs-4 mb-1">Welcome, Michael</h2>
                   </div>
                   <div class="text-end">
                     <span
                       class="text-uppercase small fw-bold text-secondary"
                       style="font-size: 0.6rem; letter-spacing: 0.1em"
                     >
-                      DATE: <span id="current-date-stamp"></span>
+                      REF: <span id="current-date-stamp"></span>
                     </span>
                   </div>
                 </div>
 
-                <div class="small text-secondary w-100 mt-2">
-                  <div
-                    class="d-flex justify-content-between border-bottom border-secondary-subtle py-2 opacity-75"
-                  >
-                    <span>Investments</span>
-                    <span class="fw-bold text-blue">Ongoing</span>
-                  </div>
-                  <div
-                    class="d-flex justify-content-between border-bottom border-secondary-subtle py-2 opacity-75"
-                  >
-                    <span>Workflows</span>
-                    <span class="fw-bold text-blue">Depl.</span>
-                  </div>
-                  <div
-                    class="d-flex justify-content-between border-bottom border-secondary-subtle py-2 opacity-75"
-                  >
-                    <span>Empowerment</span>
-                    <span class="fw-bold text-blue">Sync</span>
-                  </div>
-                  <div class="d-flex justify-content-between py-2">
-                    <span class="fw-bold text-dark-emphasis"
-                      >Activities & Projects</span
+                <div class="w-100 mt-2">
+                  <p class="small text-secondary mb-3">
+                    <b
+                      >This centralized knowledge architecture serves as the
+                      strategic nexus for investment analysis, workflow
+                      automation, and brand evolution.</b
+                    >
+                  </p>
+                  <div class="d-flex gap-2">
+                    <span class="ui-tag tag-grey" style="font-size: 0.55rem"
+                      >Authenticated</span
                     >
                     <span class="ui-tag tag-grey" style="font-size: 0.55rem"
-                      >Directory</span
+                      >V2.0 Core</span
                     >
                   </div>
                 </div>
@@ -624,8 +614,8 @@
 
           <div class="col-md-3">
             <div
-              class="bg-white-card border-grey bw-1 overflow-hidden custom-bg-variant"
-              style="height: 100%; min-height: 200px"
+              class="bg-white-card border-grey bw-1 overflow-hidden"
+              style="height: 100%; min-height: 220px"
             >
               <div
                 style="
@@ -641,33 +631,32 @@
               ></div>
             </div>
           </div>
+
           <div class="col-md-3">
-            <div class="p-4 bg-white-card border-grey bw-1 soft-tint-amber">
+            <div
+              class="p-4 bg-white-card border-grey bw-1 soft-tint-amber"
+              style="min-height: 220px"
+            >
               <div class="tile-content">
                 <span class="ui-tag tag-amber tag-cutout mb-3">Compass</span>
-                <div class="w-100">
-                  <div class="mb-1">
+
+                <div class="w-100 mt-2">
+                  <div class="mb-2 border-bottom border-secondary-subtle pb-2">
                     <span
                       class="small text-secondary text-uppercase fw-bold"
                       style="font-size: 0.6rem"
-                      >Date:</span
+                      >Current Time:</span
                     >
-                    <span class="small fw-bold d-block" id="compass-date"
-                      >---</span
-                    >
-                  </div>
-                  <div class="mb-1">
                     <span
-                      class="small text-secondary text-uppercase fw-bold"
-                      style="font-size: 0.6rem"
-                      >Time:</span
-                    >
-                    <span class="small fw-bold d-block" id="compass-time"
+                      class="small fw-bold d-block fs-5"
+                      id="compass-time"
+                      style="color: var(--clr-amber)"
                       >--:--</span
                     >
                   </div>
-                  <div class="d-flex gap-3">
-                    <div>
+
+                  <div class="row g-0">
+                    <div class="col-6 border-end border-secondary-subtle">
                       <span
                         class="small text-secondary text-uppercase fw-bold"
                         style="font-size: 0.6rem"
@@ -677,7 +666,7 @@
                         >--</span
                       >
                     </div>
-                    <div>
+                    <div class="col-6 ps-3">
                       <span
                         class="small text-secondary text-uppercase fw-bold"
                         style="font-size: 0.6rem"
@@ -689,12 +678,20 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="mt-auto-tag pt-3">
+                  <span
+                    class="small fw-bold text-secondary text-uppercase"
+                    style="font-size: 0.55rem"
+                    id="compass-date"
+                    >---</span
+                  >
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
       <div class="brand-line mb-2"></div>
       <section id="projects">
         <div class="banner-box banner-section">
