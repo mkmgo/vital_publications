@@ -448,8 +448,8 @@
 
       /* Discrete style for the Cockpit */
       .banner-cockpit {
-        background-color: rgba(123, 124, 124, 0.334) !important;
-        border: 1px solid rgba(100, 116, 139, 0.1) !important;
+        background-color: var(--clr-blue); /* This will now be blue */
+        border: 1px solid rgb(5, 21, 242) !important;
       }
 
       [data-bs-theme="dark"] .banner-box {
@@ -482,13 +482,13 @@
       .header-status-tick {
         width: 28px;
         height: 28px;
-        background-color: #a3e635; /* Lime green */
-        border: 2px solid rgba(0, 0, 0, 0.1);
+        background-color: var(--clr-blue); /* This will now be blue */
+        border: 3px solid rgba(245, 242, 242, 0.271);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #020617; /* Dark icon color for contrast */
+        color: #ffffff; /* Dark icon color for contrast */
         flex-shrink: 0; /* Prevents the circle from squishing */
         transition: all 0.3s ease;
       }
