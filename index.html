@@ -447,37 +447,63 @@
       }
 
       /* Discrete style for the Cockpit */
-.banner-cockpit {
-  /* This combines your new Cloudinary image with a glass tint */
-  background: 
-    linear-gradient(rgba(2, 6, 23, 0.6), rgba(2, 6, 23, 0.6)), 
-    url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1778172143/dash_banner_p6ob7a.png");
-  
-  background-size: cover;
-  background-position: center;
-  backdrop-filter: blur(8px); /* The "Glass" effect */
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  display: flex;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
+      .banner-cockpit {
+        /* This combines your new Cloudinary image with a glass tint */
+        background:
+          linear-gradient(rgba(2, 6, 23, 0.6), rgba(2, 6, 23, 0.6)),
+          url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1778172143/dash_banner_p6ob7a.png");
 
-/* To see "your own image" subtly in the background of the banner */
-.banner-cockpit::after {
-  content: "";
-  position: absolute;
-  right: 10%;
-  top: 0;
-  width: 150px;
-  height: 100%;
-  background: url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1776519896/Michael_K._M%C3%BCller_yinetk.png") no-generated-repeat;
-  background-size: contain;
-  background-position: bottom;
-  opacity: 0.2; /* Keeps it professional and subtle */
-  z-index: -1;
-  mask-image: linear-gradient(to left, black, transparent); /* Fades your image into the banner */
-}
+        background-size: cover;
+        background-position: center;
+        backdrop-filter: blur(8px); /* The "Glass" effect */
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        display: flex;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+      /* 1. Add transition to the base class so the hover is smooth */
+      .banner-cockpit {
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        cursor: pointer;
+      }
+
+      /* 2. The Hover state: Lifts the banner and brightens it */
+      .banner-cockpit:hover {
+        transform: translateY(-2px); /* Subtle lift */
+        filter: brightness(1.2); /* Makes the glass "glow" */
+        box-shadow:
+          0 10px 20px -10px rgba(37, 101, 250, 0.4),
+          /* Outer glow */ inset 0 0 15px rgba(255, 255, 255, 0.1); /* Inner glass light */
+      }
+
+      /* 3. Optional: Make the blue checkmark icon pop on hover */
+      .banner-cockpit:hover .header-status-tick {
+        transform: scale(1.1);
+        background-color: #ffffff !important;
+        color: #2565fa !important;
+      }
+
+      /* To see "your own image" subtly in the background of the banner */
+      .banner-cockpit::after {
+        content: "";
+        position: absolute;
+        right: 10%;
+        top: 0;
+        width: 150px;
+        height: 100%;
+        background: url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1776519896/Michael_K._M%C3%BCller_yinetk.png")
+          no-generated-repeat;
+        background-size: contain;
+        background-position: bottom;
+        opacity: 0.2; /* Keeps it professional and subtle */
+        z-index: -1;
+        mask-image: linear-gradient(
+          to left,
+          black,
+          transparent
+        ); /* Fades your image into the banner */
+      }
 
       [data-bs-theme="dark"] .banner-box {
         background-color: #1e293b;
