@@ -681,6 +681,66 @@
           opacity: 0;
         }
       }
+      /* Update the existing .banner-cockpit or add this below it */
+      .banner-cockpit {
+        /* This integrates your Cloudinary image as a layered background */
+        background:
+          linear-gradient(rgba(2, 6, 23, 0.65), rgba(2, 6, 23, 0.65)),
+          url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1778172143/dash_banner_p6ob7a.png");
+        background-size: cover;
+        background-position: center;
+
+        /* The Glass Effect */
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+        /* Interaction logic */
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* The Hover Effect */
+      .banner-cockpit:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.2);
+        box-shadow:
+          0 10px 20px -10px rgba(37, 101, 250, 0.4),
+          inset 0 0 15px rgba(255, 255, 255, 0.05);
+      }
+
+      /* Animation for the blue checkmark icon inside the banner */
+      .banner-cockpit:hover .header-status-tick {
+        transform: scale(1.2) rotate(5deg);
+        background-color: #ffffff !important;
+        color: #2565fa !important;
+      }
+
+      /* The "Active" Pulse animation for functional status */
+      @keyframes pulse-status {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(1.2);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .status-indicator {
+        width: 8px;
+        height: 8px;
+        background-color: #22c55e; /* Success Green */
+        border-radius: 50%;
+        display: inline-block;
+        animation: pulse-status 2s infinite;
+      }
     </style>
   </head>
   <body>
