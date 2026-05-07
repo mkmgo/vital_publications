@@ -577,7 +577,7 @@
         filter: grayscale(0) brightness(1);
         opacity: 1;
       }
-      /* --- Optimized Smooth B&W Image Crossfade --- */
+      /* --- Final Anti-Flicker Crossfade Logic --- */
       .profile-image-container {
         position: relative;
         width: 100%;
@@ -595,35 +595,47 @@
         height: 100%;
         background-size: cover;
         background-position: center;
-        /* Change: Start at opacity 1 for the base layer */
-        opacity: 1;
-        animation: smooth-cycle 12s infinite ease-in-out;
       }
 
-      /* Ensure the primary image is "underneath" and starts visible */
+      /* Base Image: Always visible, no opacity animation to prevent flicker */
       .img-primary {
         z-index: 1;
+        opacity: 1;
+        /* We only animate the scale for the movement effect */
+        animation: primary-scale 12s infinite ease-in-out;
       }
 
-      /* Secondary image sits on top and fades in/out over the primary */
+      /* Top Image: Fades in and out over the primary image */
       .img-secondary {
         z-index: 2;
-        animation-delay: 6s !important;
+        opacity: 0;
+        animation: secondary-fade-scale 12s infinite ease-in-out;
+        animation-delay: 6s; /* Starts halfway through the cycle */
       }
 
-      @keyframes smooth-cycle {
+      /* Keyframe for Primary: Only handles the zoom */
+      @keyframes primary-scale {
         0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      /* Keyframe for Secondary: Handles both fade and zoom */
+      @keyframes secondary-fade-scale {
+        0%,
+        10%,
+        90%,
         100% {
           opacity: 0;
           transform: scale(1);
         }
-        /* Adjusted timing: Rapid but smooth entry, long hold, gradual exit */
-        8%,
-        42% {
+        40%,
+        60% {
           opacity: 1;
-        }
-        50% {
-          opacity: 0;
           transform: scale(1.05);
         }
       }
