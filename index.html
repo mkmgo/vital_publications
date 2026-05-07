@@ -577,14 +577,14 @@
         filter: grayscale(0) brightness(1);
         opacity: 1;
       }
-      /* --- High-End B&W Image Cycler --- */
+      /* --- Optimized Smooth B&W Image Crossfade --- */
       .profile-image-container {
         position: relative;
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background-color: #000; /* Deep black base */
-        filter: grayscale(100%) contrast(110%); /* Strict B&W for both */
+        background-color: #000;
+        filter: grayscale(100%) contrast(110%);
       }
 
       .profile-image-container div {
@@ -595,32 +595,36 @@
         height: 100%;
         background-size: cover;
         background-position: center;
-        opacity: 0; /* Start hidden */
+        /* Change: Start at opacity 1 for the base layer */
+        opacity: 1;
         animation: smooth-cycle 12s infinite ease-in-out;
       }
 
-      /* Delay the secondary image by half the cycle (6s) */
+      /* Ensure the primary image is "underneath" and starts visible */
+      .img-primary {
+        z-index: 1;
+      }
+
+      /* Secondary image sits on top and fades in/out over the primary */
       .img-secondary {
+        z-index: 2;
         animation-delay: 6s !important;
       }
 
       @keyframes smooth-cycle {
-        0% {
+        0%,
+        100% {
           opacity: 0;
           transform: scale(1);
         }
-        8% {
-          opacity: 1;
-        } /* Fade in slowly */
+        /* Adjusted timing: Rapid but smooth entry, long hold, gradual exit */
+        8%,
         42% {
           opacity: 1;
-        } /* Stay visible */
+        }
         50% {
           opacity: 0;
-          transform: scale(1.08);
-        } /* Fade out while zooming */
-        100% {
-          opacity: 0;
+          transform: scale(1.05);
         }
       }
 
@@ -635,52 +639,6 @@
         box-shadow: 0 0 20px rgba(37, 101, 250, 0.15);
       }
 
-      /* --- 2. THE SMOOTH B&W IMAGE CROSSFADE --- */
-      .profile-image-container {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        background-color: #000;
-        /* Keeps both images strictly Black & White */
-        filter: grayscale(100%) contrast(110%);
-      }
-
-      .profile-image-container div {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        opacity: 0;
-        animation: smooth-cycle 12s infinite ease-in-out;
-      }
-
-      .img-secondary {
-        animation-delay: 6s !important;
-      }
-
-      @keyframes smooth-cycle {
-        0% {
-          opacity: 0;
-          transform: scale(1);
-        }
-        8% {
-          opacity: 1;
-        }
-        42% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0;
-          transform: scale(1.08);
-        }
-        100% {
-          opacity: 0;
-        }
-      }
       /* Update the existing .banner-cockpit or add this below it */
       .banner-cockpit {
         /* This integrates your Cloudinary image as a layered background */
