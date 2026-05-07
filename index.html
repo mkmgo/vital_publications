@@ -462,19 +462,21 @@
         position: relative;
         z-index: 1;
       }
-      /* 1. Add transition to the base class so the hover is smooth */
+      /* --- Optimized Cockpit Hover --- */
       .banner-cockpit {
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transition: all 0.3s ease;
         cursor: pointer;
       }
 
-      /* 2. The Hover state: Lifts the banner and brightens it */
       .banner-cockpit:hover {
-        transform: translateY(-2px); /* Subtle lift */
-        filter: brightness(1.2); /* Makes the glass "glow" */
-        box-shadow:
-          0 10px 20px -10px rgba(37, 101, 250, 0.4),
-          /* Outer glow */ inset 0 0 15px rgba(255, 255, 255, 0.1); /* Inner glass light */
+        border-color: rgba(37, 101, 250, 0.6) !important;
+        /* This adds the dark blue tint layer over your banner image */
+        background:
+          linear-gradient(rgba(2, 6, 23, 0.4), rgba(2, 6, 23, 0.4)),
+          url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1778172143/dash_banner_p6ob7a.png");
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 0 20px rgba(37, 101, 250, 0.15);
       }
 
       /* 3. Optional: Make the blue checkmark icon pop on hover */
@@ -575,20 +577,14 @@
         filter: grayscale(0) brightness(1);
         opacity: 1;
       }
-      /* --- Highly Functional Image Cycler --- */
+      /* --- High-End B&W Image Cycler --- */
       .profile-image-container {
         position: relative;
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background-color: #020617;
-        filter: grayscale(100%); /* Force Black & White globally */
-        transition: filter 0.5s ease;
-      }
-
-      /* Reveal color slightly on hover to show "Active" state */
-      .profile-image-container:hover {
-        filter: grayscale(40%);
+        background-color: #000; /* Deep black base */
+        filter: grayscale(100%) contrast(110%); /* Strict B&W for both */
       }
 
       .profile-image-container div {
@@ -599,29 +595,45 @@
         height: 100%;
         background-size: cover;
         background-position: center;
-        animation: crossfade-loop 12s infinite; /* 12-second total cycle */
+        opacity: 0; /* Start hidden */
+        animation: smooth-cycle 12s infinite ease-in-out;
       }
 
-      /* Secondary image starts with a delay to create the crossfade */
+      /* Delay the secondary image by half the cycle (6s) */
       .img-secondary {
         animation-delay: 6s !important;
       }
 
-      @keyframes crossfade-loop {
-        0%,
-        45% {
-          opacity: 1;
-          transform: scale(1);
-        }
-        55%,
-        95% {
+      @keyframes smooth-cycle {
+        0% {
           opacity: 0;
-          transform: scale(1.05);
-        }
-        100% {
-          opacity: 1;
           transform: scale(1);
         }
+        8% {
+          opacity: 1;
+        } /* Fade in slowly */
+        42% {
+          opacity: 1;
+        } /* Stay visible */
+        50% {
+          opacity: 0;
+          transform: scale(1.08);
+        } /* Fade out while zooming */
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* Hover effect for the Cockpit Banner */
+      .banner-cockpit {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+      }
+
+      .banner-cockpit:hover {
+        filter: brightness(1.2) saturate(1.1);
+        box-shadow: 0 0 30px rgba(37, 101, 250, 0.2);
+        transform: translateY(-1px);
       }
     </style>
   </head>
@@ -716,7 +728,7 @@
           <div class="col-md-3">
             <div
               class="bg-white-card border-grey bw-1 overflow-hidden"
-              style="height: 100%; min-height: 220px"
+              style="height: 100%; min-height: 250px"
             >
               <div class="profile-image-container">
                 <div
@@ -725,6 +737,7 @@
                     background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/v1776519896/Michael_K._M%C3%BCller_yinetk.png&quot;);
                   "
                 ></div>
+
                 <div
                   class="img-secondary"
                   style="
