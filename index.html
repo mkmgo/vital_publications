@@ -463,7 +463,7 @@
         color: var(--clr-grey); /* This keeps all text grey by default */
         text-transform: uppercase;
       }
-      /* --- REFINED DUAL BANNER SYSTEM --- */
+      /* --- REFINED COCKPIT BANNER SYSTEM --- */
       .banner-box {
         padding: 0.8rem 1.5rem;
         border-radius: var(--app-corner-radius);
@@ -473,70 +473,74 @@
         width: 100%;
         margin-top: 1.5rem !important;
         margin-bottom: 1.5rem !important;
-        /* Default background is now the 'Robust Grey' */
         background-color: #8888889a;
         border: 1px solid #8e8d8d4e;
       }
 
-      /* Discrete style for the Cockpit */
+      /* Cinematic Cockpit Layout */
       .banner-cockpit {
-        /* This combines your new Cloudinary image with a glass tint */
-        background:
-          linear-gradient(rgba(2, 6, 23, 0.6), rgba(2, 6, 23, 0.6)),
-          url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1778172143/dash_banner_p6ob7a.png");
-
-        background-size: cover;
-        background-position: center;
-        backdrop-filter: blur(8px); /* The "Glass" effect */
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        display: flex;
-        align-items: center;
+        height: 260px; /* Kept the updated height to showcase the skyscrapers */
         position: relative;
-        z-index: 1;
-      }
-      /* --- Optimized Cockpit Hover --- */
-      .banner-cockpit {
-        transition: all 0.3s ease;
+        overflow: hidden;
+        border: none  !important;
         cursor: pointer;
+        z-index: 1;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
       }
 
-      .banner-cockpit:hover {
-        border-color: rgba(37, 101, 250, 0.6) !important;
-        /* This adds the dark blue tint layer over your banner image */
-        background:
-          linear-gradient(rgba(2, 6, 23, 0.4), rgba(2, 6, 23, 0.4)),
-          url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1778172143/dash_banner_p6ob7a.png");
-        background-size: cover;
-        background-position: center;
-        box-shadow: 0 0 20px rgba(37, 101, 250, 0.15);
-      }
-
-      /* 3. Optional: Make the blue checkmark icon pop on hover */
-      .banner-cockpit:hover .header-status-tick {
-        transform: scale(1.1);
-        background-color: #ffffff !important;
-        color: #2565fa !important;
-      }
-
-      /* To see "your own image" subtly in the background of the banner */
-      .banner-cockpit::after {
+      /* Restored original dark slate mask, alignment, filters, and panning physics */
+      .banner-cockpit::before {
         content: "";
         position: absolute;
-        right: 10%;
-        top: 0;
-        width: 150px;
-        height: 100%;
-        background: url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1776519896/Michael_K._M%C3%BCller_yinetk.png")
-          no-generated-repeat;
-        background-size: contain;
-        background-position: bottom;
-        opacity: 0.2; /* Keeps it professional and subtle */
-        z-index: -1;
-        mask-image: linear-gradient(
-          to left,
-          black,
-          transparent
-        ); /* Fades your image into the banner */
+        inset: 0;
+        z-index: -2;
+        background:
+          linear-gradient(rgba(2, 6, 23, 0.45), rgba(2, 6, 23, 0.45)),
+          url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1779133688/frankfurt_byalb8.jpg");
+        background-size: cover;
+        background-position: center;
+        animation: dynamic-banner-pan 24s infinite ease-in-out;
+        transition: all 0.4s ease;
+      }
+
+      /* Original hover interactions and frame transformations */
+      .banner-cockpit:hover {
+        transform: translateY(-2px);
+        border-color: rgba(37, 101, 250, 0.6) !important;
+        box-shadow: 0 10px 25px -10px rgba(37, 101, 250, 0.35);
+      }
+
+      .banner-cockpit:hover::before {
+        filter: brightness(1.15) contrast(105%);
+      }
+
+      /* Original motion speed and panning scale dimensions */
+      @keyframes dynamic-banner-pan {
+        0%,
+        100% {
+          transform: scale(1.02) translate(0px, 0px);
+        }
+        50% {
+          transform: scale(1.08) translate(-5px, -2px);
+        }
+      }
+
+      /* System dark theme handling */
+      [data-bs-theme="dark"] .banner-box {
+        background-color: #1e293b;
+        border-color: #334155;
+      }
+
+      [data-bs-theme="dark"] .banner-cockpit::before {
+        background:
+          linear-gradient(rgba(2, 6, 23, 0.65), rgba(2, 6, 23, 0.65)),
+          url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1779133688/frankfurt_byalb8.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .banner-cockpit::after {
+        display: none !important;
       }
 
       [data-bs-theme="dark"] .banner-box {
@@ -781,18 +785,7 @@
         </div>
       </header>
       <section id="dashboard">
-        <div class="banner-box banner-cockpit">
-          <h2>
-            German-born, Swiss-refined, and now calling Joburg home. Just
-            getting started.
-          </h2>
-          <div class="header-status-tick">
-            <i
-              data-lucide="layers"
-              style="width: 20px; height: 20px; stroke-width: 2"
-            ></i>
-          </div>
-        </div>
+        <div class="banner-box banner-cockpit"></div>
 
         <div class="row g-3 mb-4">
           <div class="col-12">
