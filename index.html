@@ -794,38 +794,67 @@
         <div class="row g-3 mb-4">
           <div class="col-12">
             <div
-              class="bg-white-card border-grey bw-1 soft-tint-grey"
+              class="bg-white-card border-grey bw-1"
               style="
                 position: relative;
                 overflow: hidden;
-                min-height: 240px;
-                height: 240px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: var(--tile-bg-light);
+                min-height: 220px;
+                height: 26vh;
+                border-radius: var(--app-corner-radius);
               "
             >
               <style>
+                /* Light/Normal Mode Adaptive Balancer */
                 :root {
-                  --city-img-brightness: 0.95;
+                  --banner-overlay: rgba(
+                    248,
+                    250,
+                    252,
+                    0.25
+                  ); /* Blends with light slate background */
+                  --banner-saturation: saturate(0.6);
+                  --banner-brightness: brightness(0.95);
                 }
+
+                /* Dark Mode Adaptive Balancer */
                 [data-bs-theme="dark"] {
-                  --city-img-brightness: 0.65;
+                  --banner-overlay: rgba(
+                    2,
+                    6,
+                    23,
+                    0.45
+                  ); /* Blends into deep space background */
+                  --banner-saturation: saturate(0.5);
+                  --banner-brightness: brightness(0.65);
                 }
-                .city-adapted-bg {
+
+                .cockpit-banner-media {
                   width: 100%;
                   height: 100%;
-                  object-fit: contain;
-                  filter: saturate(0.4) brightness(var(--city-img-brightness));
-                  transition: filter 0.3s ease;
+                  object-fit: cover; /* Guarantees the image covers the entire dimension without breaking */
+                  object-position: center 35%; /* Keeps horizons beautifully framed on both mobile and laptop */
+                  filter: var(--banner-saturation) var(--banner-brightness);
+                  display: block;
+                }
+
+                .cockpit-tint-layer {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: var(--banner-overlay);
+                  pointer-events: none;
                 }
               </style>
+
               <img
                 src="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1779123426/ezgif.com-webp-maker_p0qqfl.webp"
-                alt="Changing cities loop"
-                class="city-adapted-bg"
+                alt="Three cities horizon loop"
+                class="cockpit-banner-media"
               />
+
+              <div class="cockpit-tint-layer"></div>
             </div>
           </div>
           <div class="col-md-6">
