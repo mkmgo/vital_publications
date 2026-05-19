@@ -606,6 +606,19 @@
         opacity: 1;
       }
 
+      /* --- MOTTO TILE (TILE 2) HOVER STATE --- */
+      /* Targets the specific card containing your motto */
+      .bg-white-card.border-grey:has(.collage-headline):hover {
+        background-color: rgba(
+          37,
+          101,
+          250,
+          0.08
+        ) !important; /* Soft-tint blue */
+        border-color: var(--clr-blue) !important; /* Solid blue border */
+        border-width: 1px !important; /* Border weight 1 */
+      }
+
       /* Reveal the image on hover */
       [data-bs-theme="dark"]
         .bg-white-card:hover
@@ -885,7 +898,6 @@
             </div>
           </div>
 
-          // #region Tile 3 - The Private Portrait
           <div class="col-md-3">
             <div
               class="bg-white-card border-grey bw-1 overflow-hidden"
@@ -914,7 +926,7 @@
               ></div>
             </div>
           </div>
-          // #endregion
+
           <div class="row g-3 mb-4">
             <div class="col-6 col-md-4 col-lg-2">
               <div
