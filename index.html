@@ -790,58 +790,68 @@
         <div class="row g-3 mb-4">
           <div class="col-md-3">
             <div
-              class="p-4 bg-white-card border-grey bw-1 soft-tint-green"
+              class="p-4 bg-white-card border-green bw-1 soft-tint-green"
               style="min-height: 220px"
             >
               <div class="tile-content">
-                <span class="ui-tag tag-green tag-cutout mb-3">Compass</span>
+                <div class="mb-1">
+                  <span
+                    class="fw-bold d-block"
+                    id="compass-time"
+                    style="color: var(--clr-green)"
+                    >--:--</span
+                  >
+                </div>
 
-                <div class="w-100 mt-2">
-                  <div class="mb-2 border-bottom border-secondary-subtle pb-2">
-                    <span
-                      class="small text-secondary text-uppercase fw-bold"
-                      style="font-size: 0.6rem"
-                      >Current Time:</span
-                    >
-                    <span
-                      class="small fw-bold d-block fs-5"
-                      id="compass-time"
-                      style="color: var(--clr-green)"
-                      >--:--</span
-                    >
-                  </div>
-
+                <div
+                  class="w-100 border-top border-secondary-subtle pt-2 pb-2 border-bottom mb-3"
+                >
                   <div class="row g-0">
                     <div class="col-6 border-end border-secondary-subtle">
                       <span
                         class="small text-secondary text-uppercase fw-bold"
-                        style="font-size: 0.6rem"
-                        >Week/Y:</span
+                        style="font-size: 0.6rem; letter-spacing: 0.05em"
+                        >Week/M:</span
                       >
-                      <span class="small fw-bold d-block" id="compass-wy"
+                      <span
+                        class="small fw-bold d-block text-body"
+                        id="compass-wm"
                         >--</span
                       >
                     </div>
                     <div class="col-6 ps-3">
                       <span
                         class="small text-secondary text-uppercase fw-bold"
-                        style="font-size: 0.6rem"
-                        >Week/M:</span
+                        style="font-size: 0.6rem; letter-spacing: 0.05em"
+                        >Week/Y:</span
                       >
-                      <span class="small fw-bold d-block" id="compass-wm"
+                      <span
+                        class="small fw-bold d-block text-body"
+                        id="compass-wy"
                         >--</span
                       >
                     </div>
                   </div>
                 </div>
 
-                <div class="mt-auto-tag pt-3">
-                  <span
-                    class="small fw-bold text-secondary text-uppercase"
-                    style="font-size: 0.55rem"
-                    id="compass-date"
+                <div>
+                  <span class="ui-tag tag-green mb-4" id="compass-date"
                     >---</span
                   >
+                  <div class="mt-2">
+                    <p
+                      class="mb-0"
+                      style="
+                        font-size: 0.85rem;
+                        line-height: 1.4;
+                        color: var(--clr-green);
+                        opacity: 0.9;
+                        word-break: break-all;
+                      "
+                    >
+                      A cold and sightly rainy autumn day in South Africa
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
