@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Corridor - Executive Brief Deck</title>
+  <!-- Tailwind CSS for modern presentation styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter and Playfair Display for premium Swiss/African typography contrast -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #11141a;
+      color: #f3f4f6;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+    /* Portrait aspect ratio lock for presentation feel (standard 3:4 or mobile vertical) */
+    .portrait-slide {
+      aspect-ratio: 9 / 16;
+      max-width: 420px;
+      width: 100%;
+    }
+    /* Hide scrollbars for slick presentation feel */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen py-6 px-4">
+
+  <!-- Header & Navigation Utility -->
+  <div class="w-full max-w-md flex justify-between items-center mb-4 text-xs tracking-widest text-zinc-500 uppercase">
+    <span>THE CORRIDOR • PORTRAIT DECK</span>
+    <span id="slide-counter">Slide 1 of 5</span>
+  </div>
+
+  <!-- Main Slide Container (Portrait Locked Frame) -->
+  <div class="relative portrait-slide bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between p-8 transition-all duration-300">
+    
+    <!-- Decorative subtle glow top-right -->
+    <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Active Slide Content Area -->
+    <div id="slide-content" class="flex-1 flex flex-col justify-between py-4">
+      <!-- Generated via JS for elegant transitions -->
+    </div>
+
+    <!-- Progress Indicator Dot Bar -->
+    <div class="flex justify-between items-center pt-4 border-t border-zinc-800/60">
+      <div class="flex space-x-1.5" id="dots-container">
+        <!-- Interactive indicator dots -->
+      </div>
+      <!-- Quick Nav Buttons -->
+      <div class="flex space-x-2">
+        <button id="prev-btn" onclick="prevSlide()" class="p-2.5 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors disabled:opacity-30 disabled:pointer-events-none">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="next-btn" onclick="nextSlide()" class="p-2.5 rounded-full bg-amber-500 hover:bg-amber-400 text-zinc-950 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Helpful Copy Helper Tool for Google Slides -->
+  <div class="w-full max-w-md mt-6 bg-zinc-900/60 border border-zinc-800/80 rounded-2xl p-4 text-xs text-zinc-400">
+    <div class="flex items-center space-x-2 mb-2">
+      <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+      <span class="font-semibold text-zinc-200">How to use this text on Google Slides:</span>
+    </div>
+    <p class="leading-relaxed">
+      Browse through the slides using the arrow buttons or your keyboard arrow keys. Click the <strong class="text-zinc-200">Copy Slide Text</strong> button to copy all clean text directly to your clipboard for instant pasting.
+    </p>
+    <button onclick="copySlideText()" class="mt-3 w-full py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 rounded-lg transition-colors font-medium border border-zinc-700/50 flex items-center justify-center space-x-1">
+      <span id="copy-btn-text">Copy Slide Text</span>
+    </button>
+  </div>
+
+  <script>
+    // Complete slide deck state with premium, focused presentation messaging
+    const slidesData = [
+      {
+        id: 1,
+        eyebrow: "EXECUTIVE BRIEF",
+        title: "The Corridor",
+        subtitle: "A Cross-Border B2B Pipeline",
+        body: "A dynamic, low-friction corridor linking small and medium-sized enterprises (SMEs) in Germany, Switzerland, and Austria with emerging markets in Southern Africa for partnerships, trade, and direct strategic exchange.",
+        flagship: "H.E.R. Collab Flagship",
+        tagline: "Unlocking bilateral SME velocity.",
+        accentColor: "text-amber-400",
+        bgBadge: "THE CORRIDOR"
+      },
+      {
+        id: 2,
+        eyebrow: "THE STRUCTURE",
+        title: "The Swiss Verein Model",
+        subtitle: "Geopolitical Neutrality & Zero-Capital Launch",
+        body: "Established under Swiss Civil Code Articles 60–79. Requires CHF 0 in foundational equity to setup, offers maximum flexibility, and runs on an asset-light, commercial-allowed framework with a flat 4.25% federal tax profile.",
+        flagship: "Dual Joint-Signature Control",
+        tagline: "Safe, prestigious, and highly cost-efficient.",
+        accentColor: "text-blue-400",
+        bgBadge: "SWISS VEREIN"
+      },
+      {
+        id: 3,
+        eyebrow: "FINANCIAL ARCHITECTURE",
+        title: "Hybrid Funding Model",
+        subtitle: "Subscriptions & Status-Driven Top-Ups",
+        body: "SMEs pay a predictable monthly base membership fee for network platform access. Supporters choose to inject custom, voluntary 'Top-Up' capital, which is published transparently on the platform's social dashboard.",
+        flagship: "Unlocking Status & Social Proof",
+        tagline: "Gamified corporate visibility drives value.",
+        accentColor: "text-emerald-400",
+        bgBadge: "REVENUE FLOW"
+      },
+      {
+        id: 4,
+        eyebrow: "THE ENGINE ROOM",
+        title: "H.E.R. Collab Integration",
+        subtitle: "A High-Signal Flagship Anchor",
+        body: "The Swiss association remains a zero-employee entity. It subcontracts the platform architecture, localized market intelligence, and program execution directly to H.E.R. Collab via clean B2B service invoicing.",
+        flagship: "Led by Black Women in Africa",
+        tagline: "Clean corporate loop bypassing payroll drag.",
+        accentColor: "text-indigo-400",
+        bgBadge: "OPERATIONAL LOOP"
+      },
+      {
+        id: 5,
+        eyebrow: "PHASE 1 DEPLOYMENT",
+        title: "Clinical Discord Corridor",
+        subtitle: "High-Signal, Zero-Cost MVP",
+        body: "We bypass slow development by initiating interactions on a minimalist, highly structured corporate Discord server. Integrated webhooks automatically trigger on payments to assign access roles and post visibility boards.",
+        flagship: "Instant Voice, Forums, and Deals",
+        tagline: "Validating community metrics before custom code.",
+        accentColor: "text-purple-400",
+        bgBadge: "PHASE 1 MVP"
+      }
+    ];
+
+    let currentSlideIndex = 0;
+
+    function renderSlide() {
+      const slide = slidesData[currentSlideIndex];
+      const contentArea = document.getElementById('slide-content');
+      
+      contentArea.innerHTML = `
+        <div class="flex flex-col justify-between h-full animate-fadeIn transition-all duration-300">
+          <!-- Top Area -->
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] tracking-[0.25em] font-medium text-zinc-500 uppercase">${slide.eyebrow}</span>
+              <span class="px-2 py-0.5 text-[9px] bg-zinc-800 rounded-full text-zinc-400 border border-zinc-700/45 font-mono">${slide.bgBadge}</span>
+            </div>
+            
+            <h1 class="font-serif text-3xl font-semibold tracking-tight text-zinc-100 mt-4 leading-tight">
+              ${slide.title}
+            </h1>
+            <p class="text-sm italic font-serif ${slide.accentColor} mt-1 leading-snug">
+              ${slide.subtitle}
+            </p>
+            
+            <div class="mt-6 border-l-2 border-zinc-800 pl-4">
+              <p class="text-[13px] leading-relaxed text-zinc-300 font-light">
+                ${slide.body}
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom Area -->
+          <div class="mt-auto pt-6">
+            <div class="bg-zinc-950/40 border border-zinc-800/80 rounded-2xl p-4 flex items-center justify-between">
+              <div>
+                <span class="block text-[9px] uppercase tracking-wider text-zinc-500 font-medium">Flagship Driver</span>
+                <span class="text-xs font-semibold text-zinc-200">${slide.flagship}</span>
+              </div>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/50"></span>
+            </div>
+            
+            <p class="text-[11px] text-zinc-500 mt-3 text-center italic">
+              "${slide.tagline}"
+            </p>
+          </div>
+        </div>
+      `;
+
+      // Update Slide Counter
+      document.getElementById('slide-counter').innerText = `Slide ${slide.id} of ${slidesData.length}`;
+      
+      // Update Navigation Buttons state
+      document.getElementById('prev-btn').disabled = currentSlideIndex === 0;
+      
+      const nextBtn = document.getElementById('next-btn');
+      if (currentSlideIndex === slidesData.length - 1) {
+        nextBtn.innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        `;
+        nextBtn.title = "Restart Presentation";
+      } else {
+        nextBtn.innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        `;
+        nextBtn.title = "Next Slide";
+      }
+
+      // Render Dots
+      renderDots();
+    }
+
+    function renderDots() {
+      const dotsContainer = document.getElementById('dots-container');
+      dotsContainer.innerHTML = '';
+      slidesData.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = `w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+          idx === currentSlideIndex ? 'w-5 bg-amber-500' : 'bg-zinc-700 hover:bg-zinc-500'
+        }`;
+        dot.onclick = () => {
+          currentSlideIndex = idx;
+          renderSlide();
+        };
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    function nextSlide() {
+      if (currentSlideIndex === slidesData.length - 1) {
+        currentSlideIndex = 0; // loop back to start
+      } else {
+        currentSlideIndex++;
+      }
+      renderSlide();
+    }
+
+    function prevSlide() {
+      if (currentSlideIndex > 0) {
+        currentSlideIndex--;
+        renderSlide();
+      }
+    }
+
+    // Keyboard controls for a natural presentation feel
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      }
+    });
+
+    // Copy text to clipboard function using compatible fallback
+    function copySlideText() {
+      const slide = slidesData[currentSlideIndex];
+      const formattedText = `
+${slide.eyebrow}
+------------------------------------
+${slide.title}
+${slide.subtitle}
+
+${slide.body}
+
+${slide.flagship}
+"${slide.tagline}"
+      `.trim();
+
+      // Fallback copy execution for sandboxed iframes
+      const tempTextArea = document.createElement('textarea');
+      tempTextArea.value = formattedText;
+      document.body.appendChild(tempTextArea);
+      tempTextArea.select();
+      try {
+        document.execCommand('copy');
+        const btnText = document.getElementById('copy-btn-text');
+        btnText.innerText = "Copied Slide Text!";
+        setTimeout(() => {
+          btnText.innerText = "Copy Slide Text";
+        }, 2000);
+      } catch (err) {
+        console.error('Could not copy text: ', err);
+      }
+      document.body.removeChild(tempTextArea);
+    }
+
+    // Initialize first slide on load
+    window.onload = () => {
+      renderSlide();
+    };
+  </script>
+</body>
+</html>
