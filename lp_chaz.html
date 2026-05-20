@@ -43,29 +43,56 @@
         }
       }
 
+      /* FLUID RESPONSIVE TYPOGRAPHY FOR LAPTOPS */
+      .responsive-profile-text {
+        font-size: clamp(0.875rem, 0.65rem + 0.6vw, 1.05rem);
+        line-height: 1.6;
+      }
+
       .media-audio-player { width: 100%; margin-top: auto; filter: invert(0.1); }
       [data-bs-theme="dark"] .media-audio-player { filter: invert(0.8); }
 
-      /* SOCIAL LINKS */
-      .social-link-placeholder {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 38px;
-        height: 38px;
+      /* IMAGE-SPRITE SOCIAL LINKS FROM SINGLE JFIF/JPG */
+      .social-sprite-link {
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+        background-image: url('https://res.cloudinary.com/dp455m4rk/image/upload/v1779289150/logos_dlcizx.jpg');
+        background-size: 118px 36px; /* Scaled to match element dimensions */
+        background-repeat: no-repeat;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+      .social-sprite-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      }
+      .social-sprite-link.linkedin  { background-position: 0px 0px; }
+      .social-sprite-link.facebook  { background-position: -41px 0px; }
+      .social-sprite-link.instagram { background-position: -82px 0px; }
+
+      /* PROMINENT TAG BADGES */
+      .prominent-tag {
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        padding: 0.6rem 1.2rem;
         border-radius: 50px;
-        background-color: rgba(0, 0, 0, 0.05);
-        color: var(--clr-grey);
+        background-color: rgba(37, 101, 250, 0.08);
+        color: var(--clr-blue);
+        border: 1px solid rgba(37, 101, 250, 0.15);
         transition: all 0.2s ease;
       }
-      [data-bs-theme="dark"] .social-link-placeholder {
-        background-color: rgba(255, 255, 255, 0.05);
-        color: #94a3b8;
+      [data-bs-theme="dark"] .prominent-tag {
+        background-color: rgba(37, 101, 250, 0.15);
+        color: #93c5fd;
+        border-color: rgba(37, 101, 250, 0.3);
       }
-      .social-link-placeholder:hover {
-        background-color: var(--clr-indigo);
-        color: #fff !important;
-        transform: translateY(-2px);
+      .prominent-tag:hover {
+        background-color: var(--clr-blue);
+        color: #ffffff !important;
+        transform: scale(1.03);
       }
     </style>
   </head>
@@ -73,24 +100,16 @@
     <main class="main-container container py-4">
       <header class="d-flex justify-content-between align-items-end brand-line mb-4 pb-2">
         <div class="d-flex align-items-center gap-3">
-          <a href="index.html" class="text-decoration-none d-flex flex-column">
-            <span class="text-secondary" style="font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;">
-              Back to Architecture
+          <div class="d-flex flex-column">
+            <span class="text-secondary fw-bold" style="font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;">
+              Marketing Executive
             </span>
-            <span style="color: var(--clr-amber); font-size: 1.5rem; font-weight: 400;">media.archive</span>
-          </a>
-        </div>
-        <div class="status-pill mb-1 d-none d-md-block" style="font-size: 0.6rem; border: 1px solid #64748b33; padding: 2px 10px; border-radius: 50px;">
-            MEDIA_SYNC_ACTIVE
+            <span style="color: var(--clr-indigo); font-size: 1.5rem; font-weight: 400;">Chaz Pigou</span>
+          </div>
         </div>
       </header>
 
-      <section class="mb-5">
-        <div class="d-flex align-items-center gap-2 mb-3">
-            <i data-lucide="layers" class="text-indigo" style="width: 20px;"></i>
-            <h2 class="fs-6 fw-bold text-uppercase mb-0" style="letter-spacing: 0.1em; color: var(--clr-indigo);">Executive Profile</h2>
-        </div>
-
+      <section class="mb-4">
         <div class="row g-3">
           <div class="col-md-8">
             <div class="bg-white-card border-indigo bw-1">
@@ -108,7 +127,7 @@
             <div class="bg-white-card border-grey bw-1 p-4 d-flex flex-column justify-content-between" style="min-height: 450px;">
               <div>
                 <h3 class="fs-4 fw-bold mb-3" style="color: var(--clr-indigo);">Chaz Pigou</h3>
-                <p class="small text-secondary lh-base mb-0">
+                <p class="responsive-profile-text text-secondary mb-0">
                   Chaz Pigou, a prominent marketing executive and the Co-Founder of h·e·r Collab, detailing her extensive career in brand transformation and business development. With nearly twenty years of professional experience, she is characterized as a strategic visionary who specializes in connecting massive global corporations with human-centric, purpose-driven storytelling.
                 </p>
               </div>
@@ -116,15 +135,9 @@
               <div class="pt-4 border-top border-light-subtle">
                 <div class="text-uppercase text-secondary fw-bold mb-2" style="font-size: 0.6rem; letter-spacing: 0.05em;">Connect / Channels</div>
                 <div class="d-flex gap-2">
-                  <a href="#" class="social-link-placeholder" title="LinkedIn">
-                    <i data-lucide="linkedin" style="width: 18px; height: 18px;"></i>
-                  </a>
-                  <a href="#" class="social-link-placeholder" title="Facebook">
-                    <i data-lucide="facebook" style="width: 18px; height: 18px;"></i>
-                  </a>
-                  <a href="#" class="social-link-placeholder" title="Instagram">
-                    <i data-lucide="instagram" style="width: 18px; height: 18px;"></i>
-                  </a>
+                  <a href="#" class="social-sprite-link linkedin" title="LinkedIn"></a>
+                  <a href="#" class="social-sprite-link facebook" title="Facebook"></a>
+                  <a href="#" class="social-sprite-link instagram" title="Instagram"></a>
                 </div>
               </div>
             </div>
@@ -133,32 +146,32 @@
       </section>
 
       <section class="mb-5">
-        <div class="d-flex align-items-center gap-2 mb-3">
-            <i data-lucide="mic" class="text-red" style="width: 20px;"></i>
-            <h2 class="fs-6 fw-bold text-uppercase mb-0" style="letter-spacing: 0.1em; color: var(--clr-red);">Strategic Briefings</h2>
-        </div>
-
         <div class="row g-3">
-          <div class="col-md-4">
-            <div class="p-4 bg-white-card border-red soft-tint-red bw-1 d-flex flex-column">
-              <h3 class="fs-6 fw-bold">Executive Summary</h3>
-              <p class="small text-secondary mb-4">Financial quarter projections and management commentary.</p>
-              <audio controls class="media-audio-player">
-                <source src="https://res.cloudinary.com/demo/video/upload/f_auto,q_auto/horse.mp3" type="audio/mpeg">
-              </audio>
+          <div class="col-md-6">
+            <div class="p-4 bg-white-card border-red soft-tint-red bw-1 d-flex flex-column justify-content-between" style="min-height: 240px;">
+              <div>
+                <h3 class="fs-5 fw-bold mb-1">Audio Deep Dive</h3>
+                <p class="small text-secondary mb-4">Strategic media assessment and project focus briefing.</p>
+              </div>
+              
+              <div class="w-100 mt-auto pt-3 border-top border-light-subtle">
+                <audio controls class="media-audio-player w-100">
+                  <source src="https://res.cloudinary.com/dp455m4rk/video/upload/v1779289035/audio_dd_chaz_nu0alb.mp4" type="audio/mp4">
+                </audio>
+              </div>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="bg-white-card border-amber bw-1 tile-img-bg" style="background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766157692/Business_1_Newspaper_y988h0.jpg'); height: 100%; min-height: 250px;">
-                <div class="p-4 d-flex flex-column h-100" style="background: rgba(0,0,0,0.4); backdrop-filter: grayscale(1);">
-                    <h3 class="fs-5 fw-bold text-white mt-auto">Quarterly Print Dev</h3>
-                </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="bg-white-card border-blue bw-1" style="background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1767216761/my-express-uploads/cbsjn95wtojb2lwvvxcz.png'); background-size: cover; height: 100%;">
+          <div class="col-md-6">
+            <div class="p-4 bg-white-card border-blue bw-1 d-flex flex-column justify-content-center" style="min-height: 240px;">
+              <div class="text-uppercase text-secondary fw-bold mb-3" style="font-size: 0.65rem; letter-spacing: 0.1em;">Core Strategic Matrix</div>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="prominent-tag">Blue-Chip</span>
+                <span class="prominent-tag">Equity</span>
+                <span class="prominent-tag">Transformation</span>
+                <span class="prominent-tag">Scale</span>
+                <span class="prominent-tag">Nexus</span>
+              </div>
             </div>
           </div>
         </div>
@@ -202,7 +215,5 @@
       window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setTheme);
       window.addEventListener('DOMContentLoaded', optimizeCloudinaryLinks);
     </script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>lucide.createIcons();</script>
   </body>
 </html>
