@@ -757,6 +757,59 @@
           transform: scale(1);
         }
       }
+      /* --- TILE 1 DONUT CHART --- */
+
+      .compass-donut {
+        width: 92px;
+        height: 92px;
+        border-radius: 50%;
+        position: relative;
+        margin-top: 0.5rem;
+
+        background: conic-gradient(#2f2a2a 0deg 180deg, #b7b7b7 180deg 360deg);
+      }
+
+      .compass-donut-inner {
+        position: absolute;
+        inset: 24px;
+        background: var(--tile-bg-light);
+        border-radius: 50%;
+      }
+
+      [data-bs-theme="dark"] .compass-donut-inner {
+        background: var(--tile-bg-dark);
+      }
+
+      /* CONNECTOR LINE */
+      .compass-line {
+        position: absolute;
+        width: 34px;
+        height: 3px;
+        background: #111;
+        left: -14px;
+        bottom: 28px;
+        transform: rotate(-32deg);
+        transform-origin: right center;
+      }
+
+      .compass-dot {
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        background: #111;
+        border-radius: 50%;
+      }
+
+      .compass-dot-a {
+        left: -16px;
+        bottom: 22px;
+      }
+
+      .compass-dot-b {
+        left: 14px;
+        bottom: 40px;
+      }
+
       .status-indicator {
         width: 8px;
         height: 8px;
@@ -805,52 +858,52 @@
             <div
               class="p-3 bg-white-card border-grey bw-1 soft-tint-green h-100 d-flex flex-column justify-content-between"
             >
-              <div class="tile-content">
-                <div class="mb-1">
-                  <span
-                    class="fw-bold d-block fs-4"
-                    id="compass-time"
-                    style="color: var(--clr-green)"
-                    >--:--</span
-                  >
-                </div>
-                <div
-                  class="w-100 border-top border-secondary-subtle pt-1 pb-1 border-bottom mb-2"
-                  style="font-size: 0.8rem"
-                >
-                  <div class="row g-0 text-center">
-                    <div class="col-6 border-end border-secondary-subtle">
-                      <span
-                        class="small text-secondary text-uppercase fw-bold"
-                        style="font-size: 0.55rem; letter-spacing: 0.05em"
-                        >W/M</span
-                      >
-                      <span
-                        class="small fw-bold d-block text-body"
-                        id="compass-wm"
-                        >--</span
-                      >
-                    </div>
-                    <div class="col-6 ps-1">
-                      <span
-                        class="small text-secondary text-uppercase fw-bold"
-                        style="font-size: 0.55rem; letter-spacing: 0.05em"
-                        >W/Y</span
-                      >
-                      <span
-                        class="small fw-bold d-block text-body"
-                        id="compass-wy"
-                        >--</span
-                      >
+              <div class="tile-content justify-content-between h-100">
+                <div>
+                  <!-- TIME -->
+                  <div class="mb-0">
+                    <span
+                      class="fw-bold d-block"
+                      id="compass-time"
+                      style="
+                        color: var(--clr-green);
+                        font-size: 2rem;
+                        line-height: 1;
+                        letter-spacing: -0.03em;
+                      "
+                    >
+                      --:--
+                    </span>
+
+                    <!-- DATE UNDER TIME -->
+                    <div
+                      id="compass-date"
+                      style="
+                        color: var(--clr-green);
+                        font-size: 0.72rem;
+                        font-weight: 500;
+                        margin-top: 0.35rem;
+                        opacity: 0.85;
+                      "
+                    >
+                      ---
                     </div>
                   </div>
                 </div>
-                <span
-                  class="ui-tag tag-green text-center w-100"
-                  id="compass-date"
-                  style="font-size: 0.55rem; padding: 0.15rem 0.4rem"
-                  >---</span
+
+                <!-- DONUT CHART -->
+                <div
+                  class="d-flex justify-content-center align-items-center w-100 mt-3"
                 >
+                  <div class="compass-donut">
+                    <div class="compass-donut-inner"></div>
+
+                    <!-- CONNECTOR -->
+                    <div class="compass-line"></div>
+                    <div class="compass-dot compass-dot-a"></div>
+                    <div class="compass-dot compass-dot-b"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1996,20 +2049,21 @@
 
       function updateDate() {
         const now = new Date();
-        const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
         const months = [
-          "JAN",
-          "FEB",
-          "MAR",
-          "APR",
-          "MAY",
-          "JUN",
-          "JUL",
-          "AUG",
-          "SEP",
-          "OCT",
-          "NOV",
-          "DEC",
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
         ];
 
         // Header & Directory Stamp
@@ -2022,7 +2076,7 @@
         if (document.getElementById("compass-date")) {
           // 1. Date & Time
           document.getElementById("compass-date").textContent =
-            dateString.toUpperCase();
+            `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]}`;
           document.getElementById("compass-time").textContent =
             now.toLocaleTimeString([], {
               hour: "2-digit",
