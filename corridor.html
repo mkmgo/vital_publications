@@ -1,439 +1,390 @@
-<!doctype html>
-<html lang="en" data-bs-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>project.docs</title>
-
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-
-    <!-- NEW FONT -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <script src="https://unpkg.com/lucide@latest"></script>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Corridor — Internal Portal Blueprint</title>
     <style>
-      :root {
-        --app-corner-radius: 0.35rem;
-
-        --clr-amber: #2563eb;
-        --clr-blue: #2565fa;
-        --clr-green: #38a169;
-        --clr-grey: #6b7280;
-
-        --u2-head: #2d3748;
-        --u2-border: #cbd5e0;
-        --u2-bg: #fffbf0;
-        --u2-tag: #fffaf0;
-        --u2-action: #dd6b20;
-      }
-
-      body {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        background: #f8fafc;
-        color: #111827;
-        transition: all 0.3s ease;
-      }
-
-      .main-container {
-        flex-grow: 1;
-        padding: 3rem 1.5rem 5rem;
-      }
-
-      /* HEADER */
-
-      .brand-line {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-      }
-
-      .header-link-icon {
-        width: 48px;
-        height: 48px;
-        border-radius: 14px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background: rgba(245, 159, 11, 0.08);
-        border: 1px solid rgba(245, 159, 11, 0.15);
-      }
-
-      .brand-text {
-        font-size: 1.35rem;
-        font-weight: 700;
-        letter-spacing: -0.04em;
-        color: var(--clr-amber);
-      }
-
-      .brand-sub {
-        font-size: 0.62rem;
-        text-transform: uppercase;
-        letter-spacing: 0.14em;
-        color: var(--clr-grey);
-        margin-top: 2px;
-      }
-
-      .status-pill {
-        display: inline-flex;
-        align-items: center;
-        padding: 5px 12px;
-
-        border-radius: 999px;
-
-        font-size: 0.62rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-
-        color: var(--clr-grey);
-
-        border: 1px solid rgba(100, 116, 139, 0.15);
-        background: rgba(100, 116, 139, 0.05);
-      }
-
-      /* BANNERS */
-
-      .banner-strip {
-        background: var(--u2-head);
-
-        color: white;
-
-        padding: 0.9rem 1.25rem;
-
-        border-radius: var(--app-corner-radius);
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        margin-bottom: 1.5rem;
-      }
-
-      /* GOLDEN FEATURE */
-
-      .border-amber {
-        border: 1px solid rgba(245, 159, 11, 0.4);
-      }
-
-      .soft-tint-amber {
-        background-color: #ffffff;
-        background-image: linear-gradient(
-          rgba(245, 159, 11, 0.05),
-          rgba(245, 159, 11, 0.05)
-        );
-      }
-
-      .ui-tag {
-        display: inline-block;
-
-        padding: 0.35rem 0.7rem;
-
-        border-radius: 999px;
-
-        font-size: 0.7rem;
-        font-weight: 700;
-
-        color: white;
-      }
-
-      .golden-card {
-        border-radius: var(--app-corner-radius);
-
-        transition:
-          transform 0.35s ease,
-          box-shadow 0.35s ease,
-          border-color 0.35s ease;
-      }
-      .golden-card:hover {
-        transform: translateY(-6px);
-
-        box-shadow:
-          0 18px 40px rgba(245, 159, 11, 0.12),
-          0 8px 18px rgba(0, 0, 0, 0.08);
-
-        border-color: rgba(245, 159, 11, 0.65);
-      }
-
-      .golden-title {
-        font-size: clamp(2.3rem, 4vw, 4rem);
-        font-weight: 800;
-        letter-spacing: -0.06em;
-      }
-
-      /* LOWER SECTION */
-
-      .bg-blueprint-card {
-        border-radius: var(--app-corner-radius);
-        transition: all 0.3s ease;
-      }
-
-      .bg-blueprint-card:hover {
-        transform: translateY(-4px);
-      }
-
-      /* FOOTER */
-
-      footer {
-        padding-top: 4rem;
-        opacity: 0.65;
-        font-size: 0.8rem;
-      }
-
-      /* ========================= */
-      /* DARK MODE */
-      /* ========================= */
-
-      [data-bs-theme="dark"] body {
-        background: #020617;
-        color: #f8fafc;
-      }
-
-      [data-bs-theme="dark"] .brand-line {
-        border-bottom-color: rgba(255, 255, 255, 0.08);
-      }
-
-      [data-bs-theme="dark"] .brand-sub,
-      [data-bs-theme="dark"] .text-secondary {
-        color: #94a3b8 !important;
-      }
-
-      /* GOLD CARD */
-
-      [data-bs-theme="dark"] .soft-tint-amber {
-        background-color: #0f172a !important;
-
-        background-image: linear-gradient(
-          rgba(245, 159, 11, 0.08),
-          rgba(245, 159, 11, 0.12)
-        ) !important;
-
-        border-color: rgba(245, 159, 11, 0.4) !important;
-      }
-
-      /* LOWER CARDS */
-
-      [data-bs-theme="dark"] .bg-blueprint-card {
-        background: #111827 !important;
-        border-color: #334155 !important;
-        color: #f8fafc !important;
-      }
-
-      [data-bs-theme="dark"] .bg-blueprint-card h2,
-      [data-bs-theme="dark"] .bg-blueprint-card h3,
-      [data-bs-theme="dark"] .bg-blueprint-card h4,
-      [data-bs-theme="dark"] .bg-blueprint-card h5,
-      [data-bs-theme="dark"] .bg-blueprint-card h6,
-      [data-bs-theme="dark"] .bg-blueprint-card p,
-      [data-bs-theme="dark"] .bg-blueprint-card span {
-        color: #f8fafc !important;
-      }
-
-      [data-bs-theme="dark"] .bg-blueprint-card .border,
-      [data-bs-theme="dark"] .bg-blueprint-card .rounded {
-        border-color: #334155 !important;
-      }
-
-      [data-bs-theme="dark"] .progress {
-        background-color: rgba(255, 255, 255, 0.08) !important;
-      }
-
-      /* RESPONSIVE */
-
-      @media (max-width: 768px) {
-        .main-container {
-          padding: 2rem 1rem 4rem;
+        /* --- Swiss Minimalist Typography & Theme Setup --- */
+        :root {
+            /* System Gated Dark Theme Defaults */
+            --bg-main: #0B0C0E;
+            --bg-card: #141619;
+            --border: #22262B;
+            --text-primary: #F3F4F6;
+            --text-secondary: #9CA3AF;
+            --accent: #D4AF37; /* Clean subtle gold/platinum nod */
+            --accent-glow: rgba(212, 175, 55, 0.15);
+            --font-serif: "Times New Roman", Times, Baskerville, Georgia, serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
-        .banner-strip {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.75rem;
+        @media (prefers-color-scheme: light) {
+            :root {
+                /* System Gated Light Theme Override */
+                --bg-main: #F9FAFB;
+                --bg-card: #FFFFFF;
+                --border: #E5E7EB;
+                --text-primary: #111827;
+                --text-secondary: #4B5563;
+                --accent: #C5A028;
+                --accent-glow: rgba(197, 160, 40, 0.08);
+            }
         }
 
-        .golden-title {
-          font-size: 2.2rem;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
 
-        .header-link-icon {
-          width: 42px;
-          height: 42px;
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            padding: 2rem 1.5rem;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .brand-text {
-          font-size: 1.1rem;
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
         }
-      }
+
+        /* --- Header / Project Identity --- */
+        header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .brand-title h1 {
+            font-family: var(--font-serif);
+            font-size: 2.25rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+
+        .brand-title p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .meta-badge {
+            font-size: 0.75rem;
+            font-family: monospace;
+            padding: 0.4rem 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            background: var(--bg-card);
+        }
+
+        /* --- Global Grid Grid Definitions --- */
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .grid-layout {
+            margin-bottom: 3.5rem;
+        }
+
+        /* --- Component 1: The Asset Tiles (Passport, Booklets, Wall) --- */
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card.featured {
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .card-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .card-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+
+        /* Empty Occupiable Asset Links */
+        .link-placeholder-group {
+            margin-top: 1.5rem;
+            border-top: 1px dashed var(--border);
+            padding-top: 1rem;
+        }
+
+        .placeholder-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            padding: 0.5rem 0.75rem;
+            border: 1px dashed var(--border);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+            background: rgba(0,0,0,0.02);
+        }
+
+        .placeholder-link:hover {
+            color: var(--text-primary);
+            border-color: var(--text-secondary);
+            background: rgba(214, 175, 55, 0.03);
+        }
+
+        .placeholder-link span.status {
+            font-size: 0.7rem;
+            font-family: monospace;
+            opacity: 0.6;
+        }
+
+        /* --- Component 2: Structured Strategic Idea Tiles --- */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .concept-tile {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.5rem;
+        }
+
+        .concept-num {
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .concept-heading {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .concept-body {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* Footer Notes */
+        footer {
+            margin-top: 5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-family: monospace;
+        }
+
+        /* --- Fluid Responsiveness Controls --- */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 1rem;
+            }
+            header {
+                margin-bottom: 2rem;
+            }
+            .brand-title h1 {
+                font-size: 1.75rem;
+            }
+            .asset-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
-  </head>
+</head>
+<body>
 
-  <body>
-    <main class="main-container container">
-      <!-- HEADER -->
-
-      <header
-        class="d-flex justify-content-between align-items-end brand-line pb-3 mb-5"
-      >
-        <div class="d-flex align-items-center gap-3">
-          <div class="header-link-icon">
-            <i
-              data-lucide="landmark"
-              style="color: var(--clr-blue); width: 28px; height: 28px"
-            ></i>
-          </div>
-
-          <a href="index.html" class="text-decoration-none d-flex flex-column">
-            <span class="brand-text">The Corridor</span>
-
-            <span class="brand-sub"> Euro-African SME Network </span>
-          </a>
-        </div>
-
-        <div class="status-pill">V2026.01</div>
-      </header>
-
-      <!-- SECTION 1 -->
-
-      <section class="mb-4">
-        <!-- GOLDEN FEATURE -->
-
-        <div class="soft-tint-amber border-amber golden-card p-4 p-md-5">
-          <div class="row align-items-center g-4">
-            <div class="col-md-8">
-              <h3 class="golden-title mb-3">The Corridor</h3>
-
-              <p class="lead" style="max-width: 680px; color: var(--clr-grey)">
-                Euro-African SME Network
-              </p>
+    <div class="container">
+        
+        <header>
+            <div class="brand-title">
+                <h1>The Corridor</h1>
+                <p>Euro-African SME Ecosystem Wrapper</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 2 -->
-
-      <section class="pt-1 pb-2">
-        <div class="row g-4">
-          <div class="col-md-4">
-            <div
-              class="bg-blueprint-card h-100 p-4"
-              style="
-                background-color: var(--u2-tag);
-                border: 1px solid var(--u2-border);
-              "
-            >
-              <h5 class="fw-bold mb-3">Live Metrics</h5>
-
-              <div class="d-flex justify-content-between mb-2">
-                <span class="small text-secondary"> Operational Speed </span>
-
-                <span class="small fw-bold"> 94% </span>
-              </div>
-
-              <div
-                class="progress mb-4"
-                style="height: 4px; background-color: rgba(0, 0, 0, 0.08)"
-              >
-                <div
-                  class="progress-bar"
-                  style="width: 94%; background-color: var(--u2-action)"
-                ></div>
-              </div>
-
-              <p class="small text-secondary mb-0">
-                Active sprints are currently tracking ahead of schedule.
-              </p>
+            <div class="meta-badge">
+                STATUS // CORE SYSTEM FOUNDATION PROTOCOL
             </div>
-          </div>
+        </header>
 
-          <div class="col-md-8">
-            <div
-              class="bg-blueprint-card h-100 p-5"
-              style="
-                background-color: var(--u2-bg);
-                border: 2px solid var(--u2-border);
-              "
-            >
-              <h2 class="display-6 fw-800" style="color: var(--u2-head)">
-                Concrete Results
-              </h2>
-
-              <p class="lead text-secondary mb-5">
-                We build the road and drive the truck for you.
-              </p>
-
-              <div class="row g-3">
-                <div class="col-sm-4">
-                  <div class="p-3 border rounded">
-                    <i
-                      data-lucide="layers"
-                      class="mb-2"
-                      style="color: var(--u2-action)"
-                    ></i>
-
-                    <h6 class="fw-bold m-0">Blueprints</h6>
-                  </div>
+        <div class="grid-layout">
+            <h2 class="section-title">Ecosystem Vessels & Asset Integration</h2>
+            <div class="asset-grid">
+                
+                <div class="card featured">
+                    <div class="card-header">
+                        <div class="card-tag">Core Identity Gateway</div>
+                        <h3 class="card-title">Wallet Passport Engine</h3>
+                        <p class="card-desc">The primary portal of cryptographic identity and reputation. A clean, cross-platform state machine keeping trust-mesh data safe and structured.</p>
+                    </div>
+                    
+                    <div class="link-placeholder-group">
+                        <a href="#" class="placeholder-link">
+                            <span>[Slot A] Integrate Live State Machine</span>
+                            <span class="status">Ø Unoccupied</span>
+                        </a>
+                        <a href="#" class="placeholder-link">
+                            <span>[Slot B] Connect Wallet Reputational Tiers</span>
+                            <span class="status">Ø Unoccupied</span>
+                        </a>
+                        <a href="#" class="placeholder-link">
+                            <span>[Slot C] Open Cryptographic Handshake API</span>
+                            <span class="status">Ø Unoccupied</span>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="col-sm-4">
-                  <div class="p-3 border rounded">
-                    <i
-                      data-lucide="zap"
-                      class="mb-2"
-                      style="color: var(--u2-action)"
-                    ></i>
-
-                    <h6 class="fw-bold m-0">Sprints</h6>
-                  </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-tag">Strategic Literature</div>
+                        <h3 class="card-title">Dual Booklet Integration</h3>
+                        <p class="card-desc">Mobile-optimized, landscape-locked HTML booklets handling local funding legal frameworks and the constitutional roadmap structure.</p>
+                    </div>
+                    
+                    <div class="link-placeholder-group">
+                        <a href="#" class="placeholder-link">
+                            <span>[Slot A] Mount Funding Alternatives Booklet</span>
+                            <span class="status">Ø Unoccupied</span>
+                        </a>
+                        <a href="#" class="placeholder-link">
+                            <span>[Slot B] Mount Constitutional Blueprint Booklet</span>
+                            <span class="status">Ø Unoccupied</span>
+                        </a>
+                        <a href="#" class="placeholder-link">
+                            <span>[Slot C] Export Raw Text To Clipboard</span>
+                            <span class="status">Ø Unoccupied</span>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="col-sm-4">
-                  <div class="p-3 border rounded">
-                    <i
-                      data-lucide="shield-check"
-                      class="mb-2"
-                      style="color: var(--u2-action)"
-                    ></i>
-
-                    <h6 class="fw-bold m-0">Full Scale</h6>
-                  </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-tag">Physical Proximity Outpost</div>
+                        <h3 class="card-title">The Multi-City Studio Wall</h3>
+                        <p class="card-desc">An ambient, always-on cross-hemisphere video portal linking physical European design archives live to Southern African hubs.</p>
+                    </div>
+                    
+                    <div class="link-placeholder-group">
+                        <a href="#" class="placeholder-link">
+                            <span>[Slot A] Synchronize Live Stream Endpoint</span>
+                            <span class="status">Ø Unoccupied</span>
+                        </a>
+                        <a href="#" class="placeholder-link">
+                            <span>[Slot B] Mount Multi-City Studio Dashboard</span>
+                            <span class="status">Ø Unoccupied</span>
+                        </a>
+                        <a href="#" class="placeholder-link">
+                            <span>[Slot C] Configure Geographic Latency Keys</span>
+                            <span class="status">Ø Unoccupied</span>
+                        </a>
+                    </div>
                 </div>
-              </div>
+
             </div>
-          </div>
         </div>
-      </section>
-      <!-- FOOTER -->
 
-      <footer class="text-center">project.docs · 2026</footer>
-    </main>
+        <div class="grid-layout">
+            <h2 class="section-title">The Strategic Blueprint — Architecture</h2>
+            <div class="concept-grid">
+                
+                <div class="concept-tile">
+                    <span class="concept-num">01 / STRUCTURAL</span>
+                    <h4 class="concept-heading">Swiss Verein Foundation</h4>
+                    <p class="concept-body">Organized exclusively as a non-extractive Swiss Association. It eliminates share monetization, ensuring value remains collectively held by its entire body of members.</p>
+                </div>
 
-    <script>
-      lucide.createIcons();
+                <div class="concept-tile">
+                    <span class="concept-num">02 / INTERACTION</span>
+                    <h4 class="concept-heading">The Anti-LinkedIn Sanctuary</h4>
+                    <p class="concept-body">Positioned intentionally between formal Chambers of Commerce and algorithmic social feeds. A secure, closed-door playground built for proximity-based peer execution.</p>
+                </div>
 
-      const setTheme = () => {
-        const isDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
+                <div class="concept-tile">
+                    <span class="concept-num">03 / TECHNOLOGY</span>
+                    <h4 class="concept-heading">Qualitative Trust Ledger</h4>
+                    <p class="concept-body">Bypasses quantitative tokens entirely. Operates on a custom qualitative ledger that logs audited trust validations, capability checks, and member status metrics.</p>
+                </div>
 
-        document.documentElement.setAttribute(
-          "data-bs-theme",
-          isDark ? "dark" : "light",
-        );
-      };
+                <div class="concept-tile">
+                    <span class="concept-num">04 / OPERATIONS</span>
+                    <h4 class="concept-heading">Headless Discord Wrapper</h4>
+                    <p class="concept-body">Treats Discord as an invisible, high-velocity background utility backend while deploying a clean, elite corporate frontend interface to face institutional partners.</p>
+                </div>
 
-      setTheme();
+            </div>
+        </div>
 
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", setTheme);
-    </script>
-  </body>
+        <footer>
+            THE CORRIDOR ARCHITECTURAL MANIFESTO // SYSTEM DEPENDENT WIREFRAME RENDER
+        </footer>
+
+    </div>
+
+</body>
 </html>
