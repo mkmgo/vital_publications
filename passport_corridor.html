@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Corridor: Priceless Passport Prototype</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Reset & Canvas Constraints */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #0d0f12; /* Deep Obsidian Slate */
+            font-family: 'Montserrat', sans-serif;
+            color: #f4f5f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Top Control Bar for Switching Identity States */
+        .state-selector-container {
+            width: 100%;
+            max-width: 390px;
+            margin-bottom: 20px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .state-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8a929a;
+            margin-bottom: 8px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .btn-group {
+            display: flex;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 4px;
+            border-radius: 30px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .state-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #8a929a;
+            padding: 10px 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .state-btn.active {
+            background: #f4f5f6; /* Bone White */
+            color: #0d0f12;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Portrait-Locked Phone Container (Golden 9:16 Frame) */
+        .phone-wrapper {
+            width: 100%;
+            max-width: 390px; /* Standard iPhone Width */
+            height: 680px;
+            background: #13171c; /* Deep Matte Slate */
+            border: 8px solid #222a35;
+            border-radius: 40px;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 
+                        0 0 0 1px rgba(255,255,255,0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px 24px;
+        }
+
+        /* Portrait Card - 3D Flip System */
+        .passport-card-box {
+            width: 100%;
+            height: 480px;
+            perspective: 1200px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .passport-card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Class flipped triggered by JavaScript */
+        .passport-card-box.flipped .passport-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        /* FRONT OF WALLET PASSPORT: The High-Signal Aesthetic */
+        .card-front {
+            background: linear-gradient(145deg, #181d24, #11151a);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        /* Decorative Background Elements to feel solid yet futuristic */
+        .card-front::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 120px; height: 120px;
+            background: radial-gradient(circle, rgba(255,255,255,0.015) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Macro Branding Area inside the Wallet Frame */
+        .brand-block {
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 16px;
+        }
+
+        .brand-title {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 6px;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .brand-subtitle {
+            font-size: 8px;
+            font-weight: 300;
+            letter-spacing: 2.5px;
+            color: #8a929a;
+            text-transform: uppercase;
+        }
+
+        /* Identity Node Details */
+        .identity-block {
+            margin: 20px 0;
+        }
+
+        .tier-badge {
+            display: inline-block;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        /* Specific styles handled via state mapping */
+        .state-anchor .tier-badge {
+            background: rgba(212, 175, 55, 0.08); /* Sophisticated Matte Gold Tint */
+            border-color: rgba(212, 175, 55, 0.2);
+            color: #dfb76c;
+        }
+
+        .node-name {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #f4f5f6;
+            line-height: 1.3;
+        }
+
+        .node-location {
+            font-size: 11px;
+            color: #69727d;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Holographic Trust Cryptography Container */
+        .crypto-mesh-box {
+            height: 100px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            position: relative;
+        }
+
+        .qr-placeholder {
+            width: 68px;
+            height: 68px;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 4px;
+            opacity: 0.85;
+            transition: all 0.3s ease;
+        }
+
+        .qr-inner {
+            width: 100%;
+            height: 100%;
+            /* Generated algorithmic look using linear gradient patterns */
+            background: linear-gradient(45deg, #000 25%, transparent 25%), 
+                        linear-gradient(-45deg, #000 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #000 75%), 
+                        linear-gradient(-45deg, transparent 75%, #000 75%);
+            background-size: 8px 8px;
+        }
+
+        .crypto-data {
+            flex: 1;
+            padding-left: 16px;
+            text-align: right;
+        }
+
+        .crypto-label {
+            font-size: 7px;
+            font-family: 'Space Mono', monospace;
+            color: #535d67;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .crypto-hash {
+            font-family: 'Space Mono', monospace;
+            font-size: 9px;
+            color: #8a929a;
+            margin-top: 3px;
+            word-break: break-all;
+            line-height: 1.2;
+        }
+
+        /* Bottom Metrics Area of the Passport */
+        .card-metrics-row {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 16px;
+        }
+
+        .metric-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .metric-title {
+            font-size: 7.5px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #535d67;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .metric-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #f4f5f6;
+            letter-spacing: 0.5px;
+        }
+
+        /* BACK OF WALLET PASSPORT: The Qualitative Trust Ledger */
+        .card-back {
+            background: linear-gradient(145deg, #11151a, #0b0e11);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transform: rotateY(180deg);
+        }
+
+        .ledger-header {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8a929a;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ledger-status {
+            width: 6px;
+            height: 6px;
+            background: #2ecc71; /* Safe Green Node Signal */
+            border-radius: 50%;
+            box-shadow: 0 0 8px #2ecc71;
+        }
+
+        .ledger-stack {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            height: 340px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        /* Custom minimalist scrollbar */
+        .ledger-stack::-webkit-scrollbar {
+            width: 2px;
+        }
+        .ledger-stack::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .ledger-row {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 10px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ledger-row-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ledger-row-title {
+            font-size: 10.5px;
+            font-weight: 600;
+            color: #d1d5db;
+        }
+
+        .ledger-row-sub {
+            font-size: 8px;
+            font-family: 'Space Mono', monospace;
+            color: #535d67;
+            margin-top: 2px;
+        }
+
+        .ledger-badge {
+            font-size: 7.5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(46, 204, 113, 0.08);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.15);
+        }
+
+        /* Non-active/Passive states indicators */
+        .ledger-badge.passive {
+            background: rgba(138, 146, 154, 0.08);
+            color: #8a929a;
+            border-color: rgba(138, 146, 154, 0.15);
+        }
+
+        /* Micro Interactive Instructions Footnote */
+        .phone-footer-hint {
+            text-align: center;
+            font-size: 9px;
+            color: #535d67;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 0.9; }
+            100% { opacity: 0.4; }
+        }
+
+        /* Raw Text Clipboard Interface Component */
+        .utility-clipboard-box {
+            width: 100%;
+            max-width: 390px;
+            margin-top: 20px;
+        }
+
+        .btn-copy {
+            width: 100%;
+            background: #222a35;
+            color: #f4f5f6;
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-copy:hover {
+            background: #2c3745;
+        }
+
+        .btn-copy:active {
+            transform: scale(0.99);
+        }
+
+        .toast-msg {
+            position: fixed;
+            bottom: 30px;
+            background: #f4f5f6;
+            color: #0d0f12;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="state-selector-container">
+        <span class="state-label">Simulation Paradigm</span>
+        <div class="btn-group">
+            <button class="state-btn active" onclick="switchState('sme', this)">Active SME Node</button>
+            <button class="state-btn" onclick="switchState('philanthropist', this)">Patron Anchor Key</button>
+        </div>
+    </div>
+
+    <div class="phone-wrapper">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding-bottom: 10px;">
+            <div style="font-size: 8px; font-family: 'Space Mono', monospace; color: #535d67; letter-spacing: 0.5px;">SYSTEM // SECURE_NODE_CONN</div>
+            <div style="width: 5px; height: 5px; background: rgba(255,255,255,0.2); border-radius: 50%;"></div>
+        </div>
+
+        <div class="passport-card-box" id="passportCard" onclick="toggleFlip()">
+            <div class="passport-card-inner">
+                
+                <div class="card-face card-front" id="cardFrontView">
+                    <div class="brand-block">
+                        <div class="brand-title">The Corridor</div>
+                        <div class="brand-subtitle">Euro-African SME Network</div>
+                    </div>
+
+                    <div class="identity-block">
+                        <span class="tier-badge" id="domTier">Artisan Key</span>
+                        <div class="node-name" id="domName">Kanyisa Textiles Ltd.</div>
+                        <div class="node-location" id="domLocation">Cape Town, South Africa</div>
+                    </div>
+
+                    <div class="crypto-mesh-box">
+                        <div class="qr-placeholder"><div class="qr-inner"></div></div>
+                        <div class="crypto-data">
+                            <span class="crypto-label">Immutable Passport Key</span>
+                            <div class="crypto-hash" id="domHash">CRDR_9942_SME_ZA_77XBF9</div>
+                        </div>
+                    </div>
+
+                    <div class="card-metrics-row">
+                        <div class="metric-item">
+                            <span class="metric-title" id="lblMetricLeft">Contribution Factor</span>
+                            <span class="metric-value" id="valMetricLeft">1.42x</span>
+                        </div>
+                        <div class="metric-item" style="text-align: right;">
+                            <span class="metric-title" id="lblMetricRight">Verified Peer Links</span>
+                            <span class="metric-value" id="valMetricRight">28 Nodes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-face card-back">
+                    <div class="ledger-header">
+                        <span>Qualitative Ledger Log</span>
+                        <div class="ledger-status"></div>
+                    </div>
+
+                    <div class="ledger-stack" id="domLedgerStack">
+                        </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="phone-footer-hint">
+            Tap Passport To Flip & View Ledger
+        </div>
+
+    </div>
+
+    <div class="utility-clipboard-box">
+        <button class="btn-copy" onclick="copyIdentityData()">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+            Extract Wallet Structural Text
+        </button>
+    </div>
+
+    <div class="toast-msg" id="toast">Text Extracted to Clipboard</div>
+
+    <script>
+        // State Machine Data Repositories representing the network architecture
+        const states = {
+            sme: {
+                className: "state-sme",
+                tier: "Artisan Verification Key",
+                name: "Kanyisa Textiles Ltd.",
+                location: "Cape Town, South Africa",
+                hash: "CRDR_9942_SME_ZA_77XBF9",
+                metricLeftTitle: "Contribution Factor",
+                metricLeftValue: "1.42x",
+                metricRightTitle: "Verified Peer Links",
+                metricRightValue: "28 Nodes",
+                ledger: [
+                    { title: "Swiss Verein Genesis Onboarding", sub: "BLOCK #0012 // ADMISSION_OK", badge: "PASSED" },
+                    { title: "SME Identity Passport Issued", sub: "BLOCK #0015 // CRYPTO_ID_GEN", badge: "PASSED" },
+                    { title: "DACH Chamber Affiliation", sub: "BLOCK #0142 // COMPLIANCE_TRUE", badge: "VERIFIED" },
+                    { title: "Customs Clearance Clearance Code", sub: "BLOCK #0299 // LOGISTICS_ZA", badge: "ACTIVE" },
+                    { title: "Marketplace Clearance Liquidity Lock", sub: "BLOCK #0412 // REPUTATION_STABLE", badge: "BALANCED" }
+                ]
+            },
+            philanthropist: {
+                className: "state-anchor",
+                tier: "Mäzenaten-Schlüssel // Founding Anchor Node",
+                name: "Stiftung Seefeld Legacy",
+                location: "Zürich, Switzerland",
+                hash: "CRDR_0004_ANCHOR_CH_MÄZEN_09",
+                metricLeftTitle: "Ecosystem Weight",
+                metricLeftValue: "0.00 (Pure Passive)",
+                metricRightTitle: "Anchor Allocation",
+                metricRightValue: "Permanent Genesis Stone",
+                ledger: [
+                    { title: "Swiss Verein Foundation Endowment", sub: "BLOCK #0001 // GENESIS_CAPITAL", badge: "ANCHORED" },
+                    { title: "Eternal Patron Key Deployment", sub: "BLOCK #0004 // NON_TRADABLE_SOUL", badge: "Priceless" },
+                    { title: "Zero Voting Weight Firewall", sub: "BLOCK #0005 // COMMUNITY_EQUILIBRIUM", badge: "ENFORCED" },
+                    { title: "Visual Dashboard Proximity Port", sub: "BLOCK #0009 // READ_ONLY_MESH", badge: "GRANTED" },
+                    { title: "Multi-City Physical Studio Sponsor", sub: "BLOCK #0024 // OUTPOST_CRAFT", badge: "HONORARY" }
+                ]
+            }
+        };
+
+        let currentActiveState = 'sme';
+
+        // State Transition Engine
+        function switchState(stateKey, buttonElement) {
+            currentActiveState = stateKey;
+            
+            // UI Button Group Management
+            document.querySelectorAll('.state-btn').forEach(btn => btn.classList.remove('active'));
+            buttonElement.classList.contains('state-btn') ? buttonElement.classList.add('active') : null;
+
+            const targetData = states[stateKey];
+            const frontView = document.getElementById('cardFrontView');
+
+            // Apply specific skin variables
+            if(stateKey === 'philanthropist') {
+                frontView.classList.add('state-anchor');
+            } else {
+                frontView.classList.remove('state-anchor');
+            }
+
+            // Hydrate variables across DOM targets
+            document.getElementById('domTier').innerText = targetData.tier;
+            document.getElementById('domName').innerText = targetData.name;
+            document.getElementById('domLocation').innerText = targetData.location;
+            document.getElementById('domHash').innerText = targetData.hash;
+            
+            document.getElementById('lblMetricLeft').innerText = targetData.metricLeftTitle;
+            document.getElementById('valMetricLeft').innerText = targetData.metricLeftValue;
+            document.getElementById('lblMetricRight').innerText = targetData.metricRightTitle;
+            document.getElementById('valMetricRight').innerText = targetData.metricRightValue;
+
+            // Clear and compile the qualitative ledger stack
+            const stackContainer = document.getElementById('domLedgerStack');
+            stackContainer.innerHTML = '';
+            
+            targetData.ledger.forEach(item => {
+                const badgeClass = (item.badge === 'Priceless' || item.badge === 'ENFORCED' || item.badge === 'ANCHORED') ? 'ledger-badge passive' : 'ledger-badge';
+                const rowHTML = `
+                    <div class="ledger-row">
+                        <div class="ledger-row-left">
+                            <span class="ledger-row-title">${item.title}</span>
+                            <span class="ledger-row-sub">${item.sub}</span>
+                        </div>
+                        <span class="${badgeClass}">${item.badge}</span>
+                    </div>
+                `;
+                stackContainer.innerHTML += rowHTML;
+            });
+        }
+
+        // Toggle Animation State Machine for Flip System
+        function toggleFlip() {
+            const cardBox = document.getElementById('passportCard');
+            cardBox.classList.toggle('flipped');
+        }
+
+        // Copy-to-Clipboard Utility Strategy
+        function copyIdentityData() {
+            const currentData = states[currentActiveState];
+            let ledgerTextStream = currentData.ledger.map(i => `  - [${i.badge}] ${i.title} (${i.sub})`).join('\n');
+            
+            const compiledRawTextData = `
+=========================================
+THE CORRIDOR // IMMUTABLE WALLET PASSPORT
+=========================================
+[MANDATE] Euro-African SME Network (Swiss Verein)
+[TIER]    ${currentData.tier}
+[ENTITY]  ${currentData.name}
+[LOC]     ${currentData.location}
+[KEY]     ${currentData.hash}
+
+CURRENT COMPLIANCE METRICS:
+- ${currentData.metricLeftTitle}: ${currentData.metricLeftValue}
+- ${currentData.metricRightTitle}: ${currentData.metricRightValue}
+
+QUALITATIVE TRUST LEDGER STATE:
+${ledgerTextStream}
+=========================================
+`;
+
+            navigator.clipboard.writeText(compiledRawTextData.trim()).then(() => {
+                const toast = document.getElementById('toast');
+                toast.style.opacity = '1';
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                }, 2000);
+            });
+        }
+
+        // Initialize state configuration default behavior on execution
+        window.onload = function() {
+            switchState('sme', document.querySelector('.state-btn'));
+        };
+    </script>
+</body>
+</html>
