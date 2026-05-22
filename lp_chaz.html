@@ -1,119 +1,172 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Media Gallery | project.docs</title>
+    <title>Chaz Pigou | Executive Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
       :root {
-        --clr-blue: #2565fa; --clr-green: #198754; --clr-indigo: #6610f2;
-        --clr-red: #eb4959; --clr-amber: #f59f0be7; --clr-grey: #64748b;
-        --tile-bg-light: #f8fafc; --tile-bg-dark: #1e293b; --app-corner-radius: 0.4rem;
+        --clr-blue: #2565fa; 
+        --clr-indigo: #6366f1;
+        --clr-indigo-glow: rgba(99, 102, 241, 0.15);
+        --clr-red: #eb4959; 
+        --clr-text-main: #f1f5f9;
+        --clr-text-muted: #cbd5e1;
+        --tile-bg: #0b0f19; 
+        --tile-border: #1e293b;
+        --app-corner-radius: 0.4rem;
       }
-      body { font-family: "Inter", sans-serif; background-color: #f8fafc; transition: all 0.3s; }
-      [data-bs-theme="dark"] body { background-color: #020617 !important; color: #f8fafc; }
       
-      /* FRAMEWORK COMPONENTS */
+      body { 
+        font-family: "Plus Jakarta Sans", sans-serif; 
+        background-color: #030712 !important; 
+        color: var(--clr-text-main); 
+        transition: all 0.3s; 
+      }
+      
+      .display-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+      }
+      
+      /* CHROMATIC TILES */
       .bg-white-card { 
-        background-color: var(--tile-bg-light); border: 1px solid #e2e8f0; 
-        border-radius: var(--app-corner-radius); height: 100%; position: relative;
-        overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: var(--tile-bg) !important; 
+        border: 1px solid var(--tile-border); 
+        border-radius: var(--app-corner-radius); 
+        height: 100%; 
+        position: relative;
+        overflow: hidden; 
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
       }
-      [data-bs-theme="dark"] .bg-white-card { background-color: var(--tile-bg-dark) !important; border-color: #334155; }
-      .brand-line { border-bottom: 2px solid rgba(0, 0, 0, 0.05) !important; }
-      [data-bs-theme="dark"] .brand-line { border-bottom-color: rgba(255, 255, 255, 0.1) !important; }
-
-      /* MEDIA SPECIFIC OVERRIDES */
-      .media-container { position: relative; width: 100%; height: 100%; min-height: 200px; overflow: hidden; }
+      .bg-white-card:hover {
+        border-color: rgba(99, 102, 241, 0.4);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.05);
+      }
       
-      /* HOVER & ZOOM EFFECTS FOR PC */
+      .brand-line { border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important; }
+
+      /* MEDIA HANDLING & PC HOVER ZOOM */
+      .media-container { position: relative; width: 100%; height: 100%; min-height: 200px; overflow: hidden; }
       .media-display-img { 
         width: 100%; 
         height: 100%; 
         object-fit: cover; 
         display: block; 
-        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         backface-visibility: hidden;
       }
       @media (hover: hover) and (pointer: fine) {
         .bg-white-card:hover .media-display-img {
-          transform: scale(1.06);
+          transform: scale(1.04);
         }
       }
 
-      /* FLUID RESPONSIVE TYPOGRAPHY FOR LAPTOPS */
+      /* ACCESSIBLE TEXT ADAPTATION */
       .responsive-profile-text {
-        font-size: clamp(0.875rem, 0.65rem + 0.6vw, 1.05rem);
-        line-height: 1.6;
+        font-size: clamp(0.92rem, 0.6rem + 0.7vw, 1.12rem);
+        line-height: 1.7;
+        color: var(--clr-text-muted) !important;
       }
 
-      .media-audio-player { width: 100%; margin-top: auto; filter: invert(0.1); }
-      [data-bs-theme="dark"] .media-audio-player { filter: invert(0.8); }
-
-      /* IMAGE-SPRITE SOCIAL LINKS FROM SINGLE JFIF/JPG */
-      .social-sprite-link {
-        display: inline-block;
-        width: 36px;
-        height: 36px;
-        border-radius: 6px;
-        background-image: url('https://res.cloudinary.com/dp455m4rk/image/upload/v1779289150/logos_dlcizx.jpg');
-        background-size: 118px 36px; /* Scaled to match element dimensions */
+      /* AUDIO DEEP DIVE WITH SUBTLE WAVES OVERLAY */
+      .audio-tile-premium {
+        position: relative;
+        background-image: linear-gradient(180deg, rgba(11, 15, 25, 0.85) 0%, #0b0f19 100%), 
+                          url('https://res.cloudinary.com/dp455m4rk/image/upload/v1768991177/samples/waves.png');
+        background-size: cover;
+        background-position: center;
         background-repeat: no-repeat;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       }
-      .social-sprite-link:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      .media-audio-player { 
+        width: 100%; 
+        margin-top: auto; 
+        filter: invert(0.9) hue-rotate(220deg) brightness(1.2); 
+        opacity: 0.95;
       }
-      .social-sprite-link.linkedin  { background-position: 0px 0px; }
-      .social-sprite-link.facebook  { background-position: -41px 0px; }
-      .social-sprite-link.instagram { background-position: -82px 0px; }
 
-      /* PROMINENT TAG BADGES */
+      /* PREMIUM JPG IMAGE-BASED SOCIAL BUTTON LINKS */
+      .custom-social-btn {
+        display: inline-block;
+        width: 38px;
+        height: 38px;
+        border-radius: 6px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: transform 0.2s ease, filter 0.2s ease;
+        filter: grayscale(20%) brightness(0.9);
+      }
+      .custom-social-btn:hover {
+        transform: translateY(-2px);
+        filter: grayscale(0%) brightness(1.1);
+      }
+      .btn-linkedin { background-image: url('https://res.cloudinary.com/dp455m4rk/image/upload/v1779474467/linked_yd8yms.jpg'); }
+      .btn-instagram { background-image: url('https://res.cloudinary.com/dp455m4rk/image/upload/v1779474467/insta_c3r4lw.jpg'); }
+      .btn-facebook { background-image: url('https://res.cloudinary.com/dp455m4rk/image/upload/v1779474467/fb_biszhl.jpg'); }
+
+      /* GEOMETRIC STRATEGIC TAGS */
       .prominent-tag {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         font-weight: 600;
-        letter-spacing: 0.05em;
-        padding: 0.6rem 1.2rem;
-        border-radius: 50px;
-        background-color: rgba(37, 101, 250, 0.08);
-        color: var(--clr-blue);
-        border: 1px solid rgba(37, 101, 250, 0.15);
-        transition: all 0.2s ease;
+        letter-spacing: 0.02em;
+        padding: 0.5rem 0.9rem;
+        border-radius: var(--app-corner-radius);
+        background-color: rgba(99, 102, 241, 0.08);
+        color: #a5b4fc;
+        border: 1px solid rgba(99, 102, 241, 0.2);
       }
-      [data-bs-theme="dark"] .prominent-tag {
-        background-color: rgba(37, 101, 250, 0.15);
-        color: #93c5fd;
-        border-color: rgba(37, 101, 250, 0.3);
+      
+      /* COUNTRY SIGNET BADGE */
+      .country-signet {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.25rem 0.6rem;
+        border-radius: var(--app-corner-radius);
+        background-color: var(--clr-red);
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
       }
-      .prominent-tag:hover {
-        background-color: var(--clr-blue);
-        color: #ffffff !important;
-        transform: scale(1.03);
+      
+      .footer-brand-link {
+        color: var(--clr-text-muted);
+        text-decoration: none;
+        transition: color 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .footer-brand-link:hover {
+        color: var(--clr-red);
       }
     </style>
   </head>
   <body>
-    <main class="main-container container py-4">
-      <header class="d-flex justify-content-between align-items-end brand-line mb-4 pb-2">
+    <main class="main-container container py-5">
+      <header class="d-flex justify-content-between align-items-end brand-line mb-5 pb-3">
         <div class="d-flex align-items-center gap-3">
           <div class="d-flex flex-column">
-            <span class="text-secondary fw-bold" style="font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;">
+            <span class="text-secondary fw-bold" style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: #64748b !important;">
               Marketing Executive
             </span>
-            <span style="color: var(--clr-indigo); font-size: 1.5rem; font-weight: 400;">Chaz Pigou</span>
+            <span class="display-title" style="color: var(--clr-indigo); font-size: 1.75rem;">Chaz Pigou</span>
           </div>
         </div>
       </header>
 
       <section class="mb-4">
-        <div class="row g-3">
+        <div class="row g-4">
           <div class="col-md-8">
-            <div class="bg-white-card border-indigo bw-1">
-              <div class="media-container" style="min-height: 450px; height: 100%;">
+            <div class="bg-white-card" style="border-color: rgba(255,255,255,0.05);">
+              <div class="media-container" style="min-height: 480px; height: 100%;">
                 <img 
                   class="media-display-img" 
                   src="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1774279518/Chaz_Pigou_ejulac.png" 
@@ -124,20 +177,20 @@
           </div>
 
           <div class="col-md-4">
-            <div class="bg-white-card border-grey bw-1 p-4 d-flex flex-column justify-content-between" style="min-height: 450px;">
+            <div class="bg-white-card p-4 d-flex flex-column justify-content-between" style="min-height: 480px;">
               <div>
-                <h3 class="fs-4 fw-bold mb-3" style="color: var(--clr-indigo);">Chaz Pigou</h3>
-                <p class="responsive-profile-text text-secondary mb-0">
+                <h3 class="fs-4 display-title text-white mb-3">Chaz Pigou</h3>
+                <p class="responsive-profile-text mb-0">
                   Chaz Pigou, a prominent marketing executive and the Co-Founder of h·e·r Collab, detailing her extensive career in brand transformation and business development. With nearly twenty years of professional experience, she is characterized as a strategic visionary who specializes in connecting massive global corporations with human-centric, purpose-driven storytelling.
                 </p>
               </div>
               
-              <div class="pt-4 border-top border-light-subtle">
-                <div class="text-uppercase text-secondary fw-bold mb-2" style="font-size: 0.6rem; letter-spacing: 0.05em;">Connect / Channels</div>
+              <div class="pt-4 border-top" style="border-color: rgba(255, 255, 255, 0.08) !important;">
+                <div class="text-uppercase fw-bold mb-3" style="font-size: 0.6rem; letter-spacing: 0.1em; color: #64748b;">Connect / Channels</div>
                 <div class="d-flex gap-2">
-                  <a href="#" class="social-sprite-link linkedin" title="LinkedIn"></a>
-                  <a href="#" class="social-sprite-link facebook" title="Facebook"></a>
-                  <a href="#" class="social-sprite-link instagram" title="Instagram"></a>
+                  <a href="#" class="custom-social-btn btn-linkedin" title="LinkedIn"></a>
+                  <a href="#" class="custom-social-btn btn-instagram" title="Instagram"></a>
+                  <a href="#" class="custom-social-btn btn-facebook" title="Facebook"></a>
                 </div>
               </div>
             </div>
@@ -146,15 +199,15 @@
       </section>
 
       <section class="mb-5">
-        <div class="row g-3">
+        <div class="row g-4">
           <div class="col-md-6">
-            <div class="p-4 bg-white-card border-red soft-tint-red bw-1 d-flex flex-column justify-content-between" style="min-height: 240px;">
+            <div class="p-4 bg-white-card audio-tile-premium d-flex flex-column justify-content-between" style="min-height: 230px;">
               <div>
-                <h3 class="fs-5 fw-bold mb-1">Audio Deep Dive</h3>
-                <p class="small text-secondary mb-4">Strategic media assessment and project focus briefing.</p>
+                <h3 class="fs-5 display-title text-white mb-1">Audio Deep Dive</h3>
+                <p class="small mb-0" style="color: var(--clr-text-muted);">Strategic media assessment and project focus briefing.</p>
               </div>
               
-              <div class="w-100 mt-auto pt-3 border-top border-light-subtle">
+              <div class="w-100 mt-auto pt-3">
                 <audio controls class="media-audio-player w-100">
                   <source src="https://res.cloudinary.com/dp455m4rk/video/upload/v1779289035/audio_dd_chaz_nu0alb.mp4" type="audio/mp4">
                 </audio>
@@ -163,14 +216,19 @@
           </div>
 
           <div class="col-md-6">
-            <div class="p-4 bg-white-card border-blue bw-1 d-flex flex-column justify-content-center" style="min-height: 240px;">
-              <div class="text-uppercase text-secondary fw-bold mb-3" style="font-size: 0.65rem; letter-spacing: 0.1em;">Core Strategic Matrix</div>
-              <div class="d-flex flex-wrap gap-2">
-                <span class="prominent-tag">Blue-Chip</span>
-                <span class="prominent-tag">Equity</span>
-                <span class="prominent-tag">Transformation</span>
-                <span class="prominent-tag">Scale</span>
-                <span class="prominent-tag">Nexus</span>
+            <div class="p-4 bg-white-card d-flex flex-column justify-content-between" style="min-height: 230px;">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div class="text-uppercase fw-bold" style="font-size: 0.65rem; letter-spacing: 0.1em; color: #64748b;">Core Strategic Matrix</div>
+                  <div class="country-signet">Global Matrix</div>
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                  <span class="prominent-tag">Blue-Chip</span>
+                  <span class="prominent-tag">Equity</span>
+                  <span class="prominent-tag">Transformation</span>
+                  <span class="prominent-tag">Scale</span>
+                  <span class="prominent-tag">Nexus</span>
+                </div>
               </div>
             </div>
           </div>
@@ -181,8 +239,11 @@
     <footer class="custom-footer mt-auto py-5 container">
         <div class="brand-line mb-4"></div>
         <div class="d-flex justify-content-between align-items-center">
-            <div class="footer-brand" style="color: var(--clr-red);">vital.publications</div>
-            <div class="small text-secondary">© <span id="year"></span> vital.publications</div>
+            <a href="#" class="footer-brand-link display-title">
+              <i data-lucide="form" style="width: 18px; height: 18px; color: var(--clr-red);"></i>
+              lp.master
+            </a>
+            <div class="small" style="color: #64748b;">© <span id="year"></span> lp.master</div>
         </div>
     </footer>
 
@@ -205,15 +266,10 @@
       }
 
       document.getElementById("year").textContent = new Date().getFullYear();
-      
-      const setTheme = () => {
-        const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        document.documentElement.setAttribute("data-bs-theme", isDark ? "dark" : "light");
-      };
-
-      setTheme();
-      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setTheme);
-      window.addEventListener('DOMContentLoaded', optimizeCloudinaryLinks);
+      window.addEventListener('DOMContentLoaded', () => {
+        optimizeCloudinaryLinks();
+        lucide.createIcons();
+      });
     </script>
   </body>
 </html>
