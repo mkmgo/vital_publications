@@ -496,7 +496,7 @@
         z-index: -2;
         background:
           linear-gradient(rgba(2, 6, 23, 0.45), rgba(2, 6, 23, 0.45)),
-          url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1779133688/frankfurt_byalb8.jpg");
+          url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779820306/webbanner_e5bib0.webp");
         background-size: cover;
         background-position: center;
         animation: dynamic-banner-pan 24s infinite ease-in-out;
@@ -534,7 +534,7 @@
       [data-bs-theme="dark"] .banner-cockpit::before {
         background:
           linear-gradient(rgba(2, 6, 23, 0.65), rgba(2, 6, 23, 0.65)),
-          url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1779133688/frankfurt_byalb8.jpg");
+          url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779820306/webbanner_e5bib0.webp");
         background-size: cover;
         background-position: center;
       }
@@ -695,14 +695,21 @@
       }
 
       .banner-cockpit:hover {
-        border-color: rgba(37, 101, 250, 0.6) !important;
-        /* This creates the sophisticated blue tint over the image */
+        transform: translateY(-2px);
+        filter: brightness(1.2);
+        box-shadow:
+          0 10px 20px -10px rgba(37, 101, 250, 0.4),
+          inset 0 0 15px rgba(255, 255, 255, 0.05);
+      }
+
+      /* Subtle overlay color blend modification during hover */
+      .banner-cockpit:hover::before {
+        filter: brightness(1.15) contrast(105%);
         background:
-          linear-gradient(rgba(2, 6, 23, 0.4), rgba(2, 6, 23, 0.4)),
-          url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1778172143/dash_banner_p6ob7a.png");
+          linear-gradient(rgba(37, 101, 250, 0.25), rgba(2, 6, 23, 0.55)),
+          url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779820306/webbanner_e5bib0.webp");
         background-size: cover;
         background-position: center;
-        box-shadow: 0 0 20px rgba(37, 101, 250, 0.15);
       }
 
       /* Update the existing .banner-cockpit or add this below it */
@@ -923,10 +930,10 @@
                     font-weight: 500;
                   "
                 >
-                  Today is a clear and sunny autumn day in Randburg.
-                  We on have about a month until Winter solstice. Then
-                  it will atill be freezing cold including those gusty winds on
-                  Highveld, but the days will slowly start getting longer again.
+                  Today is a clear and sunny autumn day in Randburg. We on have
+                  about a month until Winter solstice. Then it will atill be
+                  freezing cold including those gusty winds on Highveld, but the
+                  days will slowly start getting longer again.
                 </p>
               </div>
             </div>
