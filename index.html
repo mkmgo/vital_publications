@@ -1084,41 +1084,46 @@
             <div class="card-body">
               <div class="d-flex flex-column h-100 justify-content-between">
 
-                <div>
-                  <span id="compass-time" class="display-6 fw-bold text-primary"></span>
+                <div class="d-flex flex-column gap-3">
+                  <div class="d-flex align-items-start gap-3 flex-wrap">
+                    <div class="flex-grow-1">
+                      <div class="text-uppercase fw-semibold text-muted mb-1" style="font-size:0.72rem; letter-spacing:0.14em;">
+                        Compass Time Hub
+                      </div>
+                      <div id="compass-date" class="fw-semibold text-secondary" style="font-size:0.92rem; line-height:1.2;"></div>
+                      <div id="compass-time" class="display-6 fw-bold text-primary" style="letter-spacing:-0.04em; line-height:1;"></div>
+                      <div id="compass-utc" class="text-monospace text-muted small" style="font-size:0.8rem; letter-spacing:0.08em;">
+                        UTC: --:--:--
+                      </div>
+                    </div>
 
-                  <div class="text-muted small mt-1">
-                    <span id="compass-wm"></span>
-                    <span id="compass-wy"></span>
-                  </div>
-
-                  <div class="mt-2">
-                    <span id="compass-date" class="text-secondary fw-semibold"></span>
-                  </div>
-                </div>
-
-                <div class="my-3 d-flex align-items-center gap-3">
-                  <div class="seasonal-donut">
-                    <div class="donut-hole">
-                      <span class="donut-text">83%</span>
+                    <div class="position-relative" style="width:108px; min-width:108px; height:108px; flex-shrink:0;">
+                      <svg viewBox="0 0 120 120" width="108" height="108" aria-hidden="true">
+                        <circle cx="60" cy="60" r="42" fill="none" stroke="#e2e8f0" stroke-width="10" opacity=".45" />
+                        <circle cx="60" cy="60" r="42" fill="none" stroke="var(--current-weekday-color,#2565fa)" stroke-width="10" stroke-linecap="round" stroke-dasharray="0 263.89" transform="rotate(-90 60 60)" id="compass-progress-path" />
+                        <circle cx="60" cy="18" r="3.5" fill="#334155" />
+                        <circle cx="18" cy="60" r="3.5" fill="#334155" />
+                        <circle cx="60" cy="102" r="3.5" fill="#334155" />
+                        <circle cx="102" cy="60" r="3.5" fill="#334155" />
+                        <circle cx="84" cy="90" r="3.5" fill="#0f172a" />
+                        <circle cx="60" cy="60" r="28" fill="rgba(255,255,255,0.88)" />
+                      </svg>
+                      <div class="position-absolute top-50 start-50 translate-middle text-center" style="font-size:0.75rem; color:#64748b; line-height:1.1; width:72px;">
+                        Year progress
+                      </div>
                     </div>
                   </div>
 
-                  <div>
-                    <p class="mb-0 fw-bold small text-dark">
-                      Seasonal Course
-                    </p>
-
-                    <p class="text-muted mb-0" style="font-size: 0.75rem;">
-                      ~1 month until South
-                    </p>
+                  <div class="d-flex flex-column gap-2">
+                    <div class="text-muted small" style="font-size:0.78rem; line-height:1.4;">
+                      Day of Year <span id="compass-dayofyear">--</span>/365 |
+                      Week of Year: <span id="compass-wy"></span> |
+                      Week of Month: <span id="compass-wm"></span>
+                    </div>
+                    <div id="compass-astro" class="text-muted small fst-italic" style="font-size:0.79rem; line-height:1.5;">
+                      today is -- days before Winter Solstice
+                    </div>
                   </div>
-                </div>
-
-                <div>
-                  <p class="text-muted small mb-0">
-                    South African autumn weather
-                  </p>
                 </div>
 
               </div>
@@ -1431,53 +1436,107 @@
 
       // --- COMPASS DYNAMICS ---
       if (document.getElementById("compass-date")) {
-        // 1. Date & Time
-        document.getElementById("compass-date").textContent =
-          `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]}`;
-        document.getElementById("compass-time").textContent =
-          now.toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-          });
+        const compassDateEl = document.getElementById("compass-date");
+        const compassTimeEl = document.getElementById("compass-time");
+        const compassUtcEl = document.getElementById("compass-utc");
+        const compassWyEl = document.getElementById("compass-wy");
+        const compassWmEl = document.getElementById("compass-wm");
+        const compassDayEl = document.getElementById("compass-dayofyear");
+        const compassAstroEl = document.getElementById("compass-astro");
+        const compassProgress = document.getElementById("compass-progress-path");
 
-        // 2. Week of Year
-        const startOfYear = new Date(now.getFullYear(), 0, 1);
-        const pastDaysOfYear = (now - startOfYear) / 86400000;
-        const weekOfYear = Math.ceil(
-          (pastDaysOfYear + startOfYear.getDay() + 1) / 7,
-        );
-        document.getElementById("compass-wy").textContent = weekOfYear;
+        const todayDay = now.getDay();
+        const dayName = days[todayDay] || "Unknown";
+        const year = now.getFullYear();
+        const monthName = months[now.getMonth()] || "---";
+        const dateNumber = now.getDate();
 
-        // 3. Week of Month
-        const firstDayOfMonth = new Date(
-          now.getFullYear(),
-          now.getMonth(),
-          1,
-        );
-        const used = firstDayOfMonth.getDay() + now.getDate();
-        const weekOfMonth = Math.ceil(used / 7);
-        document.getElementById("compass-wm").textContent = weekOfMonth;
+        compassDateEl.textContent = `${dayName}, ${dateNumber} ${monthName} ${year}`;
+        compassTimeEl.textContent = now.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        });
+        if (compassUtcEl) {
+          compassUtcEl.textContent = `UTC: ${String(now.getUTCHours()).padStart(2, "0")}:${String(now.getUTCMinutes()).padStart(2, "0")}:${String(now.getUTCSeconds()).padStart(2, "0")}`;
+        }
+
+        const startOfYear = new Date(year, 0, 0);
+        const dayOfYear = Math.floor((now - startOfYear) / 86400000);
+        const circumference = 2 * Math.PI * 42;
+        const seasonRatio = Math.min(1, Math.max(0, dayOfYear / 365));
+        const filledLength = Math.max(1, seasonRatio * circumference);
+
+        if (compassWyEl) {
+          const pastDaysOfYear = (now - new Date(year, 0, 1)) / 86400000;
+          const weekOfYear = Math.ceil((pastDaysOfYear + new Date(year, 0, 1).getDay() + 1) / 7);
+          compassWyEl.textContent = Number.isFinite(weekOfYear) ? weekOfYear : "--";
+        }
+
+        if (compassWmEl) {
+          const firstDayOfMonth = new Date(year, now.getMonth(), 1);
+          const used = firstDayOfMonth.getDay() + dateNumber;
+          const weekOfMonth = Math.ceil(used / 7);
+          compassWmEl.textContent = Number.isFinite(weekOfMonth) ? weekOfMonth : "--";
+        }
+
+        if (compassDayEl) {
+          compassDayEl.textContent = Number.isFinite(dayOfYear) ? dayOfYear : "--";
+        }
+
+        if (compassProgress) {
+          compassProgress.setAttribute("stroke-dasharray", `${filledLength} ${circumference}`);
+        }
+
+        if (compassAstroEl) {
+          let nextSolstice = new Date(year, 5, 21);
+          if (now > nextSolstice) {
+            nextSolstice = new Date(year + 1, 5, 21);
+          }
+          const remaining = Math.max(0, Math.ceil((nextSolstice - now) / 86400000));
+          compassAstroEl.textContent = `today is ${remaining} day${remaining === 1 ? "" : "s"} before Winter Solstice`;
+        }
+
+        const weekdayColors = {
+          1: "#facc15",
+          2: "#22c55e",
+          3: "#2563eb",
+          4: "#ec4899",
+          5: "#7c3aed",
+          6: "#ef4444",
+          0: "#f97316",
+        };
+        const baseColor = weekdayColors[todayDay] || "#64748b";
+        const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        function deepTone(hex, amount) {
+          const val = parseInt(hex.slice(1), 16);
+          let r = (val >> 16) & 255;
+          let g = (val >> 8) & 255;
+          let b = val & 255;
+          r = Math.max(0, Math.min(255, Math.floor(r * (1 - amount))));
+          g = Math.max(0, Math.min(255, Math.floor(g * (1 - amount))));
+          b = Math.max(0, Math.min(255, Math.floor(b * (1 - amount))));
+          return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+        }
+        const accentColor = isDark ? baseColor : deepTone(baseColor, 0.28);
+        document.documentElement.style.setProperty("--current-weekday-color", accentColor);
+        compassDateEl.style.color = accentColor;
       }
     }
 
     // Theme Logic
     const setTheme = () => {
-      const isDark = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
-      document.documentElement.setAttribute(
-        "data-bs-theme",
-        isDark ? "dark" : "light",
-      );
+      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-bs-theme", isDark ? "dark" : "light");
     };
 
     // Initialization
     setTheme();
     updateDate();
 
-    // Update every minute for the clock
-    setInterval(updateDate, 60000);
+    // Update every second for the clock
+    setInterval(updateDate, 1000);
 
     // Listener for system theme changes
     window
