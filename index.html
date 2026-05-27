@@ -951,67 +951,47 @@
       }
     }
 
-    /* --- TILE 1 DONUT CHART --- */
-
-    .compass-donut {
-      width: 92px;
-      height: 92px;
-      border-radius: 50%;
+    /* --- SEASONAL DONUT CHART SYSTEM --- */
+    .seasonal-donut {
       position: relative;
-      margin-top: 0.5rem;
-
-      background: conic-gradient(#2f2a2a 0deg 180deg, #b7b7b7 180deg 360deg);
-    }
-
-    .compass-donut-inner {
-      position: absolute;
-      inset: 24px;
-      background: var(--tile-bg-light);
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
+      /* 83% progress through the year matches roughly 300deg out of 360deg */
+      background: conic-gradient(var(--clr-blue, #2563eb) 0deg 300deg,
+          rgba(37, 101, 250, 0.15) 300deg 360deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      flex-shrink: 0;
+      /* Prevents the circle from squishing on small screens */
     }
 
-    [data-bs-theme="dark"] .compass-donut-inner {
-      background: var(--tile-bg-dark);
+    .seasonal-donut:hover {
+      transform: scale(1.05);
     }
 
-    /* CONNECTOR LINE */
-    .compass-line {
-      position: absolute;
-      width: 34px;
-      height: 3px;
-      background: #111;
-      left: -14px;
-      bottom: 28px;
-      transform: rotate(-32deg);
-      transform-origin: right center;
-    }
-
-    .compass-dot {
-      position: absolute;
-      width: 11px;
-      height: 11px;
-      background: #111;
+    .donut-hole {
+      width: 52px;
+      height: 52px;
+      background-color: #ffffff;
+      /* Matches your light theme bg-white-card */
       border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .compass-dot-a {
-      left: -16px;
-      bottom: 22px;
+    .donut-text {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--clr-blue, #2563eb);
     }
 
-    .compass-dot-b {
-      left: 14px;
-      bottom: 40px;
-    }
-
-    .status-indicator {
-      width: 8px;
-      height: 8px;
-      background-color: #22c55e;
-      /* Success Green */
-      border-radius: 50%;
-      display: inline-block;
-      animation: pulse-status 2s infinite;
+    /* Dark mode compatibility safeguard */
+    [data-bs-theme="dark"] .donut-hole {
+      background-color: #1e293b;
     }
   </style>
 </head>
@@ -1063,45 +1043,37 @@
       </div>
 
       <div class="row g-3 mb-4 align-items-stretch">
-        <div class="col-6 col-md-4 col-lg-2">
-          <div
-            class="p-3 bg-white-card border-grey bw-1 soft-tint-indigo h-100 d-flex flex-column justify-content-between">
-            <div class="tile-content justify-content-between h-100">
-              <div>
-                <!-- TIME -->
-                <div class="mb-0">
-                  <span class="fw-bold d-block" id="compass-time" style="
-                        color: var(--clr-indigo);
-                        font-size: 2rem;
-                        line-height: 1;
-                        letter-spacing: -0.03em;
-                      ">
-                    --:--
-                  </span>
+        <div class="col-12 col-md-3">
+          <div class="card h-100 bg-white-card shadow-sm">
+            <div class="card-body">
+              <div class="d-flex flex-column h-100 justify-content-between">
 
-                  <!-- DATE UNDER TIME -->
-                  <div id="compass-date" style="
-                        color: var(--clr-indigo);
-                        font-size: 0.72rem;
-                        font-weight: 500;
-                        margin-top: 0.35rem;
-                        opacity: 0.85;
-                      ">
-                    ---
+                <div>
+                  <span id="compass-time" class="display-6 fw-bold text-primary"></span>
+                  <div class="text-muted small mt-1">
+                    <span id="compass-wm"></span> <span id="compass-wy"></span>
+                  </div>
+                  <div class="mt-2">
+                    <span id="compass-date" class="text-secondary fw-semibold"></span>
                   </div>
                 </div>
-              </div>
 
-              <!-- DONUT CHART -->
-              <div class="d-flex justify-content-center align-items-center w-100 mt-3">
-                <div class="compass-donut">
-                  <div class="compass-donut-inner"></div>
-
-                  <!-- CONNECTOR -->
-                  <div class="compass-line"></div>
-                  <div class="compass-dot compass-dot-a"></div>
-                  <div class="compass-dot compass-dot-b"></div>
+                <div class="my-3 d-flex align-items-center gap-3">
+                  <div class="seasonal-donut">
+                    <div class="donut-hole">
+                      <span class="donut-text">83%</span>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="mb-0 fw-bold small text-dark">Seasonal Course</p>
+                    <p class="text-muted mb-0" style="font-size: 0.75rem;">~1 month until South</p>
+                  </div>
                 </div>
+
+                <div>
+                  <p class="text-muted small mb-0">South African autumn weather</p>
+                </div>
+
               </div>
             </div>
           </div>
