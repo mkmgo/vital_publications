@@ -253,7 +253,50 @@
 
     .file-link:hover .bg-white-card {
       transform: translateY(-4px);
-      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 18px 34px -12px rgba(0, 0, 0, 0.2);
+    }
+
+    .file-link .image-clip-wrapper {
+      transition: border-color 0.3s ease;
+    }
+
+    .file-link:hover .zoom-img {
+      transform: scale(1.12);
+      filter: grayscale(0);
+    }
+
+    .tile-img-bg {
+      min-height: 240px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease;
+    }
+
+    .file-link:hover .tile-img-bg {
+      transform: translateY(-3px) scale(1.01);
+    }
+
+    .tile-img-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      transition: background 0.35s ease, transform 0.35s ease;
+      transform: scale(1);
+    }
+
+    [data-bs-theme="light"] .tile-img-bg::before {
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    [data-bs-theme="dark"] .tile-img-bg::before {
+      background: rgba(15, 23, 42, 0.64);
+    }
+
+    .file-link:hover .tile-img-bg::before {
+      transform: scale(1.03);
     }
 
     /* Border Persistence */
@@ -370,30 +413,6 @@
 
     [data-bs-theme="dark"] .soft-tint-grey {
       background-color: rgba(255, 255, 255, 0.05) !important;
-    }
-
-    /* --- BACKGROUND IMAGE LAYER --- */
-    .tile-img-bg {
-      min-height: 200px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tile-img-bg::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    [data-bs-theme="light"] .tile-img-bg::before {
-      background: #ffffffe0;
-    }
-
-    [data-bs-theme="dark"] .tile-img-bg::before {
-      background: rgba(15, 23, 42, 0.82);
     }
 
     /* FIXED TILE CONTENT: Added align-items to prevent tag stretching */
@@ -1234,652 +1253,75 @@
       </div>
       </div>
     </section>
-    <div class="brand-line mb-2"></div>
     <section id="projects">
-      <div class="banner-box banner-section">
-        <h2>
-          <i data-lucide="Activity" style="
-                color: var(--clr-blue);
-                width: 28px;
-                height: 28px;
-                stroke-width: 2;
-              "></i>
-          Pulse
-        </h2>
-        <div class="header-status-tick">
-          <i data-lucide="check" style="width: 18px; height: 18px; stroke-width: 4"></i>
-        </div>
-      </div>
       <div class="row g-4 mb-4">
         <div class="col-md-6">
-          <a href="#" class="file-link">
+          <a href="build_expertise.html" class="file-link">
             <div class="p-4 bg-white-card soft-tint-amber border-amber bw-2 tile-left">
               <div class="tile-content">
                 <span class="ui-tag tag-green tag-cutout mb-2">Skills</span>
-                <h3 class="fs-3 fw-bold mb-1">
-                  Themed Masterclass
-                  <h2 class="fs-4 fw-semibold text-secondary mb-1">
-                    Infinite Strength
-                  </h2>
-                </h3>
-                <style>
-                  /* Hover effect logic for the image clip */
-                  .file-link:hover .zoom-img {
-                    transform: scale(1.15);
-                    filter: grayscale(0);
-                  }
+                <h3 class="fs-3 fw-bold mb-1">Themed Masterclass</h3>
+                <h2 class="fs-5 fw-semibold text-secondary mb-3">Infinite Strength</h2>
 
-                  .file-link:hover .image-clip-wrapper {
-                    border-color: var(--clr-blue) !important;
-                  }
-                </style>
-
-                <div class="d-flex flex-column flex-md-row gap-4 align-items-start mt-4">
-                  <div class="image-clip-wrapper position-relative"
-                    style="flex-shrink: 0; transition: border-color 0.3s ease">
-                    <div style="
-                          width: 140px;
-                          height: 140px;
-                          border: 1px solid var(--clr-grey);
-                          border-radius: 8px;
-                          overflow: hidden;
-                          padding: 6px;
-                          background: rgba(255, 255, 255, 0.05);
-                          backdrop-filter: blur(4px);
-                        ">
-                      <div class="zoom-img" style="
-                            width: 100%;
-                            height: 100%;
-                            background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png&quot;);
-                            background-size: cover;
-                            background-position: center;
-                            border-radius: 4px;
-                            filter: grayscale(0.8);
-                            transition:
-                              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                              filter 0.5s ease;
-                          "></div>
-                    </div>
-                    <span class="position-absolute bottom-0 end-0 bg-dark text-white px-2 py-1 fw-bold" style="
-                          font-size: 0.5rem;
-                          border-radius: 4px 0 0 0;
-                          letter-spacing: 1px;
-                          z-index: 2;
-                        ">
-                      Halith
-                    </span>
+                <div class="d-flex flex-column flex-md-row gap-4 align-items-start mt-3">
+                  <div class="image-clip-wrapper rounded-3 overflow-hidden" style="flex-shrink: 0; width: 140px; height: 140px;">
+                    <div class="zoom-img" style="width: 100%; height: 100%; background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png'); background-size: cover; background-position: center; filter: grayscale(0.8);"></div>
+                    <span class="position-absolute bottom-0 end-0 bg-dark text-white px-2 py-1 fw-bold" style="font-size: 0.65rem; border-radius: 4px 0 0 0; letter-spacing: 1px; z-index: 2;">Masterclass</span>
                   </div>
 
                   <div class="clip-context">
-                    <h4 class="fs-6 fw-bold mb-1" style="color: var(--clr-grey)">
-                      More Resilience
-                    </h4>
-                    <p class="small fw-bold text-secondary mb-2" style="max-width: 400px; line-height: 1.4">
-                      Motivational tool providing mental relief with a proven
-                      Stoic approach.
-                    </p>
+                    <h4 class="fs-6 fw-bold mb-1 text-secondary">More Resilience</h4>
+                    <p class="small text-secondary mb-0" style="max-width: 400px; line-height: 1.5">Motivational guidance layered with an immersive learning experience for creative leaders.</p>
                   </div>
                 </div>
-                <p class="small fw-bold text-secondary">
-                  Your personal mental training.
-                </p>
 
-                <div class="ui-tag tag-green tag-cutout mt-auto-tag">
+                <div class="ui-tag tag-green tag-cutout mt-4">
                   <i data-lucide="check" style="width: 12px; margin-right: 4px"></i>
-                  Activate
+                  Explore
                 </div>
               </div>
             </div>
           </a>
         </div>
+
         <div class="col-md-6">
-          <a href="#" class="file-link">
-            <div class="p-4 bg-white-card border-indigo bw-1 soft-tint-indigo tile-left">
+          <a href="gallery.html" class="file-link">
+            <div class="p-4 bg-white-card soft-tint-indigo border-indigo bw-1 tile-left">
               <div class="tile-content">
                 <span class="ui-tag tag-indigo tag-cutout mb-2">Mobile</span>
-                <h3 class="fs-3 fw-bold mb-1">
-                  Halith
-                  <h2 class="fs-4 fw-semibold text-secondary mb-1">
-                    Infinite Strength
-                  </h2>
-                </h3>
-                <style>
-                  /* Hover effect logic for the image clip */
-                  .file-link:hover .zoom-img {
-                    transform: scale(1.15);
-                    filter: grayscale(0);
-                  }
+                <h3 class="fs-3 fw-bold mb-1">Halith</h3>
+                <h2 class="fs-5 fw-semibold text-secondary mb-3">Infinite Strength</h2>
 
-                  .file-link:hover .image-clip-wrapper {
-                    border-color: var(--clr-blue) !important;
-                  }
-                </style>
-
-                <div class="d-flex flex-column flex-md-row gap-4 align-items-start mt-4">
-                  <div class="image-clip-wrapper position-relative"
-                    style="flex-shrink: 0; transition: border-color 0.3s ease">
-                    <div style="
-                          width: 140px;
-                          height: 140px;
-                          border: 1px solid var(--clr-grey);
-                          border-radius: 8px;
-                          overflow: hidden;
-                          padding: 6px;
-                          background: rgba(255, 255, 255, 0.05);
-                          backdrop-filter: blur(4px);
-                        ">
-                      <div class="zoom-img" style="
-                            width: 100%;
-                            height: 100%;
-                            background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png&quot;);
-                            background-size: cover;
-                            background-position: center;
-                            border-radius: 4px;
-                            filter: grayscale(0.8);
-                            transition:
-                              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                              filter 0.5s ease;
-                          "></div>
-                    </div>
-                    <span class="position-absolute bottom-0 end-0 bg-dark text-white px-2 py-1 fw-bold" style="
-                          font-size: 0.5rem;
-                          border-radius: 4px 0 0 0;
-                          letter-spacing: 1px;
-                          z-index: 2;
-                        ">
-                      Halith
-                    </span>
+                <div class="d-flex flex-column flex-md-row gap-4 align-items-start mt-3">
+                  <div class="image-clip-wrapper rounded-3 overflow-hidden" style="flex-shrink: 0; width: 140px; height: 140px;">
+                    <div class="zoom-img" style="width: 100%; height: 100%; background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png'); background-size: cover; background-position: center; filter: grayscale(0.8);"></div>
+                    <span class="position-absolute bottom-0 end-0 bg-dark text-white px-2 py-1 fw-bold" style="font-size: 0.65rem; border-radius: 4px 0 0 0; letter-spacing: 1px; z-index: 2;">Halith</span>
                   </div>
 
                   <div class="clip-context">
-                    <h4 class="fs-6 fw-bold mb-1" style="color: var(--clr-grey)">
-                      More Resilience
-                    </h4>
-                    <p class="small fw-bold text-secondary mb-2" style="max-width: 400px; line-height: 1.4">
-                      Motivational tool providing mental relief with a proven
-                      Stoic approach.
-                    </p>
+                    <h4 class="fs-6 fw-bold mb-1 text-secondary">More Resilience</h4>
+                    <p class="small text-secondary mb-0" style="max-width: 400px; line-height: 1.5">A compact motivational toolkit that strengthens focus, calm, and everyday decision flow.</p>
                   </div>
                 </div>
-                <p class="small fw-bold text-secondary">
-                  Your personal mental training.
-                </p>
 
-                <div class="ui-tag tag-green tag-cutout mt-auto-tag">
+                <div class="ui-tag tag-green tag-cutout mt-4">
                   <i data-lucide="check" style="width: 12px; margin-right: 4px"></i>
-                  Activate
+                  Launch
                 </div>
               </div>
             </div>
           </a>
         </div>
       </div>
+
       <div class="row g-4 mb-4">
         <div class="col-12">
-          <a href="YOUR_LINK_HERE.html" target="_blank" class="file-link">
-            <div class="p-4 bg-white-card border-amber soft-tint-amber bw-1 tile-left tile-img-bg" style="
-                  background-image: url(&quot;YOUR_IMAGE_URL.jpg&quot;);
-                  min-height: 250px;
-                ">
+          <a href="portfolio1.html" class="file-link">
+            <div class="p-4 bg-white-card border-amber soft-tint-amber bw-1 tile-left tile-img-bg" style="background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1767216761/my-express-uploads/cbsjn95wtojb2lwvvxcz.png');">
               <div class="tile-content">
                 <span class="ui-tag tag-red tag-cutout mb-2">Spotlight</span>
-
-                <h3 class="fs-4 fw-bold mb-2">
-                  Present Your Unique Value Proposition
-                </h3>
-                <p class="small text-secondary mb-0" style="max-width: 800px">
-                  <b>Provide a detailed description here. This full-width
-                    layout is best suited for long-form descriptions that
-                    require more horizontal space.</b>
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="row g-4 mb-4">
-        <div class="col-12">
-          <a href="YOUR_LINK_HERE.html" target="_blank" class="file-link">
-            <div class="p-4 bg-white-card soft-tint-indigo border-indigo bw-1 tile-left tile-img-bg" style="
-                  background-image: url(&quot;YOUR_IMAGE_URL.jpg&quot;);
-                  min-height: 250px;
-                ">
-              <div class="tile-content">
-                <span class="ui-tag tag-amber tag-cutout mb-2">3D Visualisation</span>
-
-                <h3 class="fs-4 fw-bold mb-2">
-                  Virtualise. Visualise. Realise.
-                </h3>
-                <p class="small text-secondary mb-0" style="max-width: 800px">
-                  <b>Provide a detailed description here. This full-width
-                    layout is best suited for long-form descriptions that
-                    require more horizontal space.</b>
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="row g-4 mb-4">
-        <div class="col-12 col-md-6">
-          <a href="#" class="file-link">
-            <div class="p-4 bg-white-card soft-tint-green border-green bw-1 tile-left tile-img-bg" style="
-                  background-image: url(https://res.cloudinary.com/dqwm4pdbz/image/upload/v1767216761/my-express-uploads/cbsjn95wtojb2lwvvxcz.png);
-                  min-height: 250px;
-                ">
-              <div class="tile-content">
-                <span class="ui-tag tag-green tag-cutout mb-2">Media</span>
-                <h3 class="fs-4 fw-bold mb-1">A Generational Exposé</h3>
-                <p class="small text-secondary mb-3" style="max-width: 800px">
-                  <b>High-level documentation and layout standards for
-                    long-form content.</b>
-                </p>
-                <div class="table-responsive mb-3">
-                  <table class="table table-sm table-borderless align-middle mb-0"
-                    style="font-size: 0.72rem; --bs-table-bg: transparent">
-                    <thead class="text-secondary border-bottom border-secondary-subtle">
-                      <tr>
-                        <th scope="col" class="fw-bold px-0 pb-2" style="letter-spacing: 0.05em">
-                          Milestone
-                        </th>
-                        <th scope="col" class="fw-bold px-0 pb-2 text-center"
-                          style="letter-spacing: 0.05em; width: 120px">
-                          Status
-                        </th>
-                        <th scope="col" class="fw-bold px-0 pb-2 text-end" style="letter-spacing: 0.05em">
-                          Timeline
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody class="text-secondary">
-                      <tr>
-                        <td class="px-0 py-2 text-dark-emphasis fw-semibold">
-                          Project definition
-                        </td>
-                        <td class="px-0 py-2">
-                          <div class="d-flex justify-content-center gap-1">
-                            <div style="
-                                  width: 12px;
-                                  height: 4px;
-                                  background: var(--clr-green);
-                                  border-radius: 1px;
-                                  opacity: 0.8;
-                                "></div>
-                            <div style="
-                                  width: 12px;
-                                  height: 4px;
-                                  background: var(--clr-green);
-                                  border-radius: 1px;
-                                  opacity: 0.8;
-                                "></div>
-                            <div style="
-                                  width: 12px;
-                                  height: 4px;
-                                  background: var(--clr-green);
-                                  border-radius: 1px;
-                                  opacity: 0.8;
-                                "></div>
-                            <div style="
-                                  width: 12px;
-                                  height: 4px;
-                                  background: var(--clr-green);
-                                  border-radius: 1px;
-                                  opacity: 0.2;
-                                "></div>
-                          </div>
-                        </td>
-                        <td class="px-0 py-2 text-end">Jan 26</td>
-                      </tr>
-                      <tr>
-                        <td class="px-0 py-2 text-dark-emphasis fw-semibold">
-                          Project onboarding
-                        </td>
-                        <td class="px-0 py-2">
-                          <div class="d-flex justify-content-center gap-1">
-                            <div style="
-                                  width: 12px;
-                                  height: 4px;
-                                  background: var(--clr-green);
-                                  border-radius: 1px;
-                                  opacity: 0.8;
-                                "></div>
-                            <div style="
-                                  width: 12px;
-                                  height: 4px;
-                                  background: var(--clr-green);
-                                  border-radius: 1px;
-                                  opacity: 0.2;
-                                "></div>
-                            <div style="
-                                  width: 12px;
-                                  height: 4px;
-                                  background: var(--clr-green);
-                                  border-radius: 1px;
-                                  opacity: 0.2;
-                                "></div>
-                            <div style="
-                                  width: 12px;
-                                  height: 4px;
-                                  background: var(--clr-green);
-                                  border-radius: 1px;
-                                  opacity: 0.2;
-                                "></div>
-                          </div>
-                        </td>
-                        <td class="px-0 py-2 text-end">Jan 26</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <p class="small text-secondary mb-0" style="max-width: 800px; opacity: 0.8">
-                  Additional technical specifications and repository access
-                  are available via the internal secure gateway.
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6">
-          <a href="#" class="file-link">
-            <div class="p-4 bg-white-card border-indigo bw-1 soft-tint-indigo tile-left">
-              <div class="tile-content">
-                <span class="ui-tag tag-indigo tag-cutout mb-2">Mobile</span>
-                <h3 class="fs-3 fw-bold mb-1">
-                  Halith
-                  <h2 class="fs-4 fw-semibold text-secondary mb-1">
-                    Infinite Strength
-                  </h2>
-                </h3>
-                <style>
-                  /* Hover effect logic for the image clip */
-                  .file-link:hover .zoom-img {
-                    transform: scale(1.15);
-                    filter: grayscale(0);
-                  }
-
-                  .file-link:hover .image-clip-wrapper {
-                    border-color: var(--clr-blue) !important;
-                  }
-                </style>
-
-                <div class="d-flex flex-column flex-md-row gap-4 align-items-start mt-4">
-                  <div class="image-clip-wrapper position-relative"
-                    style="flex-shrink: 0; transition: border-color 0.3s ease">
-                    <div style="
-                          width: 140px;
-                          height: 140px;
-                          border: 1px solid var(--clr-grey);
-                          border-radius: 8px;
-                          overflow: hidden;
-                          padding: 6px;
-                          background: rgba(255, 255, 255, 0.05);
-                          backdrop-filter: blur(4px);
-                        ">
-                      <div class="zoom-img" style="
-                            width: 100%;
-                            height: 100%;
-                            background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png&quot;);
-                            background-size: cover;
-                            background-position: center;
-                            border-radius: 4px;
-                            filter: grayscale(0.8);
-                            transition:
-                              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                              filter 0.5s ease;
-                          "></div>
-                    </div>
-                    <span class="position-absolute bottom-0 end-0 bg-dark text-white px-2 py-1 fw-bold" style="
-                          font-size: 0.5rem;
-                          border-radius: 4px 0 0 0;
-                          letter-spacing: 1px;
-                          z-index: 2;
-                        ">
-                      Halith
-                    </span>
-                  </div>
-
-                  <div class="clip-context">
-                    <h4 class="fs-6 fw-bold mb-1" style="color: var(--clr-grey)">
-                      More Resilience
-                    </h4>
-                    <p class="small fw-bold text-secondary mb-2" style="max-width: 400px; line-height: 1.4">
-                      Motivational tool providing mental relief with a proven
-                      Stoic approach.
-                    </p>
-                  </div>
-                </div>
-                <p class="small fw-bold text-secondary">
-                  Your personal mental training.
-                </p>
-
-                <div class="ui-tag tag-green tag-cutout mt-auto-tag">
-                  <i data-lucide="check" style="width: 12px; margin-right: 4px"></i>
-                  Activate
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-    <div class="brand-line mb-2"></div>
-    <section id="documents">
-      <div class="banner-box banner-section">
-        <h2>
-          <i data-lucide="file-stack" style="
-                color: var(--clr-amber);
-                width: 28px;
-                height: 28px;
-                stroke-width: 2;
-              "></i>
-          Documents
-        </h2>
-        <div class="header-status-tick">
-          <i data-lucide="check" style="width: 18px; height: 18px; stroke-width: 4"></i>
-        </div>
-      </div>
-      <div class="row g-4 mb-4">
-        <div class="col-md-6">
-          <a href="https://forms.gle/gwHhZnjjPrN5r8Yw6" target="_blank" class="file-link">
-            <div class="p-4 bg-white-card border-amber bw-1 tile-left tile-img-bg" style="
-                  background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766073589/Profile_Cover_cgzt6s.jpg&quot;);
-                ">
-              <div class="tile-content">
-                <span class="ui-tag tag-amber mb-2">Questionnaire</span>
-                <h3 class="fs-5 fw-bold mb-2">
-                  Integrated Competence Discovery
-                </h3>
-                <p class="small text-secondary mb-0">
-                  Deep-dive analysis across profile layers.
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6">
-          <a href="doc_cv_resp.html" class="file-link">
-            <div class="p-4 bg-white-card border-indigo bw-1 tile-left tile-img-bg" style="
-                  background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766157692/Business_1_Newspaper_y988h0.jpg&quot;);
-                ">
-              <div class="tile-content">
-                <span class="ui-tag tag-blue mb-2">CV</span>
-                <h3 class="fs-5 fw-bold mb-2">Michael K. Mueller</h3>
-                <p class="small text-secondary mb-0">
-                  Senior Finance Management Consultant.
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-    <div class="brand-line mb-2"></div>
-    <section id="documentation">
-      <div class="banner-box banner-section">
-        <h2>
-          <i data-lucide="square-stack" style="
-                color: var(--clr-red);
-                width: 28px;
-                height: 28px;
-                stroke-width: 2;
-              "></i>
-          PROTOTYPES
-        </h2>
-        <div class="header-status-tick">
-          <i data-lucide="check" style="width: 18px; height: 18px; stroke-width: 4"></i>
-        </div>
-      </div>
-
-      <div class="row g-3 mb-4">
-        <div class="col-6 col-md-4 col-lg-2">
-          <div class="bg-white-card border-grey bw-1 overflow-hidden" style="min-height: 90px">
-            <div style="
-                  width: 100%;
-                  height: 100%;
-                  min-height: 90px;
-                  background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/v1768512311/prototyoe_mwukx1.jpg&quot;);
-                  background-size: cover;
-                  background-position: center;
-                  transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
-                " onmouseover="this.style.transform = 'scale(1.05)'" onmouseout="this.style.transform = 'scale(1)'">
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <a href="https://mkmgo.github.io/vital_publications/gallery.html" target="_blank" class="file-link">
-            <div class="p-3 bg-white-card tile-left soft-tint-red border-red bw-2" style="min-height: 90px">
-              <div class="tile-content">
-                <span class="d-block small fw-bold mb-1"> Gallery </span>
-
-                <p class="small text-primary mb-0">
-                  Media Gallery for Visual Inspiration
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <a href="https://mkmgo.github.io/vital_publications/evening_prayer.html" target="_blank" class="file-link">
-            <div class="p-3 bg-white-card tile-left soft-tint-blue border-blue bw-2" style="min-height: 90px">
-              <div class="tile-content">
-                <span class="d-block small fw-bold mb-1">
-                  Prayer and Motivation
-                </span>
-
-                <p class="small text-primary mb-0">
-                  Mobile-friedly prayer prototype
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <a href="https://mkmgo.github.io/vital_publications/build_expertise.html" target="_blank" class="file-link">
-            <div class="p-3 bg-white-card tile-left soft-tint-amber border-amber bw-3" style="min-height: 90px">
-              <div class="tile-content">
-                <span class="d-block small fw-bold mb-1">Masterclass</span>
-
-                <p class="small text-primary mb-0">
-                  Expertise Drives Performance
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <a href="https://mkmgo.github.io/vital_publications/subsite-a.html" target="_blank" class="file-link">
-            <div class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-1" style="min-height: 90px">
-              <div class="tile-content">
-                <span class="d-block small fw-bold text-muted">Prototype A</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <a href="https://mkmgo.github.io/vital_publications/subsite.html" target="_blank" class="file-link">
-            <div class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-1" style="min-height: 90px">
-              <div class="tile-content">
-                <span class="d-block small fw-bold text-muted">Prototype B</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-    <div class="brand-line mb-2"></div>
-    <section id="bookmarks">
-      <div class="banner-box banner-section">
-        <h2>
-          <i data-lucide="database" style="
-                color: var(--clr-indigo);
-                width: 28px;
-                height: 28px;
-                stroke-width: 2;
-              "></i>
-          KNOWLEDGE BASE
-        </h2>
-        <div class="header-status-tick">
-          <i data-lucide="check" style="width: 18px; height: 18px; stroke-width: 4"></i>
-        </div>
-      </div>
-      <div class="row g-3 mb-1">
-        <div class="col-6 col-md-4 col-lg-2">
-          <div class="bg-white-card border-grey bw-1 overflow-hidden" style="min-height: 90px">
-            <div style="
-                  width: 100%;
-                  height: 100%;
-                  min-height: 90px;
-                  background-image: url(https://res.cloudinary.com/dqwm4pdbz/image/upload/v1768512311/knowledge_tf73l6.jpg);
-                  background-size: cover;
-                  background-position: center;
-                  transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
-                " onmouseover="this.style.transform = 'scale(1.05)'" onmouseout="this.style.transform = 'scale(1)'">
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <a href="https://www.w3schools.com/charsets/ref_utf_symbols_intro.asp" target="_blank" class="file-link">
-            <div class="p-3 bg-white-card tile-left soft-tint-indigo border-indigo bw-1" style="min-height: 80px">
-              <div class="tile-content">
-                <span class="d-block small fw-bold">Symbols</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <a href="https://www.w3schools.com/charsets/ref_utf_enclosed_alpha.asp" target="_blank" class="file-link">
-            <div class="p-3 bg-white-card tile-left soft-tint-indigo border-indigo bw-1" style="min-height: 80px">
-              <div class="tile-content">
-                <span class="d-block small fw-bold">Alphanumeric</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <a href="https://www.w3schools.com/charsets/ref_emoji.asp" target="_blank" class="file-link">
-            <div class="p-3 bg-white-card tile-left soft-tint-indigo border-indigo bw-1" style="min-height: 80px">
-              <div class="tile-content">
-                <span class="d-block small fw-bold">Coloured</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <a href="https://www.w3schools.com/charsets/ref_emoji.asp" target="_blank" class="file-link">
-            <div class="p-3 bg-white-card tile-left soft-tint-indigo border-indigo bw-1" style="min-height: 80px">
-              <div class="tile-content">
-                <span class="d-block small fw-bold">Braille</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-6 col-md-4 col-lg-2">
-          <a href="https://lucide.dev/" target="_blank" class="file-link">
-            <div class="p-3 bg-white-card tile-left soft-tint-indigo border-indigo bw-1" style="min-height: 80px">
-              <div class="tile-content">
-                <span class="d-block small fw-bold">Lucide</span>
+                <h3 class="fs-4 fw-bold mb-2">A Generational Exposé</h3>
+                <p class="small text-secondary mb-3" style="max-width: 860px; line-height: 1.6">A full-width feature tile for a single premium initiative. Strong message, clean visual focus, and a confident narrative space.</p>
               </div>
             </div>
           </a>
@@ -1894,26 +1336,16 @@
 
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
         <div class="text-center text-md-start">
-          <div class="footer-brand mb-1">project.docs</div>
+          <div class="footer-brand mb-1">prismatic</div>
           <div class="footer-metadata">
-            Centralized Knowledge Architecture
+            A refined space for media, mastering ideas and offers.
           </div>
         </div>
 
         <div class="text-center">
-          <div class="footer-metadata mb-1">
-            Standard Reference &copy; <span id="year"></span>
-          </div>
+          <div class="footer-metadata mb-1">© <span id="year"></span> prismatic</div>
           <div class="fw-bold small text-uppercase" style="letter-spacing: 0.05em; font-size: 0.75rem">
             Michael K. Mueller
-          </div>
-        </div>
-
-        <div class="text-center text-md-end">
-          <div class="status-pill">
-            <span class="bg-success rounded-circle" style="width: 6px; height: 6px; display: inline-block"></span>
-
-            <span>System Nominal</span>
           </div>
         </div>
       </div>

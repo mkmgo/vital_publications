@@ -1,0 +1,2014 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>projects.docs</title>
+
+  <link rel="apple-touch-icon"
+    href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#020617" />
+  <meta name="msapplication-TileImage"
+    content="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png" />
+  <meta name="msapplication-TileColor" content="#020617" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="shortcut icon" href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png" />
+  <link rel="icon" type="image/png"
+    href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --clr-blue: #2565fa;
+      --clr-green: #198754;
+      --clr-indigo: #6610f2;
+      --clr-red: #eb4959;
+      --clr-amber: #f59f0be7;
+      --clr-grey: #64748b;
+      --tile-bg-light: #f8fafc;
+      /* Change this one value to update all tiles */
+      --tile-bg-dark: #1e293b;
+      --app-corner-radius: 0.4rem;
+      /* Adjust this value to your liking */
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s;
+
+      /* --- LIGHT MODE REFINED MOUNTAIN BLEND (STRENGTHENED) --- */
+      background-image:
+        linear-gradient(rgba(248, 250, 252, 0.92), rgba(248, 250, 252, 0.92)),
+        url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779825387/peace_mountains_c0bmud.png");
+      background-size: cover;
+      background-position: center bottom;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    /* --- THEME & BACKGROUNDS --- */
+    [data-bs-theme="dark"],
+    [data-bs-theme="dark"] body {
+      color-scheme: dark;
+      background-color: #020617 !important;
+
+      /* --- DARK MODE REFINED MOUNTAIN BLEND (STRENGTHENED) --- */
+      background-image:
+        linear-gradient(rgba(2, 6, 23, 0.90), rgba(2, 6, 23, 0.90)),
+        url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779825387/peace_mountains_c0bmud.png") !important;
+      background-size: cover;
+      background-position: center bottom;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    /* --- HEADER SYSTEM --- */
+
+    /* 1. The Logo Frame */
+    .header-link-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(15, 8, 46, 0.2);
+      background: rgba(245, 159, 11, 0.08) !important;
+    }
+
+    .header-link-icon i {
+      display: block;
+      line-height: 0;
+    }
+
+    [data-bs-theme="dark"] .header-link-icon {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border-color: rgba(100, 116, 139, 0.5);
+    }
+
+    /* 2. The Brand Title */
+    .brand-text {
+      font-weight: 400 !important;
+      color: var(--clr-grey);
+      line-height: 1.2;
+      /* Adjusted for descenders (p, j) */
+      letter-spacing: -0.01em;
+      font-size: 1.5rem;
+    }
+
+    main>header {
+      padding-top: 1.5rem !important;
+      padding-bottom: 0.5rem !important;
+      /* Reduced from 1.2rem */
+      margin-bottom: 1rem !important;
+      /* Reduced from 3.5rem */
+      width: 100%;
+    }
+
+    .main-container {
+      flex-grow: 1;
+      padding: 3rem 1.5rem;
+    }
+
+    .file-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* --- FLASHY SHINING YELLOW LIT TREE HEADER SYSTEM --- */
+
+    /* 1. The Logo Icon Glow and Active Shine */
+    .header-link-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+      /* Shimmering Yellow Foundation */
+      background: radial-gradient(circle, rgba(255, 223, 0, 0.25) 0%, rgba(245, 159, 11, 0.08) 100%) !important;
+      border: 1px solid rgba(255, 215, 0, 0.6) !important;
+      box-shadow:
+        0 0 12px rgba(255, 215, 0, 0.3),
+        inset 0 0 8px rgba(255, 255, 255, 0.2);
+      animation: logo-shimmer 3s infinite ease-in-out;
+    }
+
+    /* 2. Overriding Text States to Glow Like a Lit Tree */
+    .brand-text-glow {
+      font-weight: 800 !important;
+      /* Made heavier to hold the light weight */
+      color: #ffdf00 !important;
+      /* Vibrant Tree Yellow */
+      letter-spacing: -0.01em;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      transition: all 0.5s ease;
+
+      /* Concentrated Neon Shadow Core */
+      text-shadow:
+        0 0 4px rgba(255, 215, 0, 0.6),
+        0 0 12px rgba(255, 159, 11, 0.4);
+      animation: text-glow-pulse 3s infinite ease-in-out;
+    }
+
+    /* Secondary tagline light emission */
+    .sub-brand-glow {
+      color: #ffe680 !important;
+      opacity: 0.9 !important;
+      text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+    }
+
+    /* 3. The Shining Animations (Luminous Physics) */
+    @keyframes text-glow-pulse {
+
+      0%,
+      100% {
+        text-shadow:
+          0 0 4px rgba(255, 215, 0, 0.6),
+          0 0 12px rgba(255, 159, 11, 0.4);
+        filter: brightness(1);
+      }
+
+      50% {
+        text-shadow:
+          0 0 8px rgba(255, 235, 59, 0.95),
+          0 0 20px rgba(255, 152, 0, 0.75),
+          0 0 32px rgba(255, 235, 59, 0.3);
+        filter: brightness(1.25);
+      }
+    }
+
+    @keyframes logo-shimmer {
+
+      0%,
+      100% {
+        box-shadow:
+          0 0 12px rgba(255, 215, 0, 0.3),
+          inset 0 0 8px rgba(255, 255, 255, 0.2);
+        transform: scale(1);
+      }
+
+      50% {
+        box-shadow:
+          0 0 24px rgba(255, 215, 0, 0.75),
+          0 0 8px rgba(255, 152, 0, 0.4),
+          inset 0 0 12px rgba(255, 255, 255, 0.5);
+        transform: scale(1.03);
+        border-color: rgba(255, 255, 255, 0.9) !important;
+      }
+    }
+
+    /* Interactive Hover state: instant spark when mouse enters */
+    .header-link-glow-container:hover .header-link-icon {
+      animation: none;
+      box-shadow:
+        0 0 30px rgba(255, 235, 59, 1),
+        0 0 15px rgba(255, 152, 0, 0.6),
+        inset 0 0 15px rgba(255, 255, 255, 0.8);
+      transform: scale(1.06);
+    }
+
+    .header-link-glow-container:hover .brand-text-glow {
+      animation: none;
+      text-shadow:
+        0 0 12px rgba(255, 255, 255, 1),
+        0 0 25px rgba(255, 235, 59, 1),
+        0 0 45px rgba(255, 152, 0, 0.8);
+    }
+
+    /* --- TILE SYSTEM & HOVER --- */
+    .bg-white-card {
+      background-color: var(--tile-bg-light);
+      border: 1px solid #e2e8f0;
+      border-radius: var(--app-corner-radius);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* This must be its own separate block */
+    .bg-white-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+    }
+
+    [data-bs-theme="dark"] .bg-white-card {
+      background-color: var(--tile-bg-dark) !important;
+      border-color: #334155;
+    }
+
+    .file-link:hover .bg-white-card {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Border Persistence */
+    .bw-1 {
+      border-width: 1px !important;
+    }
+
+    .bw-2 {
+      border-width: 2px !important;
+    }
+
+    .bw-3 {
+      border-width: 3px !important;
+    }
+
+    .bw-4 {
+      border-width: 4px !important;
+    }
+
+    .bg-white-card.border-blue {
+      border-color: var(--clr-blue) !important;
+    }
+
+    .bg-white-card.border-amber {
+      border-color: var(--clr-amber) !important;
+    }
+
+    .bg-white-card.border-indigo {
+      border-color: var(--clr-indigo) !important;
+    }
+
+    .bg-white-card.border-green {
+      border-color: var(--clr-green) !important;
+    }
+
+    .bg-white-card.border-grey {
+      border-color: var(--clr-grey) !important;
+    }
+
+    .bg-white-card.border-red {
+      border-color: var(--clr-red) !important;
+    }
+
+    /* Dark Mode Border Luminosity */
+    [data-bs-theme="dark"] .bg-white-card.border-blue {
+      border-color: #2565fabf !important;
+    }
+
+    [data-bs-theme="dark"] .bg-white-card.border-amber {
+      border-color: #ebd64991 !important;
+    }
+
+    [data-bs-theme="dark"] .bg-white-card.border-indigo {
+      border-color: #6610f2 !important;
+    }
+
+    [data-bs-theme="dark"] .bg-white-card.border-green {
+      border-color: #22c55e !important;
+    }
+
+    [data-bs-theme="dark"] .bg-white-card.border-grey {
+      border-color: #94a3b8 !important;
+    }
+
+    [data-bs-theme="dark"] .bg-white-card.border-red {
+      border-color: #f87171 !important;
+    }
+
+    /* Soft Tints */
+    .soft-tint-blue {
+      background-color: #0d6dfd2e !important;
+    }
+
+    .soft-tint-amber {
+      background-color: #edaa362d !important;
+    }
+
+    .soft-tint-green {
+      background-color: #0bf52a57 !important;
+    }
+
+    .soft-tint-indigo {
+      background-color: #6710f225 !important;
+    }
+
+    .soft-tint-red {
+      background-color: #c9233322 !important;
+    }
+
+    .soft-tint-grey {
+      background-color: #64748b0d !important;
+    }
+
+    /* Dark Mode Soft Tint Visibility Fix */
+    [data-bs-theme="dark"] .soft-tint-blue {
+      background-color: rgba(13, 109, 253, 0.15) !important;
+    }
+
+    [data-bs-theme="dark"] .soft-tint-amber {
+      background-color: rgba(237, 170, 54, 0.25) !important;
+    }
+
+    [data-bs-theme="dark"] .soft-tint-green {
+      background-color: rgba(11, 245, 42, 0.15) !important;
+    }
+
+    [data-bs-theme="dark"] .soft-tint-indigo {
+      background-color: rgba(103, 16, 242, 0.2) !important;
+    }
+
+    [data-bs-theme="dark"] .soft-tint-red {
+      background-color: rgba(201, 35, 51, 0.2) !important;
+    }
+
+    [data-bs-theme="dark"] .soft-tint-grey {
+      background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    /* --- BACKGROUND IMAGE LAYER --- */
+    .tile-img-bg {
+      min-height: 200px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tile-img-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    [data-bs-theme="light"] .tile-img-bg::before {
+      background: #ffffffe0;
+    }
+
+    [data-bs-theme="dark"] .tile-img-bg::before {
+      background: rgba(15, 23, 42, 0.82);
+    }
+
+    /* FIXED TILE CONTENT: Added align-items to prevent tag stretching */
+    .tile-content {
+      z-index: 1;
+      width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      align-items: flex-start;
+    }
+
+    /* --- CATEGORY HEADERS --- */
+
+    .category-header {
+      margin: 3.5rem 0 1.5rem 0;
+      width: 100%;
+      /* Ensures they take up the full row */
+      display: block;
+      /* Prevents them from behaving like the top header */
+    }
+
+    .category-header h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .header-blue h2 {
+      color: var(--clr-blue);
+    }
+
+    .header-amber h2 {
+      color: var(--clr-amber);
+    }
+
+    .header-indigo h2 {
+      color: var(--clr-indigo);
+    }
+
+    .header-green h2 {
+      color: var(--clr-green);
+    }
+
+    .header-grey h2 {
+      color: var(--clr-grey);
+    }
+
+    .header-red h2 {
+      color: var(--clr-red);
+    }
+
+    /* --- TAGS & COMPONENTS --- */
+    .ui-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      padding-top: 0.35rem !important;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: 1px solid currentColor;
+      background: rgba(0, 0, 0, 0.03);
+      line-height: 1;
+    }
+
+    .tag-blue {
+      color: var(--clr-blue);
+    }
+
+    .tag-amber {
+      color: var(--clr-amber);
+    }
+
+    .tag-indigo {
+      color: var(--clr-indigo);
+    }
+
+    .tag-green {
+      color: var(--clr-green);
+    }
+
+    .tag-red {
+      color: var(--clr-red);
+    }
+
+    .tag-grey {
+      color: var(--clr-grey);
+    }
+
+    .tag-cutout {
+      border: none !important;
+      font-weight: 800;
+      color: #f8fafc !important;
+    }
+
+    .tag-blue.tag-cutout {
+      background-color: var(--clr-blue) !important;
+    }
+
+    .tag-amber.tag-cutout {
+      background-color: var(--clr-amber) !important;
+    }
+
+    .tag-green.tag-cutout {
+      background-color: var(--clr-green) !important;
+    }
+
+    .tag-indigo.tag-cutout {
+      background-color: var(--clr-indigo) !important;
+    }
+
+    .tag-red.tag-cutout {
+      background-color: var(--clr-red) !important;
+    }
+
+    .tag-grey.tag-cutout {
+      background-color: var(--clr-grey) !important;
+    }
+
+    [data-bs-theme="dark"] .tag-cutout {
+      color: #020617 !important;
+    }
+
+    /* --- COLLAGE TYPE ARCHITECTURE --- */
+    .collage-headline {
+      font-weight: 800 !important;
+      font-size: 2.5rem;
+      letter-spacing: -0.02em;
+      color: var(--clr-grey);
+      line-height: 1;
+      margin-top: 0.5rem;
+    }
+
+    [data-bs-theme="dark"] .collage-headline {
+      color: #ffffff !important;
+    }
+
+    /* Poetic expression layer to replace body block */
+    .collage-statement {
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #64748b;
+      /* Slate grey mute */
+      max-width: 90%;
+    }
+
+    /* A tracking stamp to break monotony */
+    .collage-stamp {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--clr-grey);
+      opacity: 0.8;
+    }
+
+    /* --- ALIGNMENT & UTILS --- */
+    .tile-left {
+      text-align: left;
+    }
+
+    /* Removed flex-start here as parent handles it */
+    .tile-center {
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mt-auto-tag {
+      margin-top: auto !important;
+    }
+
+    /* --- COMPACT BEAUTIFIED FOOTER --- */
+    .custom-footer {
+      background-color: transparent;
+      color: var(--clr-grey);
+      /* border-top: 2px solid rgba(0, 0, 0, 0.05);  <-- DELETE THIS LINE */
+      padding-top: 1rem !important;
+      padding-bottom: 2rem !important;
+      margin-top: 0.5rem !important;
+    }
+
+    [data-bs-theme="dark"] .custom-footer {
+      border-top-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-brand {
+      font-weight: 400;
+      color: var(--clr-amber);
+      letter-spacing: -0.01em;
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+
+    .footer-metadata {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    /* Unified Line for Header and Dividers - Now contained to content width */
+    .brand-line {
+      position: relative;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.05) !important;
+    }
+
+    /* We remove the ::after logic so it doesn't stretch to the screen edges */
+    .brand-line::after {
+      display: none !important;
+    }
+
+    [data-bs-theme="dark"] .brand-line {
+      border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 2px 10px;
+      border-radius: 50px;
+      border: 1px solid rgba(100, 116, 139, 0.2);
+      background: rgba(100, 116, 139, 0.05);
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--clr-grey);
+      /* This keeps all text grey by default */
+      text-transform: uppercase;
+    }
+
+    /* --- REFINED COCKPIT BANNER SYSTEM --- */
+    .banner-box {
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--app-corner-radius);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-top: 1.5rem !important;
+      margin-bottom: 1.5rem !important;
+      background-color: #8888889a;
+      border: 1px solid #8e8d8d4e;
+    }
+
+    /* Cinematic Cockpit Layout */
+    .banner-cockpit {
+      height: 260px;
+      /* Kept the updated height to showcase the skyscrapers */
+      position: relative;
+      overflow: hidden;
+      border: none !important;
+      cursor: pointer;
+      z-index: 1;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    /* Restored original dark slate mask, alignment, filters, and panning physics */
+    .banner-cockpit::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(rgba(2, 6, 23, 0.45), rgba(2, 6, 23, 0.45)),
+        url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779820306/webbanner_e5bib0.webp");
+      background-size: cover;
+      background-position: center;
+      animation: dynamic-banner-pan 24s infinite ease-in-out;
+      transition: all 0.4s ease;
+    }
+
+    /* Original hover interactions and frame transformations */
+    .banner-cockpit:hover {
+      transform: translateY(-2px);
+      border-color: rgba(37, 101, 250, 0.6) !important;
+      box-shadow: 0 10px 25px -10px rgba(37, 101, 250, 0.35);
+    }
+
+    .banner-cockpit:hover::before {
+      filter: brightness(1.15) contrast(105%);
+    }
+
+    /* Original motion speed and panning scale dimensions */
+    @keyframes dynamic-banner-pan {
+
+      0%,
+      100% {
+        transform: scale(1.02) translate(0px, 0px);
+      }
+
+      50% {
+        transform: scale(1.08) translate(-5px, -2px);
+      }
+    }
+
+    /* System dark theme handling */
+    [data-bs-theme="dark"] .banner-box {
+      background-color: #1e293b;
+      border-color: #334155;
+    }
+
+    [data-bs-theme="dark"] .banner-cockpit::before {
+      background:
+        linear-gradient(rgba(2, 6, 23, 0.65), rgba(2, 6, 23, 0.65)),
+        url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779820306/webbanner_e5bib0.webp");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .banner-cockpit::after {
+      display: none !important;
+    }
+
+    [data-bs-theme="dark"] .banner-box {
+      background-color: #1e293b;
+      border-color: #334155;
+    }
+
+    [data-bs-theme="dark"] .banner-cockpit {
+      background-color: rgba(255, 255, 255, 0.03) !important;
+    }
+
+    .banner-box h2 {
+      /* Removed Blue background and Yellow text */
+      color: #ffffff !important;
+      font-weight: 800 !important;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 1.1rem;
+      margin: 0 !important;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      border: none !important;
+    }
+
+    [data-bs-theme="dark"] .banner-box h2 {
+      color: #94a3b8 !important;
+    }
+
+    /* --- BANNER VALIDATION TICK --- */
+    .header-status-tick {
+      width: 28px;
+      height: 28px;
+      background-color: var(--clr-blue);
+      /* This will now be blue */
+      border: 3px solid rgba(245, 242, 242, 0.271);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      /* Dark icon color for contrast */
+      flex-shrink: 0;
+      /* Prevents the circle from squishing */
+      transition: all 0.3s ease;
+    }
+
+    [data-bs-theme="dark"] .header-status-tick {
+      background-color: #0d0da38d;
+      /* Slightly deeper green for dark mode */
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+
+    /* Fixes the "decent distance" under any row */
+    .spacer-bottom {
+      margin-bottom: 3rem !important;
+    }
+
+    /* 1. Initial State: Applies to both Light and Dark modes */
+    .bg-white-card div[style*="background-image"] {
+      filter: grayscale(1) brightness(0.8);
+      opacity: 0.8;
+      transition: all 0.5s ease;
+    }
+
+    /* 2. Hover State: Returns color in both Light and Dark modes */
+    .bg-white-card:hover div[style*="background-image"] {
+      filter: grayscale(0) brightness(1);
+      opacity: 1;
+    }
+
+    /* --- MOTTO TILE (TILE 2) HOVER STATE --- */
+    /* Targets the specific card containing your motto */
+    .bg-white-card.border-grey:has(.collage-headline):hover {
+      background-color: rgba(37,
+          101,
+          250,
+          0.08) !important;
+      /* Soft-tint blue */
+      border-color: var(--clr-blue) !important;
+      /* Solid blue border */
+      border-width: 1px !important;
+      /* Border weight 1 */
+    }
+
+    /* Reveal the image on hover */
+    [data-bs-theme="dark"] .bg-white-card:hover div[style*="background-image"] {
+      filter: grayscale(0) brightness(1);
+      opacity: 1;
+    }
+
+    /* --- Final Fix for Image Loading Shade --- */
+    .profile-image-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      /* Use the professional photo as the container background itself */
+      background-image: url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1776519896/Michael_K._M%C3%BCller_yinetk.png");
+      background-size: cover;
+      background-position: center;
+      background-color: #000;
+      filter: grayscale(100%) contrast(110%);
+    }
+
+    .profile-image-container div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Primary Image: Now only handles the zoom/movement, opacity is locked at 1 */
+    .img-primary {
+      z-index: 1;
+      opacity: 1;
+      background-image: url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1776519896/Michael_K._M%C3%BCller_yinetk.png");
+      animation: primary-zoom 12s infinite ease-in-out;
+    }
+
+    /* Secondary Image: Fades in/out on top of the primary */
+    .img-secondary {
+      z-index: 2;
+      opacity: 0;
+      /* Starts invisible */
+      background-image: url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1776301461/imgc11l_a0rpud.jpg");
+      animation: secondary-fade-in-out 12s infinite ease-in-out;
+      animation-delay: 6s;
+    }
+
+    /* Primary only zooms */
+    @keyframes primary-zoom {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.06);
+      }
+    }
+
+    /* Secondary fades and zooms over the primary */
+    @keyframes secondary-fade-in-out {
+
+      0%,
+      15%,
+      85%,
+      100% {
+        opacity: 0;
+        transform: scale(1);
+      }
+
+      45%,
+      55% {
+        opacity: 1;
+        transform: scale(1.06);
+      }
+    }
+
+    .banner-cockpit:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.2);
+      box-shadow:
+        0 10px 20px -10px rgba(37, 101, 250, 0.4),
+        inset 0 0 15px rgba(255, 255, 255, 0.05);
+    }
+
+    /* Subtle overlay color blend modification during hover */
+    .banner-cockpit:hover::before {
+      filter: brightness(1.15) contrast(105%);
+      background:
+        linear-gradient(rgba(37, 101, 250, 0.25), rgba(2, 6, 23, 0.55)),
+        url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779820306/webbanner_e5bib0.webp");
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Update the existing .banner-cockpit or add this below it */
+    .banner-cockpit {
+      /* This integrates your Cloudinary image as a layered background */
+      background:
+        linear-gradient(rgba(2, 6, 23, 0.65), rgba(2, 6, 23, 0.65)),
+        url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1778172143/dash_banner_p6ob7a.png");
+      background-size: cover;
+      background-position: center;
+
+      /* The Glass Effect */
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+      /* Interaction logic */
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* The Hover Effect */
+    .banner-cockpit:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.2);
+      box-shadow:
+        0 10px 20px -10px rgba(37, 101, 250, 0.4),
+        inset 0 0 15px rgba(255, 255, 255, 0.05);
+    }
+
+    /* Animation for the blue checkmark icon inside the banner */
+    .banner-cockpit:hover .header-status-tick {
+      transform: scale(1.2) rotate(5deg);
+      background-color: #ffffff !important;
+      color: #2565fa !important;
+    }
+
+    /* The "Active" Pulse animation for functional status */
+    @keyframes pulse-status {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* --- SEASONAL DONUT CHART SYSTEM --- */
+    .seasonal-donut {
+      position: relative;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      /* 83% progress through the year matches roughly 300deg out of 360deg */
+      background: conic-gradient(var(--clr-blue, #2563eb) 0deg 300deg,
+          rgba(37, 101, 250, 0.15) 300deg 360deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      flex-shrink: 0;
+      /* Prevents the circle from squishing on small screens */
+    }
+
+    .seasonal-donut:hover {
+      transform: scale(1.05);
+    }
+
+    .donut-hole {
+      width: 52px;
+      height: 52px;
+      background-color: #ffffff;
+      /* Matches your light theme bg-white-card */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .donut-text {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--clr-blue, #2563eb);
+    }
+
+    /* Dark mode compatibility safeguard */
+    [data-bs-theme="dark"] .donut-hole {
+      background-color: #1e293b;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="main-container container">
+    <header class="d-flex justify-content-between align-items-end brand-line">
+      <div class="d-flex align-items-center gap-3 header-link-glow-container" style="cursor: pointer;">
+        <div class="header-link-icon">
+          <i data-lucide="gem" style="color: #ffd700; width: 24px; height: 24px;"></i>
+        </div>
+
+        <a href="index.html" class="text-decoration-none d-flex flex-column">
+          <span class="brand-text-glow">prismatic</span>
+          <span class="sub-brand-glow" style="
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-top: 2px;
+      ">
+            The Space Beyond
+          </span>
+        </a>
+      </div>
+
+      <div class="d-none d-md-block pb-1">
+        <div class="status-pill">V2026.01</div>
+      </div>
+    </header>
+    <section id="dashboard">
+      <div class="banner-box banner-cockpit d-flex flex-column justify-content-center p-4 p-md-5">
+        <div class="position-relative z-3 max-w-xl text-start">
+          <span class="ui-tag tag-blue tag-cutout mb-2" style="letter-spacing: 0.15em; font-size: 0.6rem">
+            Operational Catalyst
+          </span>
+          <h1 class="display-5 fw-extrabold text-white mb-2 tracking-tight" style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-weight: 800;
+              ">
+            PRISMATIC / THE SPACE BEYOND
+          </h1>
+          <p class="mb-0 text-white-50 fw-medium d-none d-sm-block"
+            style="font-size: 0.95rem; max-width: 540px; line-height: 1.4">
+            Architecting high-level digital systems, managing integrated
+            structural workflows, and optimizing continuous cross-market
+            strategic execution.
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-4 align-items-stretch">
+
+        <!-- CLOCK / SEASON TILE -->
+        <div class="col-12 col-md-3">
+          <div class="card h-100 bg-white-card shadow-sm">
+            <div class="card-body">
+              <div class="d-flex flex-column h-100 justify-content-between">
+
+                <div>
+                  <span id="compass-time" class="display-6 fw-bold text-primary"></span>
+
+                  <div class="text-muted small mt-1">
+                    <span id="compass-wm"></span>
+                    <span id="compass-wy"></span>
+                  </div>
+
+                  <div class="mt-2">
+                    <span id="compass-date" class="text-secondary fw-semibold"></span>
+                  </div>
+                </div>
+
+                <div class="my-3 d-flex align-items-center gap-3">
+                  <div class="seasonal-donut">
+                    <div class="donut-hole">
+                      <span class="donut-text">83%</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p class="mb-0 fw-bold small text-dark">
+                      Seasonal Course
+                    </p>
+
+                    <p class="text-muted mb-0" style="font-size: 0.75rem;">
+                      ~1 month until South
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <p class="text-muted small mb-0">
+                    South African autumn weather
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIN IDENTITY TILE -->
+        <div class="col-12 col-md-6">
+          <div class="bg-white-card border-grey p-4 h-100 soft-tint-grey">
+            <div class="tile-content">
+
+              <span class="ui-tag tag-grey tag-cutout mb-3" style="letter-spacing: 0.1em">
+                The Space Beyond
+              </span>
+
+              <p class="collage-statement mb-2">
+                A quiet collector of fragments, ideas,
+                and continuous digital artifacts.
+              </p>
+
+              <h1 class="collage-headline mb-3">
+                all this is michael.
+              </h1>
+
+              <div class="collage-stamp mb-3">
+                // CHRONICLES & SYSTEM ARCHIVES
+              </div>
+
+              <div class="w-100 border-top opacity-10 mb-3"></div>
+
+              <p class="fw-bold fst-italic text-white mb-0" style="font-size: 0.75rem; letter-spacing: 0.05em">
+                phase oneoneoneoneoneoneoneone.
+              </p>
+
+              <div class="d-flex gap-3 mt-auto">
+                <span id="current-date-stamp" class="d-none"></span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- PROFILE IMAGE TILE -->
+        <div class="col-12 col-md-3">
+          <div class="bg-white-card border-grey bw-1 overflow-hidden h-100" style="min-height: 260px;">
+
+            <div style="
+        width: 100%;
+        height: 100%;
+        min-height: 260px;
+        background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1776301461/imgc11l_a0rpud.jpg?v=2');
+        background-size: cover;
+        background-position: center;
+        filter: grayscale(1) brightness(0.45);
+        transition:
+          transform 2s cubic-bezier(0.25, 1, 0.5, 1),
+          filter 1.6s ease;
+      " onmouseover="
+        this.style.transform='scale(1.05)';
+        this.style.filter='grayscale(0) brightness(0.8)';
+      " onmouseout="
+        this.style.transform='scale(1)';
+        this.style.filter='grayscale(1) brightness(0.45)';
+      ">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="bg-white-card border-grey bw-1 overflow-hidden" style="min-height: 90px">
+            <div style="
+                    width: 100%;
+                    height: 100%;
+                    min-height: 90px;
+                    background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/v1768512311/prototyoe_mwukx1.jpg&quot;);
+                    background-size: cover;
+                    background-position: center;
+                    transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+                  " onmouseover="this.style.transform = 'scale(1.05)'" onmouseout="this.style.transform = 'scale(1)'">
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://mkmgo.github.io/vital_publications/gallery.html" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-red border-red bw-2" style="min-height: 90px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold mb-1"> Gallery </span>
+
+                <p class="small text-primary mb-0">
+                  Media Gallery for Visual Inspiration
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://mkmgo.github.io/vital_publications/evening_prayer.html" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-blue border-blue bw-2" style="min-height: 90px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold mb-1">
+                  Prayer and Motivation
+                </span>
+
+                <p class="small text-primary mb-0">
+                  Mobile-friedly prayer prototype
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://mkmgo.github.io/vital_publications/build_expertise.html" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-amber border-amber bw-3" style="min-height: 90px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold mb-1">Masterclass</span>
+
+                <p class="small text-primary mb-0">
+                  Expertise Drives Performance
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://mkmgo.github.io/vital_publications/subsite-a.html" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-1" style="min-height: 90px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold text-muted">Prototype A</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://mkmgo.github.io/vital_publications/subsite.html" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-1" style="min-height: 90px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold text-muted">Prototype B</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      </div>
+    </section>
+    <div class="brand-line mb-2"></div>
+    <section id="projects">
+      <div class="banner-box banner-section">
+        <h2>
+          <i data-lucide="Activity" style="
+                color: var(--clr-blue);
+                width: 28px;
+                height: 28px;
+                stroke-width: 2;
+              "></i>
+          Pulse
+        </h2>
+        <div class="header-status-tick">
+          <i data-lucide="check" style="width: 18px; height: 18px; stroke-width: 4"></i>
+        </div>
+      </div>
+      <div class="row g-4 mb-4">
+        <div class="col-md-6">
+          <a href="#" class="file-link">
+            <div class="p-4 bg-white-card soft-tint-amber border-amber bw-2 tile-left">
+              <div class="tile-content">
+                <span class="ui-tag tag-green tag-cutout mb-2">Skills</span>
+                <h3 class="fs-3 fw-bold mb-1">
+                  Themed Masterclass
+                  <h2 class="fs-4 fw-semibold text-secondary mb-1">
+                    Infinite Strength
+                  </h2>
+                </h3>
+                <style>
+                  /* Hover effect logic for the image clip */
+                  .file-link:hover .zoom-img {
+                    transform: scale(1.15);
+                    filter: grayscale(0);
+                  }
+
+                  .file-link:hover .image-clip-wrapper {
+                    border-color: var(--clr-blue) !important;
+                  }
+                </style>
+
+                <div class="d-flex flex-column flex-md-row gap-4 align-items-start mt-4">
+                  <div class="image-clip-wrapper position-relative"
+                    style="flex-shrink: 0; transition: border-color 0.3s ease">
+                    <div style="
+                          width: 140px;
+                          height: 140px;
+                          border: 1px solid var(--clr-grey);
+                          border-radius: 8px;
+                          overflow: hidden;
+                          padding: 6px;
+                          background: rgba(255, 255, 255, 0.05);
+                          backdrop-filter: blur(4px);
+                        ">
+                      <div class="zoom-img" style="
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png&quot;);
+                            background-size: cover;
+                            background-position: center;
+                            border-radius: 4px;
+                            filter: grayscale(0.8);
+                            transition:
+                              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                              filter 0.5s ease;
+                          "></div>
+                    </div>
+                    <span class="position-absolute bottom-0 end-0 bg-dark text-white px-2 py-1 fw-bold" style="
+                          font-size: 0.5rem;
+                          border-radius: 4px 0 0 0;
+                          letter-spacing: 1px;
+                          z-index: 2;
+                        ">
+                      Halith
+                    </span>
+                  </div>
+
+                  <div class="clip-context">
+                    <h4 class="fs-6 fw-bold mb-1" style="color: var(--clr-grey)">
+                      More Resilience
+                    </h4>
+                    <p class="small fw-bold text-secondary mb-2" style="max-width: 400px; line-height: 1.4">
+                      Motivational tool providing mental relief with a proven
+                      Stoic approach.
+                    </p>
+                  </div>
+                </div>
+                <p class="small fw-bold text-secondary">
+                  Your personal mental training.
+                </p>
+
+                <div class="ui-tag tag-green tag-cutout mt-auto-tag">
+                  <i data-lucide="check" style="width: 12px; margin-right: 4px"></i>
+                  Activate
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="file-link">
+            <div class="p-4 bg-white-card border-indigo bw-1 soft-tint-indigo tile-left">
+              <div class="tile-content">
+                <span class="ui-tag tag-indigo tag-cutout mb-2">Mobile</span>
+                <h3 class="fs-3 fw-bold mb-1">
+                  Halith
+                  <h2 class="fs-4 fw-semibold text-secondary mb-1">
+                    Infinite Strength
+                  </h2>
+                </h3>
+                <style>
+                  /* Hover effect logic for the image clip */
+                  .file-link:hover .zoom-img {
+                    transform: scale(1.15);
+                    filter: grayscale(0);
+                  }
+
+                  .file-link:hover .image-clip-wrapper {
+                    border-color: var(--clr-blue) !important;
+                  }
+                </style>
+
+                <div class="d-flex flex-column flex-md-row gap-4 align-items-start mt-4">
+                  <div class="image-clip-wrapper position-relative"
+                    style="flex-shrink: 0; transition: border-color 0.3s ease">
+                    <div style="
+                          width: 140px;
+                          height: 140px;
+                          border: 1px solid var(--clr-grey);
+                          border-radius: 8px;
+                          overflow: hidden;
+                          padding: 6px;
+                          background: rgba(255, 255, 255, 0.05);
+                          backdrop-filter: blur(4px);
+                        ">
+                      <div class="zoom-img" style="
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png&quot;);
+                            background-size: cover;
+                            background-position: center;
+                            border-radius: 4px;
+                            filter: grayscale(0.8);
+                            transition:
+                              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                              filter 0.5s ease;
+                          "></div>
+                    </div>
+                    <span class="position-absolute bottom-0 end-0 bg-dark text-white px-2 py-1 fw-bold" style="
+                          font-size: 0.5rem;
+                          border-radius: 4px 0 0 0;
+                          letter-spacing: 1px;
+                          z-index: 2;
+                        ">
+                      Halith
+                    </span>
+                  </div>
+
+                  <div class="clip-context">
+                    <h4 class="fs-6 fw-bold mb-1" style="color: var(--clr-grey)">
+                      More Resilience
+                    </h4>
+                    <p class="small fw-bold text-secondary mb-2" style="max-width: 400px; line-height: 1.4">
+                      Motivational tool providing mental relief with a proven
+                      Stoic approach.
+                    </p>
+                  </div>
+                </div>
+                <p class="small fw-bold text-secondary">
+                  Your personal mental training.
+                </p>
+
+                <div class="ui-tag tag-green tag-cutout mt-auto-tag">
+                  <i data-lucide="check" style="width: 12px; margin-right: 4px"></i>
+                  Activate
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="row g-4 mb-4">
+        <div class="col-12">
+          <a href="YOUR_LINK_HERE.html" target="_blank" class="file-link">
+            <div class="p-4 bg-white-card border-amber soft-tint-amber bw-1 tile-left tile-img-bg" style="
+                  background-image: url(&quot;YOUR_IMAGE_URL.jpg&quot;);
+                  min-height: 250px;
+                ">
+              <div class="tile-content">
+                <span class="ui-tag tag-red tag-cutout mb-2">Spotlight</span>
+
+                <h3 class="fs-4 fw-bold mb-2">
+                  Present Your Unique Value Proposition
+                </h3>
+                <p class="small text-secondary mb-0" style="max-width: 800px">
+                  <b>Provide a detailed description here. This full-width
+                    layout is best suited for long-form descriptions that
+                    require more horizontal space.</b>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="row g-4 mb-4">
+        <div class="col-12">
+          <a href="YOUR_LINK_HERE.html" target="_blank" class="file-link">
+            <div class="p-4 bg-white-card soft-tint-indigo border-indigo bw-1 tile-left tile-img-bg" style="
+                  background-image: url(&quot;YOUR_IMAGE_URL.jpg&quot;);
+                  min-height: 250px;
+                ">
+              <div class="tile-content">
+                <span class="ui-tag tag-amber tag-cutout mb-2">3D Visualisation</span>
+
+                <h3 class="fs-4 fw-bold mb-2">
+                  Virtualise. Visualise. Realise.
+                </h3>
+                <p class="small text-secondary mb-0" style="max-width: 800px">
+                  <b>Provide a detailed description here. This full-width
+                    layout is best suited for long-form descriptions that
+                    require more horizontal space.</b>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-12 col-md-6">
+          <a href="#" class="file-link">
+            <div class="p-4 bg-white-card soft-tint-green border-green bw-1 tile-left tile-img-bg" style="
+                  background-image: url(https://res.cloudinary.com/dqwm4pdbz/image/upload/v1767216761/my-express-uploads/cbsjn95wtojb2lwvvxcz.png);
+                  min-height: 250px;
+                ">
+              <div class="tile-content">
+                <span class="ui-tag tag-green tag-cutout mb-2">Media</span>
+                <h3 class="fs-4 fw-bold mb-1">A Generational Exposé</h3>
+                <p class="small text-secondary mb-3" style="max-width: 800px">
+                  <b>High-level documentation and layout standards for
+                    long-form content.</b>
+                </p>
+                <div class="table-responsive mb-3">
+                  <table class="table table-sm table-borderless align-middle mb-0"
+                    style="font-size: 0.72rem; --bs-table-bg: transparent">
+                    <thead class="text-secondary border-bottom border-secondary-subtle">
+                      <tr>
+                        <th scope="col" class="fw-bold px-0 pb-2" style="letter-spacing: 0.05em">
+                          Milestone
+                        </th>
+                        <th scope="col" class="fw-bold px-0 pb-2 text-center"
+                          style="letter-spacing: 0.05em; width: 120px">
+                          Status
+                        </th>
+                        <th scope="col" class="fw-bold px-0 pb-2 text-end" style="letter-spacing: 0.05em">
+                          Timeline
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-secondary">
+                      <tr>
+                        <td class="px-0 py-2 text-dark-emphasis fw-semibold">
+                          Project definition
+                        </td>
+                        <td class="px-0 py-2">
+                          <div class="d-flex justify-content-center gap-1">
+                            <div style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.8;
+                                "></div>
+                            <div style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.8;
+                                "></div>
+                            <div style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.8;
+                                "></div>
+                            <div style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.2;
+                                "></div>
+                          </div>
+                        </td>
+                        <td class="px-0 py-2 text-end">Jan 26</td>
+                      </tr>
+                      <tr>
+                        <td class="px-0 py-2 text-dark-emphasis fw-semibold">
+                          Project onboarding
+                        </td>
+                        <td class="px-0 py-2">
+                          <div class="d-flex justify-content-center gap-1">
+                            <div style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.8;
+                                "></div>
+                            <div style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.2;
+                                "></div>
+                            <div style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.2;
+                                "></div>
+                            <div style="
+                                  width: 12px;
+                                  height: 4px;
+                                  background: var(--clr-green);
+                                  border-radius: 1px;
+                                  opacity: 0.2;
+                                "></div>
+                          </div>
+                        </td>
+                        <td class="px-0 py-2 text-end">Jan 26</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="small text-secondary mb-0" style="max-width: 800px; opacity: 0.8">
+                  Additional technical specifications and repository access
+                  are available via the internal secure gateway.
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="file-link">
+            <div class="p-4 bg-white-card border-indigo bw-1 soft-tint-indigo tile-left">
+              <div class="tile-content">
+                <span class="ui-tag tag-indigo tag-cutout mb-2">Mobile</span>
+                <h3 class="fs-3 fw-bold mb-1">
+                  Halith
+                  <h2 class="fs-4 fw-semibold text-secondary mb-1">
+                    Infinite Strength
+                  </h2>
+                </h3>
+                <style>
+                  /* Hover effect logic for the image clip */
+                  .file-link:hover .zoom-img {
+                    transform: scale(1.15);
+                    filter: grayscale(0);
+                  }
+
+                  .file-link:hover .image-clip-wrapper {
+                    border-color: var(--clr-blue) !important;
+                  }
+                </style>
+
+                <div class="d-flex flex-column flex-md-row gap-4 align-items-start mt-4">
+                  <div class="image-clip-wrapper position-relative"
+                    style="flex-shrink: 0; transition: border-color 0.3s ease">
+                    <div style="
+                          width: 140px;
+                          height: 140px;
+                          border: 1px solid var(--clr-grey);
+                          border-radius: 8px;
+                          overflow: hidden;
+                          padding: 6px;
+                          background: rgba(255, 255, 255, 0.05);
+                          backdrop-filter: blur(4px);
+                        ">
+                      <div class="zoom-img" style="
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png&quot;);
+                            background-size: cover;
+                            background-position: center;
+                            border-radius: 4px;
+                            filter: grayscale(0.8);
+                            transition:
+                              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                              filter 0.5s ease;
+                          "></div>
+                    </div>
+                    <span class="position-absolute bottom-0 end-0 bg-dark text-white px-2 py-1 fw-bold" style="
+                          font-size: 0.5rem;
+                          border-radius: 4px 0 0 0;
+                          letter-spacing: 1px;
+                          z-index: 2;
+                        ">
+                      Halith
+                    </span>
+                  </div>
+
+                  <div class="clip-context">
+                    <h4 class="fs-6 fw-bold mb-1" style="color: var(--clr-grey)">
+                      More Resilience
+                    </h4>
+                    <p class="small fw-bold text-secondary mb-2" style="max-width: 400px; line-height: 1.4">
+                      Motivational tool providing mental relief with a proven
+                      Stoic approach.
+                    </p>
+                  </div>
+                </div>
+                <p class="small fw-bold text-secondary">
+                  Your personal mental training.
+                </p>
+
+                <div class="ui-tag tag-green tag-cutout mt-auto-tag">
+                  <i data-lucide="check" style="width: 12px; margin-right: 4px"></i>
+                  Activate
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <div class="brand-line mb-2"></div>
+    <section id="documents">
+      <div class="banner-box banner-section">
+        <h2>
+          <i data-lucide="file-stack" style="
+                color: var(--clr-amber);
+                width: 28px;
+                height: 28px;
+                stroke-width: 2;
+              "></i>
+          Documents
+        </h2>
+        <div class="header-status-tick">
+          <i data-lucide="check" style="width: 18px; height: 18px; stroke-width: 4"></i>
+        </div>
+      </div>
+      <div class="row g-4 mb-4">
+        <div class="col-md-6">
+          <a href="https://forms.gle/gwHhZnjjPrN5r8Yw6" target="_blank" class="file-link">
+            <div class="p-4 bg-white-card border-amber bw-1 tile-left tile-img-bg" style="
+                  background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766073589/Profile_Cover_cgzt6s.jpg&quot;);
+                ">
+              <div class="tile-content">
+                <span class="ui-tag tag-amber mb-2">Questionnaire</span>
+                <h3 class="fs-5 fw-bold mb-2">
+                  Integrated Competence Discovery
+                </h3>
+                <p class="small text-secondary mb-0">
+                  Deep-dive analysis across profile layers.
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="doc_cv_resp.html" class="file-link">
+            <div class="p-4 bg-white-card border-indigo bw-1 tile-left tile-img-bg" style="
+                  background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766157692/Business_1_Newspaper_y988h0.jpg&quot;);
+                ">
+              <div class="tile-content">
+                <span class="ui-tag tag-blue mb-2">CV</span>
+                <h3 class="fs-5 fw-bold mb-2">Michael K. Mueller</h3>
+                <p class="small text-secondary mb-0">
+                  Senior Finance Management Consultant.
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <div class="brand-line mb-2"></div>
+    <section id="documentation">
+      <div class="banner-box banner-section">
+        <h2>
+          <i data-lucide="square-stack" style="
+                color: var(--clr-red);
+                width: 28px;
+                height: 28px;
+                stroke-width: 2;
+              "></i>
+          PROTOTYPES
+        </h2>
+        <div class="header-status-tick">
+          <i data-lucide="check" style="width: 18px; height: 18px; stroke-width: 4"></i>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="bg-white-card border-grey bw-1 overflow-hidden" style="min-height: 90px">
+            <div style="
+                  width: 100%;
+                  height: 100%;
+                  min-height: 90px;
+                  background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/v1768512311/prototyoe_mwukx1.jpg&quot;);
+                  background-size: cover;
+                  background-position: center;
+                  transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+                " onmouseover="this.style.transform = 'scale(1.05)'" onmouseout="this.style.transform = 'scale(1)'">
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://mkmgo.github.io/vital_publications/gallery.html" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-red border-red bw-2" style="min-height: 90px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold mb-1"> Gallery </span>
+
+                <p class="small text-primary mb-0">
+                  Media Gallery for Visual Inspiration
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://mkmgo.github.io/vital_publications/evening_prayer.html" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-blue border-blue bw-2" style="min-height: 90px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold mb-1">
+                  Prayer and Motivation
+                </span>
+
+                <p class="small text-primary mb-0">
+                  Mobile-friedly prayer prototype
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://mkmgo.github.io/vital_publications/build_expertise.html" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-amber border-amber bw-3" style="min-height: 90px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold mb-1">Masterclass</span>
+
+                <p class="small text-primary mb-0">
+                  Expertise Drives Performance
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://mkmgo.github.io/vital_publications/subsite-a.html" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-1" style="min-height: 90px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold text-muted">Prototype A</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://mkmgo.github.io/vital_publications/subsite.html" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-1" style="min-height: 90px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold text-muted">Prototype B</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <div class="brand-line mb-2"></div>
+    <section id="bookmarks">
+      <div class="banner-box banner-section">
+        <h2>
+          <i data-lucide="database" style="
+                color: var(--clr-indigo);
+                width: 28px;
+                height: 28px;
+                stroke-width: 2;
+              "></i>
+          KNOWLEDGE BASE
+        </h2>
+        <div class="header-status-tick">
+          <i data-lucide="check" style="width: 18px; height: 18px; stroke-width: 4"></i>
+        </div>
+      </div>
+      <div class="row g-3 mb-1">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="bg-white-card border-grey bw-1 overflow-hidden" style="min-height: 90px">
+            <div style="
+                  width: 100%;
+                  height: 100%;
+                  min-height: 90px;
+                  background-image: url(https://res.cloudinary.com/dqwm4pdbz/image/upload/v1768512311/knowledge_tf73l6.jpg);
+                  background-size: cover;
+                  background-position: center;
+                  transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+                " onmouseover="this.style.transform = 'scale(1.05)'" onmouseout="this.style.transform = 'scale(1)'">
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://www.w3schools.com/charsets/ref_utf_symbols_intro.asp" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-indigo border-indigo bw-1" style="min-height: 80px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold">Symbols</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://www.w3schools.com/charsets/ref_utf_enclosed_alpha.asp" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-indigo border-indigo bw-1" style="min-height: 80px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold">Alphanumeric</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://www.w3schools.com/charsets/ref_emoji.asp" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-indigo border-indigo bw-1" style="min-height: 80px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold">Coloured</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://www.w3schools.com/charsets/ref_emoji.asp" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-indigo border-indigo bw-1" style="min-height: 80px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold">Braille</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://lucide.dev/" target="_blank" class="file-link">
+            <div class="p-3 bg-white-card tile-left soft-tint-indigo border-indigo bw-1" style="min-height: 80px">
+              <div class="tile-content">
+                <span class="d-block small fw-bold">Lucide</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="custom-footer mt-auto">
+    <div class="container">
+      <div class="brand-line mb-4"></div>
+
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
+        <div class="text-center text-md-start">
+          <div class="footer-brand mb-1">project.docs</div>
+          <div class="footer-metadata">
+            Centralized Knowledge Architecture
+          </div>
+        </div>
+
+        <div class="text-center">
+          <div class="footer-metadata mb-1">
+            Standard Reference &copy; <span id="year"></span>
+          </div>
+          <div class="fw-bold small text-uppercase" style="letter-spacing: 0.05em; font-size: 0.75rem">
+            Michael K. Mueller
+          </div>
+        </div>
+
+        <div class="text-center text-md-end">
+          <div class="status-pill">
+            <span class="bg-success rounded-circle" style="width: 6px; height: 6px; display: inline-block"></span>
+
+            <span>System Nominal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function updateDate() {
+      const now = new Date();
+      const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+      const months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
+
+      // Header & Directory Stamp
+      const dateString = `${days[now.getDay()]} ${now.getDate()} ${months[now.getMonth()]
+        } ${now.getFullYear()}`;
+      document.getElementById("current-date-stamp").textContent = dateString;
+
+      // --- COMPASS DYNAMICS ---
+      if (document.getElementById("compass-date")) {
+        // 1. Date & Time
+        document.getElementById("compass-date").textContent =
+          `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]}`;
+        document.getElementById("compass-time").textContent =
+          now.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+          });
+
+        // 2. Week of Year
+        const startOfYear = new Date(now.getFullYear(), 0, 1);
+        const pastDaysOfYear = (now - startOfYear) / 86400000;
+        const weekOfYear = Math.ceil(
+          (pastDaysOfYear + startOfYear.getDay() + 1) / 7,
+        );
+        document.getElementById("compass-wy").textContent = weekOfYear;
+
+        // 3. Week of Month
+        const firstDayOfMonth = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          1,
+        );
+        const used = firstDayOfMonth.getDay() + now.getDate();
+        const weekOfMonth = Math.ceil(used / 7);
+        document.getElementById("compass-wm").textContent = weekOfMonth;
+      }
+    }
+
+    // Theme Logic
+    const setTheme = () => {
+      const isDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      document.documentElement.setAttribute(
+        "data-bs-theme",
+        isDark ? "dark" : "light",
+      );
+    };
+
+    // Initialization
+    setTheme();
+    updateDate();
+
+    // Update every minute for the clock
+    setInterval(updateDate, 60000);
+
+    // Listener for system theme changes
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", setTheme);
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    // This MUST be called after the library is loaded to render icons
+    lucide.createIcons();
+  </script>
+</body>
+
+</html>
