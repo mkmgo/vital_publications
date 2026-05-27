@@ -46,7 +46,7 @@
 
       /* --- LIGHT MODE REFINED MOUNTAIN BLEND (STRENGTHENED) --- */
       background-image:
-        linear-gradient(rgba(248, 250, 252, 0.92), rgba(248, 250, 252, 0.92)),
+        linear-gradient(rgba(248, 250, 252, 0.78), rgba(248, 250, 252, 0.78)),
         url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779825387/peace_mountains_c0bmud.png");
       background-size: cover;
       background-position: center bottom;
@@ -116,7 +116,7 @@
 
     .main-container {
       flex-grow: 1;
-      padding: 3rem 1.5rem;
+      padding: 3rem 1.5rem 1.25rem;
     }
 
     .file-link {
@@ -597,9 +597,9 @@
       background-color: transparent;
       color: var(--clr-grey);
       /* border-top: 2px solid rgba(0, 0, 0, 0.05);  <-- DELETE THIS LINE */
-      padding-top: 0.5rem !important;
+      padding-top: 0.4rem !important;
       padding-bottom: 1rem !important;
-      margin-top: 0.25rem !important;
+      margin-top: 0 !important;
     }
 
     [data-bs-theme="dark"] .custom-footer {
@@ -675,6 +675,10 @@
       cursor: pointer;
       z-index: 1;
       transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      justify-content: flex-start !important;
+      align-items: flex-start;
+      padding-top: 2.4rem !important;
+      padding-bottom: 1.8rem !important;
     }
 
     /* Restored original dark slate mask, alignment, filters, and panning physics */
@@ -684,10 +688,11 @@
       inset: 0;
       z-index: -2;
       background:
-        linear-gradient(rgba(2, 6, 23, 0.45), rgba(2, 6, 23, 0.45)),
+        linear-gradient(rgba(2, 6, 23, 0.38), rgba(2, 6, 23, 0.38)),
         url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779820306/webbanner_e5bib0.webp");
       background-size: cover;
       background-position: center;
+      filter: brightness(1.05);
       animation: dynamic-banner-pan 24s infinite ease-in-out;
       transition: all 0.4s ease;
     }
@@ -741,6 +746,23 @@
 
     [data-bs-theme="dark"] .banner-cockpit {
       background-color: rgba(255, 255, 255, 0.03) !important;
+    }
+
+    .banner-box h1 {
+      font-family: "Inter", sans-serif;
+      font-size: clamp(2.4rem, 3.2vw, 3.6rem);
+      line-height: 1.1;
+      letter-spacing: 0.18em;
+      margin: 0 0 0.75rem !important;
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      text-transform: uppercase;
+    }
+
+    .banner-box p {
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 560px;
     }
 
     .banner-box h2 {
@@ -1043,17 +1065,10 @@
     <section id="dashboard">
       <div class="banner-box banner-cockpit d-flex flex-column justify-content-center p-4 p-md-5">
         <div class="position-relative z-3 max-w-xl text-start">
-          <span class="ui-tag tag-blue tag-cutout mb-2" style="letter-spacing: 0.15em; font-size: 0.6rem">
-            Operational Catalyst
-          </span>
-          <h1 class="display-5 fw-extrabold text-white mb-2 tracking-tight" style="
-                font-family: &quot;Inter&quot;, sans-serif;
-                font-weight: 800;
-              ">
+          <h1 class="display-5 fw-extrabold text-white mb-2 tracking-tight">
             PRISMATIC / THE SPACE BEYOND
           </h1>
-          <p class="mb-0 text-white-50 fw-medium d-none d-sm-block"
-            style="font-size: 0.95rem; max-width: 540px; line-height: 1.4">
+          <p class="mb-0 text-white-50 fw-medium d-none d-sm-block">
             Architecting high-level digital systems, managing integrated
             structural workflows, and optimizing continuous cross-market
             strategic execution.
@@ -1364,9 +1379,9 @@
     </section>
   </main>
 
-  <footer class="custom-footer mt-auto">
+  <footer class="custom-footer">
     <div class="container">
-      <div class="brand-line mb-4"></div>
+      <div class="brand-line"></div>
 
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
         <div class="text-center text-md-start">
