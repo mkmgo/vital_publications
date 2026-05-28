@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>h·e·r collab</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Color variables supporting Light and Dark modes */
+        :root {
+            --bg-color: #fcfcfc;
+            --text-color: #212529;
+            --text-strong: #000000;
+            --text-muted: #6c757d;
+            --brand-color: #000000;
+            --subheadline-color: #b22222; /* Professional brick red */
+            --border-color: rgba(0, 0, 0, 0.1);
+            --bg-overlay: rgba(252, 252, 252, 0.94);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --text-color: #f8f9fa;
+                --text-strong: #ffffff;
+                --text-muted: #a7a9be;
+                --brand-color: #ffffff;
+                --subheadline-color: #e44d4d; /* High-contrast red for dark mode */
+                --border-color: rgba(255, 255, 255, 0.1);
+                --bg-overlay: rgba(18, 18, 18, 0.94);
+            }
+        }
+
+        body {
+            font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Background Slideshow */
+        .bg-slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: crossfade 18s infinite ease-in-out;
+        }
+
+        /* 3 Images rotating smoothly: 6s total display per image including transitions */
+        .bg-slide:nth-child(1) {
+            background-image: url('https://res.cloudinary.com/dmkhsyfzf/image/upload/q_auto/f_auto/v1776286873/Neo_Segola_tvcbhe.jpg');
+            animation-delay: 0s;
+        }
+        .bg-slide:nth-child(2) {
+            background-image: url('https://res.cloudinary.com/dmkhsyfzf/image/upload/q_auto/f_auto/v1776286873/Neo_Segola_tvcbhe.jpg');
+            animation-delay: 6s;
+        }
+        .bg-slide:nth-child(3) {
+            background-image: url('https://res.cloudinary.com/dmkhsyfzf/image/upload/v1774279520/Tsholofelo_M%C3%BCller_rbqonz.png');
+            animation-delay: 12s;
+        }
+
+        @keyframes crossfade {
+            0% { opacity: 0; }
+            5% { opacity: 0.08; }   /* Very subtle background visibility */
+            33% { opacity: 0.08; }
+            38% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* Tint Overlay to guarantee high content legibility */
+        .bg-overlay-tint {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-overlay);
+            z-index: -1;
+        }
+
+        /* Typography Adjustments */
+        .logo {
+            font-family: Georgia, serif;
+            font-weight: 400; /* Intentionally non-bolded per alignment */
+            font-size: calc(1.625rem + 0.9vw); /* Responsive size, slightly scaled up */
+            color: var(--brand-color);
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-family: Georgia, serif;
+            font-style: italic;
+            color: var(--subheadline-color);
+            font-size: calc(1rem + 0.3vw);
+            margin-top: 0.25rem;
+        }
+
+        /* Content styled in all caps Calibri, light and small footprint */
+        .caps-sentiment {
+            text-transform: uppercase;
+            font-weight: 300;
+            letter-spacing: 0.12em;
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        .lead-text {
+            font-size: 1.05rem;
+            font-weight: 300;
+            letter-spacing: 0.14em;
+            line-height: 1.8;
+        }
+
+        .lead-text strong {
+            font-weight: 700;
+            color: var(--text-strong);
+            letter-spacing: 0.12em;
+        }
+
+        hr {
+            border-top: 1px solid var(--border-color);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Elements -->
+    <div class="bg-slideshow">
+        <div class="bg-slide"></div>
+        <div class="bg-slide"></div>
+        <div class="bg-slide"></div>
+    </div>
+    <div class="bg-overlay-tint"></div>
+
+    <!-- Header / Logo (Aligned Left, Not Bold, Slightly Bigger) -->
+    <header class="container my-5 pt-4">
+        <div class="row">
+            <div class="col-12 text-start">
+                <span class="logo d-block">h·e·r collab</span>
+                <h3 class="subtitle">Creative Brilliance. Surgical Precision.</h3>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Core Intent / Minimal Text Content -->
+    <main class="container my-5">
+        <div class="row py-3">
+            <div class="col-xl-9 col-12 text-start">
+                <p class="lead-text caps-sentiment">
+                    Driving the future of Black women’s entrepreneurship. Backed by decades of major South African agency experience and masterful execution, we shape industries. <strong>We process genuine emotion. We build brands.</strong>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="container my-5 pt-5">
+        <hr>
+        <div class="row py-3">
+            <div class="col-12 text-start text-muted caps-sentiment" style="font-size: 0.75rem;">
+                <p>&copy; 2026 h·e·r collab. Strategic Architecture & Venture Development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
