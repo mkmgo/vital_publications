@@ -1311,150 +1311,39 @@
     </section>
     <section id="projects">
       <div class="row g-4 mb-4">
-        <!-- TILE 10: H·E·R COLLAB DESIGN CODE MATRIX -->
-        <div class="col-12 col-md-8">
-          <div class="bg-black-card border-gold position-relative overflow-hidden"
-            style="min-height: 198px; background: #020617; border: 1px solid rgba(245, 159, 11, 0.3); border-radius: 8px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);"
-            onmouseover="this.style.borderColor='rgba(255, 215, 0, 1)'; this.style.boxShadow='0 0 15px rgba(245, 159, 11, 0.15)'"
-            onmouseout="this.style.borderColor='rgba(245, 159, 11, 0.3)'; this.style.boxShadow='none'">
+        <!-- TILE 10: THEMED MASTERCLASS -->
+        <div class="col-md-6">
+          <a href="build_expertise.html" class="file-link">
+            <div class="p-4 bg-white-card soft-tint-amber border-amber bw-2 tile-left">
+              <div class="tile-content">
+                <span class="ui-tag tag-green tag-cutout mb-2">Skills</span>
+                <h3 class="fs-3 fw-bold mb-1">Themed Masterclass</h3>
+                <h2 class="fs-5 fw-semibold text-secondary mb-3">Infinite Strength</h2>
 
-            <!-- Self-Contained Matrix Animation Canvas Layer -->
-            <canvas id="herCanvas"
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.12; pointer-events: none;"></canvas>
-
-            <!-- Content Overlays -->
-            <div class="p-3 position-relative h-100 d-flex flex-column justify-content-between" style="z-index: 2;">
-
-              <!-- Top Row Info Ticker -->
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <span
-                  style="font-family: monospace; font-size: 10px; color: #f59f0b; letter-spacing: 2px; text-transform: uppercase;">●
-                  MEDIA STREAM // CODE_REEL_10.A</span>
-                <span style="font-family: monospace; font-size: 10px; color: rgba(255,255,255,0.4);">[ AUTHENTICATED
-                  ]</span>
-              </div>
-
-              <!-- Split Column Content Matrix -->
-              <div class="row g-3">
-                <!-- Left Window: The Agency Identity -->
-                <div class="col-12 col-md-6 border-end-md" style="border-color: rgba(255,255,255,0.1);">
-                  <h4
-                    style="font-family: sans-serif; font-weight: 800; font-size: 16px; color: #ffffff; letter-spacing: 1px; margin-bottom: 4px;">
-                    H·E·R COLLAB AGENCY</h4>
-                  <p
-                    style="font-family: monospace; font-size: 11px; color: rgba(255,255,255,0.7); margin-bottom: 0; line-height: 1.4;">
-                    Deploying a proprietary 15-slot crystalline grid system to engineer intentional digital spaces
-                    optimized for premium brand equity.
-                  </p>
-                </div>
-
-                <!-- Right Window: The Core Mechanism -->
-                <div class="col-12 col-md-6">
-                  <h5
-                    style="font-family: monospace; font-size: 11px; font-weight: bold; color: #ffd700; margin-bottom: 4px;">
-                    // SYSTEM BROADCAST</h5>
-                  <p
-                    style="font-family: sans-serif; font-size: 11px; font-style: italic; color: rgba(255,255,255,0.6); margin-bottom: 0; line-height: 1.4;">
-                    Where high-end visual real estate architectures intersect seamlessly with data-driven fiscal
-                    optimization frameworks.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Footer Progress Bar and Role Anchors -->
-              <div class="pt-2 mt-2" style="border-top: 1px solid rgba(255,255,255,0.05);">
-                <div class="d-flex justify-content-between align-items-center">
-                  <span style="font-family: monospace; font-size: 9px; color: rgba(255,255,255,0.4);">STRATEGIC
-                    ARCHITECT // CFOO CORES</span>
-                  <div
-                    style="width: 80px; height: 2px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; border-radius: 2px;">
-                    <div
-                      style="position: absolute; top: 0; left: 0; height: 100%; width: 45%; background: #ffd700; animation: herProgress 3s infinite ease-in-out;">
+                <div class="d-flex flex-column flex-md-row gap-4 align-items-start mt-3">
+                  <div class="image-clip-wrapper rounded-3 overflow-hidden"
+                    style="flex-shrink: 0; width: 140px; height: 140px;">
+                    <div class="zoom-img"
+                      style="width: 100%; height: 100%; background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png'); background-size: cover; background-position: center; filter: grayscale(0.8);">
                     </div>
+                    <span class="position-absolute bottom-0 end-0 bg-dark text-white px-2 py-1 fw-bold"
+                      style="font-size: 0.65rem; border-radius: 4px 0 0 0; letter-spacing: 1px; z-index: 2;">Masterclass</span>
+                  </div>
+
+                  <div class="clip-context">
+                    <h4 class="fs-6 fw-bold mb-1 text-secondary">More Resilience</h4>
+                    <p class="small text-secondary mb-0" style="max-width: 400px; line-height: 1.5">Motivational
+                      guidance layered with an immersive learning experience for creative leaders.</p>
                   </div>
                 </div>
+
+                <div class="ui-tag tag-green tag-cutout mt-4">
+                  <i data-lucide="check" style="width: 12px; margin-right: 4px"></i>
+                  Explore
+                </div>
               </div>
-
             </div>
-          </div>
-
-          <!-- Isolated Script Block to run the Independent Animation inside the Tile -->
-          <script>
-            (function () {
-              const canvas = document.getElementById('herCanvas');
-              const ctx = canvas.getContext('2d');
-              let animationFrameId;
-
-              function resize() {
-                canvas.width = canvas.offsetWidth;
-                canvas.height = canvas.offsetHeight;
-              }
-              window.addEventListener('resize', resize);
-              resize();
-
-              const dots = Array.from({ length: 22 }, () => ({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.4,
-                vy: (Math.random() - 0.5) * 0.4
-              }));
-
-              function render() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.strokeStyle = 'rgba(245, 159, 11, 0.15)';
-                ctx.fillStyle = '#f59f0b';
-
-                dots.forEach((dot, i) => {
-                  dot.x += dot.vx;
-                  dot.y += dot.vy;
-
-                  if (dot.x < 0 || dot.x > canvas.width) dot.vx *= -1;
-                  if (dot.y < 0 || dot.y > canvas.height) dot.vy *= -1;
-
-                  ctx.beginPath();
-                  ctx.arc(dot.x, dot.y, 1.5, 0, Math.PI * 2);
-                  ctx.fill();
-
-                  for (let j = i + 1; j < dots.length; j++) {
-                    const other = dots[j];
-                    const dist = Math.hypot(dot.x - other.x, dot.y - other.y);
-                    if (dist < 65) {
-                      ctx.lineWidth = 1 - dist / 65;
-                      ctx.beginPath();
-                      ctx.moveTo(dot.x, dot.y);
-                      ctx.lineTo(other.x, other.y);
-                      ctx.stroke();
-                    }
-                  }
-                });
-                animationFrameId = requestAnimationFrame(render);
-              }
-              render();
-            })();
-          </script>
-
-          <!-- Keyframe utility for the loading bar indicator -->
-          <style>
-            @keyframes herProgress {
-              0% {
-                left: -100%;
-              }
-
-              50% {
-                left: 100%;
-              }
-
-              100% {
-                left: -100%;
-              }
-            }
-
-            @media (min-width: 768px) {
-              .border-end-md {
-                border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-              }
-            }
-          </style>
+          </a>
         </div>
 
         <!-- TILE 11: HALITH MOBILE -->
@@ -1493,26 +1382,9 @@
         </div>
       </div>
 
-      <div class="row g-4 mb-4">
-        <!-- TILE 12: A GENERATIONAL EXPOSÉ -->
-        <div class="col-12">
-          <a href="portfolio1.html" class="file-link">
-            <div class="p-4 bg-white-card border-amber soft-tint-amber bw-1 tile-left tile-img-bg"
-              style="background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/v1767216761/my-express-uploads/cbsjn95wtojb2lwvvxcz.png');">
-              <div class="tile-content">
-                <span class="ui-tag tag-red tag-cutout mb-2">Spotlight</span>
-                <h3 class="fs-4 fw-bold mb-2">A Generational Exposé</h3>
-                <p class="small text-secondary mb-3" style="max-width: 860px; line-height: 1.6">A full-width feature
-                  tile for a single premium initiative. Strong message, clean visual focus, and a confident narrative
-                  space.</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
 
       <div class="row g-3 mb-0">
-        <!-- TILE 13: GALLERY FOOTER -->
+        <!-- TILE 12: GALLERY FOOTER -->
         <div class="col-12 col-md-4">
           <a href="gallery.html" target="_blank" class="file-link">
             <div class="p-3 bg-white-card tile-left soft-tint-red border-red bw-2" style="min-height: 90px">
@@ -1523,7 +1395,7 @@
             </div>
           </a>
         </div>
-        <!-- TILE 14: PRAYER AND MOTIVATION FOOTER -->
+        <!-- TILE 13: PRAYER AND MOTIVATION FOOTER -->
         <div class="col-12 col-md-4">
           <a href="evening_prayer.html" target="_blank" class="file-link">
             <div class="p-3 bg-white-card tile-left soft-tint-blue border-blue bw-2" style="min-height: 90px">
@@ -1534,7 +1406,7 @@
             </div>
           </a>
         </div>
-        <!-- TILE 15: MASTERCLASS FOOTER -->
+        <!-- TILE 14: MASTERCLASS FOOTER -->
         <div class="col-12 col-md-4">
           <a href="build_expertise.html" target="_blank" class="file-link">
             <div class="p-3 bg-white-card tile-left soft-tint-amber border-amber bw-3" style="min-height: 90px">
