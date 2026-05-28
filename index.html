@@ -1093,8 +1093,8 @@
                       </div>
                       <div id="compass-date" class="fw-semibold text-secondary"
                         style="font-size:0.92rem; line-height:1.2;"></div>
-                      <div id="compass-time" class="display-6 fw-bold text-primary"
-                        style="letter-spacing:-0.04em; line-height:1;"></div>
+                      <div id="compass-time" class="display-6 fw-bold"
+                        style="color: var(--current-weekday-color); letter-spacing:-0.04em; line-height:1;"></div>
                       <div id="compass-utc" class="text-monospace text-muted small"
                         style="font-size:0.8rem; letter-spacing:0.08em;">
                         UTC: --:--:--
@@ -1556,6 +1556,7 @@
         const accentColor = isDark ? baseColor : deepTone(baseColor, 0.28);
         document.documentElement.style.setProperty("--current-weekday-color", accentColor);
         compassDateEl.style.color = accentColor;
+        compassTimeEl.style.color = accentColor;
       }
     }
 
