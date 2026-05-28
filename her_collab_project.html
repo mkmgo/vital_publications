@@ -27,7 +27,8 @@
                 --bg-color: #121212;
                 --text-color: #f8f9fa;
                 --text-strong: #ffffff;
-                --text-muted: #a7a9be;
+                --text-muted: #cbd5e1;
+                /* Clear, visible grey in dark mode */
                 --brand-color: #ffffff;
                 --subheadline-color: #e44d4d;
                 /* High-contrast red for dark mode */
@@ -159,7 +160,7 @@
             font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
             font-style: italic;
             color: var(--subheadline-color);
-            font-size: calc(0.95rem + 0.30vw);
+            font-size: calc(1.15rem + 0.30vw);
             /* Proportionally balanced size to brand */
             letter-spacing: 0.05em;
             margin-top: 0.4rem;
@@ -192,6 +193,10 @@
         hr {
             border-top: 1px solid var(--border-color);
             opacity: 1;
+        }
+
+        .tile-footer {
+            color: var(--text-muted);
         }
     </style>
 </head>
@@ -230,7 +235,9 @@
 
                     <hr class="mt-4 mb-3">
 
-                    <footer class="text-start text-muted caps-sentiment" style="font-size: 0.7rem; opacity: 0.8;">
+                    <!-- Micro Footer inside the Tile structure -->
+
+                    <footer class="text-start tile-footer caps-sentiment" style="font-size: 0.7rem;">
                         <span>&copy; 2026 h·e·r collab. Strategic Architecture & Venture Development.</span>
                     </footer>
 
