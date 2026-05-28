@@ -1177,28 +1177,36 @@
         </div>
 
         <!-- TILE 3: PROFILE IMAGE TILE -->
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-4">
           <div class="bg-white-card border-grey bw-1 overflow-hidden h-100" style="min-height: 260px;">
 
             <div style="
-        width: 100%;
-        height: 100%;
-        min-height: 260px;
-        background-image: url('https://res.cloudinary.com/dp455m4rk/image/upload/q_auto,f_auto/v1779949537/portrait_profile_jfee2v.webp');
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        filter: grayscale(1) brightness(0.45);
-        transition:
-          transform 2s cubic-bezier(0.25, 1, 0.5, 1),
-          filter 1.6s ease;
-      " onmouseover="
-        this.style.transform='scale(1.05)';
-        this.style.filter='grayscale(0) brightness(0.8)';
-      " onmouseout="
-        this.style.transform='scale(1)';
-        this.style.filter='grayscale(1) brightness(0.45)';
-      ">
+              width: 100%;
+              height: 100%;
+              min-height: 260px;
+              background-image: url('https://res.cloudinary.com/dp455m4rk/image/upload/v1779949537/portrait_profile_jfee2v.webp');
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+              filter: grayscale(1) brightness(0.45);
+              transition: transform 2s cubic-bezier(0.25, 1, 0.5, 1), filter 1.6s ease;
+            " onmouseover="
+              this.style.transform='scale(1.05)';
+              this.style.filter='grayscale(0) brightness(0.8)';
+            " onmouseout="
+              this.style.transform='scale(1)';
+              this.style.filter='grayscale(1) brightness(0.45)';
+             shadow-layer">
+
+              <!-- Optional: Subtle internal overlay identity text if desired -->
+              <div class="p-4 d-flex flex-column h-100 justify-content-between position-relative z-index-2">
+                <span
+                  class="badge bg-dark bg-opacity-25 align-self-start text-uppercase tracking-wider text-xs text-white border border-white border-opacity-10">Asset.03</span>
+                <div class="text-white">
+                  <h6 class="mb-0 font-sans tracking-wide fw-bold opacity-75">PRISMA PRESENCE</h6>
+                </div>
+              </div>
+
             </div>
 
           </div>
