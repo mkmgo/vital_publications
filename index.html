@@ -424,7 +424,8 @@
       flex-direction: column;
       height: 100%;
       align-items: flex-start;
-      overflow: hidden; /* ensure metric tokens stay inside tile bounds */
+      overflow: hidden;
+      /* ensure metric tokens stay inside tile bounds */
     }
 
     /* --- CATEGORY HEADERS --- */
@@ -548,15 +549,17 @@
       font-family: 'Cascadia Mono', 'Cascadia Code', Consolas, 'Courier New', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
       font-size: 0.62rem;
       font-weight: 700;
-      color: rgba(100,116,139,0.95);
+      color: rgba(100, 116, 139, 0.95);
       text-transform: uppercase;
       letter-spacing: 0.12em;
       line-height: 1;
       white-space: nowrap;
       display: inline-block;
-      position: relative; /* flow with document so it sits directly under the paragraph */
+      position: relative;
+      /* flow with document so it sits directly under the paragraph */
       margin-top: 0.4rem;
-      padding: 0 0.2rem; /* minimal padding so it doesn't look like a tab */
+      padding: 0 0.2rem;
+      /* minimal padding so it doesn't look like a tab */
       border-radius: 3px;
       background: transparent;
       z-index: 2;
@@ -567,7 +570,7 @@
     }
 
     [data-bs-theme="dark"] .metric-token {
-      color: rgba(148,163,184,0.95);
+      color: rgba(148, 163, 184, 0.95);
     }
 
     /* --- COLLAGE TYPE ARCHITECTURE --- */
@@ -1254,7 +1257,7 @@
               <div class="tile-content">
                 <span class="d-block small fw-semibold text-uppercase mb-1">CORPORATE FINANCE</span>
                 <p class="small text-secondary mb-0">Senior Strategic & Financial Advisory</p>
-                <div class="metric-token mt-2">[STATUS:ACTIVE]</div>
+                <div class="metric-token mt-2">[ SYS: ACTV ]</div>
               </div>
             </div>
           </div>
@@ -1265,7 +1268,7 @@
               <div class="tile-content">
                 <span class="d-block small fw-semibold text-uppercase mb-1">GROWTH INVESTING</span>
                 <p class="small text-secondary mb-0">Private Equity & Venture Incubation</p>
-                <div class="metric-token mt-2">[ASSET CLASS:ALPHA]</div>
+                <div class="metric-token mt-2">[ CLS: ALPH ]</div>
               </div>
             </div>
           </div>
@@ -1276,7 +1279,7 @@
               <div class="tile-content">
                 <span class="d-block small fw-semibold text-uppercase mb-1">CAPITAL MARKETS</span>
                 <p class="small text-secondary mb-0">Macro Navigation & Wealth Management</p>
-                <div class="metric-token mt-2">[LIQUIDITY:OPEN]</div>
+                <div class="metric-token mt-2">[ GRID: OPEN ]</div>
               </div>
             </div>
           </div>
@@ -1287,7 +1290,7 @@
               <div class="tile-content">
                 <span class="d-block small fw-semibold text-uppercase mb-1">ALTERNATIVE ASSETS</span>
                 <p class="small text-secondary mb-0">Decentralized Finance & Web3 Property</p>
-                <div class="metric-token mt-2">[PROTOCOL:ECOSYSTEM]</div>
+                <div class="metric-token mt-2">[ PROT: ECO ]</div>
               </div>
             </div>
           </div>
@@ -1298,7 +1301,7 @@
               <div class="tile-content">
                 <span class="d-block small fw-semibold text-uppercase mb-1">STRATEGIC VALUATION</span>
                 <p class="small text-secondary mb-0">Qualitative Metrics & Merit Systems</p>
-                <div class="metric-token mt-2">[RISK MODEL:VERIFIED]</div>
+                <div class="metric-token mt-2">[ RISK: VRFD ]</div>
               </div>
             </div>
           </div>
