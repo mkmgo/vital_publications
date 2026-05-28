@@ -424,6 +424,7 @@
       flex-direction: column;
       height: 100%;
       align-items: flex-start;
+      overflow: hidden; /* ensure metric tokens stay inside tile bounds */
     }
 
     /* --- CATEGORY HEADERS --- */
@@ -540,6 +541,33 @@
 
     [data-bs-theme="dark"] .tag-cutout {
       color: #020617 !important;
+    }
+
+    /* Metric token: terminal-like monospace, tiny uppercase and placed beneath the subtext */
+    .metric-token {
+      font-family: 'Cascadia Mono', 'Cascadia Code', Consolas, 'Courier New', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: rgba(100,116,139,0.95);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      white-space: nowrap;
+      display: inline-block;
+      position: relative; /* flow with document so it sits directly under the paragraph */
+      margin-top: 0.4rem;
+      padding: 0 0.2rem; /* minimal padding so it doesn't look like a tab */
+      border-radius: 3px;
+      background: transparent;
+      z-index: 2;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      align-self: flex-start;
+    }
+
+    [data-bs-theme="dark"] .metric-token {
+      color: rgba(148,163,184,0.95);
     }
 
     /* --- COLLAGE TYPE ARCHITECTURE --- */
@@ -1220,69 +1248,59 @@
               </div>
             </div>
           </div>
-          <!-- TILE 5: GALLERY SMALL -->
+          <!-- TILE 5: CORPORATE FINANCE -->
           <div class="col-6 col-md-4 col-lg-2">
-            <a href="https://mkmgo.github.io/vital_publications/gallery.html" target="_blank" class="file-link">
-              <div class="p-3 bg-white-card tile-left soft-tint-red border-red bw-2" style="min-height: 90px">
-                <div class="tile-content">
-                  <span class="d-block small fw-bold mb-1"> Gallery </span>
+            <div class="p-3 bg-white-card tile-left soft-tint-blue border-blue bw-2" style="min-height: 110px">
+              <div class="tile-content">
+                <span class="d-block small fw-semibold text-uppercase mb-1">CORPORATE FINANCE</span>
+                <p class="small text-secondary mb-0">Senior Strategic & Financial Advisory</p>
+                <div class="metric-token mt-2">[ STATUS: ACTIVE ]</div>
+              </div>
+            </div>
+          </div>
 
-                  <p class="small text-primary mb-0">
-                    Media Gallery for Visual Inspiration
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <!-- TILE 6: PRAYER AND MOTIVATION SMALL -->
+          <!-- TILE 6: GROWTH INVESTING -->
           <div class="col-6 col-md-4 col-lg-2">
-            <a href="https://mkmgo.github.io/vital_publications/evening_prayer.html" target="_blank" class="file-link">
-              <div class="p-3 bg-white-card tile-left soft-tint-blue border-blue bw-2" style="min-height: 90px">
-                <div class="tile-content">
-                  <span class="d-block small fw-bold mb-1">
-                    Prayer and Motivation
-                  </span>
+            <div class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-2" style="min-height: 110px">
+              <div class="tile-content">
+                <span class="d-block small fw-semibold text-uppercase mb-1">GROWTH INVESTING</span>
+                <p class="small text-secondary mb-0">Private Equity & Venture Incubation</p>
+                <div class="metric-token mt-2">[ ASSET CLASS: ALPHA ]</div>
+              </div>
+            </div>
+          </div>
 
-                  <p class="small text-primary mb-0">
-                    Mobile-friedly prayer prototype
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <!-- TILE 7: MASTERCLASS SMALL -->
+          <!-- TILE 7: CAPITAL MARKETS -->
           <div class="col-6 col-md-4 col-lg-2">
-            <a href="https://mkmgo.github.io/vital_publications/build_expertise.html" target="_blank" class="file-link">
-              <div class="p-3 bg-white-card tile-left soft-tint-amber border-amber bw-3" style="min-height: 90px">
-                <div class="tile-content">
-                  <span class="d-block small fw-bold mb-1">Masterclass</span>
+            <div class="p-3 bg-white-card tile-left soft-tint-amber border-amber bw-3" style="min-height: 110px">
+              <div class="tile-content">
+                <span class="d-block small fw-semibold text-uppercase mb-1">CAPITAL MARKETS</span>
+                <p class="small text-secondary mb-0">Macro Navigation & Wealth Management</p>
+                <div class="metric-token mt-2">[ LIQUIDITY GRID: OPEN ]</div>
+              </div>
+            </div>
+          </div>
 
-                  <p class="small text-primary mb-0">
-                    Expertise Drives Performance
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <!-- TILE 8: PROTOTYPE A -->
+          <!-- TILE 8: ALTERNATIVE ASSETS -->
           <div class="col-6 col-md-4 col-lg-2">
-            <a href="https://mkmgo.github.io/vital_publications/subsite-a.html" target="_blank" class="file-link">
-              <div class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-1" style="min-height: 90px">
-                <div class="tile-content">
-                  <span class="d-block small fw-bold text-muted">Prototype A</span>
-                </div>
+            <div class="p-3 bg-white-card tile-left soft-tint-blue border-blue bw-2" style="min-height: 110px">
+              <div class="tile-content">
+                <span class="d-block small fw-semibold text-uppercase mb-1">ALTERNATIVE ASSETS</span>
+                <p class="small text-secondary mb-0">Decentralized Finance & Web3 Property</p>
+                <div class="metric-token mt-2">[ PROTOCOL: ECOSYSTEM ]</div>
               </div>
-            </a>
+            </div>
           </div>
-          <!-- TILE 9: PROTOTYPE B -->
+
+          <!-- TILE 9: STRATEGIC VALUATION -->
           <div class="col-6 col-md-4 col-lg-2">
-            <a href="https://mkmgo.github.io/vital_publications/subsite.html" target="_blank" class="file-link">
-              <div class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-1" style="min-height: 90px">
-                <div class="tile-content">
-                  <span class="d-block small fw-bold text-muted">Prototype B</span>
-                </div>
+            <div class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-2" style="min-height: 110px">
+              <div class="tile-content">
+                <span class="d-block small fw-semibold text-uppercase mb-1">STRATEGIC VALUATION</span>
+                <p class="small text-secondary mb-0">Qualitative Metrics & Merit Systems</p>
+                <div class="metric-token mt-2">[ RISK MODEL: VERIFIED ]</div>
               </div>
-            </a>
+            </div>
           </div>
         </div>
 
