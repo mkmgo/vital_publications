@@ -1065,6 +1065,808 @@
     [data-bs-theme="dark"] .donut-hole {
       background-color: #1e293b;
     }
+
+    /* --- TILE 10: THE CORRIDOR PROJECT SIGNAL --- */
+    .corridor-tile {
+      min-height: 360px;
+      overflow: hidden;
+      border-color: #d4af37 !important;
+      background:
+        linear-gradient(135deg, rgba(11, 12, 14, 0.96), rgba(20, 22, 25, 0.92)),
+        repeating-linear-gradient(90deg, rgba(212, 175, 55, 0.16) 0 1px, transparent 1px 68px);
+      color: #f8fafc;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .corridor-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, transparent 0 34%, rgba(212, 175, 55, 0.14) 34% 35%, transparent 35% 100%),
+        linear-gradient(65deg, transparent 0 58%, rgba(46, 204, 113, 0.12) 58% 59%, transparent 59% 100%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .corridor-signet {
+      font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+      font-size: clamp(2.15rem, 4vw, 3.35rem);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: 0;
+      color: #fff8de;
+      text-shadow: 0 0 22px rgba(212, 175, 55, 0.22);
+    }
+
+    .corridor-kicker,
+    .corridor-meta,
+    .corridor-passport-label,
+    .corridor-ledger-label {
+      font-family: 'Cascadia Mono', 'Cascadia Code', Consolas, 'Courier New', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .corridor-kicker {
+      color: #d4af37;
+      font-size: 0.68rem;
+      font-weight: 800;
+    }
+
+    .corridor-copy {
+      max-width: 28rem;
+      color: rgba(226, 232, 240, 0.86);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .corridor-meta-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+      width: 100%;
+    }
+
+    .corridor-meta {
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      background: rgba(255, 255, 255, 0.035);
+      border-radius: 6px;
+      padding: 0.55rem 0.6rem;
+      color: rgba(248, 250, 252, 0.82);
+      font-size: 0.58rem;
+      line-height: 1.35;
+    }
+
+    .corridor-meta strong {
+      display: block;
+      color: #f7d46f;
+      font-size: 0.78rem;
+      letter-spacing: 0;
+      text-transform: none;
+      margin-bottom: 0.1rem;
+    }
+
+    .corridor-showcase {
+      width: 174px;
+      min-width: 174px;
+      align-self: stretch;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      perspective: 900px;
+    }
+
+    .corridor-passport {
+      width: 154px;
+      min-height: 242px;
+      border-radius: 22px;
+      padding: 0.85rem;
+      background: linear-gradient(150deg, #181d24, #0d1117);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow:
+        0 22px 44px rgba(0, 0, 0, 0.42),
+        0 0 0 8px rgba(255, 255, 255, 0.035);
+      transform: rotateY(-12deg) rotateX(4deg);
+      transition: transform 0.45s ease, box-shadow 0.45s ease;
+    }
+
+    .file-link:hover .corridor-passport {
+      transform: rotateY(-5deg) rotateX(2deg) translateY(-3px);
+      box-shadow:
+        0 28px 54px rgba(0, 0, 0, 0.5),
+        0 0 0 8px rgba(212, 175, 55, 0.08);
+    }
+
+    .corridor-passport-label {
+      color: #8a929a;
+      font-size: 0.48rem;
+      line-height: 1.4;
+    }
+
+    .corridor-passport-title {
+      font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+      color: #ffffff;
+      font-size: 1.05rem;
+      line-height: 1.1;
+      margin-top: 0.8rem;
+    }
+
+    .corridor-qr {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 4px;
+      margin-top: 0.95rem;
+    }
+
+    .corridor-qr::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background:
+        linear-gradient(45deg, #020617 25%, transparent 25%),
+        linear-gradient(-45deg, #020617 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #020617 75%),
+        linear-gradient(-45deg, transparent 75%, #020617 75%);
+      background-size: 8px 8px;
+    }
+
+    .corridor-ledger {
+      margin-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 0.7rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .corridor-ledger-label {
+      color: #535d67;
+      font-size: 0.48rem;
+    }
+
+    .corridor-ledger-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      color: #cbd5e1;
+      font-size: 0.63rem;
+    }
+
+    .corridor-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #2ecc71;
+      box-shadow: 0 0 8px rgba(46, 204, 113, 0.8);
+      flex: 0 0 auto;
+    }
+
+    .corridor-action {
+      border-color: rgba(212, 175, 55, 0.54) !important;
+      background: rgba(212, 175, 55, 0.12) !important;
+      color: #ffe39a !important;
+    }
+
+    [data-bs-theme="light"] .corridor-tile {
+      border-color: #c5a028 !important;
+      background:
+        linear-gradient(135deg, rgba(249, 250, 251, 0.94), rgba(239, 232, 205, 0.82)),
+        repeating-linear-gradient(90deg, rgba(197, 160, 40, 0.15) 0 1px, transparent 1px 68px);
+      color: #111827;
+      box-shadow:
+        0 18px 34px -22px rgba(88, 74, 28, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    [data-bs-theme="light"] .corridor-tile::before {
+      background:
+        linear-gradient(120deg, transparent 0 34%, rgba(197, 160, 40, 0.22) 34% 35%, transparent 35% 100%),
+        linear-gradient(65deg, transparent 0 58%, rgba(25, 135, 84, 0.16) 58% 59%, transparent 59% 100%);
+      opacity: 0.75;
+    }
+
+    [data-bs-theme="light"] .corridor-signet {
+      color: #17110b;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
+    }
+
+    [data-bs-theme="light"] .corridor-copy {
+      color: rgba(17, 24, 39, 0.78);
+    }
+
+    [data-bs-theme="light"] .corridor-meta {
+      border-color: rgba(150, 122, 26, 0.38);
+      background: rgba(255, 255, 255, 0.48);
+      color: rgba(17, 24, 39, 0.74);
+    }
+
+    [data-bs-theme="light"] .corridor-meta strong,
+    [data-bs-theme="light"] .corridor-kicker {
+      color: #7c5f00;
+    }
+
+    [data-bs-theme="dark"] .corridor-tile {
+      background:
+        linear-gradient(135deg, rgba(11, 12, 14, 0.96), rgba(20, 22, 25, 0.92)),
+        repeating-linear-gradient(90deg, rgba(212, 175, 55, 0.16) 0 1px, transparent 1px 68px);
+      color: #f8fafc;
+    }
+
+    @media (max-width: 575.98px) {
+      .corridor-tile {
+        min-height: auto;
+      }
+
+      .corridor-showcase {
+        width: 100%;
+        min-width: 0;
+        justify-content: flex-start;
+      }
+
+      .corridor-passport {
+        width: min(100%, 210px);
+        min-height: 226px;
+        transform: none;
+      }
+
+      .corridor-meta-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* --- TILE 11: H.E.R COLLAB AGENCY SIGNAL --- */
+    .her-tile {
+      min-height: 360px;
+      overflow: hidden;
+      border-color: #b68b78 !important;
+      background:
+        linear-gradient(135deg, rgba(255, 247, 241, 0.96), rgba(232, 224, 246, 0.88)),
+        repeating-linear-gradient(0deg, rgba(97, 75, 66, 0.08) 0 1px, transparent 1px 58px);
+      color: #241c1b;
+      box-shadow:
+        0 18px 34px -24px rgba(69, 42, 35, 0.36),
+        inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    }
+
+    .her-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, transparent 0 50%, rgba(182, 139, 120, 0.22) 50% 51%, transparent 51% 100%),
+        linear-gradient(72deg, transparent 0 30%, rgba(37, 101, 250, 0.12) 30% 31%, transparent 31% 100%);
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .her-kicker,
+    .her-proof,
+    .her-preview-label,
+    .her-preview-nav {
+      font-family: 'Cascadia Mono', 'Cascadia Code', Consolas, 'Courier New', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .her-kicker {
+      color: #8a5f4f;
+      font-size: 0.68rem;
+      font-weight: 800;
+    }
+
+    .her-signet {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: clamp(2.05rem, 3.7vw, 3rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+      font-weight: 400;
+      color: #241c1b;
+    }
+
+    .her-signet span {
+      font-style: italic;
+      color: #8a5f4f;
+    }
+
+    .her-copy {
+      max-width: 27rem;
+      color: rgba(36, 28, 27, 0.76);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .her-proof-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+      width: 100%;
+    }
+
+    .her-proof {
+      border: 1px solid rgba(138, 95, 79, 0.34);
+      background: rgba(255, 255, 255, 0.42);
+      border-radius: 6px;
+      padding: 0.55rem 0.6rem;
+      color: rgba(36, 28, 27, 0.74);
+      font-size: 0.58rem;
+      line-height: 1.35;
+    }
+
+    .her-proof strong {
+      display: block;
+      color: #6f493b;
+      font-size: 0.78rem;
+      letter-spacing: 0;
+      text-transform: none;
+      margin-bottom: 0.1rem;
+    }
+
+    .her-showcase {
+      width: 186px;
+      min-width: 186px;
+      align-self: stretch;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      perspective: 900px;
+    }
+
+    .her-site-preview {
+      width: 172px;
+      min-height: 250px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fffaf6;
+      border: 1px solid rgba(36, 28, 27, 0.14);
+      box-shadow:
+        0 22px 44px rgba(69, 42, 35, 0.18),
+        0 0 0 8px rgba(255, 255, 255, 0.3);
+      transform: rotateY(10deg) rotateX(3deg);
+      transition: transform 0.45s ease, box-shadow 0.45s ease;
+    }
+
+    .file-link:hover .her-site-preview {
+      transform: rotateY(5deg) rotateX(1deg) translateY(-3px);
+      box-shadow:
+        0 28px 54px rgba(69, 42, 35, 0.24),
+        0 0 0 8px rgba(182, 139, 120, 0.12);
+    }
+
+    .her-preview-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 0.75rem 0.55rem;
+      border-bottom: 1px solid rgba(36, 28, 27, 0.08);
+    }
+
+    .her-preview-label {
+      color: #8a5f4f;
+      font-size: 0.48rem;
+      font-weight: 800;
+    }
+
+    .her-preview-nav {
+      color: rgba(36, 28, 27, 0.46);
+      font-size: 0.42rem;
+    }
+
+    .her-preview-hero {
+      height: 92px;
+      background:
+        linear-gradient(rgba(36, 28, 27, 0.08), rgba(36, 28, 27, 0.08)),
+        url("https://res.cloudinary.com/dmkhsyfzf/image/upload/v1774279518/Chaz_Pigou_ejulac.png");
+      background-size: cover;
+      background-position: center 18%;
+      filter: saturate(0.82) contrast(1.02);
+    }
+
+    .her-preview-body {
+      padding: 0.85rem 0.8rem;
+    }
+
+    .her-preview-title {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      color: #241c1b;
+      font-size: 1rem;
+      line-height: 1.12;
+      margin-bottom: 0.5rem;
+    }
+
+    .her-preview-line {
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(138, 95, 79, 0.16);
+      margin-bottom: 0.38rem;
+    }
+
+    .her-preview-line.short {
+      width: 66%;
+    }
+
+    .her-preview-stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.42rem;
+      margin-top: 0.85rem;
+    }
+
+    .her-preview-chip {
+      min-height: 34px;
+      border-radius: 7px;
+      border: 1px solid rgba(138, 95, 79, 0.18);
+      background: rgba(232, 224, 246, 0.32);
+      color: #6f493b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: center;
+      line-height: 1.2;
+      padding: 0.3rem;
+    }
+
+    [data-bs-theme="dark"] .her-tile {
+      border-color: #c49a84 !important;
+      background:
+        linear-gradient(135deg, rgba(24, 20, 22, 0.96), rgba(34, 26, 38, 0.9)),
+        repeating-linear-gradient(0deg, rgba(196, 154, 132, 0.1) 0 1px, transparent 1px 58px);
+      color: #fff7f1;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    [data-bs-theme="dark"] .her-tile::before {
+      background:
+        linear-gradient(120deg, transparent 0 50%, rgba(196, 154, 132, 0.18) 50% 51%, transparent 51% 100%),
+        linear-gradient(72deg, transparent 0 30%, rgba(99, 102, 241, 0.16) 30% 31%, transparent 31% 100%);
+      opacity: 0.78;
+    }
+
+    [data-bs-theme="dark"] .her-signet {
+      color: #fff7f1;
+    }
+
+    [data-bs-theme="dark"] .her-signet span,
+    [data-bs-theme="dark"] .her-kicker {
+      color: #e5b79d;
+    }
+
+    [data-bs-theme="dark"] .her-copy {
+      color: rgba(255, 247, 241, 0.76);
+    }
+
+    [data-bs-theme="dark"] .her-proof {
+      border-color: rgba(229, 183, 157, 0.3);
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 247, 241, 0.72);
+    }
+
+    [data-bs-theme="dark"] .her-proof strong {
+      color: #f0cbb8;
+    }
+
+    [data-bs-theme="dark"] .her-site-preview {
+      background: #181416;
+      border-color: rgba(255, 247, 241, 0.1);
+      box-shadow:
+        0 22px 44px rgba(0, 0, 0, 0.38),
+        0 0 0 8px rgba(255, 255, 255, 0.035);
+    }
+
+    [data-bs-theme="dark"] .her-preview-top {
+      border-bottom-color: rgba(255, 247, 241, 0.08);
+    }
+
+    [data-bs-theme="dark"] .her-preview-label {
+      color: #e5b79d;
+    }
+
+    [data-bs-theme="dark"] .her-preview-nav {
+      color: rgba(255, 247, 241, 0.42);
+    }
+
+    [data-bs-theme="dark"] .her-preview-title {
+      color: #fff7f1;
+    }
+
+    [data-bs-theme="dark"] .her-preview-line {
+      background: rgba(255, 247, 241, 0.12);
+    }
+
+    [data-bs-theme="dark"] .her-preview-chip {
+      border-color: rgba(229, 183, 157, 0.18);
+      background: rgba(255, 247, 241, 0.05);
+      color: #f0cbb8;
+    }
+
+    @media (max-width: 575.98px) {
+      .her-tile {
+        min-height: auto;
+      }
+
+      .her-showcase {
+        width: 100%;
+        min-width: 0;
+        justify-content: flex-start;
+      }
+
+      .her-site-preview {
+        width: min(100%, 220px);
+        min-height: 238px;
+        transform: none;
+      }
+
+      .her-proof-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Tile 11 refined: smooth agency surface, distinct from Corridor */
+    .her-agency-tile {
+      min-height: 360px;
+      --her-founder-opacity: 0.72;
+      border-color: rgba(166, 104, 116, 0.72) !important;
+      background:
+        linear-gradient(100deg, rgba(255, 250, 247, 0.96) 0%, rgba(250, 238, 242, 0.92) 46%, rgba(225, 213, 242, 0.84) 100%);
+      color: #2a2023;
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow:
+        0 18px 34px -24px rgba(86, 42, 55, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.82);
+    }
+
+    .her-agency-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(255, 250, 247, 0.98) 0%, rgba(255, 250, 247, 0.92) 48%, rgba(255, 250, 247, 0.12) 72%, transparent 100%),
+        radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.62), transparent 34%),
+        radial-gradient(circle at 82% 78%, rgba(166, 104, 116, 0.18), transparent 38%);
+      pointer-events: none;
+    }
+
+    .her-agency-tile::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 44%;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(255, 250, 247, 1) 0%, rgba(255, 250, 247, 0.74) 44%, rgba(255, 250, 247, 0.14) 100%);
+      pointer-events: none;
+    }
+
+    .her-founder-rotator {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 44%;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .her-founder-rotator span {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center 18%;
+      opacity: 0;
+      filter: saturate(0.82) contrast(1.02);
+      transform: scale(1);
+      animation: her-founder-crossfade 24s infinite linear;
+    }
+
+    .her-founder-rotator span:nth-child(1) {
+      background-image: url("https://res.cloudinary.com/dmkhsyfzf/image/upload/q_auto/f_auto/v1776286873/Neo_Segola_tvcbhe.jpg");
+    }
+
+    .her-founder-rotator span:nth-child(2) {
+      background-image: url("https://res.cloudinary.com/dmkhsyfzf/image/upload/v1774279518/Chaz_Pigou_ejulac.png");
+      animation-delay: 8s;
+    }
+
+    .her-founder-rotator span:nth-child(3) {
+      background-image: url("https://res.cloudinary.com/dmkhsyfzf/image/upload/v1774279520/Tsholofelo_M%C3%BCller_rbqonz.png");
+      animation-delay: 16s;
+    }
+
+    .her-agency-content {
+      position: relative;
+      z-index: 2;
+      max-width: 72%;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .her-agency-tile>.tile-content {
+      z-index: 2;
+    }
+
+    .her-agency-label {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(166, 104, 116, 0.42);
+      background: rgba(255, 255, 255, 0.42);
+      color: #8a4f5d;
+      border-radius: 999px;
+      padding: 0.38rem 0.72rem;
+      font-size: 0.64rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .her-agency-signet {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      color: #2a2023;
+      font-size: clamp(2.15rem, 4vw, 3.3rem);
+      font-weight: 400;
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .her-agency-signet span {
+      color: #9a6070;
+      font-style: italic;
+    }
+
+    .her-agency-copy {
+      max-width: 28rem;
+      color: rgba(42, 32, 35, 0.76);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .her-agency-line {
+      width: min(100%, 430px);
+      border-top: 1px solid rgba(166, 104, 116, 0.22);
+      margin: 1rem 0 0.85rem;
+    }
+
+    .her-agency-services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.7rem;
+      color: rgba(42, 32, 35, 0.66);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .her-agency-services span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .her-agency-services span:not(:last-child)::after {
+      content: "";
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(154, 96, 112, 0.58);
+    }
+
+    .her-agency-credit {
+      margin-top: auto;
+      color: rgba(42, 32, 35, 0.54);
+      font-size: 0.72rem;
+      line-height: 1.5;
+    }
+
+    [data-bs-theme="dark"] .her-agency-tile {
+      --her-founder-opacity: 0.52;
+      border-color: rgba(229, 183, 157, 0.52) !important;
+      background:
+        linear-gradient(100deg, rgba(25, 20, 23, 0.98) 0%, rgba(42, 29, 37, 0.94) 52%, rgba(50, 38, 63, 0.9) 100%);
+      color: #fff7f1;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    [data-bs-theme="dark"] .her-agency-tile::before {
+      background:
+        linear-gradient(90deg, rgba(25, 20, 23, 0.98) 0%, rgba(25, 20, 23, 0.92) 48%, rgba(25, 20, 23, 0.18) 72%, transparent 100%),
+        radial-gradient(circle at 18% 12%, rgba(229, 183, 157, 0.12), transparent 34%),
+        radial-gradient(circle at 82% 78%, rgba(166, 104, 116, 0.22), transparent 38%);
+    }
+
+    [data-bs-theme="dark"] .her-agency-tile::after {
+      background:
+        linear-gradient(90deg, rgba(25, 20, 23, 1) 0%, rgba(25, 20, 23, 0.78) 44%, rgba(25, 20, 23, 0.24) 100%);
+    }
+
+    [data-bs-theme="dark"] .her-founder-rotator span {
+      filter: saturate(0.72) contrast(1.05) brightness(0.78);
+    }
+
+    @keyframes her-founder-crossfade {
+      0% {
+        opacity: 0;
+        transform: scale(1);
+      }
+
+      8% {
+        opacity: var(--her-founder-opacity);
+        transform: scale(1.012);
+      }
+
+      30% {
+        opacity: var(--her-founder-opacity);
+        transform: scale(1.055);
+      }
+
+      40%,
+      100% {
+        opacity: 0;
+        transform: scale(1.07);
+      }
+    }
+
+    [data-bs-theme="dark"] .her-agency-label {
+      border-color: rgba(229, 183, 157, 0.32);
+      background: rgba(255, 247, 241, 0.06);
+      color: #e5b79d;
+    }
+
+    [data-bs-theme="dark"] .her-agency-signet {
+      color: #fff7f1;
+    }
+
+    [data-bs-theme="dark"] .her-agency-signet span {
+      color: #e5b79d;
+    }
+
+    [data-bs-theme="dark"] .her-agency-copy {
+      color: rgba(255, 247, 241, 0.78);
+    }
+
+    [data-bs-theme="dark"] .her-agency-line {
+      border-top-color: rgba(229, 183, 157, 0.22);
+    }
+
+    [data-bs-theme="dark"] .her-agency-services {
+      color: rgba(255, 247, 241, 0.66);
+    }
+
+    [data-bs-theme="dark"] .her-agency-services span:not(:last-child)::after {
+      background: rgba(229, 183, 157, 0.58);
+    }
+
+    [data-bs-theme="dark"] .her-agency-credit {
+      color: rgba(255, 247, 241, 0.5);
+    }
+
+    @media (max-width: 575.98px) {
+      .her-agency-content {
+        max-width: 100%;
+      }
+
+      .her-agency-tile::after {
+        width: 100%;
+      }
+
+      .her-founder-rotator {
+        width: 100%;
+        opacity: 0.24;
+      }
+    }
   </style>
 </head>
 
@@ -1097,8 +1899,7 @@
       <div class="banner-box banner-cockpit d-flex flex-column justify-content-center p-4 p-md-5">
         <div class="position-relative z-3 max-w-xl text-start">
           <h1 class="display-5 fw-extrabold text-white mb-2 tracking-tight">
-            Pioneering 4IR in times of rapid changes
-          </h1>
+            Smoothly pioneering through rapid change </h1>
           <p class="mb-0 text-white-50 fw-medium d-none d-sm-block">
             Architecting high-level digital systems, managing integrated
             structural workflows, and optimizing continuous cross-market
@@ -1243,7 +2044,7 @@
                     width: 100%;
                     height: 100%;
                     min-height: 90px;
-                    background-image: url(&quot;https://res.cloudinary.com/dmkhsyfzf/image/upload/v1780002846/domains_heezcn.png&quot;);
+                    background-image: url(&quot;https://res.cloudinary.com/dqwm4pdbz/image/upload/v1768512311/prototyoe_mwukx1.jpg&quot;);
                     background-size: cover;
                     background-position: center;
                     transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
@@ -1311,70 +2112,96 @@
     </section>
     <section id="projects">
       <div class="row g-4 mb-4">
-        <!-- TILE 10: THEMED MASTERCLASS -->
+        <!-- TILE 10: THE CORRIDOR -->
         <div class="col-md-6">
-          <a href="build_expertise.html" class="file-link">
-            <div class="p-4 bg-white-card soft-tint-amber border-amber bw-2 tile-left">
+          <a href="corridor.html" class="file-link">
+            <div class="p-4 bg-white-card corridor-tile bw-2 tile-left">
               <div class="tile-content">
-                <span class="ui-tag tag-green tag-cutout mb-2">Skills</span>
-                <h3 class="fs-3 fw-bold mb-1">Themed Masterclass</h3>
-                <h2 class="fs-5 fw-semibold text-secondary mb-3">Infinite Strength</h2>
-
-                <div class="d-flex flex-column flex-md-row gap-4 align-items-start mt-3">
-                  <div class="image-clip-wrapper rounded-3 overflow-hidden"
-                    style="flex-shrink: 0; width: 140px; height: 140px;">
-                    <div class="zoom-img"
-                      style="width: 100%; height: 100%; background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png'); background-size: cover; background-position: center; filter: grayscale(0.8);">
-                    </div>
-                    <span class="position-absolute bottom-0 end-0 bg-dark text-white px-2 py-1 fw-bold"
-                      style="font-size: 0.65rem; border-radius: 4px 0 0 0; letter-spacing: 1px; z-index: 2;">Masterclass</span>
-                  </div>
-
-                  <div class="clip-context">
-                    <h4 class="fs-6 fw-bold mb-1 text-secondary">More Resilience</h4>
-                    <p class="small text-secondary mb-0" style="max-width: 400px; line-height: 1.5">Motivational
-                      guidance layered with an immersive learning experience for creative leaders.</p>
-                  </div>
+                <div class="d-flex justify-content-between align-items-start gap-3 w-100 mb-3">
+                  <span class="ui-tag corridor-action">Core Project</span>
+                  <span class="corridor-kicker">Status // Foundation Protocol</span>
                 </div>
 
-                <div class="ui-tag tag-green tag-cutout mt-4">
-                  <i data-lucide="check" style="width: 12px; margin-right: 4px"></i>
-                  Explore
+                <div class="d-flex flex-column flex-lg-row gap-4 align-items-start w-100">
+                  <div class="flex-grow-1">
+                    <div class="corridor-signet mb-2">The Corridor</div>
+                    <p class="corridor-copy mb-3">
+                      A cross-border blockchain network and marketplace for Euro-African SMEs:
+                      verified identity, qualitative trust, and real commercial access in one
+                      controlled ecosystem.
+                    </p>
+
+                    <div class="corridor-meta-row mb-3">
+                      <div class="corridor-meta">
+                        <strong>Passport</strong>
+                        Wallet identity
+                      </div>
+                      <div class="corridor-meta">
+                        <strong>Ledger</strong>
+                        Trust proof
+                      </div>
+                      <div class="corridor-meta">
+                        <strong>Market</strong>
+                        Trade access
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="corridor-showcase">
+                    <div class="corridor-passport">
+                      <div class="corridor-passport-label">System // Secure Node Conn</div>
+                      <div class="corridor-passport-title">Wallet Passport</div>
+                      <div class="corridor-passport-label mt-1">Euro-African SME Network</div>
+                      <div class="corridor-qr" aria-hidden="true"></div>
+                      <div class="corridor-ledger">
+                        <div class="corridor-ledger-label">Immutable Passport Key</div>
+                        <div class="corridor-ledger-row">
+                          <span>CRDR_9942_SME_ZA</span>
+                          <span class="corridor-dot"></span>
+                        </div>
+                        <div class="corridor-ledger-row">
+                          <span>28 peer links</span>
+                          <span>1.42x</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </a>
         </div>
 
-        <!-- TILE 11: HALITH MOBILE -->
+        <!-- TILE 11: H.E.R COLLAB -->
         <div class="col-md-6">
-          <a href="gallery.html" class="file-link">
-            <div class="p-4 bg-white-card soft-tint-indigo border-indigo bw-1 tile-left">
+          <a href="hercollab-agency.html" class="file-link">
+            <div class="p-4 bg-white-card her-agency-tile bw-2 tile-left">
+              <div class="her-founder-rotator" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
               <div class="tile-content">
-                <span class="ui-tag tag-indigo tag-cutout mb-2">Mobile</span>
-                <h3 class="fs-3 fw-bold mb-1">Halith</h3>
-                <h2 class="fs-5 fw-semibold text-secondary mb-3">Infinite Strength</h2>
+                <div class="her-agency-content">
+                  <span class="her-agency-label mb-3">Agency Site</span>
+                  <div class="her-agency-signet mb-2">h<span>·</span>e<span>·</span>r collab</div>
+                  <p class="her-agency-copy mb-0">
+                    Premium brand strategy, growth architecture, and human-centric
+                    storytelling for ventures that need to be felt before they are sold.
+                  </p>
 
-                <div class="d-flex flex-column flex-md-row gap-4 align-items-start mt-3">
-                  <div class="image-clip-wrapper rounded-3 overflow-hidden"
-                    style="flex-shrink: 0; width: 140px; height: 140px;">
-                    <div class="zoom-img"
-                      style="width: 100%; height: 100%; background-image: url('https://res.cloudinary.com/dqwm4pdbz/image/upload/f_jpg/v1765477890/6_rpzyu1.png'); background-size: cover; background-position: center; filter: grayscale(0.8);">
-                    </div>
-                    <span class="position-absolute bottom-0 end-0 bg-dark text-white px-2 py-1 fw-bold"
-                      style="font-size: 0.65rem; border-radius: 4px 0 0 0; letter-spacing: 1px; z-index: 2;">Halith</span>
+                  <div class="her-agency-line"></div>
+
+                  <div class="her-agency-services">
+                    <span>Positioning</span>
+                    <span>Growth</span>
+                    <span>Voice</span>
                   </div>
 
-                  <div class="clip-context">
-                    <h4 class="fs-6 fw-bold mb-1 text-secondary">More Resilience</h4>
-                    <p class="small text-secondary mb-0" style="max-width: 400px; line-height: 1.5">A compact
-                      motivational toolkit that strengthens focus, calm, and everyday decision flow.</p>
+                  <div class="her-agency-credit">
+                    Co-founded around transformative brand positioning and executive-level market narrative.
                   </div>
-                </div>
-
-                <div class="ui-tag tag-green tag-cutout mt-4">
-                  <i data-lucide="check" style="width: 12px; margin-right: 4px"></i>
-                  Launch
                 </div>
               </div>
             </div>
