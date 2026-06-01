@@ -431,6 +431,33 @@
       /* ensure metric tokens stay inside tile bounds */
     }
 
+    #compass-date {
+      font-size: 1rem;
+      line-height: 1.2;
+      color: var(--current-weekday-color);
+      opacity: 0.92;
+    }
+
+    .compass-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compass-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(var(--current-weekday-rgb), 0.08), rgba(var(--current-weekday-rgb), 0.02));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .compass-card .card-body {
+      position: relative;
+      z-index: 1;
+    }
+
     .visual-journal-tile {
       overflow: hidden;
       position: relative;
@@ -2037,7 +2064,7 @@
 
         <!-- TILE 1: CLOCK / SEASON TILE -->
         <div class="col-12 col-md-3">
-          <div class="card h-100 bg-white-card shadow-sm">
+          <div class="card h-100 bg-white-card shadow-sm compass-card">
             <div class="card-body">
               <div class="d-flex flex-column h-100 justify-content-between">
 
@@ -2048,8 +2075,8 @@
                         style="font-size:0.72rem; letter-spacing:0.14em;">
                         Compass Time Hub
                       </div>
-                      <div id="compass-date" class="fw-semibold text-secondary"
-                        style="font-size:0.92rem; line-height:1.2;"></div>
+                      <div id="compass-date" class="fw-semibold"
+                        style="font-size:1rem; line-height:1.2; color: var(--current-weekday-color);"></div>
                       <div id="compass-time" class="display-6 fw-bold"
                         style="color: var(--current-weekday-color); letter-spacing:-0.04em; line-height:1;"></div>
                       <div id="compass-utc" class="text-monospace text-muted small"
@@ -2527,9 +2554,19 @@
         }
         const accentColor = isDark ? baseColor : deepTone(baseColor, 0.28);
         document.documentElement.style.setProperty("--current-weekday-color", accentColor);
+        document.documentElement.style.setProperty("--current-weekday-rgb", hexToRgb(accentColor));
         compassDateEl.style.color = accentColor;
         compassTimeEl.style.color = accentColor;
       }
+    }
+
+    function hexToRgb(hex) {
+      const sanitized = hex.replace('#', '');
+      const intValue = parseInt(sanitized, 16);
+      const r = (intValue >> 16) & 255;
+      const g = (intValue >> 8) & 255;
+      const b = intValue & 255;
+      return `${r}, ${g}, ${b}`;
     }
 
     // Theme Logic
