@@ -431,6 +431,7 @@
 
     .visual-journal-tile {
       overflow: hidden;
+      position: relative;
     }
 
     .visual-journal-img {
@@ -446,6 +447,11 @@
       background-size: cover;
       background-position: center;
       filter: grayscale(1) contrast(1.18);
+      transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+    }
+
+    .visual-journal-tile:hover .visual-journal-img {
+      transform: scale(1.05);
     }
 
     .visual-journal-overlay {
