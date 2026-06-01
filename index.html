@@ -4,21 +4,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4IR Vanguard</title>
+  <title>projects.docs</title>
 
   <link rel="apple-touch-icon"
-    href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png?v=2" />
+    href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="theme-color" content="#020617" />
   <meta name="msapplication-TileImage"
-    content="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png?v=2" />
+    content="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png" />
   <meta name="msapplication-TileColor" content="#020617" />
   <link rel="manifest" href="site.webmanifest" />
-  <link rel="shortcut icon"
-    href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png?v=2" />
+  <link rel="shortcut icon" href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png" />
   <link rel="icon" type="image/png"
-    href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png?v=2" />
+    href="https://res.cloudinary.com/dqwm4pdbz/image/upload/v1765369836/favicon_gyvbja.png" />
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
@@ -427,6 +426,122 @@
       align-items: flex-start;
       overflow: hidden;
       /* ensure metric tokens stay inside tile bounds */
+    }
+
+    .visual-journal-tile {
+      overflow: hidden;
+    }
+
+    .visual-journal-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      border-radius: inherit;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.34) 58%, rgba(0, 0, 0, 0.72) 100%),
+        url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766492863/my-express-uploads/vdizlgatwx2pz9p7xdvu.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(1) contrast(1.18);
+    }
+
+    .visual-journal-overlay {
+      position: relative;
+      z-index: 2;
+      margin-top: auto;
+      color: #ffffff;
+      text-shadow: 0 1px 14px rgba(0, 0, 0, 0.58);
+    }
+
+    .visual-journal-overlay p {
+      color: rgba(255, 255, 255, 0.78) !important;
+      max-width: 18rem;
+    }
+
+    .connection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.55rem;
+      width: 100%;
+      margin-top: 0.15rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .connection-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border-radius: calc(var(--app-corner-radius) - 1px);
+      border: 1px solid rgba(37, 101, 250, 0.28);
+      background: rgba(255, 255, 255, 0.42);
+      transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+    }
+
+    .connection-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(37, 101, 250, 0.72);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .connection-link img {
+      width: 27px;
+      height: 27px;
+      object-fit: cover;
+      border-radius: 4px;
+      filter: grayscale(0.1) contrast(1.05);
+    }
+
+    .pulse-form {
+      display: flex;
+      gap: 0.55rem;
+      width: 100%;
+      margin-bottom: 0.75rem;
+    }
+
+    .pulse-form input {
+      min-width: 0;
+      flex: 1;
+      border: 1px solid rgba(245, 159, 11, 0.42);
+      border-radius: calc(var(--app-corner-radius) - 1px);
+      background: rgba(255, 255, 255, 0.52);
+      color: inherit;
+      font-size: 0.78rem;
+      line-height: 1.2;
+      padding: 0.58rem 0.65rem;
+    }
+
+    .pulse-form button {
+      flex: 0 0 auto;
+      border: 1px solid rgba(245, 159, 11, 0.72);
+      border-radius: calc(var(--app-corner-radius) - 1px);
+      background: rgba(245, 159, 11, 0.18);
+      color: #8a5a00;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.58rem 0.72rem;
+    }
+
+    [data-bs-theme="dark"] .connection-link,
+    [data-bs-theme="dark"] .pulse-form input {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    [data-bs-theme="dark"] .pulse-form button {
+      color: #f8d37a;
+    }
+
+    @media (max-width: 575.98px) {
+      .visual-journal-tile {
+        min-height: 156px !important;
+      }
+
+      .pulse-form {
+        flex-direction: column;
+      }
     }
 
     /* --- CATEGORY HEADERS --- */
@@ -2053,12 +2168,12 @@
               </div>
             </div>
           </div>
-          <!-- TILE 5: CORPORATE SERVICES -->
+          <!-- TILE 5: CORPORATE FINANCE -->
           <div class="col-6 col-md-4 col-lg-2">
             <div class="p-3 bg-white-card tile-left soft-tint-blue border-blue bw-2" style="min-height: 110px">
               <div class="tile-content">
-                <span class="d-block small fw-semibold text-uppercase mb-1">CORPORATE SERVICES</span>
-                <p class="small text-secondary mb-0">Senior Strategic & Financial Transformation</p>
+                <span class="d-block small fw-semibold text-uppercase mb-1">CORPORATE FINANCE</span>
+                <p class="small text-secondary mb-0">Senior Strategic & Financial Advisory</p>
                 <div class="metric-token mt-2">[ SYS: ACTV ]</div>
               </div>
             </div>
@@ -2069,7 +2184,7 @@
             <div class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-2" style="min-height: 110px">
               <div class="tile-content">
                 <span class="d-block small fw-semibold text-uppercase mb-1">GROWTH INVESTING</span>
-                <p class="small text-secondary mb-0">4IR Assets, Private Equity & Venture Incubation</p>
+                <p class="small text-secondary mb-0">Private Equity & Venture Incubation</p>
                 <div class="metric-token mt-2">[ CLS: ALPH ]</div>
               </div>
             </div>
@@ -2091,7 +2206,7 @@
             <div class="p-3 bg-white-card tile-left soft-tint-blue border-blue bw-2" style="min-height: 110px">
               <div class="tile-content">
                 <span class="d-block small fw-semibold text-uppercase mb-1">ALTERNATIVE ASSETS</span>
-                <p class="small text-secondary mb-0">Decentralized Finance, Blockchain & Web3 Property</p>
+                <p class="small text-secondary mb-0">Decentralized Finance & Web3 Property</p>
                 <div class="metric-token mt-2">[ PROT: ECO ]</div>
               </div>
             </div>
@@ -2102,7 +2217,7 @@
             <div class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-2" style="min-height: 110px">
               <div class="tile-content">
                 <span class="d-block small fw-semibold text-uppercase mb-1">STRATEGIC VALUATION</span>
-                <p class="small text-secondary mb-0">Qualitative Metrics, Ownership & Merit Systems</p>
+                <p class="small text-secondary mb-0">Qualitative Metrics & Merit Systems</p>
                 <div class="metric-token mt-2">[ RISK: VRFD ]</div>
               </div>
             </div>
@@ -2212,38 +2327,55 @@
 
 
       <div class="row g-3 mb-0">
-        <!-- TILE 12: GALLERY FOOTER -->
+        <!-- TILE 12: VISUAL JOURNAL -->
         <div class="col-12 col-md-4">
-          <a href="gallery.html" target="_blank" class="file-link">
-            <div class="p-3 bg-white-card tile-left soft-tint-red border-red bw-2" style="min-height: 90px">
-              <div class="tile-content">
-                <span class="d-block small fw-bold mb-1">Gallery</span>
-                <p class="small text-primary mb-0">Media Gallery for Visual Inspiration</p>
+          <div class="p-3 bg-white-card tile-left soft-tint-red border-red bw-2 visual-journal-tile"
+            style="min-height: 170px">
+            <div class="visual-journal-img" aria-hidden="true"></div>
+            <div class="tile-content justify-content-end">
+              <div class="visual-journal-overlay">
+                <span class="d-block small fw-bold mb-1">Visual Journal</span>
+                <p class="small mb-0">Reflections on process, structure, and the 4IR landscape.</p>
               </div>
             </div>
-          </a>
+          </div>
         </div>
-        <!-- TILE 13: PRAYER AND MOTIVATION FOOTER -->
+        <!-- TILE 13: DIRECT CONNECTIONS -->
         <div class="col-12 col-md-4">
-          <a href="evening_prayer.html" target="_blank" class="file-link">
-            <div class="p-3 bg-white-card tile-left soft-tint-blue border-blue bw-2" style="min-height: 90px">
-              <div class="tile-content">
-                <span class="d-block small fw-bold mb-1">Prayer and Motivation</span>
-                <p class="small text-primary mb-0">Mobile-friendly prayer prototype</p>
+          <div class="p-3 bg-white-card tile-left soft-tint-blue border-blue bw-2" style="min-height: 170px">
+            <div class="tile-content">
+              <div class="connection-grid" aria-label="Direct connection links">
+                <a class="connection-link" href="#" aria-label="LinkedIn placeholder">
+                  <img src="https://res.cloudinary.com/dp455m4rk/image/upload/v1779474467/linked_yd8yms.jpg"
+                    alt="LinkedIn" />
+                </a>
+                <a class="connection-link" href="#" aria-label="Facebook placeholder">
+                  <img src="https://res.cloudinary.com/dp455m4rk/image/upload/v1779474467/fb_biszhl.jpg"
+                    alt="Facebook" />
+                </a>
+                <a class="connection-link" href="#" aria-label="Email placeholder">
+                  <img
+                    src="https://res.cloudinary.com/dp455m4rk/image/upload/v1780322605/1a383da5567e4d0b84f252c208d95881_2_mbcwcv.jpg"
+                    alt="Email" />
+                </a>
               </div>
+              <span class="d-block small fw-bold mb-1">Direct Connections</span>
+              <p class="small text-secondary mb-0">Stay updated on current ventures and strategic dialogues.</p>
             </div>
-          </a>
+          </div>
         </div>
-        <!-- TILE 14: MASTERCLASS FOOTER -->
+        <!-- TILE 14: THE PULSE -->
         <div class="col-12 col-md-4">
-          <a href="build_expertise.html" target="_blank" class="file-link">
-            <div class="p-3 bg-white-card tile-left soft-tint-amber border-amber bw-3" style="min-height: 90px">
-              <div class="tile-content">
-                <span class="d-block small fw-bold mb-1">Masterclass</span>
-                <p class="small text-primary mb-0">Expertise Drives Performance</p>
-              </div>
+          <div class="p-3 bg-white-card tile-left soft-tint-amber border-amber bw-3" style="min-height: 170px">
+            <div class="tile-content">
+              <form class="pulse-form" onsubmit="return false;">
+                <input type="text" aria-label="The Pulse feedback" placeholder="How does this vision resonate today?" />
+                <button type="submit">Enter</button>
+              </form>
+              <span class="d-block small fw-bold mb-1">The Pulse</span>
+              <p class="small text-secondary mb-0">A quick signal to refine the system with your perspective.</p>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </section>
@@ -2255,7 +2387,7 @@
 
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
         <div class="text-center text-md-start">
-          <div class="footer-brand mb-1">4IR Vanguard</div>
+          <div class="footer-brand mb-1">prismatic</div>
           <div class="footer-metadata">
             A refined space for media, mastering ideas and offers.
           </div>
