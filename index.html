@@ -948,7 +948,7 @@
     }
 
     [data-bs-theme="light"] .tile-3-img {
-      filter: grayscale(1) brightness(0.82);
+      filter: grayscale(1) brightness(1.04) contrast(1.02) !important;
     }
 
     [data-bs-theme="light"] .corridor-passport {
@@ -965,7 +965,10 @@
       background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.012) 58%, rgba(255, 255, 255, 0.003) 100%),
         url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766492863/my-express-uploads/vdizlgatwx2pz9p7xdvu.jpg");
-      filter: grayscale(1) contrast(1.08) brightness(1.04);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: grayscale(1) contrast(1.04) brightness(1.08);
     }
 
     .banner-box h1 {
@@ -1038,6 +1041,11 @@
       filter: grayscale(1) brightness(0.8);
       opacity: 0.8;
       transition: all 0.5s ease;
+    }
+
+    [data-bs-theme="light"] .bg-white-card div[style*="background-image"] {
+      filter: grayscale(1) brightness(1.05) contrast(1.02) !important;
+      opacity: 1;
     }
 
     /* 2. Hover State: Returns color in both Light and Dark modes */
