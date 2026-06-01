@@ -32,10 +32,12 @@
       --clr-amber: #f59f0be7;
       --clr-grey: #64748b;
       --tile-bg-light: #f8fafc;
-      /* Change this one value to update all tiles */
       --tile-bg-dark: #1e293b;
       --app-corner-radius: 0.4rem;
-      /* Adjust this value to your liking */
+      --component-radius: 4px;
+      --gap-xs: 0.15rem;
+      --gap-sm: 0.55rem;
+      --gap-md: 0.75rem;
     }
 
     body {
@@ -470,10 +472,10 @@
     .connection-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.55rem;
+      gap: var(--gap-sm);
       width: 100%;
-      margin-top: 0.15rem;
-      margin-bottom: 0.75rem;
+      margin-top: var(--gap-xs);
+      margin-bottom: var(--gap-md);
     }
 
     .connection-link {
@@ -481,7 +483,7 @@
       align-items: center;
       justify-content: center;
       min-height: 44px;
-      border-radius: calc(var(--app-corner-radius) - 1px);
+      border-radius: var(--component-radius);
       border: 1px solid rgba(37, 101, 250, 0.28);
       background: rgba(255, 255, 255, 0.42);
       transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
@@ -497,22 +499,22 @@
       width: 27px;
       height: 27px;
       object-fit: cover;
-      border-radius: 4px;
+      border-radius: var(--component-radius);
       filter: grayscale(0.1) contrast(1.05);
     }
 
     .pulse-form {
       display: flex;
-      gap: 0.55rem;
+      gap: var(--gap-sm);
       width: 100%;
-      margin-bottom: 0.75rem;
+      margin-bottom: var(--gap-md);
     }
 
     .pulse-form input {
       min-width: 0;
       flex: 1;
       border: 1px solid rgba(245, 159, 11, 0.42);
-      border-radius: calc(var(--app-corner-radius) - 1px);
+      border-radius: var(--component-radius);
       background: rgba(255, 255, 255, 0.52);
       color: inherit;
       font-size: 0.78rem;
@@ -523,7 +525,7 @@
     .pulse-form button {
       flex: 0 0 auto;
       border: 1px solid rgba(245, 159, 11, 0.72);
-      border-radius: calc(var(--app-corner-radius) - 1px);
+      border-radius: var(--component-radius);
       background: rgba(245, 159, 11, 0.18);
       color: #8a5a00;
       font-size: 0.72rem;
@@ -600,7 +602,7 @@
       align-items: center;
       padding: 0.25rem 0.75rem;
       padding-top: 0.35rem !important;
-      border-radius: 4px;
+      border-radius: var(--component-radius);
       font-size: 0.65rem;
       font-weight: 700;
       text-transform: uppercase;
@@ -1827,7 +1829,7 @@
       border: 1px solid rgba(166, 104, 116, 0.42);
       background: rgba(255, 255, 255, 0.42);
       color: #8a4f5d;
-      border-radius: 999px;
+      border-radius: var(--component-radius);
       padding: 0.38rem 0.72rem;
       font-size: 0.64rem;
       font-weight: 800;
