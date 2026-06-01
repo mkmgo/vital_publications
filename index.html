@@ -476,11 +476,13 @@
       background-size: cover;
       background-position: center;
       filter: grayscale(1) contrast(1.18);
-      transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+      transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1), filter 0.8s ease;
+      transform-origin: center center;
+      transform: scale(1);
     }
 
     .visual-journal-tile:hover .visual-journal-img {
-      transform: scale(1.05);
+      transform: scale(1);
     }
 
     .visual-journal-overlay {
@@ -929,6 +931,41 @@
 
     [data-bs-theme="dark"] .banner-cockpit {
       background-color: rgba(255, 255, 255, 0.03) !important;
+    }
+
+    [data-bs-theme="light"] .banner-cockpit::before {
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.04)),
+        url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779820306/webbanner_e5bib0.webp");
+      filter: brightness(1.06);
+    }
+
+    [data-bs-theme="light"] .banner-cockpit:hover::before {
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05)),
+        url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779820306/webbanner_e5bib0.webp");
+      filter: brightness(1.08);
+    }
+
+    [data-bs-theme="light"] .tile-3-img {
+      filter: grayscale(1) brightness(0.82);
+    }
+
+    [data-bs-theme="light"] .corridor-passport {
+      background:
+        linear-gradient(150deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06)),
+        linear-gradient(150deg, #181d24, #0d1117);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      box-shadow:
+        0 14px 28px rgba(15, 23, 42, 0.08),
+        0 0 0 6px rgba(255, 255, 255, 0.015);
+    }
+
+    [data-bs-theme="light"] .visual-journal-img {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.012) 58%, rgba(255, 255, 255, 0.003) 100%),
+        url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766492863/my-express-uploads/vdizlgatwx2pz9p7xdvu.jpg");
+      filter: grayscale(1) contrast(1.08) brightness(1.04);
     }
 
     .banner-box h1 {
@@ -2165,7 +2202,7 @@
           <div class="bg-white-card border-grey bw-1 overflow-hidden h-100"
             style="min-height: 260px; position: relative;">
             <!-- Isolated Image Scaling Layer -->
-            <div style="
+            <div class="tile-3-img" style="
             position: absolute;
             top: 0;
             left: 0;
@@ -2366,7 +2403,7 @@
         <!-- TILE 12: VISUAL JOURNAL -->
         <div class="col-12 col-md-4">
           <div class="p-3 bg-white-card tile-left soft-tint-red border-red bw-2 visual-journal-tile"
-            style="min-height: 170px">
+            style="min-height: 240px">
             <div class="visual-journal-img" aria-hidden="true"></div>
             <div class="tile-content justify-content-end">
               <div class="visual-journal-overlay">
