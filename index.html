@@ -1000,18 +1000,46 @@
     /* Light theme: brighter, warmer banner overlay to harmonize with page */
     [data-bs-theme="light"] .banner-box {
       background-color: rgba(255, 255, 255, 0.90);
-      border-color: rgba(15, 23, 42, 0.06);
+      /* much lighter border in light mode so the moving image reads softer */
+      border-color: rgba(15, 23, 42, 0.02);
+    }
+
+    /* Light-mode branding accents: apply warm orange to logo and subheadline */
+    [data-bs-theme="light"] .header-link-icon i,
+    [data-bs-theme="light"] .footer-brand-icon {
+      color: #f97316 !important;
+      filter: none;
+    }
+
+    [data-bs-theme="light"] .brand-text-glow {
+      color: #f97316;
+      text-shadow: 0 6px 18px rgba(249, 115, 22, 0.08);
+    }
+
+    [data-bs-theme="light"] .sub-brand-glow {
+      color: #f97316;
+      opacity: 0.92;
+      letter-spacing: 0.02em;
+    }
+
+    /* Light-theme: add a very subtle outline to the cockpit tile itself (overrides generic none)
+       This only applies in light mode and will not affect dark mode. */
+    [data-bs-theme="light"] .banner-cockpit {
+      /* even subtler edge for a near-invisible outline in light mode */
+      border: 1px solid rgba(255, 255, 255, 0.16) !important;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.01);
     }
 
     [data-bs-theme="light"] .banner-cockpit::before {
-      /* slightly reduced white overlay so the image reads lighter by default */
+      /* softer, smoother light overlay for a gentler appearance */
       background:
-        linear-gradient(rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.10)),
+        linear-gradient(rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08)),
         url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1780584752/WebBannerlightmode_gu8ryk.webp");
       background-size: cover;
       background-position: center;
-      /* brighter base so hover only makes a subtle change */
-      filter: brightness(1.35) contrast(1.05) saturate(1.06);
+      background-blend-mode: soft-light;
+      /* keep the same visual outcome but slightly softened */
+      filter: brightness(1.32) contrast(1.05) saturate(1.05);
       transition: filter 0.25s ease, background 0.25s ease;
     }
 
