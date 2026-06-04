@@ -482,7 +482,10 @@
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      background: linear-gradient(180deg, rgba(var(--current-weekday-rgb), 0.08), rgba(var(--current-weekday-rgb), 0.02));
+      background:
+        radial-gradient(circle at top left, rgba(var(--current-weekday-rgb), 0.18), rgba(var(--current-weekday-rgb), 0.06) 28%, rgba(var(--current-weekday-rgb), 0.02) 82%),
+        linear-gradient(180deg, rgba(var(--current-weekday-rgb), 0.12), rgba(var(--current-weekday-rgb), 0.02));
+      box-shadow: inset 0 0 0 1px rgba(var(--current-weekday-rgb), 0.08);
       pointer-events: none;
       z-index: 0;
     }
@@ -490,6 +493,20 @@
     .compass-card .card-body {
       position: relative;
       z-index: 1;
+    }
+
+    .compass-title {
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      color: var(--current-weekday-color, #64748b);
+    }
+
+    .compass-inner-circle {
+      fill: rgba(255, 255, 255, 0.94);
+    }
+
+    [data-bs-theme="dark"] .compass-inner-circle {
+      fill: rgba(15, 23, 42, 0.55);
     }
 
     .visual-journal-tile {
@@ -2177,8 +2194,8 @@
                 <div class="d-flex flex-column gap-3">
                   <div class="d-flex align-items-start gap-3 flex-wrap">
                     <div class="flex-grow-1">
-                      <div class="text-uppercase fw-semibold text-muted mb-1"
-                        style="font-size:0.72rem; letter-spacing:0.14em;">
+                                      <div class="text-uppercase fw-semibold text-muted mb-1 compass-title"
+                        style="font-size:0.82rem; letter-spacing:0.16em; color: var(--current-weekday-color, #64748b);">
                         Compass Time Hub
                       </div>
                       <div id="compass-date" class="fw-semibold"
@@ -2193,7 +2210,7 @@
 
                     <div class="position-relative" style="width:108px; min-width:108px; height:108px; flex-shrink:0;">
                       <svg viewBox="0 0 120 120" width="108" height="108" aria-hidden="true">
-                        <circle cx="60" cy="60" r="42" fill="none" stroke="#e2e8f0" stroke-width="10" opacity=".45" />
+                        <circle cx="60" cy="60" r="42" fill="none" stroke="rgba(var(--current-weekday-rgb, 37, 99, 235), 0.24)" stroke-width="10" opacity=".6" />
                         <circle cx="60" cy="60" r="42" fill="none" stroke="var(--current-weekday-color,#2565fa)"
                           stroke-width="10" stroke-linecap="round" stroke-dasharray="0 263.89"
                           transform="rotate(-90 60 60)" id="compass-progress-path" />
@@ -2201,7 +2218,7 @@
                         <circle cx="18" cy="60" r="3.5" fill="#334155" />
                         <circle cx="60" cy="102" r="3.5" fill="#334155" />
                         <circle cx="102" cy="60" r="3.5" fill="#334155" />
-                        <circle cx="60" cy="60" r="28" fill="rgba(255,255,255,0.88)" />
+                        <circle cx="60" cy="60" r="28" class="compass-inner-circle" />
                       </svg>
                       <div class="position-absolute top-50 start-50 translate-middle text-center"
                         style="font-size:0.75rem; color:#64748b; line-height:1.1; width:72px;">
@@ -2211,14 +2228,14 @@
                   </div>
 
                   <div class="d-flex flex-column gap-2">
-                    <div class="text-muted small" style="font-size:0.78rem; line-height:1.4;">
-                      Day of Year <span id="compass-dayofyear">--</span>/365 |
-                      Week of Year: <span id="compass-wy"></span> |
-                      Week of Month: <span id="compass-wm"></span>
+                    <div class="text-muted small compass-stats" style="font-size:0.78rem; line-height:1.4;">
+                      Day of Year <strong id="compass-dayofyear">--</strong>/365 |
+                      Week of Year: <strong id="compass-wy">--</strong> |
+                      Week of Month: <strong id="compass-wm">--</strong>
                     </div>
                     <div id="compass-astro" class="text-muted small fst-italic"
                       style="font-size:0.79rem; line-height:1.5;">
-                      today is -- days before Winter Solstice
+                      <strong>--</strong> days before Winter Solstice
                     </div>
                   </div>
                 </div>
@@ -2633,7 +2650,9 @@
             nextSolstice = new Date(year + 1, 5, 21);
           }
           const remaining = Math.max(0, Math.ceil((nextSolstice - now) / 86400000));
-          compassAstroEl.textContent = `today is ${remaining} day${remaining === 1 ? "" : "s"} before Winter Solstice`;
+          const displayValue = Number.isFinite(remaining) ? remaining : "--";
+          const dayLabel = remaining === 1 ? "day" : "days";
+          compassAstroEl.innerHTML = `<strong>${displayValue}</strong> ${dayLabel} before Winter Solstice`;
         }
 
         const weekdayColors = {
