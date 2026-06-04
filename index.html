@@ -980,18 +980,30 @@
       background-color: rgba(255, 255, 255, 0.03) !important;
     }
 
+    /* Light theme: brighter, warmer banner overlay to harmonize with page */
+    [data-bs-theme="light"] .banner-box {
+      background-color: rgba(255, 255, 255, 0.90);
+      border-color: rgba(15, 23, 42, 0.06);
+    }
+
     [data-bs-theme="light"] .banner-cockpit::before {
+      /* slightly reduced white overlay so the image reads lighter by default */
       background:
-        linear-gradient(rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.04)),
+        linear-gradient(rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.10)),
         url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779820306/webbanner_e5bib0.webp");
-      filter: brightness(1.06);
+      background-size: cover;
+      background-position: center;
+      /* brighter base so hover only makes a subtle change */
+      filter: brightness(1.35) contrast(1.05) saturate(1.06);
+      transition: filter 0.25s ease, background 0.25s ease;
     }
 
     [data-bs-theme="light"] .banner-cockpit:hover::before {
       background:
-        linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05)),
+        linear-gradient(rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.12)),
         url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779820306/webbanner_e5bib0.webp");
-      filter: brightness(1.08);
+      /* only a slight increase on hover to preserve subtlety */
+      filter: brightness(1.38) contrast(1.06) saturate(1.06);
     }
 
     [data-bs-theme="light"] .tile-3-img {
