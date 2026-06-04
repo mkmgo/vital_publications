@@ -2589,6 +2589,30 @@
     </div>
   </footer>
 
+    <!-- Light-mode-only banner zoom-out: subtle default zoom-out, restores on hover -->
+    <style>
+      /* default slight zoom-out only in light theme */
+      :root[data-bs-theme="light"] .banner-cockpit {
+        transform: scale(0.965);
+        transform-origin: center top;
+        transition: transform 600ms cubic-bezier(.2,.8,.2,1);
+      }
+
+      /* on hover restore to normal scale and keep existing translateY */
+      :root[data-bs-theme="light"] .banner-cockpit:hover {
+        transform: translateY(-2px) scale(1);
+      }
+
+      /* respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        :root[data-bs-theme="light"] .banner-cockpit,
+        :root[data-bs-theme="light"] .banner-cockpit:hover {
+          transition: none;
+          transform: none;
+        }
+      }
+    </style>
+
   <script>
     // Set footer year
     document.getElementById("year").textContent = new Date().getFullYear();
