@@ -512,6 +512,10 @@
     .visual-journal-tile {
       overflow: hidden;
       position: relative;
+      background: rgba(255, 255, 255, 0.08) !important;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
     }
 
     .visual-journal-img {
@@ -522,11 +526,12 @@
       z-index: 0;
       border-radius: inherit;
       background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.34) 58%, rgba(0, 0, 0, 0.72) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 58%, rgba(255, 255, 255, 0.02) 100%),
         url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1780596832/4-tiles_oe4vn2.jpg");
       background-size: cover;
       background-position: center;
-      filter: grayscale(1) contrast(1.18);
+      filter: grayscale(0) contrast(1);
+      backdrop-filter: blur(8px);
       transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1), filter 0.8s ease;
       transform-origin: center center;
       transform: scale(1);
@@ -1069,12 +1074,12 @@
 
     [data-bs-theme="light"] .visual-journal-img {
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.012) 58%, rgba(255, 255, 255, 0.003) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 58%, rgba(255, 255, 255, 0.01) 100%),
         url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1766492863/my-express-uploads/vdizlgatwx2pz9p7xdvu.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      filter: grayscale(1) contrast(1.04) brightness(1.08);
+      filter: grayscale(0) contrast(1.02) brightness(1.1);
     }
 
     .banner-box h1 {
@@ -2341,7 +2346,7 @@
         <div class="row g-3">
           <!-- TILE 4: PROTO IMAGE TILE -->
           <div class="col-6 col-md-4 col-lg-2">
-            <div class="p-3 bg-white-card tile-left soft-tint-red border-red bw-2 visual-journal-tile" style="min-height: 90px">
+            <div class="p-3 bg-white-card tile-left soft-tint-red visual-journal-tile" style="min-height: 90px; border: 1px solid rgba(235, 73, 89, 0.25) !important;">
               <div class="visual-journal-img" aria-hidden="true"></div>
               <div class="tile-content justify-content-end">
                 <div class="visual-journal-overlay">
@@ -2364,11 +2369,14 @@
 
           <!-- TILE 6: GROWTH INVESTING -->
           <div class="col-6 col-md-4 col-lg-2">
-            <div class="p-3 bg-white-card tile-left soft-tint-grey border-grey bw-2" style="min-height: 110px">
-              <div class="tile-content">
-                <span class="d-block small fw-semibold text-uppercase mb-1">GROWTH INVESTING</span>
-                <p class="small text-secondary mb-0">Private Equity & Venture Incubation</p>
-                <div class="metric-token mt-2">[ CLS: ALPH ]</div>
+            <div class="p-3 bg-white-card tile-left soft-tint-grey visual-journal-tile" style="min-height: 110px; border: 1px solid rgba(100, 116, 139, 0.25) !important;">
+              <div class="visual-journal-img" aria-hidden="true"></div>
+              <div class="tile-content justify-content-end">
+                <div class="visual-journal-overlay">
+                  <span class="d-block small fw-semibold text-uppercase mb-1">GROWTH INVESTING</span>
+                  <p class="small text-secondary mb-0">Private Equity & Venture Incubation</p>
+                  <div class="metric-token mt-2">[ CLS: ALPH ]</div>
+                </div>
               </div>
             </div>
           </div>
@@ -2512,8 +2520,8 @@
       <div class="row g-3 mb-0">
         <!-- TILE 12: VISUAL JOURNAL -->
         <div class="col-12 col-md-4">
-          <div class="p-3 bg-white-card tile-left soft-tint-red border-red bw-2 visual-journal-tile"
-            style="min-height: 170px">
+          <div class="p-3 bg-white-card tile-left soft-tint-red visual-journal-tile"
+            style="min-height: 170px; border: 1px solid rgba(235, 73, 89, 0.25) !important;">
             <div class="visual-journal-img" aria-hidden="true"></div>
             <div class="tile-content justify-content-end">
               <div class="visual-journal-overlay">
