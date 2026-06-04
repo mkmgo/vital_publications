@@ -231,6 +231,40 @@
         0 0 45px rgba(255, 152, 0, 0.8);
     }
 
+    /* --- LIGHT MODE SUNSHINE ADAPTATION --- */
+    [data-bs-theme="light"] .header-link-icon {
+      background: radial-gradient(circle, rgba(255, 173, 51, 0.28) 0%, rgba(255, 145, 0, 0.10) 100%) !important;
+      border-color: rgba(255, 159, 11, 0.65) !important;
+      box-shadow:
+        0 0 14px rgba(255, 159, 11, 0.35),
+        inset 0 0 10px rgba(255, 210, 120, 0.30);
+    }
+
+    [data-bs-theme="light"] .header-link-icon i {
+      color: #ff9f1c !important;
+    }
+
+    [data-bs-theme="light"] .brand-text-glow {
+      color: #ff9f1c !important;
+      text-shadow:
+        0 0 4px rgba(255, 159, 28, 0.6),
+        0 0 12px rgba(255, 180, 64, 0.35);
+    }
+
+    [data-bs-theme="light"] .header-link-glow-container:hover .header-link-icon {
+      box-shadow:
+        0 0 28px rgba(255, 165, 0, 0.95),
+        0 0 12px rgba(255, 140, 30, 0.6),
+        inset 0 0 12px rgba(255, 215, 110, 0.75);
+    }
+
+    [data-bs-theme="light"] .header-link-glow-container:hover .brand-text-glow {
+      text-shadow:
+        0 0 12px rgba(255,255,255,1),
+        0 0 30px rgba(255, 180, 65, 0.9),
+        0 0 45px rgba(255, 125, 0, 0.7);
+    }
+
     /* --- TILE SYSTEM & HOVER --- */
     .bg-white-card {
       background-color: var(--tile-bg-light);
@@ -793,11 +827,23 @@
     }
 
     .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
       font-weight: 400;
       color: var(--clr-amber);
       letter-spacing: -0.01em;
       font-size: 1.1rem;
       line-height: 1.2;
+    }
+
+    .footer-brand-icon {
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--clr-amber);
     }
 
     .footer-metadata {
@@ -2469,7 +2515,7 @@
 
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
         <div class="text-center text-md-start">
-          <div class="footer-brand mb-1">4IR Vanguard</div>
+          <div class="footer-brand mb-1"><i data-lucide="layers-plus" class="footer-brand-icon"></i>4IR Vanguard</div>
           <div class="footer-metadata">
             A refined space for media, mastering ideas and fair offers.
           </div>
