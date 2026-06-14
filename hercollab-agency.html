@@ -65,6 +65,69 @@
             }
         }
 
+        body[data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #f8f9fa;
+            --text-strong: #ffffff;
+            --text-muted: #a7a9be;
+            --brand-color: #ffffff;
+            --subheadline-color: #e44d4d;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --bg-overlay: rgba(18, 18, 18, 0.75);
+            --tile-bg: rgba(26, 26, 26, 0.85);
+            --tile-shadow: rgba(0, 0, 0, 0.2);
+        }
+
+        body[data-theme="light"] {
+            --bg-color: #fcfcfc;
+            --text-color: #212529;
+            --text-strong: #000000;
+            --text-muted: #6c757d;
+            --brand-color: #000000;
+            --subheadline-color: #b22222;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --bg-overlay: rgba(252, 252, 252, 0.75);
+            --tile-bg: rgba(255, 255, 255, 0.85);
+            --tile-shadow: rgba(0, 0, 0, 0.03);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 11;
+            width: 2.4rem;
+            height: 2.4rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.18);
+            color: var(--text-color);
+            cursor: pointer;
+            opacity: 0.82;
+            transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        body[data-theme="dark"] .theme-toggle {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .theme-toggle:hover,
+        .theme-toggle:focus-visible {
+            opacity: 1;
+            transform: scale(1.05);
+            outline: none;
+        }
+
+        .theme-toggle svg {
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+
         body {
             font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
             color: var(--text-color);
@@ -232,6 +295,7 @@
 </head>
 
 <body>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"></button>
 
     <div class="bg-slideshow">
         <div class="bg-slide"></div>
@@ -274,6 +338,47 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/lucide.min.js"></script>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeKey = 'theme-preference';
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function renderToggleIcon(theme) {
+            themeToggle.innerHTML = theme === 'dark' ? lucide.sun({ width: 18, height: 18 }) : lucide.moon({ width: 18, height: 18 });
+            themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Activate light mode' : 'Activate dark mode');
+            themeToggle.setAttribute('title', theme === 'dark' ? 'Activate light mode' : 'Activate dark mode');
+        }
+
+        function applyTheme(theme, persist = false) {
+            document.body.dataset.theme = theme;
+            renderToggleIcon(theme);
+            if (persist) {
+                localStorage.setItem(themeKey, theme);
+            }
+        }
+
+        function resolveInitialTheme() {
+            const saved = localStorage.getItem(themeKey);
+            if (saved === 'light' || saved === 'dark') {
+                return saved;
+            }
+            return prefersDark.matches ? 'dark' : 'light';
+        }
+
+        applyTheme(resolveInitialTheme());
+
+        themeToggle.addEventListener('click', () => {
+            const nextTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            applyTheme(nextTheme, true);
+        });
+
+        prefersDark.addEventListener('change', event => {
+            if (!localStorage.getItem(themeKey)) {
+                applyTheme(event.matches ? 'dark' : 'light');
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
