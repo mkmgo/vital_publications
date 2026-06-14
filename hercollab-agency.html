@@ -93,29 +93,29 @@
 
         .theme-toggle {
             position: fixed;
-            top: 1rem;
-            right: 1rem;
+            top: 0.85rem;
+            right: 0.85rem;
             z-index: 11;
-            width: 2.8rem;
-            height: 2.8rem;
+            width: 2.35rem;
+            height: 2.35rem;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.24);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.26);
+            background: rgba(255, 255, 255, 0.14);
             color: var(--text-color);
             cursor: pointer;
-            opacity: 0.92;
+            opacity: 0.72;
             transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
         }
 
         body[data-theme="dark"] .theme-toggle {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.14);
             color: #f8f9fa;
         }
 
@@ -127,8 +127,19 @@
         }
 
         .theme-toggle svg {
-            width: 1.2rem;
-            height: 1.2rem;
+            width: 1rem;
+            height: 1rem;
+            stroke-width: 1.8;
+            color: rgba(33, 37, 41, 0.46);
+            filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.55));
+            opacity: 0.78;
+            transition: color 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+        }
+
+        body[data-theme="dark"] .theme-toggle svg {
+            color: rgba(255, 255, 255, 0.64);
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+            opacity: 0.82;
         }
 
         body {
@@ -332,7 +343,7 @@
 
                     <!-- Custom Footer Matrix Connected to CSS Theme Engine -->
                     <footer class="text-start tile-footer caps-sentiment" style="font-size: 0.7rem;">
-                        <span>&copy; 2026 h·e·r collab. Strategic Architecture & Venture Development. | Brand Statement Card #1</span>
+                        <span>&copy; 2026 h·e·r collab. Strategic Architecture & Venture Development. | Brand Statement #1</span>
                     </footer>
 
                 </article>
@@ -346,9 +357,14 @@
         const themeToggle = document.getElementById('theme-toggle');
         const themeKey = 'theme-preference';
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        const themeIcons = {
+            moon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>',
+            sun: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>'
+        };
 
         function renderToggleIcon(theme) {
-            themeToggle.innerHTML = theme === 'dark' ? lucide.sun({ width: 18, height: 18 }) : lucide.moon({ width: 18, height: 18 });
+            const iconName = theme === 'dark' ? 'sun' : 'moon';
+            themeToggle.innerHTML = themeIcons[iconName];
             themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Activate light mode' : 'Activate dark mode');
             themeToggle.setAttribute('title', theme === 'dark' ? 'Activate light mode' : 'Activate dark mode');
         }
