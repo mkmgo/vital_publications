@@ -11,8 +11,7 @@
     <meta property="og:url" content="https://yourdomain.com">
     <meta property="og:title" content="h·e·r collab">
     <meta property="og:description" content="Creative Brilliance · Surgical Precision.">
-    <meta property="og:image"
-        content="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781358154/her_favicon_2_ckbdpd.png?v=2">
+    <meta property="og:image" content="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781358154/her_favicon_2_ckbdpd.png?v=2">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
@@ -20,8 +19,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="h·e·r collab">
     <meta name="twitter:description" content="Creative Brilliance. Surgical Precision.">
-    <meta name="twitter:image"
-        content="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781358154/her_favicon_2_ckbdpd.png?v=2">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781358154/her_favicon_2_ckbdpd.png?v=2">
 
     <!-- Standard Browser Favicon -->
     <link rel="icon" type="image/png"
@@ -45,28 +43,26 @@
             --text-strong: #000000;
             --text-muted: #6c757d;
             --brand-color: #000000;
-            --subheadline-color: #b22222;
-            /* Professional brick red */
+            --subheadline-color: #b22222; /* Professional brick red */
             --border-color: rgba(0, 0, 0, 0.1);
             --bg-overlay: rgba(252, 252, 252, 0.75);
             --tile-bg: rgba(255, 255, 255, 0.85);
             --tile-shadow: rgba(0, 0, 0, 0.03);
         }
 
-        /* Hardcoded Dark Mode Only */
-        :root {
-            --bg-color: #121212;
-            --text-color: #f8f9fa;
-            --text-strong: #ffffff;
-            --text-muted: #a7a9be;
-            /* Highly visible slate grey */
-            --brand-color: #ffffff;
-            --subheadline-color: #e44d4d;
-            /* High-contrast red */
-            --border-color: rgba(255, 255, 255, 0.1);
-            --bg-overlay: rgba(18, 18, 18, 0.75);
-            --tile-bg: rgba(26, 26, 26, 0.85);
-            --tile-shadow: rgba(0, 0, 0, 0.2);
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --text-color: #f8f9fa;
+                --text-strong: #ffffff;
+                --text-muted: #a7a9be; /* Highly visible slate grey in dark mode */
+                --brand-color: #ffffff;
+                --subheadline-color: #e44d4d; /* High-contrast red for dark mode */
+                --border-color: rgba(255, 255, 255, 0.1);
+                --bg-overlay: rgba(18, 18, 18, 0.75);
+                --tile-bg: rgba(26, 26, 26, 0.85);
+                --tile-shadow: rgba(0, 0, 0, 0.2);
+            }
         }
 
         body {
@@ -260,7 +256,7 @@
                     <main>
                         <p class="lead-text caps-sentiment text-start">
                             Driving the future of Black women’s entrepreneurship. Backed by decades of major South
-                            African agency experience and masterful execution.<br>
+                            African agency experience and masterful execution.<br> 
                             <strong>We shape the industry. We process genuine emotion. We build brands.</strong>
                         </p>
                     </main>
@@ -269,7 +265,7 @@
 
                     <!-- Custom Footer Matrix Connected to CSS Theme Engine -->
                     <footer class="text-start tile-footer caps-sentiment" style="font-size: 0.7rem;">
-                        <span>&copy; 2026 h·e·r collab. Strategic Architecture & Venture Development. | Brand Statement.</span>
+                        <span>&copy; 2026 h·e·r collab. Strategic Architecture & Venture Development. | Brand Statement Card #1</span>
                     </footer>
 
                 </article>
