@@ -18,7 +18,8 @@
             --text-strong: #000000;
             --text-muted: #6c757d;
             --brand-color: #000000;
-            --subheadline-color: #b22222; /* Crimson Brick Accent */
+            --subheadline-color: #b22222;
+            /* Crimson Brick Accent */
             --border-color: rgba(0, 0, 0, 0.1);
             --bg-overlay: rgba(252, 252, 252, 0.75);
             --tile-bg: rgba(255, 255, 255, 0.85);
@@ -124,11 +125,30 @@
         }
 
         @keyframes crossfade {
-            0% { opacity: 0; transform: scale(1.03); }
-            10% { opacity: 0.32; transform: scale(1.06); }
-            33% { opacity: 0.32; transform: scale(1.11); }
-            43% { opacity: 0; transform: scale(1.14); }
-            100% { opacity: 0; transform: scale(1.03); }
+            0% {
+                opacity: 0;
+                transform: scale(1.03);
+            }
+
+            10% {
+                opacity: 0.32;
+                transform: scale(1.06);
+            }
+
+            33% {
+                opacity: 0.32;
+                transform: scale(1.11);
+            }
+
+            43% {
+                opacity: 0;
+                transform: scale(1.14);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.03);
+            }
         }
 
         .bg-overlay-tint {
@@ -342,7 +362,7 @@
             margin-bottom: 0;
         }
 
-        .profile-intro + hr {
+        .profile-intro+hr {
             margin-top: 0.25rem;
         }
 
@@ -396,8 +416,13 @@
         }
 
         @keyframes surgicalCut {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .block-label {
@@ -492,7 +517,8 @@
 </head>
 
 <body>
-    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle system interface mode" title="Toggle System Mode"></button>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle system interface mode"
+        title="Toggle System Mode"></button>
 
     <div class="bg-slideshow">
         <div class="bg-slide"></div>
@@ -513,9 +539,11 @@
                     </header>
 
                     <nav class="partner-nav">
-                        <button class="partner-tab active">01 / Neo Segola</button>
-                        <button class="partner-tab" style="opacity: 0.35; cursor: not-allowed;" disabled>[02 / Partner]</button>
-                        <button class="partner-tab" style="opacity: 0.35; cursor: not-allowed;" disabled>[03 / Partner]</button>
+                        <button class="partner-tab active">CCO / Neo Segola</button>
+                        <button class="partner-tab" style="opacity: 0.35; cursor: not-allowed;" disabled>[02 /
+                            Partner]</button>
+                        <button class="partner-tab" style="opacity: 0.35; cursor: not-allowed;" disabled>[03 /
+                            Partner]</button>
                     </nav>
 
                     <section class="profile-intro text-start pb-2" aria-label="Partner profile introduction">
@@ -524,7 +552,8 @@
                                 <div class="partner-title">Co-Founder & Chief Creative Officer</div>
                                 <p class="partner-roleline">The Visionary · Creative Excellence</p>
                                 <p class="lead-text partner-quote mb-3">
-                                    "Shaping the future of brand storytelling with 20+ years of elite judging pedigree and global creative excellence."
+                                    "Shaping the future of brand storytelling with 20+ years of elite judging pedigree
+                                    and global creative excellence."
                                 </p>
                             </div>
 
@@ -538,39 +567,53 @@
                         </div>
 
                         <figure class="profile-portrait mb-0">
-                            <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/q_auto/f_auto/v1776286873/Neo_Segola_tvcbhe.jpg" alt="Neo Segola portrait">
+                            <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/q_auto/f_auto/v1776286873/Neo_Segola_tvcbhe.jpg"
+                                alt="Neo Segola portrait">
                         </figure>
                     </section>
 
                     <hr class="mb-4">
 
                     <main class="bio-slider-container">
-                        
+
                         <div class="bio-block active" id="bio-block-1">
-                            <span class="block-label">01 // Authority Profile</span>
+                            <span class="block-label">01 // Authority</span>
                             <p class="lead-text">
-                                Neo has spent over 20 years in creative leadership, working with some of the world's most recognised brands. She's served as <strong>D&AD Jury President</strong>, been on the <strong>Cannes Lions Film Jury twice</strong>, and judged at the Clios, London International Awards, and the Cresta Awards. What those experiences have shaped in her is a love for work that truly connects and ideas that stay with people long after the campaign ends.
+                                Neo has spent over 20 years in creative leadership, working with some of the world's
+                                most recognised brands. She's served as <strong>D&AD Jury President</strong>, been on
+                                the <strong>Cannes Lions Film Jury twice</strong>, and judged at the Clios, London
+                                International Awards, and the Cresta Awards. What those experiences have shaped in her
+                                is a love for work that truly connects and ideas that stay with people long after the
+                                campaign ends.
                             </p>
                         </div>
 
                         <div class="bio-block" id="bio-block-2">
-                            <span class="block-label">02 // Core Ambition</span>
+                            <span class="block-label">02 // Ambition</span>
                             <p class="lead-text">
-                                When Neo co-founded h·e·r Collab, the goal was never to build just another agency. She's interested in work that shapes culture, as well as with campaigns that become part of the conversations people are already having. She's passionate about <strong>mentoring emerging talent</strong> and developing creative IP, because she believes the best work comes from teams that are supported and challenged in equal measure.
+                                When Neo co-founded h·e·r Collab, the goal was never to build just another agency. She's
+                                interested in work that shapes culture, as well as with campaigns that become part of
+                                the conversations people are already having. She's passionate about <strong>mentoring
+                                    emerging talent</strong> and developing creative IP, because she believes the best
+                                work comes from teams that are supported and challenged in equal measure.
                             </p>
                         </div>
 
                         <div class="bio-block" id="bio-block-3">
-                            <span class="block-label">03 // Documented Achievement</span>
+                            <span class="block-label">03 // Achievement</span>
                             <p class="lead-text">
-                                Neo has worked across a wide range of marquee spaces. From <strong>South African Tourism, Brand South Africa, Standard Bank, BMW, and Telkom</strong>; to global names like <strong>Microsoft, MTN, and Unilever</strong>. What she values most isn't the scale of the brand or the work, but the quality of the collaborations behind it. She's at her best when bringing different people together to make something better than any one of them could alone.
+                                Neo has worked across a wide range of marquee spaces. From <strong>South African
+                                    Tourism, Brand South Africa, Standard Bank, BMW, and Telkom</strong>; to global
+                                names like <strong>Microsoft, MTN, and Unilever</strong>. What she values most isn't the
+                                scale of the brand or the work, but the quality of the collaborations behind it. She's
+                                at her best when bringing different people together to make something better than any
+                                one of them could alone.
                             </p>
                         </div>
 
                         <div class="bio-block" id="bio-block-4">
-                            <span class="block-label">04 // Core Expertise Spectrum</span>
+                            <span class="block-label">04 // Core Expertise</span>
                             <p class="lead-text">
-                                Masterful execution and strategic configuration are focused across major core operational pathways:<br>
                                 <strong>· Creative direction and brand storytelling</strong><br>
                                 <strong>· Conceptual thinking across channels</strong><br>
                                 <strong>· Building and leading elite creative teams</strong><br>
@@ -582,19 +625,32 @@
 
                     <div class="d-flex justify-content-start align-items-center mb-4">
                         <div class="frame-nav-menu">
-                            <button class="frame-nav-btn" id="prev-block-btn" type="button" aria-label="Previous text entry block" title="Previous Block">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
+                            <button class="frame-nav-btn" id="prev-block-btn" type="button"
+                                aria-label="Previous text entry block" title="Previous Block">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    aria-hidden="true">
+                                    <path d="m12 19-7-7 7-7"></path>
+                                    <path d="M19 12H5"></path>
+                                </svg>
                             </button>
-                            
+
                             <span class="frame-nav-indicator" id="block-indicator">1 / 4</span>
-                            
-                            <button class="frame-nav-btn" id="next-block-btn" type="button" aria-label="Next text entry block" title="Next Block">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+
+                            <button class="frame-nav-btn" id="next-block-btn" type="button"
+                                aria-label="Next text entry block" title="Next Block">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    aria-hidden="true">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m12 5 7 7-7 7"></path>
+                                </svg>
                             </button>
 
                             <div class="frame-theme-divider"></div>
 
-                            <button class="frame-nav-btn" id="inline-theme-btn" type="button" aria-label="Switch interface operational theme mapping" title="Switch Theme">
+                            <button class="frame-nav-btn" id="inline-theme-btn" type="button"
+                                aria-label="Switch interface operational theme mapping" title="Switch Theme">
                             </button>
                         </div>
                     </div>
@@ -602,7 +658,8 @@
                     <hr class="mt-4 mb-3">
 
                     <footer class="text-start tile-footer caps-sentiment" style="font-size: 0.7rem;">
-                        <span>&copy; 2026 h·e·r collab. Strategic Architecture & Venture Development. | Brand Profile Module #1</span>
+                        <span>&copy; 2026 h·e·r collab. Strategic Architecture & Venture Development. | Brand Profile
+                            Module #1</span>
                     </footer>
 
                 </article>
@@ -653,7 +710,7 @@
 
         function updateInterfaceControls(resolvedTheme) {
             const isTargetDark = resolvedTheme === 'dark';
-            
+
             // Sync corner overlay element
             globalThemeToggle.innerHTML = isTargetDark ? vectorIcons.sun : vectorIcons.moon;
             globalThemeToggle.setAttribute('aria-label', isTargetDark ? 'Activate light mode' : 'Activate dark mode');
