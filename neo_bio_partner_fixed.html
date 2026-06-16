@@ -206,8 +206,6 @@
         .partner-nav {
             display: flex;
             gap: 1rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1rem;
             margin-bottom: 1.5rem;
         }
 
@@ -271,6 +269,7 @@
             overflow: hidden;
             background: var(--active-tab-bg);
             box-shadow: 0 18px 34px var(--tile-shadow);
+            margin-top: -3.85rem;
         }
 
         .profile-portrait img {
@@ -290,6 +289,7 @@
 
             .profile-portrait {
                 width: min(220px, 64vw);
+                margin-top: 0;
             }
         }
 
@@ -311,14 +311,39 @@
             letter-spacing: 0.1em;
             color: var(--subheadline-color);
             font-weight: 600;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .partner-roleline {
+            font-style: italic;
+            color: var(--text-strong);
+            font-size: calc(1.15rem + 0.2vw);
+            letter-spacing: 0.05em;
+            margin: 0 0 0.65rem;
+            font-weight: 400;
+        }
+
+        body[data-theme="dark"] .partner-roleline {
+            color: rgba(255, 255, 255, 0.94);
+        }
+
+        .partner-quote {
+            color: var(--text-strong) !important;
+            font-size: 0.95rem;
+            font-style: italic;
+            font-weight: 700;
+            opacity: 0.92;
         }
 
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .profile-intro + hr {
+            margin-top: 0.25rem;
         }
 
         .tag {
@@ -327,8 +352,15 @@
             letter-spacing: 0.15em;
             border: 1px dashed var(--border-color);
             padding: 0.2rem 0.5rem;
-            color: var(--text-muted);
+            color: var(--text-strong);
+            font-weight: 700;
+            opacity: 0.86;
             border-radius: 2px;
+        }
+
+        body[data-theme="dark"] .tag {
+            color: rgba(255, 255, 255, 0.92);
+            border-color: rgba(255, 255, 255, 0.28);
         }
 
         /* Multi-Block Carousel Node Engine Container */
@@ -477,7 +509,7 @@
 
                     <header class="brand-header text-start">
                         <span class="logo d-block">h·e·r collab</span>
-                        <h3 class="subtitle">The Visionary · Creative Excellence</h3>
+                        <h3 class="subtitle">Creative Brilliance · Surgical Precision</h3>
                     </header>
 
                     <nav class="partner-nav">
@@ -489,9 +521,9 @@
                     <section class="profile-intro text-start pb-2" aria-label="Partner profile introduction">
                         <div>
                             <div class="partner-meta">
-                                <h2 class="partner-name">Neo Segola</h2>
                                 <div class="partner-title">Co-Founder & Chief Creative Officer</div>
-                                <p class="lead-text text-muted mb-3" style="font-size: 0.95rem; font-style: italic;">
+                                <p class="partner-roleline">The Visionary · Creative Excellence</p>
+                                <p class="lead-text partner-quote mb-3">
                                     "Shaping the future of brand storytelling with 20+ years of elite judging pedigree and global creative excellence."
                                 </p>
                             </div>
