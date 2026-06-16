@@ -286,9 +286,9 @@
 
         .profile-intro {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) clamp(150px, 22vw, 190px);
-            gap: clamp(1.25rem, 4vw, 2rem);
-            align-items: start;
+            grid-template-columns: minmax(0, 1fr) clamp(160px, 20vw, 220px);
+            gap: clamp(1.5rem, 4vw, 2.5rem);
+            align-items: center;
         }
 
         .profile-portrait {
@@ -308,7 +308,7 @@
             display: block;
             object-fit: cover;
             object-position: center top;
-            filter: saturate(0.72) contrast(0.92) brightness(1.05);
+            filter: saturate(0.45) contrast(0.78) brightness(1.2);
             transform: scale(1);
             transition: transform 0.35s ease, filter 0.2s ease;
         }
@@ -318,7 +318,8 @@
         }
 
         body[data-theme="dark"] .profile-portrait img {
-            filter: saturate(0.66) contrast(0.9) brightness(0.88);
+            filter: saturate(0.28) contrast(0.6) brightness(0.65);
+            opacity: 0.88;
         }
 
         @media (max-width: 768px) {
@@ -328,9 +329,8 @@
             }
 
             .profile-portrait {
-                width: min(220px, 64vw);
-                margin-top: 0;
-                justify-self: start;
+                width: min(200px, 60vw);
+                margin: 0 auto;
             }
         }
 
