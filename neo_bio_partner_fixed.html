@@ -19,6 +19,8 @@
             --text-muted: #6c757d;
             --brand-color: #000000;
             --subheadline-color: #b22222;
+            --brand-red: #b22222;
+            --subtitle-grey: #7b7f86;
             /* Crimson Brick Accent */
             --border-color: rgba(0, 0, 0, 0.1);
             --bg-overlay: rgba(252, 252, 252, 0.75);
@@ -36,6 +38,8 @@
                 --text-muted: #a7a9be;
                 --brand-color: #ffffff;
                 --subheadline-color: #e44d4d;
+                --brand-red: #e44d4d;
+                --subtitle-grey: #b6bac2;
                 --border-color: rgba(255, 255, 255, 0.1);
                 --bg-overlay: rgba(18, 18, 18, 0.75);
                 --tile-bg: rgba(26, 26, 26, 0.85);
@@ -52,6 +56,8 @@
             --text-muted: #6c757d;
             --brand-color: #000000;
             --subheadline-color: #b22222;
+            --brand-red: #b22222;
+            --subtitle-grey: #7b7f86;
             --border-color: rgba(0, 0, 0, 0.1);
             --bg-overlay: rgba(252, 252, 252, 0.75);
             --tile-bg: rgba(255, 255, 255, 0.85);
@@ -66,6 +72,8 @@
             --text-muted: #a7a9be;
             --brand-color: #ffffff;
             --subheadline-color: #e44d4d;
+            --brand-red: #e44d4d;
+            --subtitle-grey: #b6bac2;
             --border-color: rgba(255, 255, 255, 0.1);
             --bg-overlay: rgba(18, 18, 18, 0.75);
             --tile-bg: rgba(26, 26, 26, 0.85);
@@ -225,6 +233,7 @@
         /* Top Horizontal Multi-Partner Tab Track */
         .partner-nav {
             display: flex;
+            flex-wrap: wrap;
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
@@ -243,10 +252,10 @@
         }
 
         .partner-tab.active {
-            color: var(--text-strong);
+            color: var(--brand-red);
             font-weight: 700;
-            background-color: var(--active-tab-bg);
-            border-color: var(--text-strong);
+            background-color: color-mix(in srgb, var(--brand-red) 10%, transparent);
+            border-color: var(--brand-red);
         }
 
         /* Typography Mapping Framework */
@@ -267,7 +276,7 @@
 
         .subtitle {
             font-style: italic;
-            color: var(--subheadline-color);
+            color: var(--subtitle-grey);
             font-size: calc(1.15rem + 0.20vw);
             letter-spacing: 0.05em;
             margin-top: 0.4rem;
@@ -277,8 +286,8 @@
 
         .profile-intro {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 190px;
-            gap: 2rem;
+            grid-template-columns: minmax(0, 1fr) clamp(150px, 22vw, 190px);
+            gap: clamp(1.25rem, 4vw, 2rem);
             align-items: start;
         }
 
@@ -289,7 +298,8 @@
             overflow: hidden;
             background: var(--active-tab-bg);
             box-shadow: 0 18px 34px var(--tile-shadow);
-            margin-top: -3.85rem;
+            margin-top: 0;
+            isolation: isolate;
         }
 
         .profile-portrait img {
@@ -298,7 +308,17 @@
             display: block;
             object-fit: cover;
             object-position: center top;
-            filter: saturate(0.92) contrast(1.03);
+            filter: saturate(0.72) contrast(0.92) brightness(1.05);
+            transform: scale(1);
+            transition: transform 0.35s ease, filter 0.2s ease;
+        }
+
+        .profile-portrait:hover img {
+            transform: scale(1.045);
+        }
+
+        body[data-theme="dark"] .profile-portrait img {
+            filter: saturate(0.66) contrast(0.9) brightness(0.88);
         }
 
         @media (max-width: 768px) {
@@ -310,6 +330,7 @@
             .profile-portrait {
                 width: min(220px, 64vw);
                 margin-top: 0;
+                justify-self: start;
             }
         }
 
@@ -426,11 +447,11 @@
         }
 
         .block-label {
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
             color: var(--subheadline-color);
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 0.5rem;
             display: block;
         }
@@ -471,6 +492,7 @@
             color: var(--text-color);
             cursor: pointer;
             border-radius: 2px;
+            text-decoration: none;
             transition: background-color 0.15s ease, color 0.15s ease;
         }
 
@@ -535,7 +557,7 @@
 
                     <header class="brand-header text-start">
                         <span class="logo d-block">h·e·r collab</span>
-                        <h3 class="subtitle">Creative Brilliance · Surgical Precision</h3>
+                        <h3 class="subtitle">Creative Brilliance &middot; Surgical Precision</h3>
                     </header>
 
                     <nav class="partner-nav">
@@ -549,8 +571,8 @@
                     <section class="profile-intro text-start pb-2" aria-label="Partner profile introduction">
                         <div>
                             <div class="partner-meta">
+                                <p class="partner-roleline">The Visionary &middot; Creative Excellence</p>
                                 <div class="partner-title">Co-Founder & Chief Creative Officer</div>
-                                <p class="partner-roleline">The Visionary · Creative Excellence</p>
                                 <p class="lead-text partner-quote mb-3">
                                     "Shaping the future of brand storytelling with 20+ years of elite judging pedigree
                                     and global creative excellence."
@@ -567,7 +589,7 @@
                         </div>
 
                         <figure class="profile-portrait mb-0">
-                            <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/q_auto/f_auto/v1776286873/Neo_Segola_tvcbhe.jpg"
+                            <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/q_auto,f_auto,e_saturation:-18,e_contrast:-8,e_brightness:4/v1776286873/Neo_Segola_tvcbhe.jpg"
                                 alt="Neo Segola portrait">
                         </figure>
                     </section>
@@ -649,9 +671,9 @@
 
                             <div class="frame-theme-divider"></div>
 
-                            <button class="frame-nav-btn" id="inline-theme-btn" type="button"
-                                aria-label="Switch interface operational theme mapping" title="Switch Theme">
-                            </button>
+                            <a class="frame-nav-btn" id="download-profile-link"
+                                href="downloads/neo-segola-profile.pdf" download
+                                aria-label="Download profile placeholder" title="Download Profile"></a>
                         </div>
                     </div>
 
@@ -699,11 +721,12 @@
 
         // 2. Bidirectional System Preference + Switch UI State Routing Sync Engine
         const globalThemeToggle = document.getElementById('theme-toggle');
-        const inlineThemeBtn = document.getElementById('inline-theme-btn');
+        const downloadProfileLink = document.getElementById('download-profile-link');
         const themeKey = 'theme-preference';
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
         const vectorIcons = {
+            download: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg>',
             moon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>',
             sun: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>'
         };
@@ -716,10 +739,8 @@
             globalThemeToggle.setAttribute('aria-label', isTargetDark ? 'Activate light mode' : 'Activate dark mode');
             globalThemeToggle.setAttribute('title', isTargetDark ? 'Activate light mode' : 'Activate dark mode');
 
-            // Sync integrated control menu icon
-            inlineThemeBtn.innerHTML = isTargetDark ? vectorIcons.sun : vectorIcons.moon;
-            inlineThemeBtn.setAttribute('aria-label', isTargetDark ? 'Activate light mode' : 'Activate dark mode');
-            inlineThemeBtn.setAttribute('title', isTargetDark ? 'Activate light mode' : 'Activate dark mode');
+            // Sync integrated utility action
+            downloadProfileLink.innerHTML = vectorIcons.download;
         }
 
         function applyTheme(targetTheme, persistConfig = false) {
@@ -754,7 +775,6 @@
 
         // Event binding configurations for synchronized execution targets
         globalThemeToggle.addEventListener('click', handleStateToggleTransition);
-        inlineThemeBtn.addEventListener('click', handleStateToggleTransition);
 
         // System OS environment watcher changes
         prefersDark.addEventListener('change', event => {
