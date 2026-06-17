@@ -242,25 +242,30 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            background: none;
-            border: 1px solid var(--border-color);
+            background: color-mix(in srgb, var(--text-strong) 10%, transparent);
+            border: 1px solid var(--text-strong);
             padding: 0.4rem 0.8rem;
-            color: var(--text-muted);
+            color: var(--text-strong);
+            font-weight: 700;
             cursor: pointer;
             border-radius: 2px;
             transition: all 0.1s ease;
         }
 
-        .partner-tab:hover:not(.active) {
-            color: var(--text-color);
-            border-color: var(--text-muted);
+        .partner-tab.partners-anchor {
+            background: none;
+            border-color: var(--border-color);
+            color: var(--text-muted);
+            font-weight: 400;
+            cursor: default;
+            pointer-events: none;
         }
 
         .partner-tab.active {
-            color: var(--text-strong);
-            font-weight: 700;
-            background-color: color-mix(in srgb, var(--text-strong) 10%, transparent);
+            color: var(--bg-color);
+            background: var(--text-strong);
             border-color: var(--text-strong);
+            font-weight: 700;
         }
 
         .partner-content {
@@ -288,7 +293,7 @@
 
         .subtitle {
             font-style: italic;
-            color: var(--subtitle-grey);
+            color: var(--subheadline-color);
             font-size: calc(1.15rem + 0.20vw);
             letter-spacing: 0.05em;
             margin-top: 0.4rem;
@@ -303,13 +308,19 @@
             align-items: start;
         }
 
+        .profile-image-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
         .profile-portrait {
             aspect-ratio: 4 / 5;
             border-radius: 4px;
             overflow: hidden;
             background: var(--active-tab-bg);
             box-shadow: 0 8px 24px var(--tile-shadow);
-            border: 1px solid var(--brand-red);
+            border: 1px solid var(--border-color);
             margin-top: 0;
         }
 
@@ -354,6 +365,7 @@
             color: var(--text-strong);
             letter-spacing: 0.02em;
             margin-bottom: 0.2rem;
+            text-transform: uppercase;
         }
 
         .partner-title {
@@ -368,7 +380,7 @@
         .partner-roleline {
             font-style: italic;
             color: var(--text-strong);
-            font-size: calc(1.15rem + 0.2vw);
+            font-size: calc(1.35rem + 0.3vw);
             letter-spacing: 0.05em;
             margin: 0 0 0.65rem;
             font-weight: 400;
@@ -389,8 +401,17 @@
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-bottom: 0;
+            gap: 0.75rem;
+            margin: 0.5rem 0 0.75rem;
+        }
+
+        .tag-email {
+            color: var(--bg-color);
+            background: var(--text-strong);
+            border-color: var(--text-strong);
+            border-style: solid;
+            font-weight: 700;
+            letter-spacing: 0.05em;
         }
 
         .profile-intro+hr {
@@ -398,20 +419,27 @@
         }
 
         .tag {
-            font-size: 0.72rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
             border: 1px dashed var(--border-color);
-            padding: 0.25rem 0.6rem;
+            padding: 0.2rem 0.45rem;
             color: var(--text-strong);
             font-weight: 700;
             opacity: 0.86;
             border-radius: 2px;
+            white-space: nowrap;
         }
 
         body[data-theme="dark"] .tag {
             color: rgba(255, 255, 255, 0.92);
             border-color: rgba(255, 255, 255, 0.28);
+        }
+
+        body[data-theme="dark"] .tag-email {
+            color: var(--bg-color) !important;
+            background: var(--text-strong) !important;
+            border-color: var(--text-strong) !important;
         }
 
         /* Multi-Block Carousel Node Engine Container */
@@ -571,20 +599,24 @@
                     </header>
 
                     <nav class="partner-nav">
-                        <button class="partner-tab active" data-partner="neo">CCO / Neo Segola</button>
-                        <button class="partner-tab" data-partner="chaz">CGO / Chaz Pigou</button>
-                        <button class="partner-tab" data-partner="tsholo">COO / Tsholo Müller</button>
+                        <span class="partner-tab partners-anchor">The Partners</span>
+                        <button class="partner-tab active" data-partner="neo">THE CCO</button>
+                        <button class="partner-tab" data-partner="chaz">THE CGO</button>
+                        <button class="partner-tab" data-partner="tsholo">THE COO</button>
                     </nav>
 
                     <div class="partner-content active" data-partner="neo">
                         <section class="profile-intro text-start pb-2" aria-label="Partner profile introduction">
-                            <figure class="profile-portrait mb-0">
-                                <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/q_auto,f_auto,e_saturation:-18,e_contrast:-8,e_brightness:4/v1776286873/Neo_Segola_tvcbhe.jpg"
-                                    alt="Neo Segola portrait">
-                            </figure>
+                            <div class="profile-image-col">
+                                <figure class="profile-portrait mb-0">
+                                    <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/q_auto,f_auto,e_saturation:-18,e_contrast:-8,e_brightness:4/v1776286873/Neo_Segola_tvcbhe.jpg"
+                                        alt="Neo Segola portrait">
+                                </figure>
+                            </div>
 
                             <div>
                                 <div class="partner-meta">
+                                    <p class="partner-name">Neo Segola</p>
                                     <p class="partner-roleline">The Visionary</p>
                                     <div class="partner-title">Co-Founder & Chief Creative Officer</div>
                                     <p class="lead-text partner-quote mb-3">
@@ -592,16 +624,17 @@
                                         and global creative excellence."
                                     </p>
                                 </div>
-
-                                <div class="tech-tags">
-                                    <span class="tag">Vanguard</span>
-                                    <span class="tag">Oracle</span>
-                                    <span class="tag">Aesthetic</span>
-                                    <span class="tag">Synthesis</span>
-                                    <span class="tag">Frontier</span>
-                                </div>
                             </div>
                         </section>
+
+                        <div class="tech-tags">
+                            <span class="tag tag-email">neo@hercollab.agency</span>
+                            <span class="tag">Vanguard</span>
+                            <span class="tag">Oracle</span>
+                            <span class="tag">Aesthetic</span>
+                            <span class="tag">Synthesis</span>
+                            <span class="tag">Frontier</span>
+                        </div>
 
                         <hr class="mb-4">
 
@@ -678,40 +711,40 @@
                                     </svg>
                                 </button>
 
-                                <div class="frame-theme-divider"></div>
 
-                                <a class="frame-nav-btn download-link"
-                                    href="downloads/neo-segola-profile.pdf" download
-                                    aria-label="Download profile" title="Download Profile"></a>
                             </div>
                         </div>
                     </div>
 
                     <div class="partner-content" data-partner="chaz">
                         <section class="profile-intro text-start pb-2" aria-label="Partner profile introduction">
-                            <figure class="profile-portrait mb-0">
-                                <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1774279518/Chaz_Pigou_ejulac.png"
-                                    alt="Chaz Pigou portrait">
-                            </figure>
+                            <div class="profile-image-col">
+                                <figure class="profile-portrait mb-0">
+                                    <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1774279518/Chaz_Pigou_ejulac.png"
+                                        alt="Chaz Pigou portrait">
+                                </figure>
+                            </div>
 
                             <div>
                                 <div class="partner-meta">
+                                    <p class="partner-name">Chaz Pigou</p>
                                     <p class="partner-roleline">The Multiplier</p>
                                     <div class="partner-title">Co-Founder & Chief Growth Officer</div>
                                     <p class="lead-text partner-quote mb-3">
                                         "A strategic visionary bridging global corporate scale with authentic, purpose-driven brand transformation."
                                     </p>
                                 </div>
-
-                                <div class="tech-tags">
-                                    <span class="tag">Blue-Chip</span>
-                                    <span class="tag">Equity</span>
-                                    <span class="tag">Scale</span>
-                                    <span class="tag">Nexus</span>
-                                    <span class="tag">Transformation</span>
-                                </div>
                             </div>
                         </section>
+
+                        <div class="tech-tags">
+                            <span class="tag tag-email">chaz@hercollab.agency</span>
+                            <span class="tag">Blue-Chip</span>
+                            <span class="tag">Equity</span>
+                            <span class="tag">Scale</span>
+                            <span class="tag">Nexus</span>
+                            <span class="tag">Transformation</span>
+                        </div>
 
                         <hr class="mb-4">
 
@@ -774,40 +807,40 @@
                                     </svg>
                                 </button>
 
-                                <div class="frame-theme-divider"></div>
 
-                                <a class="frame-nav-btn download-link"
-                                    href="downloads/chaz-pigou-profile.pdf" download
-                                    aria-label="Download profile" title="Download Profile"></a>
                             </div>
                         </div>
                     </div>
 
                     <div class="partner-content" data-partner="tsholo">
                         <section class="profile-intro text-start pb-2" aria-label="Partner profile introduction">
-                            <figure class="profile-portrait mb-0">
-                                <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1774279520/Tsholofelo_M%C3%BCller_rbqonz.png"
-                                    alt="Tsholofelo Müller portrait">
-                            </figure>
+                            <div class="profile-image-col">
+                                <figure class="profile-portrait mb-0">
+                                    <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1774279520/Tsholofelo_M%C3%BCller_rbqonz.png"
+                                        alt="Tsholofelo Müller portrait">
+                                </figure>
+                            </div>
 
                             <div>
                                 <div class="partner-meta">
+                                    <p class="partner-name">Tsholofelo Müller</p>
                                     <p class="partner-roleline">The Engine</p>
                                     <div class="partner-title">Co-Founder & Chief Operating Officer</div>
                                     <p class="lead-text partner-quote mb-3">
                                         "Tsholofelo transforms over 20 years of agency leadership into a high-efficiency engine that bridges world-class creativity with elite financial governance."
                                     </p>
                                 </div>
-
-                                <div class="tech-tags">
-                                    <span class="tag">Velocity</span>
-                                    <span class="tag">Governance</span>
-                                    <span class="tag">Pipeline</span>
-                                    <span class="tag">Efficiency</span>
-                                    <span class="tag">EBITDA</span>
-                                </div>
                             </div>
                         </section>
+
+                        <div class="tech-tags">
+                            <span class="tag tag-email">tsholo@hercollab.agency</span>
+                            <span class="tag">Velocity</span>
+                            <span class="tag">Governance</span>
+                            <span class="tag">Pipeline</span>
+                            <span class="tag">Efficiency</span>
+                            <span class="tag">EBITDA</span>
+                        </div>
 
                         <hr class="mb-4">
 
@@ -870,11 +903,7 @@
                                     </svg>
                                 </button>
 
-                                <div class="frame-theme-divider"></div>
 
-                                <a class="frame-nav-btn download-link"
-                                    href="downloads/tsholofelo-muller-profile.pdf" download
-                                    aria-label="Download profile" title="Download Profile"></a>
                             </div>
                         </div>
                     </div>
@@ -945,7 +974,6 @@
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
         const vectorIcons = {
-            download: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg>',
             moon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>',
             sun: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>'
         };
@@ -956,10 +984,6 @@
             globalThemeToggle.innerHTML = isTargetDark ? vectorIcons.sun : vectorIcons.moon;
             globalThemeToggle.setAttribute('aria-label', isTargetDark ? 'Activate light mode' : 'Activate dark mode');
             globalThemeToggle.setAttribute('title', isTargetDark ? 'Activate light mode' : 'Activate dark mode');
-
-            document.querySelectorAll('.download-link').forEach(link => {
-                link.innerHTML = vectorIcons.download;
-            });
         }
 
         function applyTheme(targetTheme, persistConfig = false) {
