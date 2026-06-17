@@ -252,20 +252,11 @@
             transition: all 0.1s ease;
         }
 
-        .partner-tab.partners-anchor {
+        .partner-tab:not(.active) {
             background: none;
             border-color: var(--border-color);
             color: var(--text-muted);
             font-weight: 400;
-            cursor: default;
-            pointer-events: none;
-        }
-
-        .partner-tab.active {
-            color: var(--bg-color);
-            background: var(--text-strong);
-            border-color: var(--text-strong);
-            font-weight: 700;
         }
 
         .partner-content {
@@ -599,7 +590,6 @@
                     </header>
 
                     <nav class="partner-nav">
-                        <span class="partner-tab partners-anchor">The Partners</span>
                         <button class="partner-tab active" data-partner="neo">THE CCO</button>
                         <button class="partner-tab" data-partner="chaz">THE CGO</button>
                         <button class="partner-tab" data-partner="tsholo">THE COO</button>
