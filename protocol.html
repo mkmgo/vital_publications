@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Protocol — The Fractional Agency Model</title>
+  <meta property="og:title" content="Protocol Conf Sun 14 June 26 14:07 — The Fractional Agency Model">
+  <meta property="og:description" content="Strategic Pivot Report: transitioning from a Conflict Agency to a Fractional Agency model. 85/15 revenue framework, brand identity, and operational roadmap.">
+  <meta property="og:image" content="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781698464/protocol_r392x1.png">
+  <meta property="og:image:width" content="600">
+  <meta property="og:image:height" content="600">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png"
     href="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781358154/her_favicon_2_ckbdpd.png?v=2">
   <style>
@@ -15,7 +21,6 @@
       --text-muted: #6c757d;
       --border-color: rgba(0, 0, 0, 0.1);
       --tile-bg: rgba(255, 255, 255, 0.85);
-      --tile-shadow: rgba(0, 0, 0, 0.03);
     }
 
     @media (prefers-color-scheme: dark) {
@@ -26,36 +31,12 @@
         --text-muted: #a7a9be;
         --border-color: rgba(255, 255, 255, 0.1);
         --tile-bg: rgba(26, 26, 26, 0.85);
-        --tile-shadow: rgba(0, 0, 0, 0.2);
       }
     }
 
-    body[data-theme="light"] {
-      --bg-color: #fcfcfc;
-      --text-color: #212529;
-      --text-strong: #000000;
-      --text-muted: #6c757d;
-      --border-color: rgba(0, 0, 0, 0.1);
-      --tile-bg: rgba(255, 255, 255, 0.85);
-      --tile-shadow: rgba(0, 0, 0, 0.03);
-    }
+    * { box-sizing: border-box; }
 
-    body[data-theme="dark"] {
-      --bg-color: #121212;
-      --text-color: #f8f9fa;
-      --text-strong: #ffffff;
-      --text-muted: #a7a9be;
-      --border-color: rgba(255, 255, 255, 0.1);
-      --tile-bg: rgba(26, 26, 26, 0.85);
-      --tile-shadow: rgba(0, 0, 0, 0.2);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       min-height: 100vh;
@@ -63,92 +44,30 @@
 
     body {
       font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-      font-size: 15px;
-      line-height: 1.72;
+      font-size: 17px;
+      line-height: 1.65;
       color: var(--text-color);
       background-color: var(--bg-color);
       word-break: break-word;
-      transition: background-color 0.1s ease, color 0.1s ease;
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 0.85rem;
-      right: 0.85rem;
-      z-index: 11;
-      width: 2.35rem;
-      height: 2.35rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--border-color);
-      border-radius: 999px;
-      background: var(--tile-bg);
-      color: var(--text-color);
-      cursor: pointer;
-      opacity: 0.72;
-      transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.1s ease;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-
-    .theme-toggle:hover {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-
-    .theme-toggle svg {
-      width: 1rem;
-      height: 1rem;
-      stroke-width: 1.8;
-      color: currentColor;
-      pointer-events: none;
-    }
-
-    .share-bar {
-      text-align: right;
-      margin-bottom: 1.5rem;
-    }
-
-    .share-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      text-decoration: none;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      letter-spacing: 0.04em;
-      transition: opacity 0.15s ease;
-      opacity: 0.7;
-    }
-
-    .share-link:hover {
-      opacity: 1;
-    }
-
-    .share-link img {
-      width: 28px;
-      height: 28px;
-      border-radius: 4px;
     }
 
     .container {
       max-width: 780px;
       margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
+      padding: 2rem 1.5rem 3rem;
     }
 
     .protocol-header {
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       border-bottom: 1px solid var(--border-color);
-      padding-bottom: 1.25rem;
+      padding-bottom: 1.2rem;
     }
 
     .protocol-header h1 {
       font-size: 1.85rem;
       font-weight: 700;
       color: var(--text-strong);
-      margin: 0 0 0.25rem;
+      margin: 0 0 0.35rem;
       line-height: 1.3;
       letter-spacing: -0.02em;
     }
@@ -158,6 +77,15 @@
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
+    }
+
+    .protocol-meta a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .protocol-meta a:hover {
+      text-decoration: underline;
     }
 
     h2 {
@@ -176,24 +104,15 @@
       line-height: 1.3;
     }
 
-    p {
-      margin: 0 0 0.85rem;
-    }
+    p { margin: 0 0 0.85rem; }
 
     a {
       color: var(--text-strong);
       text-decoration: underline;
     }
 
-    strong,
-    b {
-      font-weight: 700;
-    }
-
-    em,
-    i {
-      font-style: italic;
-    }
+    strong, b { font-weight: 700; }
+    em, i { font-style: italic; }
 
     hr {
       border: 0;
@@ -201,19 +120,13 @@
       margin: 1.5rem 0;
     }
 
-    ul,
-    ol {
+    ul, ol {
       padding-left: 1.3rem;
       margin: 0 0 0.85rem;
     }
 
-    li {
-      margin: 0.35rem 0;
-    }
-
-    li>p {
-      margin: 0 0 0.4rem;
-    }
+    li { margin: 0.35rem 0; }
+    li > p { margin: 0 0 0.4rem; }
 
     blockquote {
       border-left: 3px solid var(--text-strong);
@@ -224,33 +137,35 @@
       font-size: 0.95rem;
     }
 
-    blockquote p {
-      margin: 0;
-    }
+    blockquote p { margin: 0; }
 
     .table-wrapper {
       width: 100%;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       margin: 0 0 0.85rem;
     }
 
     table {
       width: 100%;
-      min-width: 100%;
       border-collapse: collapse;
       font-size: 0.92em;
     }
 
-    th,
-    td {
+    th, td {
       border: 1px solid var(--border-color);
       padding: 6px 10px;
       vertical-align: top;
       text-align: left;
+      white-space: nowrap;
     }
 
-    thead th,
-    th {
+    th:first-child, td:first-child {
+      white-space: normal;
+      min-width: 100px;
+    }
+
+    thead th, th {
       background: var(--tile-bg);
       font-weight: 700;
       color: var(--text-strong);
@@ -287,166 +202,108 @@
       color: inherit;
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
+    img { max-width: 100%; height: auto; }
+
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+
+      .container { padding: 1.25rem 1rem 2rem; }
+
+      .protocol-header h1 { font-size: 1.35rem; }
+
+      h2 { font-size: 1.15rem; }
+      h3 { font-size: 1.05rem; }
+
+      th, td {
+        padding: 5px 8px;
+        font-size: 0.88em;
+      }
+
+      th:first-child, td:first-child {
+        min-width: 80px;
+      }
+
+      ul, ol { padding-left: 1.1rem; }
     }
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 1.5rem 1rem 3rem;
-      }
+    @media (max-width: 400px) {
+      body { font-size: 15px; }
 
-      .protocol-header h1 {
-        font-size: 1.5rem;
-      }
+      .protocol-header h1 { font-size: 1.2rem; }
 
-      h2 {
-        font-size: 1.15rem;
-      }
-
-      h3 {
-        font-size: 1rem;
-      }
-
-      body {
-        font-size: 14px;
-      }
-
-      .share-link span {
-        display: none;
+      th, td {
+        padding: 4px 6px;
+        font-size: 0.82em;
       }
     }
   </style>
 </head>
-
 <body>
-  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle Theme"></button>
 
   <div class="container">
-    <div class="share-bar">
-      <a class="share-link"
-        href="https://wa.me/?text=Protocol%20Conf%20Sun%2014%20June%2026%2014%3A07%20%E2%80%94%20The%20Fractional%20Agency%20Model"
-        target="_blank" rel="noopener" title="Share via WhatsApp">
-        <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781698464/protocol_r392x1.png" alt="Share"
-          width="28" height="28">
-        <span>Share Protocol</span>
-      </a>
-    </div>
-
     <header class="protocol-header">
       <h1>Strategic Pivot Report: The Fractional Agency Model</h1>
-      <div class="protocol-meta">Protocol &middot; Sun 14 June 26 &middot; 14:07</div>
+      <div class="protocol-meta">
+        <a href="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781698464/protocol_r392x1.png"
+           target="_blank" rel="noopener"
+           title="Open protocol image">Protocol</a>
+        &middot; Sun 14 June 26 &middot; 14:07
+      </div>
     </header>
 
     <h2>1. Strategic Context: Transitioning from Specialisation to Versatility</h2>
-    <p>The architecture of the modern creative services landscape dictates a shift from rigid specialisation toward
-      strategic versatility. Historically, boutique firms have often positioned themselves as "Conflict
-      Agencies"—entities designed to handle secondary accounts that larger firms cannot service due to client conflicts.
-      However, this positioning is inherently reactive and margin-capped, tethering growth to the overflow of
-      competitors rather than independent market value.</p>
-    <p>We are positioning the firm to capitalise on the <strong>Fractional Agency model</strong>. This pivot moves the
-      value proposition from a niche safety net to a general partnership based on "brain power" and "additional hands."
-      By transitioning to this model, the agency ceases to be a conflict-solver and becomes a proactive strategic asset
-      capable of handling overflow, project ownership, and specialised support with the flexibility of a top-tier
-      consultancy.</p>
+    <p>The architecture of the modern creative services landscape dictates a shift from rigid specialisation toward strategic versatility. Historically, boutique firms have often positioned themselves as "Conflict Agencies"—entities designed to handle secondary accounts that larger firms cannot service due to client conflicts. However, this positioning is inherently reactive and margin-capped, tethering growth to the overflow of competitors rather than independent market value.</p>
+    <p>We are positioning the firm to capitalise on the <strong>Fractional Agency model</strong>. This pivot moves the value proposition from a niche safety net to a general partnership based on "brain power" and "additional hands." By transitioning to this model, the agency ceases to be a conflict-solver and becomes a proactive strategic asset capable of handling overflow, project ownership, and specialised support with the flexibility of a top-tier consultancy.</p>
 
     <h3>Model Comparison: Conflict vs. Fractional</h3>
     <div class="table-wrapper">
       <table>
         <thead>
-          <tr>
-            <th>Feature</th>
-            <th>Conflict Agency Model</th>
-            <th>Fractional Agency Model</th>
-          </tr>
+          <tr><th>Feature</th><th>Conflict Agency Model</th><th>Fractional Agency Model</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Target Audience</td>
-            <td>Competitor agencies with client conflicts.</td>
-            <td>Brands, international sponsors, and general agency partners.</td>
-          </tr>
-          <tr>
-            <td>Service Scope</td>
-            <td>Restricted to specific "conflicting" accounts.</td>
-            <td>Versatile: Overflow, training modules, and project ownership.</td>
-          </tr>
-          <tr>
-            <td>Strategic Flexibility</td>
-            <td>Reactive / Margin-Capped</td>
-            <td>Proactive / Equity-Generating</td>
-          </tr>
-          <tr>
-            <td>Market Positioning</td>
-            <td>Subordinate and narrow.</td>
-            <td>Peer-level, authoritative, and scalable.</td>
-          </tr>
+          <tr><td>Target Audience</td><td>Competitor agencies with client conflicts.</td><td>Brands, international sponsors, and general agency partners.</td></tr>
+          <tr><td>Service Scope</td><td>Restricted to specific "conflicting" accounts.</td><td>Versatile: Overflow, training modules, and project ownership.</td></tr>
+          <tr><td>Strategic Flexibility</td><td>Reactive / Margin-Capped</td><td>Proactive / Equity-Generating</td></tr>
+          <tr><td>Market Positioning</td><td>Subordinate and narrow.</td><td>Peer-level, authoritative, and scalable.</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p>This fundamental repositioning necessitates a rigorous monetisation framework to govern diverse partnership
-      scenarios and maintain fiscal clarity.</p>
+    <p>This fundamental repositioning necessitates a rigorous monetisation framework to govern diverse partnership scenarios and maintain fiscal clarity.</p>
 
     <h2>2. The 85/15 Revenue &amp; Monetisation Framework</h2>
-    <p>In a fractional model, transparent revenue-sharing is the bedrock of successful joint ventures (JV) and
-      professional partnerships. To foster trust with high-value partners—such as the upcoming collaboration with
-      Carlo—the agency must operate under a standardised financial architecture. This ensures that every engagement,
-      regardless of scale, is governed by a predictable and equitable fiscal logic.</p>
+    <p>In a fractional model, transparent revenue-sharing is the bedrock of successful joint ventures (JV) and professional partnerships. To foster trust with high-value partners—such as the upcoming collaboration with Carlo—the agency must operate under a standardised financial architecture. This ensures that every engagement, regardless of scale, is governed by a predictable and equitable fiscal logic.</p>
 
     <h3>The 85/15 Net Revenue Share Rule</h3>
-    <p>The <strong>"85/15 Net Revenue Share"</strong> is the agency's core guiding principle. Under this framework, the
-      15% override represents the agency's "brand umbrella" and strategic brain power, while the 85% baseline covers
-      delivery and lead costs. This model is designed to handle three specific operational eventualities:</p>
+    <p>The <strong>"85/15 Net Revenue Share"</strong> is the agency's core guiding principle. Under this framework, the 15% override represents the agency's "brand umbrella" and strategic brain power, while the 85% baseline covers delivery and lead costs. This model is designed to handle three specific operational eventualities:</p>
     <ul>
-      <li>
-        <p><strong>Outright Project Ownership:</strong> When the agency secures and manages a project in its entirety,
-          the revenue structure is optimised for full delivery management.</p>
-      </li>
-      <li>
-        <p><strong>Team Integration &amp; Overflow:</strong> When the agency "plugs in" to an existing team or manages
-          overflow work for a partner agency, the 85/15 split provides a clear baseline for net revenue.</p>
-      </li>
-      <li>
-        <p><strong>Specialised Fractional Support:</strong> This accounts for individual pricing where specific team
-          members are deployed as fractional experts for specialised accounts.</p>
-      </li>
+      <li><p><strong>Outright Project Ownership:</strong> When the agency secures and manages a project in its entirety, the revenue structure is optimised for full delivery management.</p></li>
+      <li><p><strong>Team Integration &amp; Overflow:</strong> When the agency "plugs in" to an existing team or manages overflow work for a partner agency, the 85/15 split provides a clear baseline for net revenue.</p></li>
+      <li><p><strong>Specialised Fractional Support:</strong> This accounts for individual pricing where specific team members are deployed as fractional experts for specialised accounts.</p></li>
     </ul>
 
     <h3>Principles of Financial Integrity</h3>
-    <p>The firm's commitment to fiscal transparency is codified through the <strong>"Financial Integrity"</strong>
-      pillar. These guiding principles ensure a professionalised value exchange:</p>
+    <p>The firm's commitment to fiscal transparency is codified through the <strong>"Financial Integrity"</strong> pillar. These guiding principles ensure a professionalised value exchange:</p>
     <blockquote>
       <ul>
-        <li><strong>Documented Splits:</strong> All revenue share agreements must be documented and signed off upfront
-          to ensure transparency.</li>
-        <li><strong>Integrated Training Costs:</strong> Specialised services, specifically The Academy training modules,
-          are not secondary add-ons; their costs must be integrated into the primary pricing structure for all
-          training-related services.</li>
-        <li><strong>Scalable Accountability:</strong> The model remains consistent for both local engagements and
-          international sponsorship opportunities.</li>
+        <li><strong>Documented Splits:</strong> All revenue share agreements must be documented and signed off upfront to ensure transparency.</li>
+        <li><strong>Integrated Training Costs:</strong> Specialised services, specifically The Academy training modules, are not secondary add-ons; their costs must be integrated into the primary pricing structure for all training-related services.</li>
+        <li><strong>Scalable Accountability:</strong> The model remains consistent for both local engagements and international sponsorship opportunities.</li>
       </ul>
     </blockquote>
 
-    <p>This structured financial approach reinforces the high-stakes image the agency projects through its branding and
-      digital assets.</p>
+    <p>This structured financial approach reinforces the high-stakes image the agency projects through its branding and digital assets.</p>
 
     <h2>3. Brand Identity and the "Brand Statement" Ecosystem</h2>
-    <p>Visual and narrative alignment is critical when establishing trust with high-level international partners. The
-      brand world of <em>her collab</em> is defined by a minimalist, sophisticated identity that communicates surgical
-      precision.</p>
+    <p>Visual and narrative alignment is critical when establishing trust with high-level international partners. The brand world of <em>her collab</em> is defined by a minimalist, sophisticated identity that communicates surgical precision.</p>
 
     <h3>Visual Standards and Digital Assets</h3>
     <p>The agency has retired the use of orange in favour of a palette that signals authority and luxury.</p>
     <ul>
       <li><strong>Visual Identity:</strong> A sophisticated, black-focused palette dominates all assets.</li>
-      <li><strong>Typography:</strong> The signature of the brand is the use of serif fonts and the intentional
-        lowercase "her" in the logo and brand marks.</li>
-      <li><strong>The Micro-site Concept:</strong> The digital presence will centre on a micro-site that is
-        intentionally not navigable in the traditional sense. Instead, it utilises a "Brand Statement Card" system.
-        These cards loop to act as a dynamic "brand payoff"—a strategic reinforcement of identity rather than an
-        information dump.</li>
+      <li><strong>Typography:</strong> The signature of the brand is the use of serif fonts and the intentional lowercase "her" in the logo and brand marks.</li>
+      <li><strong>The Micro-site Concept:</strong> The digital presence will centre on a micro-site that is intentionally not navigable in the traditional sense. Instead, it utilises a "Brand Statement Card" system. These cards loop to act as a dynamic "brand payoff"—a strategic reinforcement of identity rather than an information dump.</li>
     </ul>
 
     <h3>Core Strategic Taglines</h3>
@@ -457,99 +314,43 @@
       <li><em>"We process genuine emotion."</em></li>
     </ul>
 
-    <p>These statements bridge the gap between our visual identity and the high-calibre human capital that drives our
-      operations.</p>
+    <p>These statements bridge the gap between our visual identity and the high-calibre human capital that drives our operations.</p>
 
     <h2>4. Human Capital &amp; Leadership Architecture</h2>
-    <p>In a fractional model, the agency's primary product is its talent. High-calibre professional presentation and a
-      peer-level mindset are the strategic prerequisites for engaging with heads of other firms.</p>
+    <p>In a fractional model, the agency's primary product is its talent. High-calibre professional presentation and a peer-level mindset are the strategic prerequisites for engaging with heads of other firms.</p>
 
     <h3>Credentials and Leadership Sequencing</h3>
-    <p>The <strong>"Credentials Document"</strong> (Pitch Deck) is the agency's primary tool for establishing authority.
-    </p>
+    <p>The <strong>"Credentials Document"</strong> (Pitch Deck) is the agency's primary tool for establishing authority.</p>
     <ul>
-      <li><strong>Sequence of Authority:</strong> The credentials sequence is explicitly structured so that Chaz goes
-        first, establishing immediate professional gravitas.</li>
-      <li><strong>Visual Professionalism:</strong> To ensure a "top-tier" appearance, all bios must feature professional
-        attire (jackets). This visual consistency is mandatory for internal and external alignment.</li>
+      <li><strong>Sequence of Authority:</strong> The credentials sequence is explicitly structured so that Chaz goes first, establishing immediate professional gravitas.</li>
+      <li><strong>Visual Professionalism:</strong> To ensure a "top-tier" appearance, all bios must feature professional attire (jackets). This visual consistency is mandatory for internal and external alignment.</li>
       <li><strong>Defined Leadership Roles:</strong>
         <ul>
-          <li><strong>Growth Manager:</strong> Responsible for active business development and scaling the company's
-            network footprint.</li>
-          <li><strong>Infrastructure and Venture Development:</strong> Managed through "Michael's office," this role
-            focuses on Deployment—the technical infrastructure and operational architecture required to put the work up
-            and ensure it is functioning correctly.</li>
+          <li><strong>Growth Manager:</strong> Responsible for active business development and scaling the company's network footprint.</li>
+          <li><strong>Infrastructure and Venture Development:</strong> Managed through "Michael's office," this role focuses on Deployment—the technical infrastructure and operational architecture required to put the work up and ensure it is functioning correctly.</li>
         </ul>
       </li>
     </ul>
 
     <h3>Peer-Level Dynamics: The "Carlo" Principle</h3>
-    <p>The agency's leadership must position itself as peers to agency heads, not subordinate suppliers. This is
-      informed by the "Carlo" anecdote, where it was noted that Carlo (Stunn/Two Tone) refused to attend a pitch because
-      his "peer" (the agency head, Selma) was not present. We will not engage as a subordinate "hands-for-hire" entity;
-      we engage at the leadership level to ensure high-stakes involvement and commitment.</p>
+    <p>The agency's leadership must position itself as peers to agency heads, not subordinate suppliers. This is informed by the "Carlo" anecdote, where it was noted that Carlo (Stunn/Two Tone) refused to attend a pitch because his "peer" (the agency head, Selma) was not present. We will not engage as a subordinate "hands-for-hire" entity; we engage at the leadership level to ensure high-stakes involvement and commitment.</p>
 
     <h2>5. Operational Roadmap &amp; Signing Off</h2>
-    <p>Maintaining momentum requires a disciplined operational rhythm and the elimination of historical scheduling
-      "mental blocks". The transition to a weekday-focused cadence is essential for market distribution.</p>
+    <p>Maintaining momentum requires a disciplined operational rhythm and the elimination of historical scheduling "mental blocks". The transition to a weekday-focused cadence is essential for market distribution.</p>
 
     <h3>Immediate Operational Next Steps</h3>
     <ol>
-      <li><strong>Credential Finalisation (Deadline June 30):</strong> All team members must provide their "bills"
-        (bios/credentials) for the final deck. Tsholo and Michael are to collaborate on the bios to ensure the "jacket"
-        visual standard is met before the end-of-month sign-off.</li>
-      <li><strong>Discord Integration &amp; Syncing:</strong> The agency is transitioning to Discord for all recurring
-        sessions. All members must match their iPhone and Computer settings to ensure seamless communication and
-        notifications across devices.</li>
-      <li><strong>Weekly Status Rhythm:</strong> Official weekly status sessions will commence on Monday, June 22nd, at
-        6:00 PM. This marks the shift away from Sunday sessions toward a disciplined business-week cadence.</li>
-      <li><strong>Academy Pricing Integration:</strong> Finalise the inclusion of "The Academy" training costs into the
-        overarching monetisation structure.</li>
+      <li><strong>Credential Finalisation (Deadline June 30):</strong> All team members must provide their "bills" (bios/credentials) for the final deck. Tsholo and Michael are to collaborate on the bios to ensure the "jacket" visual standard is met before the end-of-month sign-off.</li>
+      <li><strong>Discord Integration &amp; Syncing:</strong> The agency is transitioning to Discord for all recurring sessions. All members must match their iPhone and Computer settings to ensure seamless communication and notifications across devices.</li>
+      <li><strong>Weekly Status Rhythm:</strong> Official weekly status sessions will commence on Monday, June 22nd, at 6:00 PM. This marks the shift away from Sunday sessions toward a disciplined business-week cadence.</li>
+      <li><strong>Academy Pricing Integration:</strong> Finalise the inclusion of "The Academy" training costs into the overarching monetisation structure.</li>
     </ol>
 
     <hr>
 
     <p><strong>Conclusion: Scaling the Business Network</strong></p>
-    <p>The team is committed to moving past internal development and into active distribution. By adopting a peer-level
-      positioning and a rigorous financial model, the agency is prepared to present its credentials to international
-      sponsors and top-tier partners. The objective is clear: to evolve from a specialised firm into a high-level
-      business network by this time next year, defined by creative brilliance and operational precision.</p>
+    <p>The team is committed to moving past internal development and into active distribution. By adopting a peer-level positioning and a rigorous financial model, the agency is prepared to present its credentials to international sponsors and top-tier partners. The objective is clear: to evolve from a specialised firm into a high-level business network by this time next year, defined by creative brilliance and operational precision.</p>
   </div>
 
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeKey = 'theme-preference';
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-
-    const icons = {
-      moon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>',
-      sun: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>'
-    };
-
-    function applyTheme(theme, persist) {
-      document.body.dataset.theme = theme;
-      themeToggle.innerHTML = theme === 'dark' ? icons.sun : icons.moon;
-      themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Activate light mode' : 'Activate dark mode');
-      if (persist) localStorage.setItem(themeKey, theme);
-    }
-
-    function resolveTheme() {
-      const saved = localStorage.getItem(themeKey);
-      if (saved === 'light' || saved === 'dark') return saved;
-      return prefersDark.matches ? 'dark' : 'light';
-    }
-
-    applyTheme(resolveTheme());
-
-    themeToggle.addEventListener('click', () => {
-      const current = document.body.dataset.theme || 'light';
-      applyTheme(current === 'dark' ? 'light' : 'dark', true);
-    });
-
-    prefersDark.addEventListener('change', e => {
-      if (!localStorage.getItem(themeKey)) applyTheme(e.matches ? 'dark' : 'light');
-    });
-  </script>
 </body>
-
 </html>
