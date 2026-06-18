@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>h·e·r collab</title>
+    <meta name="description"
+        content="h.e.r collab: Creative Brilliance. Surgical Precision. Strategic architecture and venture development for Black women-led entrepreneurship.">
 
     <!-- Rich Link Previews for WhatsApp, iMessage, LinkedIn -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:site_name" content="h.e.r collab">
     <meta property="og:title" content="h·e·r collab">
-    <meta property="og:description" content="Creative Brilliance · Surgical Precision.">
+    <meta property="og:description"
+        content="Creative Brilliance. Surgical Precision. Strategic architecture and venture development for Black women-led entrepreneurship.">
     <meta property="og:image"
         content="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781800053/rotate-3d_1_bgchod.png?v=2">
     <meta property="og:image:width" content="1200">
@@ -19,21 +22,24 @@
     <!-- Twitter / X Preview Card (Fallback) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="h·e·r collab">
-    <meta name="twitter:description" content="Creative Brilliance. Surgical Precision.">
+    <meta name="twitter:description"
+        content="Creative Brilliance. Surgical Precision. Strategic architecture and venture development for Black women-led entrepreneurship.">
     <meta name="twitter:image"
         content="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781800053/rotate-3d_1_bgchod.png?v=2">
+    <meta name="theme-color" content="#fcfcfc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
 
     <!-- Standard Browser Favicon -->
     <link rel="icon" type="image/png"
-        href="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781800053/rotate-3d_1_bgchod.png?v=2">
+        href="https://res.cloudinary.com/dmkhsyfzf/image/upload/c_pad,b_white,w_512,h_512/v1781800053/rotate-3d_1_bgchod.png?v=3">
 
     <!-- Apple/iOS Web App Install Icon -->
     <link rel="apple-touch-icon"
-        href="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781800053/rotate-3d_1_bgchod.png?v=2">
+        href="https://res.cloudinary.com/dmkhsyfzf/image/upload/c_pad,b_white,w_512,h_512/v1781800053/rotate-3d_1_bgchod.png?v=3">
 
     <!-- Android / High-Res Device Shortcut Icon -->
     <link rel="icon" sizes="192x192"
-        href="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781800053/rotate-3d_1_bgchod.png?v=2">
+        href="https://res.cloudinary.com/dmkhsyfzf/image/upload/c_pad,b_white,w_512,h_512/v1781800053/rotate-3d_1_bgchod.png?v=3">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -310,6 +316,55 @@
         .tile-footer {
             color: var(--text-muted);
         }
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 1rem;
+        }
+
+        .quick-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            min-height: 2.35rem;
+            padding: 0.55rem 0.85rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.45);
+            text-decoration: none;
+            font-size: 0.72rem;
+            line-height: 1;
+            transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        body[data-theme="dark"] .quick-link {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .quick-link:hover,
+        .quick-link:focus-visible {
+            color: var(--text-strong);
+            background: rgba(255, 255, 255, 0.72);
+            border-color: rgba(178, 34, 34, 0.45);
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        body[data-theme="dark"] .quick-link:hover,
+        body[data-theme="dark"] .quick-link:focus-visible {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .quick-link svg {
+            width: 0.9rem;
+            height: 0.9rem;
+            flex: 0 0 auto;
+            stroke-width: 1.9;
+        }
     </style>
 </head>
 
@@ -351,6 +406,20 @@
                     <footer class="text-start tile-footer caps-sentiment" style="font-size: 0.7rem;">
                         <span>&copy; 2026 h·e·r collab. Strategic Architecture & Venture Development. | Brand Statement
                             #1</span>
+                        <nav class="quick-links" aria-label="Quick links">
+                            <a class="quick-link" id="imessage-link" href="#" rel="nofollow">
+                                <i data-lucide="message-circle" aria-hidden="true"></i>
+                                <span>iMessage</span>
+                            </a>
+                            <a class="quick-link" id="whatsapp-link" href="#" target="_blank" rel="noopener nofollow">
+                                <i data-lucide="send" aria-hidden="true"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                            <a class="quick-link" id="copy-link" href="#" rel="nofollow">
+                                <i data-lucide="link" aria-hidden="true"></i>
+                                <span>Copy Link</span>
+                            </a>
+                        </nav>
                     </footer>
 
                 </article>
@@ -362,12 +431,54 @@
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/lucide.min.js"></script>
     <script>
         const themeToggle = document.getElementById('theme-toggle');
+        const imessageLink = document.getElementById('imessage-link');
+        const whatsappLink = document.getElementById('whatsapp-link');
+        const copyLink = document.getElementById('copy-link');
         const themeKey = 'theme-preference';
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
         const themeIcons = {
             moon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>',
             sun: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>'
         };
+
+        function getShareUrl() {
+            const url = new URL(window.location.href);
+            url.hash = '';
+            return url.toString();
+        }
+
+        function getShareMessage() {
+            return [
+                'h.e.r collab',
+                'Creative Brilliance. Surgical Precision.',
+                'Strategic architecture and venture development for Black women-led entrepreneurship.',
+                getShareUrl()
+            ].join('\n');
+        }
+
+        function updateQuickLinks() {
+            const shareMessage = getShareMessage();
+            const encodedMessage = encodeURIComponent(shareMessage);
+            const isAppleDevice = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent);
+            const smsSeparator = isAppleDevice ? '&' : '?';
+
+            imessageLink.href = `sms:${smsSeparator}body=${encodedMessage}`;
+            whatsappLink.href = `https://wa.me/?text=${encodedMessage}`;
+        }
+
+        async function copyShareMessage(event) {
+            event.preventDefault();
+
+            try {
+                await navigator.clipboard.writeText(getShareMessage());
+                copyLink.querySelector('span').textContent = 'Copied';
+                setTimeout(() => {
+                    copyLink.querySelector('span').textContent = 'Copy Link';
+                }, 1600);
+            } catch (error) {
+                window.location.href = `mailto:?subject=${encodeURIComponent('h.e.r collab')}&body=${encodeURIComponent(getShareMessage())}`;
+            }
+        }
 
         function renderToggleIcon(theme) {
             const iconName = theme === 'dark' ? 'sun' : 'moon';
@@ -393,11 +504,17 @@
         }
 
         applyTheme(resolveInitialTheme());
+        updateQuickLinks();
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
 
         themeToggle.addEventListener('click', () => {
             const nextTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
             applyTheme(nextTheme, true);
         });
+
+        copyLink.addEventListener('click', copyShareMessage);
 
         prefersDark.addEventListener('change', event => {
             if (!localStorage.getItem(themeKey)) {
