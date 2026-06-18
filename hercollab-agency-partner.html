@@ -241,9 +241,11 @@
         .partner-switcher {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            justify-content: flex-start;
+            margin-bottom: 1.35rem;
+            width: fit-content;
+            max-width: 100%;
+            padding: 0.35rem;
         }
 
         .partner-switcher button {
@@ -251,29 +253,30 @@
             border: none;
             padding: 0;
             cursor: pointer;
-            color: var(--text-strong);
             display: flex;
             align-items: center;
-            transition: opacity 0.15s ease;
+            justify-content: center;
         }
 
         .partner-switcher button:hover {
-            opacity: 0.65;
+            opacity: 1;
         }
 
         .partner-switcher button svg {
-            width: 22px;
-            height: 22px;
+            width: 1.15rem;
+            height: 1.15rem;
         }
 
         .partner-switcher-label {
-            font-size: calc(1.5rem + 0.3vw);
+            font-size: clamp(1.05rem, 2.15vw, 1.45rem);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.14em;
             color: var(--text-strong);
-            font-weight: 500;
+            font-weight: 600;
             text-align: center;
-            min-width: 200px;
+            min-width: clamp(12rem, 28vw, 16rem);
+            padding: 0 0.9rem;
+            white-space: nowrap;
         }
 
         .partner-content {
@@ -494,6 +497,10 @@
             display: block;
         }
 
+        .bio-block .block-label {
+            display: none;
+        }
+
         .lead-text {
             font-size: calc(0.9rem + 0.15vw);
             font-weight: 300;
@@ -519,6 +526,10 @@
             transition: background-color 0.1s ease, border-color 0.1s ease;
         }
 
+        .bio-block-switcher {
+            margin-bottom: 0.9rem !important;
+        }
+
         .frame-nav-btn {
             background: none;
             border: none;
@@ -541,12 +552,18 @@
 
         .frame-nav-indicator {
             font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            padding: 0 0.5rem;
+            letter-spacing: 0.12em;
+            padding: 0 0.65rem;
             color: var(--text-muted);
             font-weight: bold;
-            min-width: 3.5rem;
+            min-width: 8.75rem;
             text-align: center;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .block-indicator {
+            color: var(--subheadline-color);
         }
 
         .frame-theme-divider {
@@ -598,16 +615,24 @@
                         <h3 class="subtitle">Creative Brilliance &middot; Surgical Precision</h3>
                     </header>
 
-                    <nav class="partner-switcher">
-                        <button class="switcher-prev" aria-label="Previous partner">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M15 18l-6-6 6-6"></path>
+                    <nav class="partner-switcher frame-nav-menu" aria-label="Partner selector">
+                        <button class="switcher-prev frame-nav-btn" type="button" aria-label="Previous partner"
+                            title="Previous Partner">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <path d="m12 19-7-7 7-7"></path>
+                                <path d="M19 12H5"></path>
                             </svg>
                         </button>
                         <span class="partner-switcher-label">The Visionary</span>
-                        <button class="switcher-next" aria-label="Next partner">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 18l6-6-6-6"></path>
+                        <button class="switcher-next frame-nav-btn" type="button" aria-label="Next partner"
+                            title="Next Partner">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
                             </svg>
                         </button>
                     </nav>
@@ -704,7 +729,7 @@
 
                         </main>
 
-                        <div class="d-flex justify-content-start align-items-center mb-4">
+                        <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">
                             <div class="frame-nav-menu">
                                 <button class="frame-nav-btn prev-block-btn" type="button"
                                     aria-label="Previous text entry block" title="Previous Block">
@@ -716,7 +741,7 @@
                                     </svg>
                                 </button>
 
-                                <span class="frame-nav-indicator block-indicator">1 / 4</span>
+                                <span class="frame-nav-indicator block-indicator">01 // Authority</span>
 
                                 <button class="frame-nav-btn next-block-btn" type="button"
                                     aria-label="Next text entry block" title="Next Block">
@@ -817,7 +842,7 @@
 
                         </main>
 
-                        <div class="d-flex justify-content-start align-items-center mb-4">
+                        <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">
                             <div class="frame-nav-menu">
                                 <button class="frame-nav-btn prev-block-btn" type="button"
                                     aria-label="Previous text entry block" title="Previous Block">
@@ -829,7 +854,7 @@
                                     </svg>
                                 </button>
 
-                                <span class="frame-nav-indicator block-indicator">1 / 4</span>
+                                <span class="frame-nav-indicator block-indicator">01 // Authority</span>
 
                                 <button class="frame-nav-btn next-block-btn" type="button"
                                     aria-label="Next text entry block" title="Next Block">
@@ -929,7 +954,7 @@
 
                         </main>
 
-                        <div class="d-flex justify-content-start align-items-center mb-4">
+                        <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">
                             <div class="frame-nav-menu">
                                 <button class="frame-nav-btn prev-block-btn" type="button"
                                     aria-label="Previous text entry block" title="Previous Block">
@@ -941,7 +966,7 @@
                                     </svg>
                                 </button>
 
-                                <span class="frame-nav-indicator block-indicator">1 / 4</span>
+                                <span class="frame-nav-indicator block-indicator">01 // Authority</span>
 
                                 <button class="frame-nav-btn next-block-btn" type="button"
                                     aria-label="Next text entry block" title="Next Block">
@@ -971,7 +996,6 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/lucide.min.js"></script>
     <script>
         // 1. Partner Switcher
         const partnerData = [
@@ -1005,6 +1029,8 @@
         document.querySelectorAll('.partner-content').forEach(content => {
             const container = content.querySelector('.bio-slider-container');
             if (!container) return;
+            const controls = content.querySelector('.bio-block-switcher');
+            if (controls) content.insertBefore(controls, container);
             const blocks = container.querySelectorAll('.bio-block');
             const total = blocks.length;
             const indicator = content.querySelector('.block-indicator');
@@ -1016,8 +1042,11 @@
                 container.querySelector('.bio-block.active')?.classList.remove('active');
                 current = target;
                 blocks[current - 1].classList.add('active');
-                if (indicator) indicator.textContent = `${current} / ${total}`;
+                const label = blocks[current - 1].querySelector('.block-label')?.textContent?.trim();
+                if (indicator && label) indicator.textContent = label;
             }
+
+            updateBlock(current);
 
             if (prevBtn) {
                 prevBtn.addEventListener('click', () => {
