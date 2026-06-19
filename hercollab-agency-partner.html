@@ -302,10 +302,55 @@
         .partner-rail-item.current {
             opacity: 1;
             filter: none;
-            color: var(--text-muted);
+            color: var(--text-strong);
+            font-weight: 600;
         }
 
         .partner-rail-item:not(.current) {
+            opacity: 0.12;
+            filter: blur(1.2px);
+        }
+
+        /* Level 2 Block Switcher Rail */
+        .bio-block-switcher .frame-nav-menu {
+            width: 100%;
+        }
+
+        .block-rail-wrap {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            background: color-mix(in srgb, var(--text-strong) 6%, transparent);
+            border-radius: 2px;
+            margin: 0 0.25rem;
+        }
+
+        .block-rail {
+            display: flex;
+            align-items: center;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        .block-rail-item {
+            flex: 0 0 60%;
+            box-sizing: border-box;
+            padding: 0.15rem 5%;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            font-weight: bold;
+            color: var(--subheadline-color);
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
+
+        .block-rail-item.current {
+            opacity: 1;
+            filter: none;
+        }
+
+        .block-rail-item:not(.current) {
             opacity: 0.12;
             filter: blur(1.2px);
         }
@@ -459,7 +504,7 @@
 
         /* Multi-Block Carousel Node Engine Container */
         .bio-slider-container {
-            overflow: hidden;
+            position: relative;
             min-height: 180px;
             margin-bottom: 1.5rem;
         }
@@ -470,15 +515,28 @@
             }
         }
 
-        .bio-slider-rail {
-            display: flex;
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: transform;
+        .bio-block {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1;
         }
 
-        .bio-block {
-            flex: 0 0 100%;
-            box-sizing: border-box;
+        /* Surgical Precision Brand Rule: Instant Hard Cut */
+        .bio-block.active {
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+            animation: surgicalCut 0.05s steps(2, end);
+        }
+
+        @keyframes surgicalCut {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .block-label {
@@ -665,8 +723,6 @@
                         <hr class="mb-4">
 
                         <main class="bio-slider-container">
-                            <div class="bio-slider-rail">
-
                             <div class="bio-block active">
                                 <span class="block-label">01 // Authority</span>
                                 <p class="lead-text">
@@ -721,8 +777,6 @@
                                     <strong>· Work deeply rooted in culture and human insight</strong>
                                 </p>
                             </div>
-                        </div>
-
                         </main>
 
                         <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">
@@ -785,8 +839,6 @@
                         <hr class="mb-4">
 
                         <main class="bio-slider-container">
-                            <div class="bio-slider-rail">
-
                             <div class="bio-block active">
                                 <span class="block-label">01 // Authority</span>
                                 <p class="lead-text">
@@ -834,8 +886,6 @@
                                     <strong>· Purpose-driven Storytelling & Brand Transformation</strong>
                                 </p>
                             </div>
-                        </div>
-
                         </main>
 
                         <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">
@@ -898,8 +948,6 @@
                         <hr class="mb-4">
 
                         <main class="bio-slider-container">
-                            <div class="bio-slider-rail">
-
                             <div class="bio-block active">
                                 <span class="block-label">01 // Authority</span>
                                 <p class="lead-text">
@@ -946,8 +994,6 @@
                                     <strong>· High-Level Stakeholder & Vendor Negotiation</strong>
                                 </p>
                             </div>
-                        </div>
-
                         </main>
 
                         <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">
@@ -1081,32 +1127,52 @@
             if (!container) return;
             const controls = content.querySelector('.bio-block-switcher');
             if (controls) content.insertBefore(controls, container);
-            const rail = container.querySelector('.bio-slider-rail');
-            if (!rail) return;
-            const blocks = rail.querySelectorAll('.bio-block');
+            const blocks = container.querySelectorAll('.bio-block');
             const total = blocks.length;
-            const indicator = content.querySelector('.block-indicator');
             const prevBtn = content.querySelector('.prev-block-btn');
             const nextBtn = content.querySelector('.next-block-btn');
             let current = 1;
 
-            function updateBlock(target) {
-                const tx = -((target - 1) / total) * 100;
-                rail.style.transform = 'translateX(' + tx + '%)';
-                current = target;
-                const label = blocks[current - 1].querySelector('.block-label')?.textContent?.trim();
-                if (indicator && label) indicator.textContent = label;
+            // Build switching rail from block labels
+            const oldIndicator = content.querySelector('.block-indicator');
+            const blockRailWrap = document.createElement('div');
+            blockRailWrap.className = 'block-rail-wrap';
+            const blockRail = document.createElement('div');
+            blockRail.className = 'block-rail';
+            const blockLabels = [];
+            blocks.forEach((b, i) => {
+                const lbl = b.querySelector('.block-label')?.textContent?.trim() || '';
+                blockLabels.push(lbl);
+                const span = document.createElement('span');
+                span.className = 'block-rail-item' + (i === 0 ? ' current' : '');
+                span.textContent = lbl;
+                blockRail.appendChild(span);
+            });
+            blockRailWrap.appendChild(blockRail);
+            if (oldIndicator) oldIndicator.replaceWith(blockRailWrap);
+
+            const railItems = blockRail.children;
+            const itemPct = 60;
+            function updateBlockRail(idx) {
+                const tx = -((idx * itemPct - (100 - itemPct) / 2) / (total * itemPct)) * 100;
+                blockRail.style.transform = 'translateX(' + tx + '%)';
+                for (let i = 0; i < railItems.length; i++) {
+                    railItems[i].className = 'block-rail-item' + (i === idx ? ' current' : '');
+                }
             }
 
-            // Initial indicator
-            const firstLabel = blocks[0]?.querySelector('.block-label')?.textContent?.trim();
-            if (indicator && firstLabel) indicator.textContent = firstLabel;
+            function updateBlock(target) {
+                container.querySelector('.bio-block.active')?.classList.remove('active');
+                current = target;
+                blocks[current - 1].classList.add('active');
+                updateBlockRail(current - 1);
+            }
 
-            // Initial position: no transition, just set
-            rail.style.transition = 'none';
-            rail.style.transform = 'translateX(0%)';
-            void rail.offsetHeight;
-            rail.style.transition = '';
+            // Initial: set position without animation
+            blockRail.style.transition = 'none';
+            updateBlock(current);
+            void blockRail.offsetHeight;
+            blockRail.style.transition = '';
 
             if (prevBtn) {
                 prevBtn.addEventListener('click', () => {
