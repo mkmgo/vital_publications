@@ -200,6 +200,18 @@
 
         .theme-toggle svg,
         .frame-nav-btn svg {
+            transition: transform 0.08s ease;
+        }
+
+        .switcher-prev:active svg,
+        .prev-block-btn:active svg {
+            transform: translateX(-3px);
+        }
+
+        .switcher-next:active svg,
+        .next-block-btn:active svg {
+            transform: translateX(3px);
+        }
             width: 1rem;
             height: 1rem;
             stroke-width: 1.8;
@@ -979,6 +991,10 @@
     </div>
 
     <script>
+        function haptic() {
+            if (navigator.vibrate) navigator.vibrate(10);
+        }
+
         // 1. Partner Switcher
         const partnerData = [
             { id: 'neo', label: 'The Visionary' },
@@ -998,11 +1014,13 @@
         }
 
         document.querySelector('.switcher-prev').addEventListener('click', () => {
+            haptic();
             const prev = (currentPartner - 1 + partnerData.length) % partnerData.length;
             showPartner(prev);
         });
 
         document.querySelector('.switcher-next').addEventListener('click', () => {
+            haptic();
             const next = (currentPartner + 1) % partnerData.length;
             showPartner(next);
         });
@@ -1032,6 +1050,7 @@
 
             if (prevBtn) {
                 prevBtn.addEventListener('click', () => {
+                    haptic();
                     let target = current - 1;
                     if (target < 1) target = total;
                     updateBlock(target);
@@ -1039,6 +1058,7 @@
             }
             if (nextBtn) {
                 nextBtn.addEventListener('click', () => {
+                    haptic();
                     let target = current + 1;
                     if (target > total) target = 1;
                     updateBlock(target);
@@ -1057,8 +1077,10 @@
                 const endX = e.changedTouches[0].clientX;
                 const delta = startX - endX;
                 if (delta > threshold) {
+                    haptic();
                     if (nextBtn) nextBtn.click();
                 } else if (delta < -threshold) {
+                    haptic();
                     if (prevBtn) prevBtn.click();
                 }
             }, { passive: true });
