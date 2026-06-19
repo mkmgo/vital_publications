@@ -273,9 +273,6 @@
             flex: 1;
             overflow: hidden;
             position: relative;
-            background: color-mix(in srgb, var(--text-strong) 6%, transparent);
-            border-radius: 2px;
-            margin: 0 0.25rem;
         }
 
         .partner-rail {
@@ -296,6 +293,8 @@
             letter-spacing: 0.14em;
             font-weight: 500;
             color: var(--text-muted);
+            background: color-mix(in srgb, var(--text-strong) 6%, transparent);
+            border-radius: 2px;
         }
 
         /* Level 2 Block Switcher Rail */
@@ -307,9 +306,6 @@
             flex: 1;
             overflow: hidden;
             position: relative;
-            background: color-mix(in srgb, var(--text-strong) 6%, transparent);
-            border-radius: 2px;
-            margin: 0 0.25rem;
         }
 
         .block-rail {
@@ -329,6 +325,8 @@
             letter-spacing: 0.12em;
             font-weight: bold;
             color: var(--subheadline-color);
+            background: color-mix(in srgb, var(--text-strong) 6%, transparent);
+            border-radius: 2px;
         }
 
         .partner-content {
@@ -1050,6 +1048,7 @@
             allContents.forEach(c => c.classList.remove('active'));
             const target = document.querySelector(`.partner-content[data-partner="${partnerData[index].id}"]`);
             if (target) target.classList.add('active');
+            if (target && target._resetBlocks) target._resetBlocks();
 
             const old = currentPartner;
             if (old !== index) {
@@ -1076,13 +1075,6 @@
 
             currentPartner = index;
         }
-
-        // Initial build
-        rebuildRail(0, labels);
-        partnerRail.style.transition = 'none';
-        partnerRail.style.transform = 'translateX(' + RAIL_CENTER + '%)';
-        void partnerRail.offsetHeight;
-        partnerRail.style.transition = '';
 
         document.querySelector('.switcher-prev').addEventListener('click', () => {
             haptic();
@@ -1166,12 +1158,20 @@
                 }
             }
 
+            // Expose reset so Level 1 can reset when switching partners
+            content._resetBlocks = function () {
+                container.querySelector('.bio-block.active')?.classList.remove('active');
+                blocks[0].classList.add('active');
+                current = 1;
+                rebuildBlockRail(0);
+                blockRail.style.transition = 'none';
+                blockRail.style.transform = 'translateX(' + B_CTR + '%)';
+                void blockRail.offsetHeight;
+                blockRail.style.transition = '';
+            };
+
             // Initial: build and set without animation
-            rebuildBlockRail(0);
-            blockRail.style.transition = 'none';
-            blockRail.style.transform = 'translateX(' + B_CTR + '%)';
-            void blockRail.offsetHeight;
-            blockRail.style.transition = '';
+            content._resetBlocks();
 
             if (prevBtn) {
                 prevBtn.addEventListener('click', () => {
@@ -1190,6 +1190,9 @@
                 });
             }
         });
+
+        // Initial: show first partner (after Level 1 + Level 2 setup)
+        showPartner(0);
 
         // 3. Swipe Detection for Touch Devices
         function enableSwipe(container, prevBtn, nextBtn, threshold) {
