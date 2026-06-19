@@ -170,6 +170,52 @@
             transition: background 0.1s ease;
         }
 
+        /* Directional ambient sweep — holds at outer edge, then cuts instantly */
+        @keyframes sweepIn {
+            0% { transform: scaleX(0); }
+            35% { transform: scaleX(1); }
+            49.9% { transform: scaleX(1); }
+            50% { transform: scaleX(0); }
+            100% { transform: scaleX(0); }
+        }
+
+        .partner-switcher button::before,
+        .frame-nav-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: color-mix(in srgb, var(--text-strong) 6%, transparent);
+            border-radius: 2px;
+            animation: sweepIn 4s ease-in-out infinite;
+            pointer-events: none;
+            transition: none;
+        }
+
+        .frame-nav-btn::before {
+            animation-delay: 4s;
+        }
+
+        .partner-switcher button,
+        .frame-nav-btn {
+            position: relative;
+        }
+
+        .switcher-prev::before,
+        .prev-block-btn::before {
+            transform-origin: right center;
+        }
+
+        .switcher-next::before,
+        .next-block-btn::before {
+            transform-origin: left center;
+        }
+
+        .partner-switcher button:hover::before,
+        .frame-nav-btn:hover::before {
+            animation: none;
+            opacity: 0;
+        }
+
         /* Corner Ambient Control Linkage */
         .theme-toggle {
             position: fixed;
@@ -251,15 +297,17 @@
         .partner-switcher button {
             background: none;
             border: none;
-            padding: 0;
+            padding: 0.4rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 2px;
         }
 
         .partner-switcher button:hover {
             opacity: 1;
+            background: color-mix(in srgb, var(--text-strong) 8%, transparent);
         }
 
         .partner-switcher button svg {
@@ -500,7 +548,7 @@
         /* Frame Integrated Navigation and System Swapper Control Base */
         .frame-nav-menu {
             display: inline-flex;
-            align-items: center;
+            align-items: stretch;
             border: 1px solid var(--border-color);
             border-radius: 4px;
             padding: 0.25rem;
@@ -517,7 +565,6 @@
             background: none;
             border: none;
             width: 2rem;
-            height: 2rem;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -1044,7 +1091,39 @@
             }
         });
 
-        // 3. Bidirectional System Preference + Switch UI State Routing Sync Engine
+        // 3. Swipe Detection for Touch Devices
+        function enableSwipe(container, prevBtn, nextBtn, threshold) {
+            threshold = threshold || 30;
+            let startX = 0;
+            container.addEventListener('touchstart', function (e) {
+                startX = e.touches[0].clientX;
+            }, { passive: true });
+            container.addEventListener('touchend', function (e) {
+                const endX = e.changedTouches[0].clientX;
+                const delta = startX - endX;
+                if (delta > threshold) {
+                    if (nextBtn) nextBtn.click();
+                } else if (delta < -threshold) {
+                    if (prevBtn) prevBtn.click();
+                }
+            }, { passive: true });
+        }
+
+        // Level 1 swipe
+        enableSwipe(
+            document.querySelector('.partner-switcher'),
+            document.querySelector('.switcher-prev'),
+            document.querySelector('.switcher-next')
+        );
+
+        // Level 2 swipe (one per partner content)
+        document.querySelectorAll('.bio-block-switcher .frame-nav-menu').forEach(function (menu) {
+            const prev = menu.querySelector('.prev-block-btn');
+            const next = menu.querySelector('.next-block-btn');
+            enableSwipe(menu, prev, next);
+        });
+
+        // 4. Bidirectional System Preference + Switch UI State Routing Sync Engine
         const globalThemeToggle = document.getElementById('theme-toggle');
         const themeKey = 'theme-preference';
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
