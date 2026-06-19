@@ -281,14 +281,14 @@
         .partner-rail {
             display: flex;
             align-items: center;
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform;
         }
 
         .partner-rail-item {
-            flex: 0 0 60%;
+            flex: 0 0 100%;
             box-sizing: border-box;
-            padding: 0.25rem 5%;
+            padding: 0.25rem 0.9rem;
             text-align: center;
             white-space: nowrap;
             font-size: clamp(0.85rem, 1.6vw, 1.1rem);
@@ -296,19 +296,6 @@
             letter-spacing: 0.14em;
             font-weight: 500;
             color: var(--text-muted);
-            transition: opacity 0.3s ease, filter 0.3s ease;
-        }
-
-        .partner-rail-item.current {
-            opacity: 1;
-            filter: none;
-            color: var(--text-strong);
-            font-weight: 600;
-        }
-
-        .partner-rail-item:not(.current) {
-            opacity: 0.12;
-            filter: blur(1.2px);
         }
 
         /* Level 2 Block Switcher Rail */
@@ -328,31 +315,20 @@
         .block-rail {
             display: flex;
             align-items: center;
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform;
         }
 
         .block-rail-item {
-            flex: 0 0 60%;
+            flex: 0 0 100%;
             box-sizing: border-box;
-            padding: 0.15rem 5%;
+            padding: 0.15rem 0.65rem;
             text-align: center;
             white-space: nowrap;
             font-size: 0.85rem;
             letter-spacing: 0.12em;
             font-weight: bold;
             color: var(--subheadline-color);
-            transition: opacity 0.3s ease, filter 0.3s ease;
-        }
-
-        .block-rail-item.current {
-            opacity: 1;
-            filter: none;
-        }
-
-        .block-rail-item:not(.current) {
-            opacity: 0.12;
-            filter: blur(1.2px);
         }
 
         .partner-content {
@@ -1053,17 +1029,17 @@
         const allContents = document.querySelectorAll('.partner-content');
         const partnerRail = document.getElementById('partner-rail');
         const labels = partnerData.map(d => d.label);
-        const RAIL_ITEMS = 5;
-        const RAIL_ITEM_PCT = 60;
-        // translateX to center rail index 2: -(2*60 - 20)/(5*60)*100 = -33.33%
-        const RAIL_CENTER = -((2 * RAIL_ITEM_PCT - (100 - RAIL_ITEM_PCT) / 2) / (RAIL_ITEMS * RAIL_ITEM_PCT)) * 100;
+        const RAIL_N = 3;
+        // translateX to center index 1 (middle) of 3 items at 100% each: -(1*100)/300*100 = -33.33%
+        const RAIL_CENTER = -((1 * 100) / (RAIL_N * 100)) * 100;
+        const RAIL_TX = [0, -33.333333, -66.666667]; // center index 0,1,2
 
         function rebuildRail(centerIdx, labelArr) {
             const frag = [];
-            for (let i = -2; i <= 2; i++) {
+            for (let i = -1; i <= 1; i++) {
                 const idx = (centerIdx + i + labelArr.length) % labelArr.length;
                 const span = document.createElement('span');
-                span.className = 'partner-rail-item' + (i === 0 ? ' current' : '');
+                span.className = 'partner-rail-item';
                 span.textContent = labelArr[idx];
                 frag.push(span);
             }
@@ -1078,10 +1054,9 @@
             const old = currentPartner;
             if (old !== index) {
                 const dir = index === (old + 1) % partnerData.length ? 1 : -1;
-                const targetIdx = 2 + dir;
-                const tx = -((targetIdx * RAIL_ITEM_PCT - (100 - RAIL_ITEM_PCT) / 2) / (RAIL_ITEMS * RAIL_ITEM_PCT)) * 100;
-                partnerRail.style.transition = 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
-                partnerRail.style.transform = 'translateX(' + tx + '%)';
+                const targetIdx = 1 + dir; // 0 for prev, 2 for next
+                partnerRail.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                partnerRail.style.transform = 'translateX(' + RAIL_TX[targetIdx] + '%)';
                 const onEnd = function () {
                     partnerRail.removeEventListener('transitionend', onEnd);
                     rebuildRail(index, labels);
@@ -1140,37 +1115,61 @@
             const blockRail = document.createElement('div');
             blockRail.className = 'block-rail';
             const blockLabels = [];
-            blocks.forEach((b, i) => {
+            blocks.forEach((b) => {
                 const lbl = b.querySelector('.block-label')?.textContent?.trim() || '';
                 blockLabels.push(lbl);
-                const span = document.createElement('span');
-                span.className = 'block-rail-item' + (i === 0 ? ' current' : '');
-                span.textContent = lbl;
-                blockRail.appendChild(span);
             });
+            // Create exactly 3 items for the slide rail
+            for (let i = 0; i < 3; i++) {
+                const span = document.createElement('span');
+                span.className = 'block-rail-item';
+                blockRail.appendChild(span);
+            }
             blockRailWrap.appendChild(blockRail);
             if (oldIndicator) oldIndicator.replaceWith(blockRailWrap);
 
             const railItems = blockRail.children;
-            const itemPct = 60;
-            function updateBlockRail(idx) {
-                const tx = -((idx * itemPct - (100 - itemPct) / 2) / (total * itemPct)) * 100;
-                blockRail.style.transform = 'translateX(' + tx + '%)';
-                for (let i = 0; i < railItems.length; i++) {
-                    railItems[i].className = 'block-rail-item' + (i === idx ? ' current' : '');
+            // translateX to center index 1 of 3 items at 100%: -33.33%
+            const B_CTR = -33.333333;
+            const B_TX = [0, B_CTR, -66.666667];
+
+            function rebuildBlockRail(currIdx) {
+                const prevIdx = currIdx === 0 ? total - 1 : currIdx - 1;
+                const nextIdx = currIdx === total - 1 ? 0 : currIdx + 1;
+                const order = [prevIdx, currIdx, nextIdx];
+                for (let i = 0; i < 3; i++) {
+                    railItems[i].textContent = blockLabels[order[i]];
                 }
             }
 
             function updateBlock(target) {
                 container.querySelector('.bio-block.active')?.classList.remove('active');
+                const oldIdx = current - 1;
+                const newIdx = target - 1;
                 current = target;
-                blocks[current - 1].classList.add('active');
-                updateBlockRail(current - 1);
+                blocks[newIdx].classList.add('active');
+
+                if (oldIdx !== newIdx) {
+                    const dir = newIdx === (oldIdx + 1) % total ? 1 : -1;
+                    const tgt = 1 + dir;
+                    blockRail.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                    blockRail.style.transform = 'translateX(' + B_TX[tgt] + '%)';
+                    const onEnd = function () {
+                        blockRail.removeEventListener('transitionend', onEnd);
+                        rebuildBlockRail(newIdx);
+                        blockRail.style.transition = 'none';
+                        blockRail.style.transform = 'translateX(' + B_CTR + '%)';
+                        void blockRail.offsetHeight;
+                        blockRail.style.transition = '';
+                    };
+                    blockRail.addEventListener('transitionend', onEnd);
+                }
             }
 
-            // Initial: set position without animation
+            // Initial: build and set without animation
+            rebuildBlockRail(0);
             blockRail.style.transition = 'none';
-            updateBlock(current);
+            blockRail.style.transform = 'translateX(' + B_CTR + '%)';
             void blockRail.offsetHeight;
             blockRail.style.transition = '';
 
