@@ -255,25 +255,13 @@
             align-items: center;
             justify-content: flex-start;
             margin-bottom: 1.35rem;
-            width: fit-content;
+            width: 100%;
             max-width: 100%;
             padding: 0.35rem;
         }
 
-        .partner-switcher button {
-            background: none;
-            border: none;
-            padding: 0.4rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 2px;
-        }
-
-        .partner-switcher button:hover {
-            opacity: 1;
-            background: color-mix(in srgb, var(--text-strong) 8%, transparent);
+        .partner-switcher .frame-nav-btn {
+            flex-shrink: 0;
         }
 
         .partner-switcher button svg {
@@ -281,18 +269,45 @@
             height: 1.15rem;
         }
 
-        .partner-switcher-label {
+        .partner-rail-wrap {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            background: color-mix(in srgb, var(--text-strong) 6%, transparent);
+            border-radius: 2px;
+            margin: 0 0.25rem;
+        }
+
+        .partner-rail {
+            display: flex;
+            align-items: center;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        .partner-rail-item {
+            flex: 0 0 60%;
+            box-sizing: border-box;
+            padding: 0.25rem 5%;
+            text-align: center;
+            white-space: nowrap;
             font-size: clamp(0.85rem, 1.6vw, 1.1rem);
             text-transform: uppercase;
             letter-spacing: 0.14em;
-            color: var(--text-muted);
             font-weight: 500;
-            text-align: center;
-            min-width: clamp(10rem, 24vw, 14rem);
-            padding: 0.25rem 0.9rem;
-            white-space: nowrap;
-            background: color-mix(in srgb, var(--text-strong) 6%, transparent);
-            border-radius: 2px;
+            color: var(--text-muted);
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
+
+        .partner-rail-item.current {
+            opacity: 1;
+            filter: none;
+            color: var(--text-muted);
+        }
+
+        .partner-rail-item:not(.current) {
+            opacity: 0.12;
+            filter: blur(1.2px);
         }
 
         .partner-content {
@@ -444,7 +459,7 @@
 
         /* Multi-Block Carousel Node Engine Container */
         .bio-slider-container {
-            position: relative;
+            overflow: hidden;
             min-height: 180px;
             margin-bottom: 1.5rem;
         }
@@ -455,33 +470,15 @@
             }
         }
 
+        .bio-slider-rail {
+            display: flex;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
         .bio-block {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 1;
-        }
-
-        /* Surgical Precision Brand Rule: Instant Hard Cut / Hyper Fast Step Animation */
-        .bio-block.active {
-            position: relative;
-            opacity: 1;
-            visibility: visible;
-            z-index: 2;
-            animation: surgicalCut 0.05s steps(2, end);
-        }
-
-        @keyframes surgicalCut {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+            flex: 0 0 100%;
+            box-sizing: border-box;
         }
 
         .block-label {
@@ -624,7 +621,7 @@
                                 <path d="M19 12H5"></path>
                             </svg>
                         </button>
-                        <span class="partner-switcher-label">The Visionary</span>
+                        <div class="partner-rail-wrap"><div class="partner-rail" id="partner-rail"></div></div>
                         <button class="switcher-next frame-nav-btn" type="button" aria-label="Next partner"
                             title="Next Partner">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -668,6 +665,7 @@
                         <hr class="mb-4">
 
                         <main class="bio-slider-container">
+                            <div class="bio-slider-rail">
 
                             <div class="bio-block active">
                                 <span class="block-label">01 // Authority</span>
@@ -723,6 +721,7 @@
                                     <strong>· Work deeply rooted in culture and human insight</strong>
                                 </p>
                             </div>
+                        </div>
 
                         </main>
 
@@ -786,6 +785,7 @@
                         <hr class="mb-4">
 
                         <main class="bio-slider-container">
+                            <div class="bio-slider-rail">
 
                             <div class="bio-block active">
                                 <span class="block-label">01 // Authority</span>
@@ -834,6 +834,7 @@
                                     <strong>· Purpose-driven Storytelling & Brand Transformation</strong>
                                 </p>
                             </div>
+                        </div>
 
                         </main>
 
@@ -897,6 +898,7 @@
                         <hr class="mb-4">
 
                         <main class="bio-slider-container">
+                            <div class="bio-slider-rail">
 
                             <div class="bio-block active">
                                 <span class="block-label">01 // Authority</span>
@@ -944,6 +946,7 @@
                                     <strong>· High-Level Stakeholder & Vendor Negotiation</strong>
                                 </p>
                             </div>
+                        </div>
 
                         </main>
 
@@ -1001,16 +1004,64 @@
             { id: 'tsholo', label: 'The Engine' }
         ];
         let currentPartner = 0;
-        const switcherLabel = document.querySelector('.partner-switcher-label');
         const allContents = document.querySelectorAll('.partner-content');
+        const partnerRail = document.getElementById('partner-rail');
+        const labels = partnerData.map(d => d.label);
+        const RAIL_ITEMS = 5;
+        const RAIL_ITEM_PCT = 60;
+        // translateX to center rail index 2: -(2*60 - 20)/(5*60)*100 = -33.33%
+        const RAIL_CENTER = -((2 * RAIL_ITEM_PCT - (100 - RAIL_ITEM_PCT) / 2) / (RAIL_ITEMS * RAIL_ITEM_PCT)) * 100;
+
+        function rebuildRail(centerIdx, labelArr) {
+            const frag = [];
+            for (let i = -2; i <= 2; i++) {
+                const idx = (centerIdx + i + labelArr.length) % labelArr.length;
+                const span = document.createElement('span');
+                span.className = 'partner-rail-item' + (i === 0 ? ' current' : '');
+                span.textContent = labelArr[idx];
+                frag.push(span);
+            }
+            partnerRail.replaceChildren(...frag);
+        }
 
         function showPartner(index) {
             allContents.forEach(c => c.classList.remove('active'));
             const target = document.querySelector(`.partner-content[data-partner="${partnerData[index].id}"]`);
             if (target) target.classList.add('active');
-            switcherLabel.textContent = partnerData[index].label;
+
+            const old = currentPartner;
+            if (old !== index) {
+                const dir = index === (old + 1) % partnerData.length ? 1 : -1;
+                const targetIdx = 2 + dir;
+                const tx = -((targetIdx * RAIL_ITEM_PCT - (100 - RAIL_ITEM_PCT) / 2) / (RAIL_ITEMS * RAIL_ITEM_PCT)) * 100;
+                partnerRail.style.transition = 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
+                partnerRail.style.transform = 'translateX(' + tx + '%)';
+                const onEnd = function () {
+                    partnerRail.removeEventListener('transitionend', onEnd);
+                    rebuildRail(index, labels);
+                    partnerRail.style.transition = 'none';
+                    partnerRail.style.transform = 'translateX(' + RAIL_CENTER + '%)';
+                    void partnerRail.offsetHeight;
+                    partnerRail.style.transition = '';
+                };
+                partnerRail.addEventListener('transitionend', onEnd);
+            } else {
+                rebuildRail(index, labels);
+                partnerRail.style.transition = 'none';
+                partnerRail.style.transform = 'translateX(' + RAIL_CENTER + '%)';
+                void partnerRail.offsetHeight;
+                partnerRail.style.transition = '';
+            }
+
             currentPartner = index;
         }
+
+        // Initial build
+        rebuildRail(0, labels);
+        partnerRail.style.transition = 'none';
+        partnerRail.style.transform = 'translateX(' + RAIL_CENTER + '%)';
+        void partnerRail.offsetHeight;
+        partnerRail.style.transition = '';
 
         document.querySelector('.switcher-prev').addEventListener('click', () => {
             haptic();
@@ -1030,7 +1081,9 @@
             if (!container) return;
             const controls = content.querySelector('.bio-block-switcher');
             if (controls) content.insertBefore(controls, container);
-            const blocks = container.querySelectorAll('.bio-block');
+            const rail = container.querySelector('.bio-slider-rail');
+            if (!rail) return;
+            const blocks = rail.querySelectorAll('.bio-block');
             const total = blocks.length;
             const indicator = content.querySelector('.block-indicator');
             const prevBtn = content.querySelector('.prev-block-btn');
@@ -1038,14 +1091,22 @@
             let current = 1;
 
             function updateBlock(target) {
-                container.querySelector('.bio-block.active')?.classList.remove('active');
+                const tx = -((target - 1) / total) * 100;
+                rail.style.transform = 'translateX(' + tx + '%)';
                 current = target;
-                blocks[current - 1].classList.add('active');
                 const label = blocks[current - 1].querySelector('.block-label')?.textContent?.trim();
                 if (indicator && label) indicator.textContent = label;
             }
 
-            updateBlock(current);
+            // Initial indicator
+            const firstLabel = blocks[0]?.querySelector('.block-label')?.textContent?.trim();
+            if (indicator && firstLabel) indicator.textContent = firstLabel;
+
+            // Initial position: no transition, just set
+            rail.style.transition = 'none';
+            rail.style.transform = 'translateX(0%)';
+            void rail.offsetHeight;
+            rail.style.transition = '';
 
             if (prevBtn) {
                 prevBtn.addEventListener('click', () => {
