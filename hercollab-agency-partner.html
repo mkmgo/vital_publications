@@ -253,7 +253,7 @@
         .partner-switcher {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             margin-bottom: 1.35rem;
             width: 100%;
             max-width: 100%;
@@ -271,6 +271,7 @@
 
         .partner-rail-wrap {
             flex: 1;
+            min-width: 0;
             overflow: hidden;
             position: relative;
         }
@@ -278,12 +279,13 @@
         .partner-rail {
             display: flex;
             align-items: center;
+            width: 300%;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform;
         }
 
         .partner-rail-item {
-            flex: 0 0 100%;
+            flex: 0 0 33.333333%;
             box-sizing: border-box;
             padding: 0.25rem 0.9rem;
             text-align: center;
@@ -304,6 +306,7 @@
 
         .block-rail-wrap {
             flex: 1;
+            min-width: 0;
             overflow: hidden;
             position: relative;
         }
@@ -311,12 +314,13 @@
         .block-rail {
             display: flex;
             align-items: center;
+            width: 300%;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform;
         }
 
         .block-rail-item {
-            flex: 0 0 100%;
+            flex: 0 0 33.333333%;
             box-sizing: border-box;
             padding: 0.15rem 0.65rem;
             text-align: center;
@@ -553,7 +557,44 @@
         }
 
         .bio-block-switcher {
+            justify-content: center !important;
             margin-bottom: 0.9rem !important;
+        }
+
+        @media (max-width: 576px) {
+            .partner-switcher,
+            .bio-block-switcher .frame-nav-menu {
+                width: min(100%, 21rem);
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .partner-switcher {
+                padding: 0.25rem;
+            }
+
+            .frame-nav-btn {
+                width: 1.85rem;
+                min-width: 1.85rem;
+            }
+
+            .partner-rail-item,
+            .block-rail-item {
+                overflow: hidden;
+                text-overflow: clip;
+            }
+
+            .partner-rail-item {
+                padding: 0.25rem 0.45rem;
+                font-size: 0.76rem;
+                letter-spacing: 0.07em;
+            }
+
+            .block-rail-item {
+                padding: 0.15rem 0.4rem;
+                font-size: 0.68rem;
+                letter-spacing: 0.04em;
+            }
         }
 
         .frame-nav-btn {
