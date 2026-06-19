@@ -171,51 +171,6 @@
         }
 
         /* Directional ambient sweep — holds at outer edge, then cuts instantly */
-        @keyframes sweepIn {
-            0% { transform: scaleX(0); }
-            35% { transform: scaleX(1); }
-            49.9% { transform: scaleX(1); }
-            50% { transform: scaleX(0); }
-            100% { transform: scaleX(0); }
-        }
-
-        .partner-switcher button::before,
-        .frame-nav-btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: color-mix(in srgb, var(--text-strong) 6%, transparent);
-            border-radius: 2px;
-            animation: sweepIn 4s ease-in-out infinite;
-            pointer-events: none;
-            transition: none;
-        }
-
-        .frame-nav-btn::before {
-            animation-delay: 4s;
-        }
-
-        .partner-switcher button,
-        .frame-nav-btn {
-            position: relative;
-        }
-
-        .switcher-prev::before,
-        .prev-block-btn::before {
-            transform-origin: right center;
-        }
-
-        .switcher-next::before,
-        .next-block-btn::before {
-            transform-origin: left center;
-        }
-
-        .partner-switcher button:hover::before,
-        .frame-nav-btn:hover::before {
-            animation: none;
-            opacity: 0;
-        }
-
         /* Corner Ambient Control Linkage */
         .theme-toggle {
             position: fixed;
