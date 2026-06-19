@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>h·e·r collab — Partner Profile Portfolio</title>
+
     <link rel="icon" type="image/png"
         href="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781358154/her_favicon_2_ckbdpd.png?v=2">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* Strict Semantic Design Token Framework Mapping both System Preferences & Custom States */
         :root {
             --bg-color: #fcfcfc;
             --text-color: #212529;
@@ -14,15 +19,17 @@
             --text-muted: #6c757d;
             --brand-color: #000000;
             --subheadline-color: #b22222;
+            --brand-red: #b22222;
+            --subtitle-grey: #7b7f86;
+            /* Crimson Brick Accent */
             --border-color: rgba(0, 0, 0, 0.1);
             --bg-overlay: rgba(252, 252, 252, 0.75);
             --tile-bg: rgba(255, 255, 255, 0.85);
             --tile-shadow: rgba(0, 0, 0, 0.03);
             --active-tab-bg: rgba(0, 0, 0, 0.05);
-            --dark-box: rgba(0, 0, 0, 0.04);
-            --muted-grey: #6c757d;
         }
 
+        /* Enforce Dark Theme tokens under system prefers-color-scheme rule default */
         @media (prefers-color-scheme: dark) {
             :root {
                 --bg-color: #121212;
@@ -31,16 +38,17 @@
                 --text-muted: #a7a9be;
                 --brand-color: #ffffff;
                 --subheadline-color: #e44d4d;
+                --brand-red: #e44d4d;
+                --subtitle-grey: #b6bac2;
                 --border-color: rgba(255, 255, 255, 0.1);
                 --bg-overlay: rgba(18, 18, 18, 0.75);
                 --tile-bg: rgba(26, 26, 26, 0.85);
                 --tile-shadow: rgba(0, 0, 0, 0.2);
                 --active-tab-bg: rgba(255, 255, 255, 0.08);
-                --dark-box: rgba(255, 255, 255, 0.04);
-                --muted-grey: #a7a9be;
             }
         }
 
+        /* Explict Overrides when explicit manual toggle modifications are executed */
         body[data-theme="light"] {
             --bg-color: #fcfcfc;
             --text-color: #212529;
@@ -48,13 +56,13 @@
             --text-muted: #6c757d;
             --brand-color: #000000;
             --subheadline-color: #b22222;
+            --brand-red: #b22222;
+            --subtitle-grey: #7b7f86;
             --border-color: rgba(0, 0, 0, 0.1);
             --bg-overlay: rgba(252, 252, 252, 0.75);
             --tile-bg: rgba(255, 255, 255, 0.85);
             --tile-shadow: rgba(0, 0, 0, 0.03);
             --active-tab-bg: rgba(0, 0, 0, 0.05);
-            --dark-box: rgba(0, 0, 0, 0.04);
-            --muted-grey: #6c757d;
         }
 
         body[data-theme="dark"] {
@@ -64,42 +72,44 @@
             --text-muted: #a7a9be;
             --brand-color: #ffffff;
             --subheadline-color: #e44d4d;
+            --brand-red: #e44d4d;
+            --subtitle-grey: #b6bac2;
             --border-color: rgba(255, 255, 255, 0.1);
             --bg-overlay: rgba(18, 18, 18, 0.75);
             --tile-bg: rgba(26, 26, 26, 0.85);
             --tile-shadow: rgba(0, 0, 0, 0.2);
             --active-tab-bg: rgba(255, 255, 255, 0.08);
-            --dark-box: rgba(255, 255, 255, 0.04);
-            --muted-grey: #a7a9be;
-        }
-
-        * { box-sizing: border-box; }
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
         }
 
         body {
             font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
             color: var(--text-color);
             background-color: var(--bg-color);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             transition: background-color 0.1s ease, color 0.1s ease;
         }
 
+        /* Ambient Dynamic Profile Slideshow */
         .bg-slideshow {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -2;
         }
 
         .bg-slide {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-size: cover;
             background-position: center;
             opacity: 0;
@@ -123,22 +133,44 @@
         }
 
         @keyframes crossfade {
-            0% { opacity: 0; transform: scale(1.03); }
-            10% { opacity: 0.32; transform: scale(1.06); }
-            33% { opacity: 0.32; transform: scale(1.11); }
-            43% { opacity: 0; transform: scale(1.14); }
-            100% { opacity: 0; transform: scale(1.03); }
+            0% {
+                opacity: 0;
+                transform: scale(1.03);
+            }
+
+            10% {
+                opacity: 0.32;
+                transform: scale(1.06);
+            }
+
+            33% {
+                opacity: 0.32;
+                transform: scale(1.11);
+            }
+
+            43% {
+                opacity: 0;
+                transform: scale(1.14);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.03);
+            }
         }
 
         .bg-overlay-tint {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: var(--bg-overlay);
             z-index: -1;
             transition: background 0.1s ease;
         }
 
+        /* Corner Ambient Control Linkage */
         .theme-toggle {
             position: fixed;
             top: 0.85rem;
@@ -165,77 +197,107 @@
             transform: scale(1.05);
         }
 
-        .theme-toggle svg {
+        .theme-toggle svg,
+        .frame-nav-btn svg {
             width: 1rem;
             height: 1rem;
             stroke-width: 1.8;
+            opacity: 0.82;
             color: currentColor;
             pointer-events: none;
         }
 
-        /* ============================================
-           ASYMMETRIC SPLIT-FRAME LAYOUT
-           ============================================ */
-        .split-frame {
-            display: flex;
+        /* Showcase Interface Core Framework */
+        .showcase-tile {
+            background: var(--tile-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px var(--tile-shadow);
+            border-radius: 4px;
+            padding: 3rem;
+            max-width: 860px;
             width: 100%;
-            height: 100vh;
-            align-items: stretch;
+            margin: auto;
+            position: relative;
+            transition: background-color 0.1s ease, border-color 0.1s ease;
         }
 
-        .left-pane {
-            flex: 0 0 37%;
-            max-width: 37%;
+        @media (max-width: 768px) {
+            .showcase-tile {
+                padding: 2rem 1.5rem;
+                margin: 1.5rem auto;
+            }
+        }
+
+        /* Top Horizontal Multi-Partner Tab Track */
+        .partner-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .partner-switcher {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 1.35rem;
+            width: fit-content;
+            max-width: 100%;
+            padding: 0.35rem;
+        }
+
+        .partner-switcher button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2.5rem 1.5rem 2.5rem 2.5rem;
         }
 
-        .frame-portrait {
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            border-radius: 4px;
-            overflow: hidden;
-            background: var(--active-tab-bg);
-            box-shadow: 0 8px 24px var(--tile-shadow);
-            border: 1px solid var(--border-color);
+        .partner-switcher button:hover {
+            opacity: 1;
         }
 
-        .frame-portrait img {
-            width: 100%;
-            height: 100%;
+        .partner-switcher button svg {
+            width: 1.15rem;
+            height: 1.15rem;
+        }
+
+        .partner-switcher-label {
+            font-size: clamp(1.05rem, 2.15vw, 1.45rem);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--text-strong);
+            font-weight: 600;
+            text-align: center;
+            min-width: clamp(12rem, 28vw, 16rem);
+            padding: 0 0.9rem;
+            white-space: nowrap;
+        }
+
+        .partner-content {
+            display: none;
+        }
+
+        .partner-content.active {
             display: block;
-            object-fit: cover;
-            object-position: center top;
-            filter: saturate(0.4) contrast(0.8) brightness(1.18);
-            transition: filter 0.35s ease;
         }
 
-        body[data-theme="dark"] .frame-portrait img {
-            filter: saturate(0.32) brightness(0.72) contrast(1.3);
-        }
-
-        .right-pane {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2.5rem 3rem 2.5rem 0;
-            min-width: 0;
-        }
-
-        /* ============================================
-           BRAND HEADER
-           ============================================ */
+        /* Typography Mapping Framework */
         .brand-header {
-            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.25rem;
         }
 
         .logo {
             font-family: Georgia, serif;
             font-weight: 400;
-            font-size: calc(1.5rem + 0.8vw);
+            font-size: calc(1.75rem + 1.1vw);
             color: var(--brand-color);
             letter-spacing: -0.5px;
             line-height: 1.1;
@@ -244,104 +306,127 @@
         .subtitle {
             font-style: italic;
             color: var(--subheadline-color);
-            font-size: calc(0.95rem + 0.15vw);
+            font-size: calc(1.15rem + 0.20vw);
             letter-spacing: 0.05em;
-            margin-top: 0.25rem;
+            margin-top: 0.4rem;
             margin-bottom: 0;
             font-weight: 400;
         }
 
-        /* ============================================
-           LEVEL 1 SWITCHER — PARTNER (borderless, muted)
-           ============================================ */
-        .level-1-switcher {
+        .profile-intro {
+            display: grid;
+            grid-template-columns: clamp(120px, 15vw, 170px) minmax(0, 1fr);
+            gap: clamp(1.5rem, 3vw, 2rem);
+            align-items: start;
+        }
+
+        .profile-image-col {
             display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.75rem;
-            padding: 0;
-            background: transparent;
-            border: none;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .level-1-switcher button {
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--muted-grey);
-            font-weight: 300;
-            font-size: 1.1rem;
-            line-height: 1;
-            transition: opacity 0.15s ease;
-            opacity: 0.7;
+        .profile-portrait {
+            aspect-ratio: 4 / 5;
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--active-tab-bg);
+            box-shadow: 0 8px 24px var(--tile-shadow);
+            border: 1px solid var(--border-color);
+            margin-top: 0;
         }
 
-        .level-1-switcher button:hover {
-            opacity: 1;
+        .profile-portrait img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
+            filter: saturate(0.4) contrast(0.8) brightness(1.18);
+            transform: scale(1);
+            transition: transform 0.45s ease, filter 0.35s ease;
         }
 
-        .level-1-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--muted-grey);
-            font-weight: 400;
-            white-space: nowrap;
-            user-select: none;
+        .profile-portrait:hover img {
+            transform: scale(1.04);
         }
 
-        /* ============================================
-           PARTNER META
-           ============================================ */
+        body[data-theme="dark"] .profile-portrait img {
+            filter: saturate(0.32) brightness(0.72) contrast(1.3);
+        }
+
+        @media (max-width: 768px) {
+            .profile-intro {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .profile-portrait {
+                width: min(160px, 50vw);
+                margin: 0 auto;
+            }
+        }
+
+        .partner-meta {
+            margin-top: 0;
+        }
+
         .partner-name {
-            font-size: calc(1.2rem + 0.4vw);
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-strong);
             letter-spacing: 0.02em;
-            margin: 0 0 0.15rem;
+            margin-bottom: 0.2rem;
             text-transform: uppercase;
-            line-height: 1.2;
         }
 
         .partner-title {
-            font-size: calc(0.75rem + 0.15vw);
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--subheadline-color);
             font-weight: 600;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.45rem;
         }
 
         .partner-quote {
-            color: var(--text-strong);
-            font-size: calc(0.82rem + 0.1vw);
+            color: var(--text-strong) !important;
+            font-size: 0.95rem;
             font-style: italic;
             font-weight: 700;
             opacity: 0.92;
-            margin: 0 0 0.5rem;
-            line-height: 1.5;
         }
 
-        /* ============================================
-           TECH TAGS
-           ============================================ */
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.6rem;
-            margin: 0 0 1rem;
+            gap: 0.75rem;
+            margin: 0.5rem 0 0.75rem;
+        }
+
+        .tag-email {
+            width: clamp(120px, 15vw, 170px);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-color);
+            background: var(--text-strong);
+            border-color: var(--text-strong);
+            border-style: solid;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .profile-intro+hr {
+            margin-top: 0.25rem;
         }
 
         .tag {
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             border: 1px dashed var(--border-color);
-            padding: 0.2rem 0.4rem;
+            padding: 0.2rem 0.45rem;
             color: var(--text-strong);
             font-weight: 700;
             opacity: 0.86;
@@ -354,91 +439,74 @@
             border-color: rgba(255, 255, 255, 0.28);
         }
 
-        .tag-email {
-            color: var(--bg-color);
-            background: var(--text-strong);
-            border-color: var(--text-strong);
-            border-style: solid;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-        }
-
         body[data-theme="dark"] .tag-email {
             color: var(--bg-color) !important;
             background: var(--text-strong) !important;
             border-color: var(--text-strong) !important;
         }
 
-        /* ============================================
-           LEVEL 2 SWITCHER — BIO BLOCK (dashed, prominent)
-           ============================================ */
-        .level-2-switcher {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.65rem;
-            border: 1px dashed var(--border-color);
-            padding: 0.45rem 0.9rem;
-            background: var(--dark-box);
-            margin-bottom: 0.85rem;
-        }
-
-        .level-2-switcher button {
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-strong);
-            font-weight: 600;
-            font-size: 1rem;
-            line-height: 1;
-            transition: opacity 0.15s ease;
-            opacity: 0.75;
-        }
-
-        .level-2-switcher button:hover {
-            opacity: 1;
-        }
-
-        .level-2-label {
-            font-size: 14px;
-            letter-spacing: 0.05em;
-            color: var(--text-strong);
-            font-weight: 500;
-            white-space: nowrap;
-            user-select: none;
-        }
-
-        .level-2-label .accent {
-            color: var(--subheadline-color);
-        }
-
-        /* ============================================
-           BIO BLOCK CAROUSEL
-           ============================================ */
+        /* Multi-Block Carousel Node Engine Container */
         .bio-slider-container {
             position: relative;
-            flex: 1;
-            min-height: 0;
+            min-height: 180px;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 576px) {
+            .bio-slider-container {
+                min-height: 290px;
+            }
         }
 
         .bio-block {
-            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1;
         }
 
+        /* Surgical Precision Brand Rule: Instant Hard Cut / Hyper Fast Step Animation */
         .bio-block.active {
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+            animation: surgicalCut 0.05s steps(2, end);
+        }
+
+        @keyframes surgicalCut {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .block-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--subheadline-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
             display: block;
         }
 
+        .bio-block .block-label {
+            display: none;
+        }
+
         .lead-text {
-            font-size: calc(0.82rem + 0.1vw);
+            font-size: calc(0.9rem + 0.15vw);
             font-weight: 300;
             letter-spacing: 0.06em;
-            line-height: 1.65;
-            margin: 0;
-            color: var(--text-color);
+            line-height: 1.7;
+            margin-bottom: 0;
         }
 
         .lead-text strong {
@@ -446,180 +514,68 @@
             color: var(--text-strong);
         }
 
-        /* ============================================
-           PARTNER CONTENT WRAPPER
-           ============================================ */
-        .partner-content {
-            display: none;
+        /* Frame Integrated Navigation and System Swapper Control Base */
+        .frame-nav-menu {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 0.25rem;
+            background: var(--tile-bg);
+            gap: 0.25rem;
+            transition: background-color 0.1s ease, border-color 0.1s ease;
         }
 
-        .partner-content.active {
-            display: block;
+        .bio-block-switcher {
+            margin-bottom: 0.9rem !important;
         }
 
-        .partner-content.active .bio-slider-container .bio-block.active .block-label {
-            display: none;
+        .frame-nav-btn {
+            background: none;
+            border: none;
+            width: 2rem;
+            height: 2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            cursor: pointer;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background-color 0.15s ease, color 0.15s ease;
         }
 
-        /* ============================================
-           RESPONSIVE — proportional scaling, no stacking
-           ============================================ */
-        @media (max-width: 900px) {
-            .left-pane {
-                flex: 0 0 35%;
-                max-width: 35%;
-                padding: 1.5rem 1rem 1.5rem 1.5rem;
-            }
-
-            .right-pane {
-                padding: 1.5rem 1.5rem 1.5rem 0;
-            }
-
-            .brand-header {
-                margin-bottom: 0.75rem;
-            }
-
-            .level-1-switcher {
-                margin-bottom: 1.25rem;
-            }
-
-            .level-1-switcher button {
-                font-size: 0.95rem;
-            }
-
-            .level-2-switcher {
-                padding: 0.35rem 0.7rem;
-            }
-
-            .level-2-label {
-                font-size: 12px;
-            }
-
-            .tech-tags {
-                margin-bottom: 0.75rem;
-            }
+        .frame-nav-btn:hover {
+            background-color: var(--active-tab-bg);
+            color: var(--text-strong);
         }
 
-        @media (max-width: 640px) {
-            .split-frame {
-                height: 100dvh;
-            }
-
-            .left-pane {
-                flex: 0 0 32%;
-                max-width: 32%;
-                padding: 1rem 0.6rem 1rem 1rem;
-            }
-
-            .right-pane {
-                padding: 1rem 1rem 1rem 0;
-            }
-
-            .brand-header {
-                margin-bottom: 0.5rem;
-            }
-
-            .logo {
-                font-size: calc(1rem + 1vw);
-            }
-
-            .subtitle {
-                font-size: calc(0.75rem + 0.2vw);
-            }
-
-            .level-1-switcher {
-                gap: 0.5rem;
-                margin-bottom: 0.85rem;
-            }
-
-            .level-1-switcher button {
-                font-size: 0.85rem;
-            }
-
-            .level-1-label {
-                font-size: 9px;
-                letter-spacing: 0.12em;
-            }
-
-            .partner-name {
-                font-size: calc(0.9rem + 0.4vw);
-            }
-
-            .partner-title {
-                font-size: calc(0.6rem + 0.15vw);
-            }
-
-            .partner-quote {
-                font-size: calc(0.7rem + 0.1vw);
-                margin-bottom: 0.35rem;
-            }
-
-            .tag {
-                font-size: 0.5rem;
-                padding: 0.15rem 0.3rem;
-            }
-
-            .tech-tags {
-                gap: 0.4rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .level-2-switcher {
-                gap: 0.45rem;
-                padding: 0.25rem 0.55rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .level-2-switcher button {
-                font-size: 0.8rem;
-            }
-
-            .level-2-label {
-                font-size: 10px;
-            }
-
-            .lead-text {
-                font-size: calc(0.65rem + 0.15vw);
-                line-height: 1.55;
-            }
+        .frame-nav-indicator {
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            padding: 0 0.65rem;
+            color: var(--text-muted);
+            font-weight: bold;
+            min-width: 8.75rem;
+            text-align: center;
+            text-transform: uppercase;
+            white-space: nowrap;
         }
 
-        @media (max-width: 400px) {
-            .left-pane {
-                flex: 0 0 30%;
-                max-width: 30%;
-                padding: 0.75rem 0.4rem 0.75rem 0.75rem;
-            }
+        .block-indicator {
+            color: var(--subheadline-color);
+        }
 
-            .right-pane {
-                padding: 0.75rem 0.6rem 0.75rem 0;
-            }
-
-            .level-1-label {
-                font-size: 8px;
-            }
-
-            .partner-name {
-                font-size: calc(0.75rem + 0.3vw);
-            }
-
-            .partner-title {
-                margin-bottom: 0.2rem;
-            }
-
-            .level-2-label {
-                font-size: 9px;
-            }
-
-            .lead-text {
-                font-size: calc(0.6rem + 0.1vw);
-            }
+        .frame-theme-divider {
+            width: 1px;
+            height: 1.25rem;
+            background-color: var(--border-color);
+            margin: 0 0.25rem;
+            transition: background-color 0.1s ease;
         }
 
         hr {
-            border: 0;
             border-top: 1px solid var(--border-color);
-            margin: 1rem 0;
             opacity: 1;
             transition: border-color 0.1s ease;
         }
@@ -628,7 +584,7 @@
             text-transform: uppercase;
             font-weight: 300;
             letter-spacing: 0.12em;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
         }
 
         .tile-footer {
@@ -636,9 +592,10 @@
         }
     </style>
 </head>
-<body>
 
-    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle Theme"></button>
+<body>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle system interface mode"
+        title="Toggle System Mode"></button>
 
     <div class="bg-slideshow">
         <div class="bg-slide"></div>
@@ -647,247 +604,467 @@
     </div>
     <div class="bg-overlay-tint"></div>
 
-    <!-- ========= ASYMMETRIC SPLIT-FRAME ========= -->
-    <div class="split-frame">
+    <div class="container my-auto py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 px-3">
 
-        <!-- LEFT PANE — Portrait -->
-        <div class="left-pane">
-            <figure class="frame-portrait" id="frame-portrait">
-                <img id="portrait-img"
-                     src="https://res.cloudinary.com/dmkhsyfzf/image/upload/q_auto,f_auto,e_saturation:-18,e_contrast:-8,e_brightness:4/v1776286873/Neo_Segola_tvcbhe.jpg"
-                     alt="Partner portrait">
-            </figure>
+                <article class="showcase-tile">
+
+                    <header class="brand-header text-start">
+                        <span class="logo d-block">h·e·r collab</span>
+                        <h3 class="subtitle">Creative Brilliance &middot; Surgical Precision</h3>
+                    </header>
+
+                    <nav class="partner-switcher frame-nav-menu" aria-label="Partner selector">
+                        <button class="switcher-prev frame-nav-btn" type="button" aria-label="Previous partner"
+                            title="Previous Partner">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <path d="m12 19-7-7 7-7"></path>
+                                <path d="M19 12H5"></path>
+                            </svg>
+                        </button>
+                        <span class="partner-switcher-label">The Visionary</span>
+                        <button class="switcher-next frame-nav-btn" type="button" aria-label="Next partner"
+                            title="Next Partner">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </nav>
+
+                    <div class="partner-content active" data-partner="neo">
+                        <section class="profile-intro text-start pb-2" aria-label="Partner profile introduction">
+                            <div class="profile-image-col">
+                                <figure class="profile-portrait mb-0">
+                                    <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/q_auto,f_auto,e_saturation:-18,e_contrast:-8,e_brightness:4/v1776286873/Neo_Segola_tvcbhe.jpg"
+                                        alt="Neo Segola portrait">
+                                </figure>
+                            </div>
+
+                            <div>
+                                <div class="partner-meta">
+                                    <p class="partner-name">Neo Segola</p>
+                                    <div class="partner-title">Co-Founder & Chief Creative Officer</div>
+                                    <p class="lead-text partner-quote mb-3">
+                                        "Shaping the future of brand storytelling with 20+ years of elite judging
+                                        pedigree
+                                        and global creative excellence."
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="tech-tags">
+                            <span class="tag tag-email">neo@hercollab.agency</span>
+                            <span class="tag">Vanguard</span>
+                            <span class="tag">Oracle</span>
+                            <span class="tag">Aesthetic</span>
+                            <span class="tag">Synthesis</span>
+                            <span class="tag">Frontier</span>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <main class="bio-slider-container">
+
+                            <div class="bio-block active">
+                                <span class="block-label">01 // Authority</span>
+                                <p class="lead-text">
+                                    Neo has spent over 20 years in creative leadership, working with some of the world's
+                                    most recognised brands. She's served as <strong>D&AD Jury President</strong>, been
+                                    on
+                                    the <strong>Cannes Lions Film Jury twice</strong>, and judged at the Clios, London
+                                    International Awards, and the Cresta Awards. What those experiences have shaped in
+                                    her
+                                    is a love for work that truly connects and ideas that stay with people long after
+                                    the
+                                    campaign ends.
+                                </p>
+                            </div>
+
+                            <div class="bio-block">
+                                <span class="block-label">02 // Ambition</span>
+                                <p class="lead-text">
+                                    When Neo co-founded h·e·r Collab, the goal was never to build just another agency.
+                                    She's
+                                    interested in work that shapes culture, as well as with campaigns that become part
+                                    of
+                                    the conversations people are already having. She's passionate about
+                                    <strong>mentoring
+                                        emerging talent</strong> and developing creative IP, because she believes the
+                                    best
+                                    work comes from teams that are supported and challenged in equal measure.
+                                </p>
+                            </div>
+
+                            <div class="bio-block">
+                                <span class="block-label">03 // Achievement</span>
+                                <p class="lead-text">
+                                    Neo has worked across a wide range of marquee spaces. From <strong>South African
+                                        Tourism, Brand South Africa, Standard Bank, BMW, and Telkom</strong>; to global
+                                    names like <strong>Microsoft, MTN, and Unilever</strong>. What she values most isn't
+                                    the
+                                    scale of the brand or the work, but the quality of the collaborations behind it.
+                                    She's
+                                    at her best when bringing different people together to make something better than
+                                    any
+                                    one of them could alone.
+                                </p>
+                            </div>
+
+                            <div class="bio-block">
+                                <span class="block-label">04 // Core Expertise</span>
+                                <p class="lead-text">
+                                    <strong>· Creative direction and brand storytelling</strong><br>
+                                    <strong>· Conceptual thinking across channels</strong><br>
+                                    <strong>· Building and leading elite creative teams</strong><br>
+                                    <strong>· Work deeply rooted in culture and human insight</strong>
+                                </p>
+                            </div>
+
+                        </main>
+
+                        <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">
+                            <div class="frame-nav-menu">
+                                <button class="frame-nav-btn prev-block-btn" type="button"
+                                    aria-label="Previous text entry block" title="Previous Block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="m12 19-7-7 7-7"></path>
+                                        <path d="M19 12H5"></path>
+                                    </svg>
+                                </button>
+
+                                <span class="frame-nav-indicator block-indicator">01 // Authority</span>
+
+                                <button class="frame-nav-btn next-block-btn" type="button"
+                                    aria-label="Next text entry block" title="Next Block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M5 12h14"></path>
+                                        <path d="m12 5 7 7-7 7"></path>
+                                    </svg>
+                                </button>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="partner-content" data-partner="chaz">
+                        <section class="profile-intro text-start pb-2" aria-label="Partner profile introduction">
+                            <div class="profile-image-col">
+                                <figure class="profile-portrait mb-0">
+                                    <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1774279518/Chaz_Pigou_ejulac.png"
+                                        alt="Chaz Pigou portrait">
+                                </figure>
+                            </div>
+
+                            <div>
+                                <div class="partner-meta">
+                                    <p class="partner-name">Chaz Pigou</p>
+                                    <div class="partner-title">Co-Founder & Chief Growth Officer</div>
+                                    <p class="lead-text partner-quote mb-3">
+                                        "A strategic visionary bridging global corporate scale with authentic,
+                                        purpose-driven brand transformation."
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="tech-tags">
+                            <span class="tag tag-email">chaz@hercollab.agency</span>
+                            <span class="tag">Blue-Chip</span>
+                            <span class="tag">Equity</span>
+                            <span class="tag">Scale</span>
+                            <span class="tag">Nexus</span>
+                            <span class="tag">Transformation</span>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <main class="bio-slider-container">
+
+                            <div class="bio-block active">
+                                <span class="block-label">01 // Authority</span>
+                                <p class="lead-text">
+                                    With nearly two decades of expertise, Chaz bridges the divide between massive global
+                                    brands and the people they serve through high-impact, human-centric marketing
+                                    strategies. It is anchored in academic excellence, holding a Postgraduate Diploma in
+                                    Business Management (Stellenbosch) and a Management Development Programme in Agency
+                                    Leadership (Red & Yellow). From building marketing departments from the ground up to
+                                    managing diverse portfolios across FMCG, Finance, Telecoms, and Automotive, she has
+                                    become a trusted advisor for many of the world's most recognised brands.
+                                </p>
+                            </div>
+
+                            <div class="bio-block">
+                                <span class="block-label">02 // Ambition</span>
+                                <p class="lead-text">
+                                    Chaz has consistently delivered business growth for global powerhouses such as
+                                    Microsoft and Coca-Cola, while maintaining a rare ability to navigate purpose-driven
+                                    storytelling for organisations such as Absa Islamic Banking. Her partnership list
+                                    reads like a blue-chip index, including AB InBev, Nedbank, PepsiCo, and Tiger
+                                    Brands. Notably, she has built entire marketing infrastructures and delivered
+                                    award-winning campaigns that emphasise authentic, genuine communication as a driver
+                                    for lasting commercial impact.
+                                </p>
+                            </div>
+
+                            <div class="bio-block">
+                                <span class="block-label">03 // Achievement</span>
+                                <p class="lead-text">
+                                    As Chief Growth Officer, Chaz is the Guardian of Growth. Her mission is to redefine
+                                    the client-agency relationship as a partnership of innovation. She is committed to
+                                    transforming brands through excellence that produces meaningful, measurable business
+                                    results. By aligning client objectives with strategic storytelling, she ensures
+                                    h·e·r Collab doesn't just "service" accounts, but actively scales the market share
+                                    and brand equity of every partner in the portfolio.
+                                </p>
+                            </div>
+
+                            <div class="bio-block">
+                                <span class="block-label">04 // Core Expertise</span>
+                                <p class="lead-text">
+                                    <strong>· Integrated Marketing & Brand Strategy</strong><br>
+                                    <strong>· Strategic Account Farming & LTV Expansion</strong><br>
+                                    <strong>· Commercial Negotiation & Partnership Innovation</strong><br>
+                                    <strong>· Purpose-driven Storytelling & Brand Transformation</strong>
+                                </p>
+                            </div>
+
+                        </main>
+
+                        <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">
+                            <div class="frame-nav-menu">
+                                <button class="frame-nav-btn prev-block-btn" type="button"
+                                    aria-label="Previous text entry block" title="Previous Block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="m12 19-7-7 7-7"></path>
+                                        <path d="M19 12H5"></path>
+                                    </svg>
+                                </button>
+
+                                <span class="frame-nav-indicator block-indicator">01 // Authority</span>
+
+                                <button class="frame-nav-btn next-block-btn" type="button"
+                                    aria-label="Next text entry block" title="Next Block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M5 12h14"></path>
+                                        <path d="m12 5 7 7-7 7"></path>
+                                    </svg>
+                                </button>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="partner-content" data-partner="tsholo">
+                        <section class="profile-intro text-start pb-2" aria-label="Partner profile introduction">
+                            <div class="profile-image-col">
+                                <figure class="profile-portrait mb-0">
+                                    <img src="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1774279520/Tsholofelo_M%C3%BCller_rbqonz.png"
+                                        alt="Tsholofelo Müller portrait">
+                                </figure>
+                            </div>
+
+                            <div>
+                                <div class="partner-meta">
+                                    <p class="partner-name">Tsholofelo Müller</p>
+                                    <div class="partner-title">Co-Founder & Chief Operating Officer</div>
+                                    <p class="lead-text partner-quote mb-3">
+                                        "Tsholofelo transforms over 20 years of agency leadership into a high-efficiency
+                                        engine that bridges world-class creativity with elite financial governance."
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="tech-tags">
+                            <span class="tag tag-email">tsholo@hercollab.agency</span>
+                            <span class="tag">Velocity</span>
+                            <span class="tag">Governance</span>
+                            <span class="tag">Pipeline</span>
+                            <span class="tag">Efficiency</span>
+                            <span class="tag">EBITDA</span>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <main class="bio-slider-container">
+
+                            <div class="bio-block active">
+                                <span class="block-label">01 // Authority</span>
+                                <p class="lead-text">
+                                    Tsholofelo is a powerhouse in the African broadcast and advertising landscape,
+                                    bringing over 20 years of high-level production experience to h·e·r Collab. Her
+                                    career is a roadmap of South Africa's most iconic agencies, including Joe Public,
+                                    Ogilvy, M&C Saatchi Abel and Wunderman Thompson. As a former Head of Broadcast
+                                    Production, she has been the engine behind award-winning campaigns for giants such
+                                    as Standard Bank, Pepsi, MTN, MINI, Kellogg's, and Nando's. Her expertise spans the
+                                    full spectrum of modern media pipelines.
+                                </p>
+                            </div>
+
+                            <div class="bio-block">
+                                <span class="block-label">02 // Ambition</span>
+                                <p class="lead-text">
+                                    Tsholofelo has successfully managed multimillion-rand production budgets, ensuring
+                                    absolute financial governance without compromising creative integrity. Her track
+                                    record includes leading cross-functional teams through high-pressure delivery cycles
+                                    for brands like FNB, Lexus, and Unilever. She is an expert in workflow optimisation,
+                                    having scaled production departments to handle massive content volumes while
+                                    maintaining strict cost control and navigating complex vendor negotiations.
+                                </p>
+                            </div>
+
+                            <div class="bio-block">
+                                <span class="block-label">03 // Achievement</span>
+                                <p class="lead-text">
+                                    As Head of Production and Co-Founder, Tsholofelo is the "Guardian of the Margin".
+                                    Her mission is to build the industry's most efficient and scalable production
+                                    machine. She is focused on bridging the gap between visionary creativity and
+                                    profitable delivery. By implementing proprietary production workflows and leveraging
+                                    her extensive vendor network, she ensures h·e·r Collab delivers world-class content
+                                    with a commercial efficiency that directly fuels the agency's EBITDA.
+                                </p>
+                            </div>
+
+                            <div class="bio-block">
+                                <span class="block-label">04 // Core Expertise</span>
+                                <p class="lead-text">
+                                    <strong>· Integrated Campaign Delivery (TV, Digital, Social)</strong><br>
+                                    <strong>· Multimillion-Rand Budget Management & Cost Control</strong><br>
+                                    <strong>· Production Workflow Design & Scaling</strong><br>
+                                    <strong>· High-Level Stakeholder & Vendor Negotiation</strong>
+                                </p>
+                            </div>
+
+                        </main>
+
+                        <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">
+                            <div class="frame-nav-menu">
+                                <button class="frame-nav-btn prev-block-btn" type="button"
+                                    aria-label="Previous text entry block" title="Previous Block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="m12 19-7-7 7-7"></path>
+                                        <path d="M19 12H5"></path>
+                                    </svg>
+                                </button>
+
+                                <span class="frame-nav-indicator block-indicator">01 // Authority</span>
+
+                                <button class="frame-nav-btn next-block-btn" type="button"
+                                    aria-label="Next text entry block" title="Next Block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M5 12h14"></path>
+                                        <path d="m12 5 7 7-7 7"></path>
+                                    </svg>
+                                </button>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mt-4 mb-3">
+
+                    <footer class="text-start tile-footer caps-sentiment" style="font-size: 0.7rem;">
+                        <span>&copy; 2026 h·e·r collab. Strategic Architecture & Venture Development. | Brand Profile
+                            Module #1</span>
+                    </footer>
+
+                </article>
+
+            </div>
         </div>
-
-        <!-- RIGHT PANE — Typography & Controls -->
-        <div class="right-pane">
-
-            <header class="brand-header">
-                <span class="logo d-block">h·e·r collab</span>
-                <h3 class="subtitle">Creative Brilliance &middot; Surgical Precision</h3>
-            </header>
-
-            <!-- LEVEL 1 — Partner Switcher (borderless, muted) -->
-            <nav class="level-1-switcher" aria-label="Partner selector">
-                <button class="l1-prev" type="button" aria-label="Previous partner">&lt;</button>
-                <span class="level-1-label" id="partner-label">The Visionary</span>
-                <button class="l1-next" type="button" aria-label="Next partner">&gt;</button>
-            </nav>
-
-            <!-- Partner Content -->
-            <div class="partner-content active" data-partner="neo">
-                <div class="partner-name">Neo Segola</div>
-                <div class="partner-title">Co-Founder & Chief Creative Officer</div>
-                <p class="partner-quote">&ldquo;Shaping the future of brand storytelling with 20+ years of elite judging pedigree and global creative excellence.&rdquo;</p>
-
-                <div class="tech-tags">
-                    <span class="tag tag-email">neo@hercollab.agency</span>
-                    <span class="tag">Vanguard</span>
-                    <span class="tag">Oracle</span>
-                    <span class="tag">Aesthetic</span>
-                    <span class="tag">Synthesis</span>
-                    <span class="tag">Frontier</span>
-                </div>
-
-                <!-- LEVEL 2 — Bio Block Switcher (dashed, prominent) -->
-                <nav class="level-2-switcher" aria-label="Bio block selector">
-                    <button class="l2-prev" type="button" aria-label="Previous block">&lt;</button>
-                    <span class="level-2-label"><span class="accent">01</span> // Authority</span>
-                    <button class="l2-next" type="button" aria-label="Next block">&gt;</button>
-                </nav>
-
-                <main class="bio-slider-container">
-                    <div class="bio-block active">
-                        <span class="block-label">01 // Authority</span>
-                        <p class="lead-text">Neo has spent over 20 years in creative leadership, working with some of the world's most recognised brands. She's served as <strong>D&AD Jury President</strong>, been on the <strong>Cannes Lions Film Jury twice</strong>, and judged at the Clios, London International Awards, and the Cresta Awards.</p>
-                    </div>
-                    <div class="bio-block">
-                        <span class="block-label">02 // Ambition</span>
-                        <p class="lead-text">When Neo co-founded h·e·r Collab, the goal was never to build just another agency. She's interested in work that shapes culture, with campaigns that become part of the conversations people are already having. She&rsquo;s passionate about <strong>mentoring emerging talent</strong> and developing creative IP.</p>
-                    </div>
-                    <div class="bio-block">
-                        <span class="block-label">03 // Achievement</span>
-                        <p class="lead-text">Neo has worked across a wide range of marquee spaces &mdash; from <strong>South African Tourism, Standard Bank, BMW, and Telkom</strong> to global names like <strong>Microsoft, MTN, and Unilever</strong>. She&rsquo;s at her best when bringing different people together to make something better than any one of them could alone.</p>
-                    </div>
-                    <div class="bio-block">
-                        <span class="block-label">04 // Core Expertise</span>
-                        <p class="lead-text"><strong>&middot; Creative direction and brand storytelling</strong><br><strong>&middot; Conceptual thinking across channels</strong><br><strong>&middot; Building and leading elite creative teams</strong><br><strong>&middot; Work deeply rooted in culture and human insight</strong></p>
-                    </div>
-                </main>
-            </div>
-
-            <div class="partner-content" data-partner="chaz">
-                <div class="partner-name">Chaz Pigou</div>
-                <div class="partner-title">Co-Founder & Chief Growth Officer</div>
-                <p class="partner-quote">&ldquo;A strategic visionary bridging global corporate scale with authentic, purpose-driven brand transformation.&rdquo;</p>
-
-                <div class="tech-tags">
-                    <span class="tag tag-email">chaz@hercollab.agency</span>
-                    <span class="tag">Blue-Chip</span>
-                    <span class="tag">Equity</span>
-                    <span class="tag">Scale</span>
-                    <span class="tag">Nexus</span>
-                    <span class="tag">Transformation</span>
-                </div>
-
-                <nav class="level-2-switcher" aria-label="Bio block selector">
-                    <button class="l2-prev" type="button" aria-label="Previous block">&lt;</button>
-                    <span class="level-2-label"><span class="accent">01</span> // Authority</span>
-                    <button class="l2-next" type="button" aria-label="Next block">&gt;</button>
-                </nav>
-
-                <main class="bio-slider-container">
-                    <div class="bio-block active">
-                        <span class="block-label">01 // Authority</span>
-                        <p class="lead-text">With nearly two decades of expertise, Chaz bridges the divide between massive global brands and the people they serve through high-impact, human-centric marketing strategies. She holds a Postgraduate Diploma in Business Management (Stellenbosch) and a Management Development Programme in Agency Leadership (Red &amp; Yellow).</p>
-                    </div>
-                    <div class="bio-block">
-                        <span class="block-label">02 // Ambition</span>
-                        <p class="lead-text">Chaz has consistently delivered business growth for global powerhouses such as Microsoft and Coca-Cola, while navigating purpose-driven storytelling for organisations such as Absa Islamic Banking. Her partnership list includes AB InBev, Nedbank, PepsiCo, and Tiger Brands.</p>
-                    </div>
-                    <div class="bio-block">
-                        <span class="block-label">03 // Achievement</span>
-                        <p class="lead-text">As Chief Growth Officer, Chaz is the Guardian of Growth. Her mission is to redefine the client-agency relationship as a partnership of innovation. She ensures h&middot;e&middot;r Collab doesn&rsquo;t just &ldquo;service&rdquo; accounts, but actively scales the market share and brand equity of every partner.</p>
-                    </div>
-                    <div class="bio-block">
-                        <span class="block-label">04 // Core Expertise</span>
-                        <p class="lead-text"><strong>&middot; Integrated Marketing &amp; Brand Strategy</strong><br><strong>&middot; Strategic Account Farming &amp; LTV Expansion</strong><br><strong>&middot; Commercial Negotiation &amp; Partnership Innovation</strong><br><strong>&middot; Purpose-driven Storytelling &amp; Brand Transformation</strong></p>
-                    </div>
-                </main>
-            </div>
-
-            <div class="partner-content" data-partner="tsholo">
-                <div class="partner-name">Tsholofelo M&uuml;ller</div>
-                <div class="partner-title">Co-Founder & Chief Operating Officer</div>
-                <p class="partner-quote">&ldquo;Tsholofelo transforms over 20 years of agency leadership into a high-efficiency engine that bridges world-class creativity with elite financial governance.&rdquo;</p>
-
-                <div class="tech-tags">
-                    <span class="tag tag-email">tsholo@hercollab.agency</span>
-                    <span class="tag">Velocity</span>
-                    <span class="tag">Governance</span>
-                    <span class="tag">Pipeline</span>
-                    <span class="tag">Efficiency</span>
-                    <span class="tag">EBITDA</span>
-                </div>
-
-                <nav class="level-2-switcher" aria-label="Bio block selector">
-                    <button class="l2-prev" type="button" aria-label="Previous block">&lt;</button>
-                    <span class="level-2-label"><span class="accent">01</span> // Authority</span>
-                    <button class="l2-next" type="button" aria-label="Next block">&gt;</button>
-                </nav>
-
-                <main class="bio-slider-container">
-                    <div class="bio-block active">
-                        <span class="block-label">01 // Authority</span>
-                        <p class="lead-text">Tsholofelo is a powerhouse in African broadcast and advertising, bringing over 20 years of high-level production experience. Her career includes Joe Public, Ogilvy, M&amp;C Saatchi Abel and Wunderman Thompson. She has been the engine behind award-winning campaigns for Standard Bank, Pepsi, MTN, MINI, Kellogg&rsquo;s, and Nando&rsquo;s.</p>
-                    </div>
-                    <div class="bio-block">
-                        <span class="block-label">02 // Ambition</span>
-                        <p class="lead-text">Tsholofelo has managed multimillion-rand production budgets with absolute financial governance without compromising creative integrity. Her track record includes leading cross-functional teams through high-pressure delivery cycles for FNB, Lexus, and Unilever.</p>
-                    </div>
-                    <div class="bio-block">
-                        <span class="block-label">03 // Achievement</span>
-                        <p class="lead-text">As Head of Production and Co-Founder, Tsholofelo is the &ldquo;Guardian of the Margin.&rdquo; Her mission is to build the industry&rsquo;s most efficient and scalable production machine, bridging visionary creativity with profitable delivery.</p>
-                    </div>
-                    <div class="bio-block">
-                        <span class="block-label">04 // Core Expertise</span>
-                        <p class="lead-text"><strong>&middot; Integrated Campaign Delivery (TV, Digital, Social)</strong><br><strong>&middot; Multimillion-Rand Budget Management &amp; Cost Control</strong><br><strong>&middot; Production Workflow Design &amp; Scaling</strong><br><strong>&middot; High-Level Stakeholder &amp; Vendor Negotiation</strong></p>
-                    </div>
-                </main>
-            </div>
-
-            <footer class="tile-footer caps-sentiment" style="margin-top: 1rem;">
-                <span>&copy; 2026 h&middot;e&middot;r collab. Strategic Architecture &amp; Venture Development. | Brand Profile Module #1</span>
-            </footer>
-
-        </div><!-- /right-pane -->
-    </div><!-- /split-frame -->
+    </div>
 
     <script>
-        // ===== Partner Data =====
+        // 1. Partner Switcher
         const partnerData = [
-            { id: 'neo', label: 'The Visionary', img: 'https://res.cloudinary.com/dmkhsyfzf/image/upload/q_auto,f_auto,e_saturation:-18,e_contrast:-8,e_brightness:4/v1776286873/Neo_Segola_tvcbhe.jpg' },
-            { id: 'chaz', label: 'The Multiplier', img: 'https://res.cloudinary.com/dmkhsyfzf/image/upload/v1774279518/Chaz_Pigou_ejulac.png' },
-            { id: 'tsholo', label: 'The Engine', img: 'https://res.cloudinary.com/dmkhsyfzf/image/upload/v1774279520/Tsholofelo_M%C3%BCller_rbqonz.png' }
+            { id: 'neo', label: 'The Visionary' },
+            { id: 'chaz', label: 'The Multiplier' },
+            { id: 'tsholo', label: 'The Engine' }
         ];
-
         let currentPartner = 0;
-        const partnerLabel = document.getElementById('partner-label');
-        const portraitImg = document.getElementById('portrait-img');
+        const switcherLabel = document.querySelector('.partner-switcher-label');
         const allContents = document.querySelectorAll('.partner-content');
 
         function showPartner(index) {
             allContents.forEach(c => c.classList.remove('active'));
             const target = document.querySelector(`.partner-content[data-partner="${partnerData[index].id}"]`);
             if (target) target.classList.add('active');
-            partnerLabel.textContent = partnerData[index].label;
-            portraitImg.src = partnerData[index].img;
+            switcherLabel.textContent = partnerData[index].label;
             currentPartner = index;
-            // Reset bio block to 1 on partner switch
-            updateBlock(currentPartner, 1);
         }
 
-        document.querySelector('.l1-prev').addEventListener('click', () => {
+        document.querySelector('.switcher-prev').addEventListener('click', () => {
             const prev = (currentPartner - 1 + partnerData.length) % partnerData.length;
             showPartner(prev);
         });
 
-        document.querySelector('.l1-next').addEventListener('click', () => {
+        document.querySelector('.switcher-next').addEventListener('click', () => {
             const next = (currentPartner + 1) % partnerData.length;
             showPartner(next);
         });
 
-        // ===== Bio Block Switcher =====
-        const blockLabels = [
-            '01 // Authority',
-            '02 // Ambition',
-            '03 // Achievement',
-            '04 // Core Expertise'
-        ];
-
-        let currentBlock = [1, 1, 1]; // one per partner
-
-        function updateBlock(partnerIdx, blockNum) {
-            const content = allContents[partnerIdx];
+        // 2. Scoped Bio Block Carousel per Partner
+        document.querySelectorAll('.partner-content').forEach(content => {
             const container = content.querySelector('.bio-slider-container');
+            if (!container) return;
+            const controls = content.querySelector('.bio-block-switcher');
+            if (controls) content.insertBefore(controls, container);
             const blocks = container.querySelectorAll('.bio-block');
-            const l2label = content.querySelector('.level-2-label');
-
-            blocks.forEach(b => b.classList.remove('active'));
-            blocks[blockNum - 1].classList.add('active');
-            currentBlock[partnerIdx] = blockNum;
-
-            if (l2label && blockLabels[blockNum - 1]) {
-                const num = String(blockNum).padStart(2, '0');
-                l2label.innerHTML = `<span class="accent">${num}</span> // ${blockLabels[blockNum - 1].split(' // ')[1]}`;
-            }
-        }
-
-        allContents.forEach((content, idx) => {
-            const prevBtn = content.querySelector('.l2-prev');
-            const nextBtn = content.querySelector('.l2-next');
-            const blocks = content.querySelectorAll('.bio-block');
             const total = blocks.length;
+            const indicator = content.querySelector('.block-indicator');
+            const prevBtn = content.querySelector('.prev-block-btn');
+            const nextBtn = content.querySelector('.next-block-btn');
+            let current = 1;
 
-            updateBlock(idx, 1);
+            function updateBlock(target) {
+                container.querySelector('.bio-block.active')?.classList.remove('active');
+                current = target;
+                blocks[current - 1].classList.add('active');
+                const label = blocks[current - 1].querySelector('.block-label')?.textContent?.trim();
+                if (indicator && label) indicator.textContent = label;
+            }
+
+            updateBlock(current);
 
             if (prevBtn) {
                 prevBtn.addEventListener('click', () => {
-                    let t = currentBlock[idx] - 1;
-                    if (t < 1) t = total;
-                    updateBlock(idx, t);
+                    let target = current - 1;
+                    if (target < 1) target = total;
+                    updateBlock(target);
                 });
             }
             if (nextBtn) {
                 nextBtn.addEventListener('click', () => {
-                    let t = currentBlock[idx] + 1;
-                    if (t > total) t = 1;
-                    updateBlock(idx, t);
+                    let target = current + 1;
+                    if (target > total) target = 1;
+                    updateBlock(target);
                 });
             }
         });
 
-        // ===== Theme Toggle =====
+        // 3. Bidirectional System Preference + Switch UI State Routing Sync Engine
         const globalThemeToggle = document.getElementById('theme-toggle');
         const themeKey = 'theme-preference';
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
@@ -897,29 +1074,51 @@
             sun: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>'
         };
 
-        function applyTheme(theme, persist) {
-            document.body.dataset.theme = theme;
-            globalThemeToggle.innerHTML = theme === 'dark' ? vectorIcons.sun : vectorIcons.moon;
-            globalThemeToggle.setAttribute('aria-label', theme === 'dark' ? 'Activate light mode' : 'Activate dark mode');
-            if (persist) localStorage.setItem(themeKey, theme);
+        function updateInterfaceControls(resolvedTheme) {
+            const isTargetDark = resolvedTheme === 'dark';
+
+            globalThemeToggle.innerHTML = isTargetDark ? vectorIcons.sun : vectorIcons.moon;
+            globalThemeToggle.setAttribute('aria-label', isTargetDark ? 'Activate light mode' : 'Activate dark mode');
+            globalThemeToggle.setAttribute('title', isTargetDark ? 'Activate light mode' : 'Activate dark mode');
         }
 
-        function resolveTheme() {
-            const saved = localStorage.getItem(themeKey);
-            if (saved === 'light' || saved === 'dark') return saved;
+        function applyTheme(targetTheme, persistConfig = false) {
+            document.body.dataset.theme = targetTheme;
+            updateInterfaceControls(targetTheme);
+            if (persistConfig) {
+                localStorage.setItem(themeKey, targetTheme);
+            }
+        }
+
+        function handleStateToggleTransition() {
+            const activeStateMode = document.body.dataset.theme || resolveSystemDefaultState();
+            const alternateStateMode = activeStateMode === 'dark' ? 'light' : 'dark';
+            applyTheme(alternateStateMode, true);
+        }
+
+        function resolveSystemDefaultState() {
             return prefersDark.matches ? 'dark' : 'light';
         }
 
-        applyTheme(resolveTheme());
+        function resolveInitialStateRules() {
+            const explicitUserPreference = localStorage.getItem(themeKey);
+            if (explicitUserPreference === 'light' || explicitUserPreference === 'dark') {
+                return explicitUserPreference;
+            }
+            return resolveSystemDefaultState();
+        }
 
-        globalThemeToggle.addEventListener('click', () => {
-            const current = document.body.dataset.theme || 'light';
-            applyTheme(current === 'dark' ? 'light' : 'dark', true);
-        });
+        applyTheme(resolveInitialStateRules());
 
-        prefersDark.addEventListener('change', e => {
-            if (!localStorage.getItem(themeKey)) applyTheme(e.matches ? 'dark' : 'light');
+        globalThemeToggle.addEventListener('click', handleStateToggleTransition);
+
+        prefersDark.addEventListener('change', event => {
+            if (!localStorage.getItem(themeKey)) {
+                applyTheme(event.matches ? 'dark' : 'light');
+            }
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
