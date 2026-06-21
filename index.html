@@ -952,7 +952,8 @@
       background-position: center;
       filter: brightness(1.05);
       animation: dynamic-banner-pan 24s infinite ease-in-out;
-      transition: all 0.4s ease;
+      transition: filter 0.6s ease-out;
+      /* The fade-back duration (smooth cool down) */
     }
 
     /* Original hover interactions and frame transformations */
@@ -963,7 +964,9 @@
     }
 
     .banner-cockpit:hover::before {
-      filter: brightness(1.15) contrast(105%);
+      filter: brightness(1.12) contrast(102%);
+      transition: filter 0.08s ease-in;
+      /* A near-instant transition speed on entry */
     }
 
     /* Original motion speed and panning scale dimensions */
