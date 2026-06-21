@@ -168,9 +168,14 @@
 
     /* Secondary tagline light emission */
     .sub-brand-glow {
-      color: #ffe680 !important;
-      opacity: 0.9 !important;
-      text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+      color: #ffdf00 !important;
+      opacity: 0.95 !important;
+      font-weight: 800 !important;
+      text-shadow:
+        0 0 4px rgba(255, 215, 0, 0.55),
+        0 0 12px rgba(255, 159, 11, 0.35);
+      animation: text-glow-pulse 3s infinite ease-in-out;
+      transition: all 0.5s ease;
     }
 
     /* 3. The Shining Animations (Luminous Physics) */
@@ -231,6 +236,14 @@
         0 0 45px rgba(255, 152, 0, 0.8);
     }
 
+    .header-link-glow-container:hover .sub-brand-glow {
+      animation: none;
+      text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.95),
+        0 0 22px rgba(255, 235, 59, 0.9),
+        0 0 38px rgba(255, 152, 0, 0.7);
+    }
+
     /* --- LIGHT MODE SUNSHINE ADAPTATION --- */
     [data-bs-theme="light"] .header-link-icon {
       background: radial-gradient(circle, rgba(255, 173, 51, 0.28) 0%, rgba(255, 145, 0, 0.10) 100%) !important;
@@ -263,6 +276,13 @@
         0 0 12px rgba(255, 255, 255, 1),
         0 0 30px rgba(255, 180, 65, 0.9),
         0 0 45px rgba(255, 125, 0, 0.7);
+    }
+
+    [data-bs-theme="light"] .header-link-glow-container:hover .sub-brand-glow {
+      text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.95),
+        0 0 24px rgba(255, 180, 65, 0.85),
+        0 0 38px rgba(255, 125, 0, 0.65);
     }
 
     /* --- TILE SYSTEM & HOVER --- */
@@ -964,7 +984,7 @@
     }
 
     .banner-cockpit:hover::before {
-      filter: brightness(1.12) contrast(102%);
+      filter: brightness(1.05);
       transition: filter 0.08s ease-in;
       /* A near-instant transition speed on entry */
     }
@@ -1032,6 +1052,9 @@
       color: #f97316;
       opacity: 0.92;
       letter-spacing: 0.02em;
+      text-shadow:
+        0 0 4px rgba(249, 115, 22, 0.55),
+        0 0 12px rgba(255, 180, 64, 0.30);
     }
 
     /* Light-theme: add a very subtle outline to the cockpit tile itself (overrides generic none)
@@ -1057,12 +1080,11 @@
 
     [data-bs-theme="light"] .banner-cockpit:hover::before {
       background:
-        linear-gradient(rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.12)),
+        linear-gradient(rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08)),
         url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1780584752/WebBannerlightmode_gu8ryk.webp");
       background-size: cover;
       background-position: center;
-      /* only a slight increase on hover to preserve subtlety */
-      filter: brightness(1.38) contrast(1.06) saturate(1.06);
+      filter: brightness(1.32) contrast(1.05) saturate(1.05);
     }
 
     [data-bs-theme="light"] .tile-3-img {
@@ -1267,7 +1289,6 @@
 
     .banner-cockpit:hover {
       transform: translateY(-2px);
-      filter: brightness(1.2);
       box-shadow:
         0 10px 20px -10px rgba(37, 101, 250, 0.4),
         inset 0 0 15px rgba(255, 255, 255, 0.05);
@@ -1275,12 +1296,7 @@
 
     /* Subtle overlay color blend modification during hover */
     .banner-cockpit:hover::before {
-      filter: brightness(1.15) contrast(105%);
-      background:
-        linear-gradient(rgba(37, 101, 250, 0.25), rgba(2, 6, 23, 0.55)),
-        url("https://res.cloudinary.com/dp455m4rk/image/upload/v1779820306/webbanner_e5bib0.webp");
-      background-size: cover;
-      background-position: center;
+      filter: brightness(1.05);
     }
 
     /* Update the existing .banner-cockpit or add this below it */
@@ -1307,7 +1323,6 @@
     /* The Hover Effect */
     .banner-cockpit:hover {
       transform: translateY(-2px);
-      filter: brightness(1.2);
       box-shadow:
         0 10px 20px -10px rgba(37, 101, 250, 0.4),
         inset 0 0 15px rgba(255, 255, 255, 0.05);
@@ -2715,13 +2730,15 @@
 
         if (compassAstroEl) {
           let nextSolstice = new Date(year, 5, 21);
+          let solsticeLabel = "Winter Solstice";
           if (now > nextSolstice) {
-            nextSolstice = new Date(year + 1, 5, 21);
+            nextSolstice = new Date(year, 11, 21);
+            solsticeLabel = "Summer Solstice";
           }
           const remaining = Math.max(0, Math.ceil((nextSolstice - now) / 86400000));
           const displayValue = Number.isFinite(remaining) ? remaining : "--";
           const dayLabel = remaining === 1 ? "day" : "days";
-          compassAstroEl.innerHTML = `<strong>${displayValue}</strong> ${dayLabel} before Winter Solstice`;
+          compassAstroEl.innerHTML = `<strong>${displayValue}</strong> ${dayLabel} before ${solsticeLabel}`;
         }
 
         const weekdayColors = {
