@@ -8,7 +8,6 @@
     <meta name="description"
         content="h.e.r collab: Creative Brilliance. Surgical Precision. Strategic architecture and venture development for Black women-led entrepreneurship.">
 
-    <!-- Rich Link Previews for WhatsApp, iMessage, LinkedIn -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_ZA">
     <meta property="og:site_name" content="h.e.r collab">
@@ -23,7 +22,6 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="h.e.r collab brand statement preview">
 
-    <!-- Twitter / X Preview Card (Fallback) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="h.e.r collab | Creative Brilliance. Surgical Precision.">
     <meta name="twitter:description"
@@ -34,18 +32,14 @@
     <meta name="theme-color" content="#fcfcfc" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
 
-    <!-- Standard Browser Favicon -->
     <link rel="icon" type="image/png"
         href="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781358154/her_favicon_2_ckbdpd.png?v=2">
 
-    <!-- Apple/iOS Web App Install Icon -->
     <link rel="apple-touch-icon" sizes="180x180"
         href="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781358154/her_favicon_2_ckbdpd.png.png?v=2">
 
-    <!-- Android / High-Res Device Shortcut Icon -->
     <link rel="icon" type="image/png" sizes="192x192"
         href="https://res.cloudinary.com/dmkhsyfzf/image/upload/v1781358154/her_favicon_2_ckbdpd.png?v=2">
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Color variables supporting Light and Dark modes */
@@ -56,7 +50,6 @@
             --text-muted: #6c757d;
             --brand-color: #000000;
             --subheadline-color: #b22222;
-            /* Professional brick red */
             --border-color: rgba(0, 0, 0, 0.1);
             --bg-overlay: rgba(252, 252, 252, 0.75);
             --tile-bg: rgba(255, 255, 255, 0.85);
@@ -69,10 +62,8 @@
                 --text-color: #f8f9fa;
                 --text-strong: #ffffff;
                 --text-muted: #a7a9be;
-                /* Highly visible slate grey in dark mode */
                 --brand-color: #ffffff;
                 --subheadline-color: #e44d4d;
-                /* High-contrast red for dark mode */
                 --border-color: rgba(255, 255, 255, 0.1);
                 --bg-overlay: rgba(18, 18, 18, 0.75);
                 --tile-bg: rgba(26, 26, 26, 0.85);
@@ -106,10 +97,10 @@
             --tile-shadow: rgba(0, 0, 0, 0.03);
         }
 
-        .theme-toggle {
+        /* Shared Utility Class for Sleek Controls Styling */
+        .control-btn {
             position: fixed;
             top: 0.85rem;
-            right: 0.85rem;
             z-index: 11;
             width: 2.35rem;
             height: 2.35rem;
@@ -128,33 +119,57 @@
             box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
         }
 
-        body[data-theme="dark"] .theme-toggle {
+        .theme-toggle {
+            right: 0.85rem;
+        }
+
+        .zoom-toggle {
+            right: 3.7rem;
+            /* Positions it neatly next to the theme toggle */
+        }
+
+        body[data-theme="dark"] .control-btn {
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(255, 255, 255, 0.14);
             color: #f8f9fa;
         }
 
-        .theme-toggle:hover,
-        .theme-toggle:focus-visible {
+        .control-btn:hover,
+        .control-btn:focus-visible {
             opacity: 1;
             transform: scale(1.05);
             outline: none;
         }
 
-        .theme-toggle svg {
+        .control-btn svg {
             width: 1rem;
             height: 1rem;
             stroke-width: 1.8;
+            fill: none;
+            stroke: currentColor;
             color: rgba(33, 37, 41, 0.46);
             filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.55));
             opacity: 0.78;
             transition: color 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
         }
 
-        body[data-theme="dark"] .theme-toggle svg {
+        body[data-theme="dark"] .control-btn svg {
             color: rgba(255, 255, 255, 0.64);
             filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
             opacity: 0.82;
+        }
+
+        /* Matrix for managing Zoom-in / Zoom-out SVG Tracks */
+        .zoom-toggle .icon-zoom-out {
+            display: none;
+        }
+
+        body[data-zoom="125"] .zoom-toggle .icon-zoom-in {
+            display: none;
+        }
+
+        body[data-zoom="125"] .zoom-toggle .icon-zoom-out {
+            display: block;
         }
 
         body {
@@ -167,6 +182,23 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            transition: font-size 0.2s ease;
+        }
+
+        /* The Zoom Engine Matrix */
+        body[data-zoom="125"] {
+            font-size: 1.12rem;
+        }
+
+        body[data-zoom="125"] .showcase-tile {
+            transform: scale(1.04);
+            transform-origin: center center;
+        }
+
+        @media (max-width: 768px) {
+            body[data-zoom="125"] .showcase-tile {
+                transform: scale(1.01);
+            }
         }
 
         /* Smooth Background Slideshow */
@@ -192,7 +224,6 @@
             animation: crossfade 18s infinite ease-in-out;
         }
 
-        /* 3 Unique Partner Images */
         .bg-slide:nth-child(1) {
             background-image: url('https://res.cloudinary.com/dmkhsyfzf/image/upload/q_auto/f_auto/v1776286873/Neo_Segola_tvcbhe.jpg');
             animation-delay: 0s;
@@ -208,7 +239,6 @@
             animation-delay: 12s;
         }
 
-        /* Blending Opacity with a subtle non-intrusive Zoom scaling */
         @keyframes crossfade {
             0% {
                 opacity: 0;
@@ -236,7 +266,6 @@
             }
         }
 
-        /* Tint Overlay layer */
         .bg-overlay-tint {
             position: fixed;
             top: 0;
@@ -247,7 +276,6 @@
             z-index: -1;
         }
 
-        /* Content Wrapper / Structural Tile */
         .showcase-tile {
             background: var(--tile-bg);
             backdrop-filter: blur(8px);
@@ -269,7 +297,6 @@
             }
         }
 
-        /* Typography */
         .logo {
             font-family: Georgia, serif;
             font-weight: 400;
@@ -320,85 +347,29 @@
         .tile-footer {
             color: var(--text-muted);
         }
-
-        /* Zoom Button Positioning and Icons */
-        .zoom-toggle {
-            position: fixed;
-            top: 0.85rem;
-            right: 3.7rem;
-            /* Places it cleanly right next to your theme toggle button */
-            z-index: 11;
-            width: 2.35rem;
-            height: 2.35rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.14);
-            color: var(--text-color);
-            cursor: pointer;
-            opacity: 0.72;
-            transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
-        }
-
-        body[data-theme="dark"] .zoom-toggle {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.14);
-            color: #f8f9fa;
-        }
-
-        .zoom-toggle:hover {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-        .zoom-toggle svg {
-            width: 1.15rem;
-            height: 1.15rem;
-            stroke: var(--text-color);
-            stroke-width: 2;
-            fill: none;
-        }
-
-        /* The Zoom Engine Matrix */
-        body[data-zoom="125"] {
-            font-size: 1.15rem;
-            /* Safely bumps typography scaling proportionally */
-        }
-
-        body[data-zoom="125"] .showcase-tile {
-            transform: scale(1.05);
-            /* Scales the structural card wrapper slightly */
-            transform-origin: center center;
-        }
-
-        @media (max-width: 768px) {
-            body[data-zoom="125"] .showcase-tile {
-                transform: scale(1.02);
-                /* Prevents overflow issues on mobile screens */
-            }
-        }
-
-        const zoomToggle=document.getElementById('zoom-toggle');
-
-        zoomToggle.addEventListener('click', ()=> {
-                // Read current state or default to base track
-                const currentZoom=document.body.dataset.zoom || '100';
-                const nextZoom=currentZoom==='100' ? '125' : '100';
-
-                // Toggle state engine mapping
-                document.body.dataset.zoom=nextZoom;
-            });
     </style>
 </head>
 
 <body>
-    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme"
+    <button class="control-btn theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme"
         title="Toggle theme"></button>
+
+    <button class="control-btn zoom-toggle" id="zoom-toggle" type="button" aria-label="Zoom content"
+        title="Zoom content">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-zoom-in" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="11" y1="8" x2="11" y2="14"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-zoom-out" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+        </svg>
+    </button>
 
     <div class="bg-slideshow">
         <div class="bg-slide"></div>
@@ -406,21 +377,12 @@
         <div class="bg-slide"></div>
     </div>
     <div class="bg-overlay-tint"></div>
-    <button class="zoom-toggle" id="zoom-toggle" type="button" aria-label="Toggle Page Zoom" title="Toggle Page Zoom">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            <line x1="11" y1="8" x2="11" y2="14"></line>
-            <line x1="8" y1="11" x2="14" y2="11"></line>
-        </svg>
-    </button>
 
     <div class="container my-auto py-5">
         <div class="row justify-content-center">
             <div class="col-12 px-3">
 
                 <article class="showcase-tile">
-
                     <header class="text-start mb-4 pb-2">
                         <span class="logo d-block">h·e·r collab</span>
                         <h3 class="subtitle">Creative Brilliance · Surgical Precision</h3>
@@ -438,12 +400,10 @@
 
                     <hr class="mt-4 mb-3">
 
-                    <!-- Custom Footer Matrix Connected to CSS Theme Engine -->
                     <footer class="text-start tile-footer caps-sentiment" style="font-size: 0.7rem;">
                         <span>&copy; 2026 h·e·r collab. Strategic Architecture & Venture Development. | Brand Statement
                             #1</span>
                     </footer>
-
                 </article>
 
             </div>
@@ -453,8 +413,10 @@
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/lucide.min.js"></script>
     <script>
         const themeToggle = document.getElementById('theme-toggle');
+        const zoomToggle = document.getElementById('zoom-toggle');
         const themeKey = 'theme-preference';
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
         const themeIcons = {
             moon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>',
             sun: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>'
@@ -483,8 +445,10 @@
             return prefersDark.matches ? 'dark' : 'light';
         }
 
+        // Initialize themes immediately
         applyTheme(resolveInitialTheme());
 
+        // Event Listeners for Theme
         themeToggle.addEventListener('click', () => {
             const nextTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
             applyTheme(nextTheme, true);
@@ -494,6 +458,13 @@
             if (!localStorage.getItem(themeKey)) {
                 applyTheme(event.matches ? 'dark' : 'light');
             }
+        });
+
+        // Clean & Isolated Zoom Toggle execution
+        zoomToggle.addEventListener('click', () => {
+            const currentZoom = document.body.dataset.zoom || '100';
+            const nextZoom = currentZoom === '100' ? '125' : '100';
+            document.body.dataset.zoom = nextZoom;
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
