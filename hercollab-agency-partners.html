@@ -85,6 +85,7 @@
             font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
             color: var(--text-color);
             background-color: var(--bg-color);
+            margin: 0;
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
@@ -92,6 +93,12 @@
             flex-direction: column;
             justify-content: center;
             transition: background-color 0.1s ease, color 0.1s ease;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
         }
 
         /* Ambient Dynamic Profile Slideshow */
@@ -230,15 +237,51 @@
             padding: 3rem;
             max-width: 860px;
             width: 100%;
+            min-width: 0;
             margin: auto;
             position: relative;
             transition: background-color 0.1s ease, border-color 0.1s ease;
         }
 
         @media (max-width: 768px) {
+            body {
+                align-items: center;
+            }
+
+            .container,
+            .row,
+            .col-12 {
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
             .showcase-tile {
-                padding: 2rem 1.5rem;
+                width: calc(100vw - 1.5rem);
+                max-width: calc(100vw - 1.5rem);
+                padding: 2rem 1rem;
                 margin: 1.5rem auto;
+                overflow: hidden;
+            }
+
+            .brand-header,
+            .partner-content,
+            .profile-intro,
+            .bio-slider-container {
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+            }
+
+            .partner-switcher {
+                width: 100%;
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
 
@@ -258,6 +301,8 @@
             margin-bottom: 1.35rem;
             width: 100%;
             max-width: 100%;
+            min-width: 0;
+            overflow: hidden;
             padding: 0.35rem;
         }
 
@@ -385,6 +430,12 @@
             grid-template-columns: clamp(120px, 15vw, 170px) minmax(0, 1fr);
             gap: clamp(1.5rem, 3vw, 2rem);
             align-items: start;
+            min-width: 0;
+        }
+
+        .profile-intro > * {
+            min-width: 0;
+            max-width: 100%;
         }
 
         .profile-image-col {
@@ -427,6 +478,15 @@
                 grid-template-columns: 1fr;
                 gap: 1rem;
                 justify-items: center;
+                width: 100%;
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+            .profile-intro > * {
+                width: 100%;
+                max-width: 100%;
+                overflow: hidden;
             }
 
             .profile-image-col {
@@ -442,14 +502,33 @@
             .partner-meta {
                 width: 100%;
                 min-width: 0;
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+            .partner-name,
+            .partner-title,
+            .partner-quote,
+            .lead-text {
+                max-width: 100%;
+                overflow-wrap: anywhere;
+            }
+
+            .tech-tags {
+                max-width: 100%;
+                justify-content: flex-start;
+                overflow: hidden;
             }
 
             .bio-block-switcher {
                 justify-content: center !important;
+                width: 100%;
+                max-width: 100%;
             }
 
             .bio-block-switcher .frame-nav-menu {
-                width: min(100%, 28rem);
+                width: 100%;
+                max-width: 100%;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -528,6 +607,9 @@
             position: relative;
             min-height: 180px;
             margin-bottom: 1.5rem;
+            min-width: 0;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         @media (max-width: 576px) {
