@@ -303,12 +303,15 @@
         .bio-block-switcher {
             justify-content: flex-start !important;
             width: 100%;
+            max-width: 100%;
             margin-top: 0.75rem;
             margin-bottom: 0 !important;
         }
 
         .bio-block-switcher .frame-nav-menu {
             width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
 
@@ -423,9 +426,17 @@
                 gap: 1rem;
             }
 
+            .profile-image-col {
+                align-items: center;
+            }
+
             .profile-portrait {
                 width: min(160px, 50vw);
                 margin: 0 auto;
+            }
+
+            .partner-meta {
+                min-width: 0;
             }
         }
 
@@ -475,7 +486,8 @@
         }
 
         .profile-intro:has(.bio-block-switcher)+hr {
-            margin-top: 0.65rem;
+            margin-top: 0.45rem;
+            margin-bottom: 0.85rem !important;
         }
 
         .tag {
@@ -564,6 +576,7 @@
         .frame-nav-menu {
             display: inline-flex;
             align-items: stretch;
+            box-sizing: border-box;
             border: 1px solid var(--border-color);
             border-radius: 4px;
             padding: 0.25rem;
@@ -573,9 +586,15 @@
         }
 
         @media (max-width: 576px) {
+            .bio-block-switcher {
+                justify-content: center !important;
+                overflow: hidden;
+            }
+
             .partner-switcher,
             .bio-block-switcher .frame-nav-menu {
                 width: min(100%, 21rem);
+                max-width: 100%;
                 margin-left: auto;
                 margin-right: auto;
             }
