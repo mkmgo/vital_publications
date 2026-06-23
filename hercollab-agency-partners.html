@@ -300,9 +300,17 @@
         }
 
         /* Level 2 Block Switcher Rail */
+        .bio-block-switcher {
+            justify-content: flex-start !important;
+            width: 100%;
+            margin-top: 0.75rem;
+            margin-bottom: 0 !important;
+        }
+
         .bio-block-switcher .frame-nav-menu {
             width: 100%;
         }
+
 
         .block-rail-wrap {
             flex: 1;
@@ -462,6 +470,14 @@
             margin-top: 0.25rem;
         }
 
+        .profile-intro:has(.bio-block-switcher) {
+            padding-bottom: 0 !important;
+        }
+
+        .profile-intro:has(.bio-block-switcher)+hr {
+            margin-top: 0.65rem;
+        }
+
         .tag {
             font-size: 0.65rem;
             text-transform: uppercase;
@@ -554,11 +570,6 @@
             background: var(--tile-bg);
             gap: 0.25rem;
             transition: background-color 0.1s ease, border-color 0.1s ease;
-        }
-
-        .bio-block-switcher {
-            justify-content: center !important;
-            margin-bottom: 0.9rem !important;
         }
 
         @media (max-width: 576px) {
@@ -731,6 +742,33 @@
                                         <span class="tag">Synthesis</span>
                                         <span class="tag">Frontier</span>
                                     </div>
+                                    <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">                                    
+                                                                <div class="frame-nav-menu">                                    
+                                                                    <button class="frame-nav-btn prev-block-btn" type="button"                                    
+                                                                        aria-label="Previous text entry block" title="Previous Block">                                    
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"                                    
+                                                                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"                                    
+                                                                            aria-hidden="true">                                    
+                                                                            <path d="m12 19-7-7 7-7"></path>                                    
+                                                                            <path d="M19 12H5"></path>                                    
+                                                                        </svg>                                    
+                                                                    </button>                                    
+                                                                        
+                                                                    <span class="frame-nav-indicator block-indicator">01 // Authority</span>                                    
+                                                                        
+                                                                    <button class="frame-nav-btn next-block-btn" type="button"                                    
+                                                                        aria-label="Next text entry block" title="Next Block">                                    
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"                                    
+                                                                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"                                    
+                                                                            aria-hidden="true">                                    
+                                                                            <path d="M5 12h14"></path>                                    
+                                                                            <path d="m12 5 7 7-7 7"></path>                                    
+                                                                        </svg>                                    
+                                                                    </button>                                    
+                                                                        
+                                                                        
+                                                                </div>                                    
+                                                            </div>
                                 </div>
                             </div>
                         </section>
@@ -794,33 +832,7 @@
                             </div>
                         </main>
 
-                        <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">
-                            <div class="frame-nav-menu">
-                                <button class="frame-nav-btn prev-block-btn" type="button"
-                                    aria-label="Previous text entry block" title="Previous Block">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        aria-hidden="true">
-                                        <path d="m12 19-7-7 7-7"></path>
-                                        <path d="M19 12H5"></path>
-                                    </svg>
-                                </button>
 
-                                <span class="frame-nav-indicator block-indicator">01 // Authority</span>
-
-                                <button class="frame-nav-btn next-block-btn" type="button"
-                                    aria-label="Next text entry block" title="Next Block">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        aria-hidden="true">
-                                        <path d="M5 12h14"></path>
-                                        <path d="m12 5 7 7-7 7"></path>
-                                    </svg>
-                                </button>
-
-
-                            </div>
-                        </div>
                     </div>
 
                     <div class="partner-content" data-partner="chaz">
@@ -847,6 +859,33 @@
                                         <span class="tag">Nexus</span>
                                         <span class="tag">Transformation</span>
                                     </div>
+                                    <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">                                    
+                                                                <div class="frame-nav-menu">                                    
+                                                                    <button class="frame-nav-btn prev-block-btn" type="button"                                    
+                                                                        aria-label="Previous text entry block" title="Previous Block">                                    
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"                                    
+                                                                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"                                    
+                                                                            aria-hidden="true">                                    
+                                                                            <path d="m12 19-7-7 7-7"></path>                                    
+                                                                            <path d="M19 12H5"></path>                                    
+                                                                        </svg>                                    
+                                                                    </button>                                    
+                                                                        
+                                                                    <span class="frame-nav-indicator block-indicator">01 // Authority</span>                                    
+                                                                        
+                                                                    <button class="frame-nav-btn next-block-btn" type="button"                                    
+                                                                        aria-label="Next text entry block" title="Next Block">                                    
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"                                    
+                                                                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"                                    
+                                                                            aria-hidden="true">                                    
+                                                                            <path d="M5 12h14"></path>                                    
+                                                                            <path d="m12 5 7 7-7 7"></path>                                    
+                                                                        </svg>                                    
+                                                                    </button>                                    
+                                                                        
+                                                                        
+                                                                </div>                                    
+                                                            </div>
                                 </div>
                             </div>
                         </section>
@@ -903,33 +942,7 @@
                             </div>
                         </main>
 
-                        <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">
-                            <div class="frame-nav-menu">
-                                <button class="frame-nav-btn prev-block-btn" type="button"
-                                    aria-label="Previous text entry block" title="Previous Block">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        aria-hidden="true">
-                                        <path d="m12 19-7-7 7-7"></path>
-                                        <path d="M19 12H5"></path>
-                                    </svg>
-                                </button>
 
-                                <span class="frame-nav-indicator block-indicator">01 // Authority</span>
-
-                                <button class="frame-nav-btn next-block-btn" type="button"
-                                    aria-label="Next text entry block" title="Next Block">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        aria-hidden="true">
-                                        <path d="M5 12h14"></path>
-                                        <path d="m12 5 7 7-7 7"></path>
-                                    </svg>
-                                </button>
-
-
-                            </div>
-                        </div>
                     </div>
 
                     <div class="partner-content" data-partner="tsholo">
@@ -956,6 +969,33 @@
                                         <span class="tag">Efficiency</span>
                                         <span class="tag">EBITDA</span>
                                     </div>
+                                    <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">                                    
+                                                                <div class="frame-nav-menu">                                    
+                                                                    <button class="frame-nav-btn prev-block-btn" type="button"                                    
+                                                                        aria-label="Previous text entry block" title="Previous Block">                                    
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"                                    
+                                                                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"                                    
+                                                                            aria-hidden="true">                                    
+                                                                            <path d="m12 19-7-7 7-7"></path>                                    
+                                                                            <path d="M19 12H5"></path>                                    
+                                                                        </svg>                                    
+                                                                    </button>                                    
+                                                                        
+                                                                    <span class="frame-nav-indicator block-indicator">01 // Authority</span>                                    
+                                                                        
+                                                                    <button class="frame-nav-btn next-block-btn" type="button"                                    
+                                                                        aria-label="Next text entry block" title="Next Block">                                    
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"                                    
+                                                                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"                                    
+                                                                            aria-hidden="true">                                    
+                                                                            <path d="M5 12h14"></path>                                    
+                                                                            <path d="m12 5 7 7-7 7"></path>                                    
+                                                                        </svg>                                    
+                                                                    </button>                                    
+                                                                        
+                                                                        
+                                                                </div>                                    
+                                                            </div>
                                 </div>
                             </div>
                         </section>
@@ -1011,33 +1051,7 @@
                             </div>
                         </main>
 
-                        <div class="bio-block-switcher d-flex justify-content-start align-items-center mb-4">
-                            <div class="frame-nav-menu">
-                                <button class="frame-nav-btn prev-block-btn" type="button"
-                                    aria-label="Previous text entry block" title="Previous Block">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        aria-hidden="true">
-                                        <path d="m12 19-7-7 7-7"></path>
-                                        <path d="M19 12H5"></path>
-                                    </svg>
-                                </button>
 
-                                <span class="frame-nav-indicator block-indicator">01 // Authority</span>
-
-                                <button class="frame-nav-btn next-block-btn" type="button"
-                                    aria-label="Next text entry block" title="Next Block">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        aria-hidden="true">
-                                        <path d="M5 12h14"></path>
-                                        <path d="m12 5 7 7-7 7"></path>
-                                    </svg>
-                                </button>
-
-
-                            </div>
-                        </div>
                     </div>
 
                     <hr class="mt-4 mb-3">
@@ -1133,8 +1147,6 @@
         document.querySelectorAll('.partner-content').forEach(content => {
             const container = content.querySelector('.bio-slider-container');
             if (!container) return;
-            const controls = content.querySelector('.bio-block-switcher');
-            if (controls) content.insertBefore(controls, container);
             const blocks = container.querySelectorAll('.bio-block');
             const total = blocks.length;
             const prevBtn = content.querySelector('.prev-block-btn');
