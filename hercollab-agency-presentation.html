@@ -186,18 +186,21 @@
         }
 
         /* The Zoom Engine Matrix */
-        body[data-zoom="125"] .container {
-            /* Scales only the inner contents uniformly from the center of the screen */
-            transform: scale(1.23);
-            transform-origin: center center;
+        @media (min-width: 769px) {
+
+            /* This massive presentation scale will ONLY execute on desktop devices */
+            body[data-zoom="125"] .container {
+                transform: scale(1.23);
+                transform-origin: center center;
+            }
+
+            body[data-zoom="125"] {
+                overflow: hidden;
+                /* Keeps desktop pristine and scrollbar-free during presentations */
+            }
         }
 
-        /* Ensure the background slideshow and layout stay locked and scrollbar-free */
-        body[data-zoom="125"] {
-            overflow: hidden;
-        }
-
-        /* Clear any individual tile scales so they don't double-multiply */
+        /* Clear any individual tile transformations so they don't double-multiply */
         body[data-zoom="125"] .showcase-tile {
             transform: none;
         }
