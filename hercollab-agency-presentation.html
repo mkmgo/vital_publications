@@ -187,12 +187,13 @@
 
         /* The Zoom Engine Matrix */
         body[data-zoom="125"] {
-            font-size: 1.12rem;
+            zoom: 1.25;
+            /* Forces the browser engine to upscale everything uniformly, exactly like manual zoom */
         }
 
+        /* Clear the old transform scale rules so they don't double-multiply */
         body[data-zoom="125"] .showcase-tile {
-            transform: scale(1.04);
-            transform-origin: center center;
+            transform: none;
         }
 
         @media (max-width: 768px) {
