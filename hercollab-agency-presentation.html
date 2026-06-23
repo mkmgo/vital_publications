@@ -186,12 +186,18 @@
         }
 
         /* The Zoom Engine Matrix */
-        body[data-zoom="125"] {
-            zoom: 1.25;
-            /* Forces the browser engine to upscale everything uniformly, exactly like manual zoom */
+        body[data-zoom="125"] .container {
+            /* Scales only the inner contents uniformly from the center of the screen */
+            transform: scale(1.23);
+            transform-origin: center center;
         }
 
-        /* Clear the old transform scale rules so they don't double-multiply */
+        /* Ensure the background slideshow and layout stay locked and scrollbar-free */
+        body[data-zoom="125"] {
+            overflow: hidden;
+        }
+
+        /* Clear any individual tile scales so they don't double-multiply */
         body[data-zoom="125"] .showcase-tile {
             transform: none;
         }
@@ -200,6 +206,12 @@
             body[data-zoom="125"] .showcase-tile {
                 transform: scale(1.01);
             }
+        }
+
+        body[data-theme="dark"] .control-btn {
+            background: rgba(20, 20, 20, 0.65) !important;
+            /* Locks background visibility when presentation scales */
+            border-color: rgba(255, 255, 255, 0.12);
         }
 
         /* Smooth Background Slideshow */
