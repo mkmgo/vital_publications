@@ -179,10 +179,10 @@
 
         /* Directional ambient sweep — holds at outer edge, then cuts instantly */
         /* Corner Ambient Control Linkage */
-        .theme-toggle {
+        .theme-toggle,
+        .nav-toggle {
             position: fixed;
             top: 0.85rem;
-            right: 0.85rem;
             z-index: 11;
             width: 2.35rem;
             height: 2.35rem;
@@ -200,12 +200,17 @@
             -webkit-backdrop-filter: blur(14px);
         }
 
-        .theme-toggle:hover {
+        .theme-toggle { right: 0.85rem; }
+        .nav-toggle { right: 3.7rem; }
+
+        .theme-toggle:hover,
+        .nav-toggle:hover {
             opacity: 1;
             transform: scale(1.05);
         }
 
         .theme-toggle svg,
+        .nav-toggle svg,
         .frame-nav-btn svg {
             width: 1rem;
             height: 1rem;
@@ -786,6 +791,14 @@
 <body>
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle system interface mode"
         title="Toggle System Mode"></button>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Back to brand site"
+        title="Back to Brand Site">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/>
+            <path d="M15 3v4a2 2 0 0 0 2 2h4"/>
+        </svg>
+    </button>
 
     <div class="bg-slideshow">
         <div class="bg-slide"></div>
@@ -1516,6 +1529,15 @@
         applyTheme(resolveInitialStateRules());
 
         globalThemeToggle.addEventListener('click', handleStateToggleTransition);
+
+        // Smooth page navigation back to branding site
+        document.getElementById('nav-toggle').addEventListener('click', () => {
+            document.body.style.transition = 'opacity 0.25s ease';
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = 'hercollab-agency-branding.html';
+            }, 250);
+        });
 
         prefersDark.addEventListener('change', event => {
             if (!localStorage.getItem(themeKey)) {
