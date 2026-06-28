@@ -209,6 +209,7 @@
         background-size: cover;
         background-position: center;
         opacity: 0;
+        transform: scale(1.03);
         animation: crossfade 18s infinite ease-in-out;
       }
       .bg-slide:nth-child(1) {
@@ -227,18 +228,23 @@
       @keyframes crossfade {
         0% {
           opacity: 0;
+          transform: scale(1.03);
         }
         10% {
-          opacity: 0.18;
+          opacity: 0.32;
+          transform: scale(1.06);
         }
         33% {
-          opacity: 0.18;
+          opacity: 0.32;
+          transform: scale(1.11);
         }
         43% {
           opacity: 0;
+          transform: scale(1.14);
         }
         100% {
           opacity: 0;
+          transform: scale(1.03);
         }
       }
 
