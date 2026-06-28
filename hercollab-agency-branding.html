@@ -127,6 +127,10 @@
             right: 3.7rem;
         }
 
+        .nav-toggle-about {
+            right: 6.55rem;
+        }
+
         body[data-theme="dark"] .control-btn {
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(255, 255, 255, 0.14);
@@ -335,6 +339,17 @@
         </svg>
     </button>
 
+    <button class="control-btn nav-toggle-about" id="nav-toggle-about" type="button" aria-label="Agency Profile"
+        title="Agency Profile">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <path d="M8 8h8"/>
+            <path d="M8 12h8"/>
+            <path d="M8 16h8"/>
+        </svg>
+    </button>
+
     <div class="bg-slideshow">
         <div class="bg-slide"></div>
         <div class="bg-slide"></div>
@@ -378,6 +393,7 @@
     <script>
         const themeToggle = document.getElementById('theme-toggle');
         const navToggle = document.getElementById('nav-toggle');
+        const navToggleAbout = document.getElementById('nav-toggle-about');
         const themeKey = 'theme-preference';
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -430,6 +446,14 @@
             document.body.style.opacity = '0';
             setTimeout(() => {
                 window.location.href = 'hercollab-agency-partners.html';
+            }, 250);
+        });
+
+        navToggleAbout.addEventListener('click', () => {
+            document.body.style.transition = 'opacity 0.25s ease';
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = 'hercollab-agency-about.html';
             }, 250);
         });
     </script>
