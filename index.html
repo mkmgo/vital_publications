@@ -1114,15 +1114,14 @@
       }
 
       [data-bs-theme="light"] .banner-cockpit::before {
-        /* softer, smoother light overlay for a gentler appearance */
+        /* much lighter overlay to integrate with white page background */
         background:
-          linear-gradient(rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08)),
+          linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.25)),
           url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1780584752/WebBannerlightmode_gu8ryk.webp");
         background-size: cover;
         background-position: center;
         background-blend-mode: soft-light;
-        /* keep the same visual outcome but slightly softened */
-        filter: brightness(1.32) contrast(1.05) saturate(1.05);
+        filter: brightness(1.6) contrast(0.95) saturate(0.85);
         transition:
           filter 0.25s ease,
           background 0.25s ease;
@@ -1130,15 +1129,15 @@
 
       [data-bs-theme="light"] .banner-cockpit:hover::before {
         background:
-          linear-gradient(rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08)),
+          linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.25)),
           url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1780584752/WebBannerlightmode_gu8ryk.webp");
         background-size: cover;
         background-position: center;
-        filter: brightness(1.32) contrast(1.05) saturate(1.05);
+        filter: brightness(1.6) contrast(0.95) saturate(0.85);
       }
 
       [data-bs-theme="light"] .tile-3-img {
-        filter: grayscale(1) brightness(1.04) contrast(1.02) !important;
+        filter: grayscale(1) brightness(1.5) contrast(0.9) !important;
       }
 
       [data-bs-theme="light"] .corridor-passport {
@@ -2314,6 +2313,10 @@
           rgba(166, 104, 116, 0.08) 0%,
           transparent 100%
         );
+      }
+
+      [data-bs-theme="light"] .her-founder-rotator span {
+        filter: saturate(0.5) contrast(0.8) brightness(1.6);
       }
 
       [data-bs-theme="dark"] .her-founder-rotator span {
