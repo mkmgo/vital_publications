@@ -271,6 +271,7 @@
         box-shadow:
           0 0 14px rgba(255, 159, 11, 0.35),
           inset 0 0 10px rgba(255, 210, 120, 0.3);
+        animation: logo-shimmer-light 3s infinite ease-in-out;
       }
 
       [data-bs-theme="light"] .header-link-icon i {
@@ -278,37 +279,47 @@
       }
 
       [data-bs-theme="light"] .brand-text-glow {
-        color: #ff9f1c !important;
+        color: #f97316 !important;
         text-shadow:
-          0 0 4px rgba(255, 159, 28, 0.6),
-          0 0 12px rgba(255, 180, 64, 0.35);
+          0 0 4px rgba(249, 115, 22, 0.6),
+          0 0 12px rgba(249, 115, 22, 0.35);
+      }
+
+      [data-bs-theme="light"] .sub-brand-glow {
+        color: #f97316 !important;
+        opacity: 0.92 !important;
+        text-shadow:
+          0 0 4px rgba(249, 115, 22, 0.55),
+          0 0 12px rgba(249, 115, 22, 0.35);
       }
 
       [data-bs-theme="light"]
         .header-link-glow-container:hover
         .header-link-icon {
         box-shadow:
-          0 0 28px rgba(255, 165, 0, 0.95),
-          0 0 12px rgba(255, 140, 30, 0.6),
-          inset 0 0 12px rgba(255, 215, 110, 0.75);
+          0 0 32px rgba(249, 115, 22, 1),
+          0 0 16px rgba(249, 115, 22, 0.7),
+          inset 0 0 16px rgba(255, 215, 130, 0.85);
       }
 
       [data-bs-theme="light"]
         .header-link-glow-container:hover
         .brand-text-glow {
+        animation: none;
         text-shadow:
-          0 0 12px rgba(255, 255, 255, 1),
-          0 0 30px rgba(255, 180, 65, 0.9),
-          0 0 45px rgba(255, 125, 0, 0.7);
+          0 0 14px rgba(255, 255, 255, 1),
+          0 0 30px rgba(249, 115, 22, 1),
+          0 0 50px rgba(249, 115, 22, 0.85);
       }
 
       [data-bs-theme="light"]
         .header-link-glow-container:hover
         .sub-brand-glow {
+        animation: none;
         text-shadow:
-          0 0 10px rgba(255, 255, 255, 0.95),
-          0 0 24px rgba(255, 180, 65, 0.85),
-          0 0 38px rgba(255, 125, 0, 0.65);
+          0 0 12px rgba(255, 255, 255, 0.95),
+          0 0 26px rgba(249, 115, 22, 0.95),
+          0 0 42px rgba(249, 115, 22, 0.75);
       }
 
       /* --- TILE SYSTEM & HOVER --- */
@@ -1093,16 +1104,80 @@
 
       [data-bs-theme="light"] .brand-text-glow {
         color: #f97316;
-        text-shadow: 0 6px 18px rgba(249, 115, 22, 0.08);
+        animation: text-glow-pulse-light 3s infinite ease-in-out;
       }
 
       [data-bs-theme="light"] .sub-brand-glow {
         color: #f97316;
         opacity: 0.92;
         letter-spacing: 0.02em;
+        animation: text-glow-pulse-light 3s infinite ease-in-out;
+      }
+
+      [data-bs-theme="light"]
+        .header-link-glow-container:hover
+        .header-link-icon {
+        animation: none;
+        box-shadow:
+          0 0 30px rgba(249, 115, 22, 1),
+          0 0 15px rgba(249, 115, 22, 0.6),
+          inset 0 0 15px rgba(255, 200, 120, 0.8);
+        transform: scale(1.06);
+      }
+
+      [data-bs-theme="light"]
+        .header-link-glow-container:hover
+        .brand-text-glow {
+        animation: none;
         text-shadow:
-          0 0 4px rgba(249, 115, 22, 0.55),
-          0 0 12px rgba(255, 180, 64, 0.3);
+          0 0 12px rgba(255, 255, 255, 1),
+          0 0 25px rgba(249, 115, 22, 1),
+          0 0 45px rgba(249, 115, 22, 0.8);
+      }
+
+      [data-bs-theme="light"]
+        .header-link-glow-container:hover
+        .sub-brand-glow {
+        animation: none;
+        text-shadow:
+          0 0 10px rgba(255, 255, 255, 0.95),
+          0 0 22px rgba(249, 115, 22, 0.9),
+          0 0 38px rgba(249, 115, 22, 0.7);
+      }
+
+      @keyframes text-glow-pulse-light {
+        0%,
+        100% {
+          text-shadow:
+            0 0 6px rgba(249, 115, 22, 0.7),
+            0 0 14px rgba(249, 115, 22, 0.45);
+          filter: brightness(1);
+        }
+        50% {
+          text-shadow:
+            0 0 10px rgba(251, 146, 60, 1),
+            0 0 24px rgba(249, 115, 22, 0.85),
+            0 0 36px rgba(251, 146, 60, 0.4);
+          filter: brightness(1.3);
+        }
+      }
+
+      @keyframes logo-shimmer-light {
+        0%,
+        100% {
+          box-shadow:
+            0 0 14px rgba(249, 115, 22, 0.35),
+            inset 0 0 10px rgba(255, 215, 150, 0.25);
+          transform: scale(1);
+        }
+        50% {
+          box-shadow:
+            0 0 28px rgba(249, 115, 22, 0.85),
+            0 0 10px rgba(249, 115, 22, 0.5),
+            inset 0 0 14px rgba(255, 215, 150, 0.6);
+          transform: scale(1.03);
+          border-color: rgba(255, 200, 100, 0.9) !important;
+        }
       }
 
       /* Light-theme: add a very subtle outline to the cockpit tile itself (overrides generic none)
@@ -1111,6 +1186,18 @@
         /* even subtler edge for a near-invisible outline in light mode */
         border: 1px solid rgba(255, 255, 255, 0.16) !important;
         box-shadow: 0 4px 10px rgba(15, 23, 42, 0.01);
+        transform: scale(0.965);
+        transform-origin: center top;
+        transition:
+          transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1),
+          box-shadow 400ms ease,
+          border 400ms ease;
+      }
+
+      [data-bs-theme="light"] .banner-cockpit:hover {
+        border: 1px solid rgba(37, 101, 250, 0.6) !important;
+        box-shadow: 0 10px 25px -10px rgba(37, 101, 250, 0.35);
+        transform: translateY(-2px) scale(1);
       }
 
       [data-bs-theme="light"] .banner-cockpit h1 {
@@ -1118,7 +1205,7 @@
       }
 
       [data-bs-theme="light"] .banner-cockpit p {
-        color: #64748b !important;
+        color: #475569 !important;
       }
 
       [data-bs-theme="light"] .banner-cockpit::before {
@@ -1142,6 +1229,14 @@
         background-size: cover;
         background-position: center;
         filter: brightness(1.6) contrast(0.95) saturate(0.85);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        [data-bs-theme="light"] .banner-cockpit,
+        [data-bs-theme="light"] .banner-cockpit:hover {
+          transition: none;
+          transform: none;
+        }
       }
 
       [data-bs-theme="light"] .tile-3-img {
@@ -3597,29 +3692,7 @@
       </div>
     </footer>
 
-    <!-- Light-mode-only banner zoom-out: subtle default zoom-out, restores on hover -->
-    <style>
-      /* default slight zoom-out only in light theme */
-      :root[data-bs-theme="light"] .banner-cockpit {
-        transform: scale(0.965);
-        transform-origin: center top;
-        transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
-      }
 
-      /* on hover restore to normal scale and keep existing translateY */
-      :root[data-bs-theme="light"] .banner-cockpit:hover {
-        transform: translateY(-2px) scale(1);
-      }
-
-      /* respect reduced motion */
-      @media (prefers-reduced-motion: reduce) {
-        :root[data-bs-theme="light"] .banner-cockpit,
-        :root[data-bs-theme="light"] .banner-cockpit:hover {
-          transition: none;
-          transform: none;
-        }
-      }
-    </style>
 
     <script>
       // Set footer year
