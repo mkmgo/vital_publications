@@ -606,9 +606,9 @@
         background:
           linear-gradient(
             180deg,
-            rgba(255, 255, 255, 0.08) 0%,
-            rgba(255, 255, 255, 0.04) 58%,
-            rgba(255, 255, 255, 0.02) 100%
+            rgba(2, 6, 23, 0.14) 0%,
+            rgba(2, 6, 23, 0.32) 54%,
+            rgba(2, 6, 23, 0.62) 100%
           ),
           url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1767102613/my-express-uploads/agulephtnbdf9xobvfio.jpg");
         background-size: cover;
@@ -633,6 +633,13 @@
         margin-top: auto;
         color: #ffffff;
         text-shadow: 0 1px 16px rgba(0, 0, 0, 0.72);
+        padding: 0.7rem 0.8rem;
+        border-radius: 0.8rem;
+        background: rgba(2, 6, 23, 0.46);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
+        max-width: min(100%, 18rem);
       }
 
       .visual-journal-overlay .d-block {
@@ -989,16 +996,23 @@
         animation: logo-shimmer 3s infinite ease-in-out;
       }
 
+      .footer-brand-icon,
+      .footer-brand-icon * {
+        color: inherit !important;
+        stroke: currentColor !important;
+        fill: none !important;
+      }
+
       [data-bs-theme="light"] .footer-brand {
-        color: #ff9f1c;
+        color: #f97316 !important;
         text-shadow:
-          0 0 4px rgba(255, 159, 28, 0.6),
-          0 0 12px rgba(255, 180, 64, 0.35);
+          0 0 4px rgba(249, 115, 22, 0.7),
+          0 0 12px rgba(255, 180, 64, 0.45);
       }
 
       [data-bs-theme="light"] .footer-brand-icon {
-        color: #ff9f1c;
-        filter: drop-shadow(0 0 6px rgba(255, 180, 64, 0.45));
+        color: #f97316 !important;
+        filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.6));
       }
 
       .footer-metadata {
