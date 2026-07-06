@@ -632,12 +632,32 @@
         z-index: 2;
         margin-top: auto;
         color: #ffffff;
-        text-shadow: 0 1px 14px rgba(0, 0, 0, 0.58);
+        text-shadow: 0 1px 16px rgba(0, 0, 0, 0.72);
+      }
+
+      .visual-journal-overlay .d-block {
+        color: #ffffff !important;
+        font-weight: 700;
+        letter-spacing: 0.01em;
       }
 
       .visual-journal-overlay p {
-        color: rgba(255, 255, 255, 0.78) !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-weight: 600;
         max-width: 18rem;
+      }
+
+      [data-bs-theme="light"] .visual-journal-overlay {
+        color: #fffdf8;
+        text-shadow: 0 1px 14px rgba(15, 23, 42, 0.55);
+      }
+
+      [data-bs-theme="light"] .visual-journal-overlay .d-block {
+        color: #fffdf8 !important;
+      }
+
+      [data-bs-theme="light"] .visual-journal-overlay p {
+        color: rgba(255, 253, 248, 0.94) !important;
       }
 
       .connection-grid {
@@ -3591,10 +3611,10 @@
                     />
                   </a>
                 </div>
-                <span class="d-block small fw-bold mb-1"
+                <span class="d-block small fw-bold mb-1 text-dark-emphasis"
                   >Direct Connections</span
                 >
-                <p class="small text-secondary mb-0">
+                <p class="small mb-0 text-dark-emphasis">
                   Stay updated on current ventures and strategic dialogues.
                 </p>
               </div>
@@ -3615,8 +3635,10 @@
                   />
                   <button type="submit">Enter</button>
                 </form>
-                <span class="d-block small fw-bold mb-1">The Pulse</span>
-                <p class="small text-secondary mb-0">
+                <span class="d-block small fw-bold mb-1 text-dark-emphasis"
+                  >The Pulse</span
+                >
+                <p class="small mb-0 text-dark-emphasis">
                   A quick signal to refine the system with your perspective.
                 </p>
               </div>
