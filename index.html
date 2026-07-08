@@ -1179,11 +1179,12 @@
           0 0 12px rgba(255, 180, 64, 0.3);
       }
 
-      /* Light theme: mirror the dark-mode motion and frame mechanics while keeping light-friendly tones */
+      /* Light theme: mirror the dark-mode zoom-and-lift motion with lighter, readable accents */
       [data-bs-theme="light"] .banner-cockpit {
         border: 1px solid rgba(255, 255, 255, 0.28) !important;
         box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
         background-color: rgba(255, 255, 255, 0.04) !important;
+        transform: scale(0.965);
         transform-origin: center top;
         transition:
           transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1),
@@ -1192,7 +1193,7 @@
           filter 360ms ease;
       }
 
-      /* Hover: use the same up-move and scale motion as dark mode, with a softer light-mode accent */
+      /* Hover: use the same lift and zoom as dark mode, with a softer light-mode accent */
       [data-bs-theme="light"] .banner-cockpit:hover {
         border-color: rgba(249, 115, 22, 0.6) !important;
         box-shadow:
@@ -2568,7 +2569,7 @@
         </div>
 
         <div class="d-none d-md-block pb-1">
-          <div class="status-pill">V67.85</div>
+          <div class="status-pill">V67.86🟢</div>
         </div>
       </header>
       <section id="dashboard">
