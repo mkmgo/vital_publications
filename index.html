@@ -1446,19 +1446,6 @@
         }
       }
 
-      .banner-cockpit:hover {
-        transform: translateY(-2px);
-        box-shadow:
-          0 10px 20px -10px rgba(37, 101, 250, 0.4),
-          inset 0 0 15px rgba(255, 255, 255, 0.05);
-      }
-
-      /* Subtle overlay color blend modification during hover */
-      .banner-cockpit:hover::before {
-        filter: brightness(1.05);
-      }
-
-      /* Update the existing .banner-cockpit or add this below it */
       .banner-cockpit {
         /* This integrates your Cloudinary image as a layered background */
         background:
@@ -1477,32 +1464,32 @@
         cursor: pointer;
         position: relative;
         overflow: hidden;
-      }
-
-      /* The Hover Effect */
-      .banner-cockpit:hover {
-        transform: translateY(-2px);
-        box-shadow:
-          0 10px 20px -10px rgba(37, 101, 250, 0.4),
-          inset 0 0 15px rgba(255, 255, 255, 0.05);
-      }
-
-      /* Override: make hover motion equally pronounced in both themes
-         while keeping theme-specific accent colors. */
-      .banner-cockpit {
         transform: scale(0.965);
         transform-origin: center top;
         transition:
           transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1),
           box-shadow 360ms ease,
-          border 360ms ease;
+          border-color 360ms ease,
+          filter 360ms ease;
+        will-change: transform, box-shadow, filter;
       }
 
       .banner-cockpit:hover {
         transform: translateY(-4px) scale(1.03);
+        box-shadow:
+          0 12px 30px -12px rgba(37, 101, 250, 0.45),
+          inset 0 0 18px rgba(255, 255, 255, 0.05);
       }
 
-      /* Dark: stronger blue glow on hover (original look) */
+      .banner-cockpit:hover::before {
+        filter: brightness(1.06) contrast(1.02);
+      }
+
+      [data-bs-theme="dark"] .banner-cockpit {
+        border-color: rgba(255, 255, 255, 0.08) !important;
+        background-color: rgba(255, 255, 255, 0.03) !important;
+      }
+
       [data-bs-theme="dark"] .banner-cockpit:hover {
         border-color: rgba(37, 101, 250, 0.65) !important;
         box-shadow:
@@ -1510,12 +1497,21 @@
           inset 0 0 18px rgba(255, 255, 255, 0.03);
       }
 
-      /* Light: mirror dark motion but use orange accents */
+      [data-bs-theme="light"] .banner-cockpit {
+        border-color: rgba(15, 23, 42, 0.06) !important;
+        background-color: rgba(255, 255, 255, 0.08) !important;
+      }
+
       [data-bs-theme="light"] .banner-cockpit:hover {
-        border-color: rgba(249, 115, 22, 0.65) !important;
+        border-color: rgba(249, 115, 22, 0.6) !important;
         box-shadow:
-          0 12px 30px -12px rgba(249, 115, 22, 0.45),
-          inset 0 0 18px rgba(255, 255, 255, 0.06);
+          0 12px 30px -12px rgba(15, 23, 42, 0.16),
+          inset 0 0 18px rgba(255, 255, 255, 0.08);
+        transform: translateY(-4px) scale(1.03) !important;
+      }
+
+      [data-bs-theme="light"] .banner-cockpit:hover::before {
+        filter: brightness(1.08) contrast(1.02) saturate(0.96);
       }
 
       /* Animation for the blue checkmark icon inside the banner */
@@ -2569,7 +2565,7 @@
         </div>
 
         <div class="d-none d-md-block pb-1">
-          <div class="status-pill">V67.86🟢</div>
+          <div class="status-pill">V67.87 🟠</div>
         </div>
       </header>
       <section id="dashboard">
