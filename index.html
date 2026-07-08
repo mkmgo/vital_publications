@@ -1179,23 +1179,25 @@
           0 0 12px rgba(255, 180, 64, 0.3);
       }
 
-      /* Light-theme: make cockpit tile use the same motion/frame mechanics as dark mode,
-         but use orange accents (brand) instead of blue. */
+      /* Light theme: mirror the dark-mode motion and frame mechanics while keeping light-friendly tones */
       [data-bs-theme="light"] .banner-cockpit {
-        /* subtle edge to read on white background */
-        border: 1px solid rgba(255, 255, 255, 0.16) !important;
-        box-shadow: 0 4px 10px rgba(15, 23, 42, 0.01);
-        transform: none;
+        border: 1px solid rgba(255, 255, 255, 0.28) !important;
+        box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
+        background-color: rgba(255, 255, 255, 0.04) !important;
         transform-origin: center top;
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transition:
+          transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1),
+          box-shadow 360ms ease,
+          border-color 360ms ease,
+          filter 360ms ease;
       }
 
-      /* Hover: mirror the stronger dark-mode motion with orange brand accents */
+      /* Hover: use the same up-move and scale motion as dark mode, with a softer light-mode accent */
       [data-bs-theme="light"] .banner-cockpit:hover {
-        border-color: rgba(249, 115, 22, 0.65) !important;
+        border-color: rgba(249, 115, 22, 0.6) !important;
         box-shadow:
-          0 12px 30px -12px rgba(249, 115, 22, 0.45),
-          inset 0 0 18px rgba(255, 255, 255, 0.06);
+          0 12px 30px -12px rgba(15, 23, 42, 0.18),
+          inset 0 0 18px rgba(255, 255, 255, 0.08);
         transform: translateY(-4px) scale(1.03);
       }
 
@@ -1208,14 +1210,13 @@
       }
 
       [data-bs-theme="light"] .banner-cockpit::before {
-        /* much lighter overlay to integrate with white page background */
         background:
-          linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.25)),
+          linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.2)),
           url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1780584752/WebBannerlightmode_gu8ryk.webp");
         background-size: cover;
         background-position: center;
         background-blend-mode: soft-light;
-        filter: brightness(1.6) contrast(0.95) saturate(0.85);
+        filter: brightness(1.08) contrast(1.01) saturate(0.92);
         transition:
           filter 0.25s ease,
           background 0.25s ease;
@@ -1223,12 +1224,11 @@
 
       [data-bs-theme="light"] .banner-cockpit:hover::before {
         background:
-          linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.25)),
+          linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.2)),
           url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1780584752/WebBannerlightmode_gu8ryk.webp");
         background-size: cover;
         background-position: center;
-        /* keep the lighter visual but slightly warm the overlay on hover */
-        filter: brightness(1.65) contrast(0.98) saturate(0.9);
+        filter: brightness(1.1) contrast(1.02) saturate(0.95);
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -2568,7 +2568,7 @@
         </div>
 
         <div class="d-none d-md-block pb-1">
-          <div class="status-pill">V67.84</div>
+          <div class="status-pill">V67.85</div>
         </div>
       </header>
       <section id="dashboard">
