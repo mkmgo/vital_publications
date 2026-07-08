@@ -1484,6 +1484,37 @@
           inset 0 0 15px rgba(255, 255, 255, 0.05);
       }
 
+      /* Override: make hover motion equally pronounced in both themes
+         while keeping theme-specific accent colors. */
+      .banner-cockpit {
+        transform: scale(0.965);
+        transform-origin: center top;
+        transition:
+          transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1),
+          box-shadow 360ms ease,
+          border 360ms ease;
+      }
+
+      .banner-cockpit:hover {
+        transform: translateY(-4px) scale(1.03);
+      }
+
+      /* Dark: stronger blue glow on hover (original look) */
+      [data-bs-theme="dark"] .banner-cockpit:hover {
+        border-color: rgba(37, 101, 250, 0.65) !important;
+        box-shadow:
+          0 12px 30px -12px rgba(37, 101, 250, 0.45),
+          inset 0 0 18px rgba(255, 255, 255, 0.03);
+      }
+
+      /* Light: mirror dark motion but use orange accents */
+      [data-bs-theme="light"] .banner-cockpit:hover {
+        border-color: rgba(249, 115, 22, 0.65) !important;
+        box-shadow:
+          0 12px 30px -12px rgba(249, 115, 22, 0.45),
+          inset 0 0 18px rgba(255, 255, 255, 0.06);
+      }
+
       /* Animation for the blue checkmark icon inside the banner */
       .banner-cockpit:hover .header-status-tick {
         transform: scale(1.2) rotate(5deg);
@@ -2535,7 +2566,7 @@
         </div>
 
         <div class="d-none d-md-block pb-1">
-          <div class="status-pill">V67.82</div>
+          <div class="status-pill">V67.83</div>
         </div>
       </header>
       <section id="dashboard">
