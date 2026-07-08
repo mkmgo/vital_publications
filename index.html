@@ -1216,8 +1216,9 @@
           url("https://res.cloudinary.com/dqwm4pdbz/image/upload/v1780584752/WebBannerlightmode_gu8ryk.webp");
         background-size: cover;
         background-position: center;
-        background-blend-mode: soft-light;
-        filter: brightness(1.08) contrast(1.01) saturate(0.92);
+        background-blend-mode: normal;
+        filter: brightness(1.05) contrast(1.01) saturate(0.92);
+        will-change: transform, filter;
         /* Match dark-mode's slower, smoother cooldown for pan/brightness */
         transition:
           filter 0.6s ease-out,
@@ -1231,7 +1232,8 @@
         background-size: cover;
         background-position: center;
         /* Use the same smooth transition on hover-in and hover-out */
-        filter: brightness(1.1) contrast(1.02) saturate(0.95);
+        filter: brightness(1.08) contrast(1.02) saturate(0.96);
+        will-change: transform, filter;
         transition:
           filter 0.6s ease-out,
           background 0.6s ease-out;
@@ -1517,6 +1519,38 @@
 
       [data-bs-theme="light"] .banner-cockpit:hover::before {
         filter: brightness(1.08) contrast(1.02) saturate(0.96);
+      }
+
+      /* Force performance hints for light-mode banner to match dark-mode smoothness */
+      [data-bs-theme="light"] .banner-cockpit,
+      [data-bs-theme="light"] .banner-cockpit:hover {
+        will-change: transform, box-shadow, filter;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+      }
+
+      [data-bs-theme="light"] .banner-cockpit::before {
+        will-change: transform, filter;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      /* Enforce exact dark-mode timing/easing for light-mode transforms */
+      [data-bs-theme="light"] .banner-cockpit {
+        transition:
+          transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1),
+          box-shadow 360ms ease,
+          border-color 360ms ease,
+          filter 360ms ease;
+        will-change: transform, box-shadow, filter;
+      }
+
+      [data-bs-theme="light"] .banner-cockpit:hover {
+        transition:
+          transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1),
+          box-shadow 360ms ease,
+          border-color 360ms ease,
+          filter 360ms ease;
       }
 
       /* Animation for the blue checkmark icon inside the banner */
@@ -2570,7 +2604,7 @@
         </div>
 
         <div class="d-none d-md-block pb-1">
-          <div class="status-pill">V67.88 🟠</div>
+          <div class="status-pill">V67.9</div>
         </div>
       </header>
       <section id="dashboard">
