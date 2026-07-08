@@ -1190,11 +1190,13 @@
         transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
       }
 
-      /* Hover: mirror dark-mode motion/physics but with orange brand color */
+      /* Hover: mirror the stronger dark-mode motion with orange brand accents */
       [data-bs-theme="light"] .banner-cockpit:hover {
-        border-color: rgba(249, 115, 22, 0.6) !important; /* warm orange */
-        box-shadow: 0 10px 25px -10px rgba(249, 115, 22, 0.35);
-        transform: translateY(-2px) scale(1);
+        border-color: rgba(249, 115, 22, 0.65) !important;
+        box-shadow:
+          0 12px 30px -12px rgba(249, 115, 22, 0.45),
+          inset 0 0 18px rgba(255, 255, 255, 0.06);
+        transform: translateY(-4px) scale(1.03);
       }
 
       [data-bs-theme="light"] .banner-cockpit h1 {
@@ -2566,7 +2568,7 @@
         </div>
 
         <div class="d-none d-md-block pb-1">
-          <div class="status-pill">V67.83</div>
+          <div class="status-pill">V67.84</div>
         </div>
       </header>
       <section id="dashboard">
